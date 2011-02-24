@@ -1,4 +1,16 @@
 .bundle
+.DS_Store
 db/*.sqlite3
 log/*.log
 tmp/
+
+*.gem
+pkg
+doc/rdoc
+
+config/database.yml
+config/passkeep.yml
+
+public/system
+
+rails_best_practices_output.html
