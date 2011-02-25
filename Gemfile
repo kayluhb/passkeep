@@ -4,7 +4,6 @@ gem 'rails', '3.0.4'
 
 gem 'capistrano'
 gem 'devise'
-gem 'gibbon'
 gem 'mysql2'
 gem 'nokogiri'
 gem 'paperclip'
