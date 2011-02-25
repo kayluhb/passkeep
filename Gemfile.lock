@@ -92,6 +92,9 @@ GEM
     net-ssh-gateway (1.0.1)
       net-ssh (>= 1.99.1)
     nokogiri (1.4.4)
+    paperclip (2.3.8)
+      activerecord
+      activesupport
     pickle (0.4.4)
       cucumber (>= 0.8)
       rake
@@ -173,6 +176,7 @@ DEPENDENCIES
   launchy
   mysql2
   nokogiri
+  paperclip
   pickle
   rails (= 3.0.4)
   rails_best_practices
