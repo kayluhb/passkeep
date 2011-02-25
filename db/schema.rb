@@ -10,7 +10,21 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110224211516) do
+ActiveRecord::Schema.define(:version => 20110225140019) do
+
+  create_table "entries", :force => true do |t|
+    t.string   "title"
+    t.string   "username"
+    t.string   "url"
+    t.text     "notes"
+    t.datetime "expiration"
+    t.string   "attachment_file_name"
+    t.string   "attachment_content_type"
+    t.string   "attachment_file_size"
+    t.datetime "attachment_updated_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", :force => true do |t|
     t.string   "email",                               :default => "",                           :null => false

@@ -3,8 +3,6 @@ class CreateEntries < ActiveRecord::Migration
     create_table :entries do |t|
       t.string :title
       t.string :username
-      t.string :encrypted_password, :default => "", :null => false
-      t.string :password_salt, :default => "", :null => false
       t.string :url
       t.text :notes
       t.datetime :expiration
