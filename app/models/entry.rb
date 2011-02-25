@@ -26,4 +26,6 @@ class Entry < ActiveRecord::Base
     :url => "/system/attachments/:id_:basename.:extension",
     :path => ":rails_root/public/attachments/:id_:basename.:extension"
 
+  validates :title, :presence => true
+
 end
