@@ -22,10 +22,11 @@ class Entry < ActiveRecord::Base
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :title, :username, :password, :url, :notes, :expiration, :attachment
-  attr_encrypted :username, :key => 'a secret key'
-  attr_encrypted :password, :key => 'a secret key'
-  attr_encrypted :url, :key => 'a secret key'
-  attr_encrypted :notes, :key => 'a secret key'
+  attr_encrypted_options.merge!(:prefix => '', :suffix => '_crypted')
+  attr_encrypted :username, :key => Settings.entry.username
+  attr_encrypted :password, :key => Settings.entry.password
+  attr_encrypted :url, :key => Settings.entry.url
+  attr_encrypted :notes, :key => Settings.entry.notes
 
   acts_as_taggable_on :tags
 

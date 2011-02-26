@@ -1,0 +1,19 @@
+defaults: &defaults
+
+  entry:
+    username: ''
+    password: ''
+    url: ''
+    notes: ''
+
+development:
+  <<: *defaults
+
+test:
+  <<: *defaults
+
+stage:
+  <<: *defaults
+
+production:
+  <<: *defaults
