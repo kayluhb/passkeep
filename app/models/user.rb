@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20110225140019
+# Schema version: 20110226214519
 #
 # Table name: users
 #
@@ -22,6 +22,7 @@
 #  first_name           :string(255)     not null
 #  last_name            :string(255)     not null
 #  time_zone            :string(255)     default("Eastern Time (US & Canada)"), not null
+#  status               :integer(4)      default(1)
 #  created_at           :datetime
 #  updated_at           :datetime
 #

@@ -12,6 +12,7 @@ class DeviseCreateUsers < ActiveRecord::Migration
       t.string :first_name, :null => false
       t.string :last_name, :null => false
       t.string :time_zone, :default => 'Eastern Time (US & Canada)', :null => false
+      t.integer :status, :default => 1
 
       t.timestamps
     end
