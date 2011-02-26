@@ -3,6 +3,7 @@ class CreateEntries < ActiveRecord::Migration
     create_table :entries do |t|
       t.string :title
       t.string :username
+      t.string :password
       t.string :url
       t.text :notes
       t.datetime :expiration

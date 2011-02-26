@@ -33,6 +33,8 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable,
          :token_authenticatable, :lockable
 
+  acts_as_tagger
+
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation,
                   :remember_me, :first_name, :last_name

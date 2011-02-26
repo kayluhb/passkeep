@@ -22,6 +22,8 @@ class Entry < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_accessible :title, :username, :url, :notes, :expiration, :attachment
 
+  acts_as_taggable_on :tags
+
   has_attached_file :attachment,
     :url => "/system/attachments/:id_:basename.:extension",
     :path => ":rails_root/public/attachments/:id_:basename.:extension"
