@@ -6,5 +6,5 @@ Factory.define :user do |u|
   u.first_name  'Admin'
   u.last_name   'Istrator'
   u.email       { Factory.next :email }
-  u.password    'Admin1!'
+  u.password    'Passkeep1!'
 end
