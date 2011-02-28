@@ -1,2 +1,18 @@
-// Place your application-specific JavaScript functions and classes here
-// This file is automatically included by javascript_include_tag :defaults
+var APP = (function($) {
+    var app = {};
+    app.init = function() {
+        $.ajaxSetup({
+            cache: false,
+            error: function(x, e) {
+                if (console) { console.log(x, e); }
+            },
+            type: "POST"
+        });
+		if(!Modernizr.csstransitions) { $.getScript('javascripts/css3.js'); }
+    };
+    return app;
+} (jQuery));
+
+$(function() {
+    APP.init();
+});
