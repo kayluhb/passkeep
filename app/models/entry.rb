@@ -5,10 +5,10 @@
 #
 #  id                      :integer(4)      not null, primary key
 #  title                   :string(255)
-#  username                :string(255)
-#  password                :string(255)
-#  url                     :string(255)
-#  notes                   :text
+#  encrypted_username      :string(255)
+#  encrypted_password      :string(255)
+#  encrypted_url           :string(255)
+#  encrypted_notes         :text
 #  expiration              :datetime
 #  attachment_file_name    :string(255)
 #  attachment_content_type :string(255)
@@ -22,11 +22,7 @@ class Entry < ActiveRecord::Base
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :title, :username, :password, :url, :notes, :expiration, :attachment
-  attr_encrypted_options.merge!(:prefix => '', :suffix => '_crypted')
-  attr_encrypted :username, :key => Settings.entry.username, :encode => true
-  attr_encrypted :password, :key => Settings.entry.password, :encode => true
-  attr_encrypted :url, :key => Settings.entry.url, :encode => true
-  attr_encrypted :notes, :key => Settings.entry.notes, :encode => true
+  attr_encrypted :username, :password, :url, :notes, :key => '&@it)a|S_eouL-hnBq^BJ_!]&A+3pTaw9|N;,kYMD(s.*/UmQD8F|-`HC<#<Qm'
 
   acts_as_taggable_on :tags
 
@@ -35,5 +31,4 @@ class Entry < ActiveRecord::Base
     :path => ":rails_root/public/attachments/:id_:basename.:extension"
 
   validates :title, :presence => true
-
 end

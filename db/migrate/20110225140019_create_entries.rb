@@ -2,10 +2,10 @@ class CreateEntries < ActiveRecord::Migration
   def self.up
     create_table :entries do |t|
       t.string :title
-      t.string :username
-      t.string :password
-      t.string :url
-      t.text :notes
+      t.string :encrypted_username
+      t.string :encrypted_password
+      t.string :encrypted_url
+      t.text :encrypted_notes
       t.datetime :expiration
 
       t.string :attachment_file_name

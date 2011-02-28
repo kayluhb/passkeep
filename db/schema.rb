@@ -14,10 +14,10 @@ ActiveRecord::Schema.define(:version => 20110226214519) do
 
   create_table "entries", :force => true do |t|
     t.string   "title"
-    t.string   "username"
-    t.string   "password"
-    t.string   "url"
-    t.text     "notes"
+    t.string   "encrypted_username"
+    t.string   "encrypted_password"
+    t.string   "encrypted_url"
+    t.text     "encrypted_notes"
     t.datetime "expiration"
     t.string   "attachment_file_name"
     t.string   "attachment_content_type"
