@@ -9,7 +9,7 @@ gem 'mysql2'
 gem 'nokogiri'
 gem 'paperclip'
 gem 'settingslogic'
-gem 'spectator-attr_encrypted'
+gem 'spectator-attr_encrypted', :git => 'https://github.com/spectator/attr_encrypted.git'
 gem 'will_paginate', '~> 3.0.pre2'
 
 group :development do
