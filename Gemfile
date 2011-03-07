@@ -3,7 +3,7 @@ source 'http://rubygems.org'
 gem 'rails', '3.0.5'
 
 gem 'acts-as-taggable-on'
-gem 'attr_encrypted'
+gem 'spectator-attr_encrypted'
 gem 'capistrano'
 gem 'devise'
 gem 'mysql2'
