@@ -1,0 +1,25 @@
+<%= form_for @entry do |f| %>
+  <%= render 'shared/errors', :m => @entry %>
+  <p>
+    <%= f.label :title %> <span class="required">*</span><br />
+    <%= f.text_field :title, :class => 'required', :placeholder => 'title', :required => 'required' %>
+  </p>
+  <p>
+    <%= f.label :username %><br />
+  </p>
+  <p>
+    <%= f.label :password %><br />
+  </p>
+  <p>
+    <%= f.label :url %><br />
+  </p>
+  <p>
+    <%= f.label :notes %><br />
+  </p>
+  <p>
+    <%= f.label :expiration %><br />
+  </p>
+  <p>
+    <%= f.file_field :avatar %><br />
+  </p>
+<% end %>
