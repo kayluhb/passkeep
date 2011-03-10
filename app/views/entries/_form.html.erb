@@ -6,20 +6,29 @@
   </p>
   <p>
     <%= f.label :username %><br />
+    <%= f.text_field :username, :placeholder => 'username' %>
   </p>
   <p>
     <%= f.label :password %><br />
+    <%= f.text_field :password, :placeholder => 'password' %>
   </p>
   <p>
     <%= f.label :url %><br />
+    <%= f.text_field :url, :placeholder => 'url' %>
   </p>
   <p>
     <%= f.label :notes %><br />
+    <%= f.text_area :notes, :placeholder => 'notes' %>
   </p>
   <p>
     <%= f.label :expiration %><br />
+    <%= f.text_field :expiration, :placeholder => 'expiration' %>
   </p>
   <p>
-    <%= f.file_field :avatar %><br />
+    <%= f.label :attachment %><br />
+    <%= f.file_field :attachment %><br />
+  </p>
+  <p>
+    <%= f.submit %>
   </p>
 <% end %>

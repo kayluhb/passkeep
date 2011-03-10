@@ -1,7 +1,7 @@
 class EntriesController < ApplicationController
 
   def index
-    @entries = Entry.all
+    @entries = Entry.paginate :page => params[:page], :per_page => 20
   end
 
   def new
@@ -19,6 +19,10 @@ class EntriesController < ApplicationController
   end
 
   def edit
+    @entry = Entry.find(params[:id])
+  end
+  
+  def show
     @entry = Entry.find(params[:id])
   end
 
@@ -39,7 +43,7 @@ class EntriesController < ApplicationController
   def destroy
     @entry = Entry.find(params[:id])
     @entry.destroy
-    redirect_to(entries_path, :notice => "Awesome. You deleted #{@entry.name}")
+    redirect_to(entries_path, :notice => "Awesome. You deleted #{@entry.title}")
   end
 
 end

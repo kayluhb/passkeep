@@ -2,7 +2,7 @@ Passkeep::Application.routes.draw do
 
   devise_for :users
 
-  get "entries/confirm"
+  get "entries/confirm/:id" => "entries#confirm", :as => :entries_confirm
   resources :entries
   root :to => "entries#index"
 

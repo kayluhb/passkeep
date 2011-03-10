@@ -56,8 +56,8 @@ label.radio { font-size:13px; }
 
 ::selection { background:#c01339; color:#fff; }
 ::-moz-selection { background:#c01339; color:#fff; } 
-::-webkit-input-placeholder { color:#282218; }
-:-moz-placeholder { color:#282218; }
+::-webkit-input-placeholder { color:#efefef; }
+:-moz-placeholder { color:#efefef; }
 
 a:focus, button:focus, input:focus, label:focus, select:focus, textarea:focus { outline:1px dotted #c01339; }
 
@@ -81,16 +81,16 @@ a { -o-transition-property:color, background-color; -o-transition-duration:.15s;
 .float-left { float:left; }
 .float-right { float:right; }
 .inline { display:inline; }
-.alert, .required { color:#ff0000; }
+.alert { color:#ff0000; }
 /* /CLASSES */
 
 /* LAYOUT */
 #container { background:#fff; height:auto !important; height:500px; margin:0 auto; min-height:500px; text-align:left; width:960px; }
-#layout {  }
-header {  }
+#layout { margin:0 20px; }
+header { height:50px;  }
 article {  }
 section {  }
-footer {  }
+footer { height:50px; }
 footer nav {  }
 footer nav li a {  }
 /* /LAYOUT */
