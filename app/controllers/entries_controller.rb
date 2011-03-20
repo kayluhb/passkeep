@@ -1,5 +1,7 @@
 class EntriesController < ApplicationController
 
+  before_filter :get_entry, :only => [:edit, :show, :update, :confirm, :destroy]
+
   def index
     @entries = Entry.paginate :page => params[:page], :per_page => 20
   end
@@ -19,15 +21,12 @@ class EntriesController < ApplicationController
   end
 
   def edit
-    @entry = Entry.find(params[:id])
   end
 
   def show
-    @entry = Entry.find(params[:id])
   end
 
   def update
-    @entry = Entry.find(params[:id])
     if @entry.update_attributes(params[:entry])
       redirect_to(entries_path, :notice => render_to_string(:partial => "flash"))
     else
@@ -37,13 +36,15 @@ class EntriesController < ApplicationController
   end
 
   def confirm
-    @entry = Entry.find(params[:id])
   end
 
   def destroy
-    @entry = Entry.find(params[:id])
     @entry.destroy
     redirect_to(entries_path, :notice => "Awesome. You deleted #{@entry.title}")
   end
 
+  private
+    def get_entry
+      @entry = Entry.find(params[:id])
+    end
 end
