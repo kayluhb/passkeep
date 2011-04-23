@@ -1,5 +1,7 @@
 Passkeep::Application.routes.draw do
 
+  get "tags/search"
+
   devise_for :users
 
   get "entries/confirm/:id" => "entries#confirm", :as => :entries_confirm

@@ -25,10 +25,18 @@
     <%= f.text_field :expiration, :placeholder => 'expiration' %>
   </p>
   <p>
+    <%= f.label :tag_tokens, :tags %><br />
+    <%= f.text_field :tag_tokens, :placeholder => 'expiration', "data-pre" => @entry.tags.map(&:attributes).to_json %>
+  </p>
+  <p>
     <%= f.label :attachment %><br />
     <%= f.file_field :attachment %><br />
   </p>
   <p>
     <%= f.submit %>
   </p>
+<% end %>
+<%= content_for :additional_js do %>
+  <%= javascript_include_tag 'jquery/jquery.tokeninput' %>
+  <%= javascript_include_tag 'behaviors/entries' %>
 <% end %>
