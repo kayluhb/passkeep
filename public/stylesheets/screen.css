@@ -16,7 +16,7 @@ body,div,dd,dl,dt,h1,h2,h3,h4,h5,h6,li,ol,span,td,th,ul { color:#444; font:15px 
 a { color:#f47a4d; text-decoration:none; }
 a:hover, h1 a:hover, h2 a:hover, h3 a:hover, h4 a:hover, h5 a:hover, h6 a:hover { color:#c01339; text-decoration:none; }
 img { border:none; }
-p { padding:10px 0; }
+p { padding:6px 0; }
 strong, b { font-weight:bold; }
 em, i { font-style:italic; }
 h1, h2, h3, h4, h5, h6 { color:#000; font-weight:bold; padding:10px 0; text-rendering:optimizeLegibility; }
@@ -44,11 +44,11 @@ select, input, textarea { font:99% arial,helvetica,sans-serif; }
 input, select { vertical-align:middle; }
 button { overflow:visible; width:auto; }
 button, label, select, input[type='button'], input[type='submit'], input[type='file'] { cursor:pointer; } 
-input[type='text'], input[type='email'], input[type='password'], input[type='url'], input.input-field, textarea { border:1px solid #bccccd; margin-bottom:8px; padding:2px; width:400px; }
+input[type='text'], input[type='email'], input[type='password'], input[type='url'], input.input-field, textarea { border:1px solid #bccccd; font-size:26px; margin-bottom:3px; padding:2px; width:450px; -moz-border-radius:4px; border-radius:4px; }
 input[type="search"] { -webkit-appearance:textfield; }
 input[type="radio"] { vertical-align:text-bottom; }
 input[type="checkbox"] { vertical-align:bottom; *vertical-align:baseline; }
-textarea { overflow:auto; }
+textarea { height:200px; overflow:auto; }
 select { border:1px solid #bccccd; }
 fieldset { margin-bottom:8px; }
 label { font-weight:bold; font-size:13px; }

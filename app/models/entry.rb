@@ -29,12 +29,11 @@ class Entry < ActiveRecord::Base
   attr_encrypted :notes, :key => Settings.entry.notes
   attr_reader :tag_tokens
 
-  acts_as_taggable_on :tags
-
   has_attached_file :attachment,
     :url => "/system/attachments/:id_:basename.:extension",
     :path => ":rails_root/public/attachments/:id_:basename.:extension"
-
+  has_many :entry_tags
+  has_many :tags, :through => :entry_tags
   validates :title, :presence => true
 
   def tag_tokens=(ids)
