@@ -25,8 +25,8 @@
     <%= f.text_field :expiration, :placeholder => 'expiration' %>
   </p>
   <p>
-    <%= f.label :tag_tokens, :tags %><br />
-    <%= f.text_field :tag_tokens, :placeholder => 'expiration', "data-pre" => @entry.tags.map(&:attributes).to_json %>
+    <%= f.label :tag_tokens, "Tags" %><br />
+    <%= f.text_field :tag_tokens, "data-pre" => @entry.tags.map(&:attributes).to_json %>
   </p>
   <p>
     <%= f.label :attachment %><br />

@@ -30,7 +30,7 @@ table { padding:10px 0;  width:100%; }
 th { font-weight:bold; }
 td, th { padding:5px; }
 ul, ol { padding:10px 10px 10px 30px; }
-ul li { background:transparent url(../images/bullet.gif) 0 6px no-repeat; line-height:1.22; list-style:none; padding:0 0 8px 10px; }
+ul li { background:transparent url(../images/bullet.png) 0 6px no-repeat; line-height:1.22; list-style:none; padding:0 0 8px 10px; }
 ol {  }
 ol li { list-style:decimal; margin:0 0 0 10px; padding:0 0 8px 0; }
 blockquote { color:#76888a; font-size:16px; font-style:italic; line-height:1.22; padding:10px 0; }

@@ -14,6 +14,8 @@ var DEFAULT_SETTINGS = {
     hintText: "Type in a search term",
     noResultsText: "No results",
     searchingText: "Searching...",
+    allowCreation: true,
+    creationText: "Create new token",
     deleteText: "&times;",
     searchDelay: 300,
     minChars: 1,
@@ -315,8 +317,6 @@ $.TokenList = function (input, url_or_data, settings) {
         });
     }
 
-
-
     //
     // Private functions
     //
@@ -369,7 +369,7 @@ $.TokenList = function (input, url_or_data, settings) {
 
         return this_token;
     }
-
+    
     // Add a token to the token list based on user input
     function add_token (item) {
         var li_data = $.data(item.get(0), "tokeninput");
@@ -578,7 +578,18 @@ $.TokenList = function (input, url_or_data, settings) {
                 dropdown_ul.show();
             }
         } else {
-            if(settings.noResultsText) {
+            if(settings.allowCreation) {
+                dropdown.empty();
+                var create = $("<p>" + settings.creationText + " '" + input_box.val() + "'</p>");
+                create.mousedown(function(event) {
+                    input_box.focus();
+                    insert_token(-1, input_box.val());
+                    hide_dropdown();
+                    input_box.val("");
+                    return false;
+                });
+                dropdown.append(create);
+            } else if(settings.noResultsText) {
                 dropdown.html("<p>"+settings.noResultsText+"</p>");
                 show_dropdown();
             }
@@ -683,6 +694,8 @@ $.TokenList = function (input, url_or_data, settings) {
             }
         }
     }
+    
+    this.add_token = add_token;
 };
 
 // Really basic cache for the results
