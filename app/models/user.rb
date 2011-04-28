@@ -36,7 +36,7 @@ class User < ActiveRecord::Base
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation,
-                  :remember_me, :first_name, :last_name
+                  :remember_me, :first_name, :last_name, :team_tokens
   attr_reader :team_tokens
   has_many :team_users
   has_many :teams, :through => :team_users
@@ -44,7 +44,7 @@ class User < ActiveRecord::Base
   validates :first_name, :presence => true
   validates :last_name, :presence => true
 
-  def tag_tokens=(ids)
-    self.tag_ids = ids.split(",")
+  def team_tokens=(ids)
+    self.team_ids = ids.split(",")
   end
 end

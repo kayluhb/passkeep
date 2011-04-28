@@ -6,6 +6,8 @@ class CreateEntryTeams < ActiveRecord::Migration
 
       t.timestamps
     end
+    add_index :entry_teams, :entry_id
+    add_index :entry_teams, :team_id
   end
 
   def self.down

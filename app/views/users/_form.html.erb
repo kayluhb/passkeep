@@ -1,0 +1,42 @@
+<%= form_for @entry do |f| %>
+  <%= render 'shared/errors', :m => @entry %>
+  <p>
+    <%= f.label :title %> <span class="required">*</span><br />
+    <%= f.text_field :title, :class => 'required', :placeholder => 'title', :required => 'required' %>
+  </p>
+  <p>
+    <%= f.label :username %><br />
+    <%= f.text_field :username, :placeholder => 'username' %>
+  </p>
+  <p>
+    <%= f.label :password %><br />
+    <%= f.text_field :password, :placeholder => 'password' %>
+  </p>
+  <p>
+    <%= f.label :url %><br />
+    <%= f.text_field :url, :placeholder => 'url' %>
+  </p>
+  <p>
+    <%= f.label :notes %><br />
+    <%= f.text_area :notes, :placeholder => 'notes' %>
+  </p>
+  <p>
+    <%= f.label :expiration %><br />
+    <%= f.text_field :expiration, :placeholder => 'expiration' %>
+  </p>
+  <p>
+    <%= f.label :tag_tokens, "Tags" %><br />
+    <%= f.text_field :tag_tokens, "data-pre" => @entry.tags.map(&:attributes).to_json %>
+  </p>
+  <p>
+    <%= f.label :attachment %><br />
+    <%= f.file_field :attachment %><br />
+  </p>
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>
+<%= content_for :additional_js do %>
+  <%= javascript_include_tag 'jquery/jquery.tokeninput' %>
+  <%= javascript_include_tag 'behaviors/entries' %>
+<% end %>

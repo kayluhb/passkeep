@@ -22,7 +22,7 @@ class Entry < ActiveRecord::Base
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :title, :username, :password, :url, :notes, :expiration,
-                  :attachment, :tag_tokens
+                  :attachment, :tag_tokens, :team_tokens
   attr_encrypted :username, :key => Settings.entry.username
   attr_encrypted :password, :key => Settings.entry.password
   attr_encrypted :url, :key => Settings.entry.url
@@ -34,9 +34,14 @@ class Entry < ActiveRecord::Base
     :path => ":rails_root/public/attachments/:id_:basename.:extension"
   has_many :entry_tags
   has_many :tags, :through => :entry_tags
+  has_many :entry_teams
+  has_many :teams, :through => :entry_teams
   validates :title, :presence => true
 
   def tag_tokens=(ids)
     self.tag_ids = ids.split(",")
+  end
+  def team_tokens=(ids)
+    self.team_ids = ids.split(",")
   end
 end
