@@ -58,6 +58,6 @@ class UsersController < ApplicationController
       @user = User.find(params[:id])
     end
     def user_flash user
-      render_to_string :partial => "flash", :locals => { :user => User }
+      render_to_string :partial => "flash", :locals => { :user => user }
     end
 end
