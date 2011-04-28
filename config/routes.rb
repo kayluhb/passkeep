@@ -1,39 +1,20 @@
 Passkeep::Application.routes.draw do
 
-  get "teams/index"
-
-  get "teams/new"
-
-  get "teams/create"
-
-  get "teams/edit"
-
-  get "teams/update"
-
-  get "teams/confirm_destroy"
-
-  get "teams/destroy"
-
-  get "users/index"
-
-  get "users/new"
-
-  get "users/create"
-
-  get "users/edit"
-
-  get "users/update"
-
-  get "users/confirm_destroy"
-
-  get "users/destroy"
-
-  get "tags/search"
-
   devise_for :users
 
-  get "entries/confirm/:id" => "entries#confirm", :as => :entries_confirm
-  resources :entries
+  resources :entries do
+    get 'search', :on => :collection
+    get 'confirm_destroy', :on => :member
+  end
+  resources :tags, :only => [:search]
+  resources :teams do
+    get 'search', :on => :collection
+    get 'confirm_destroy', :on => :member
+  end
+  resources :users do
+    get 'search', :on => :collection
+    get 'confirm_destroy', :on => :member
+  end
   root :to => "entries#index"
 
   # The priority is based upon order of creation:

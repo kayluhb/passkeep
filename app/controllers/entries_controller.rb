@@ -1,6 +1,6 @@
 class EntriesController < ApplicationController
 
-  before_filter :get_entry, :only => [:edit, :show, :update, :confirm, :destroy]
+  before_filter :set_entry, :only => [:edit, :show, :update, :confirm_destroy, :destroy]
 
   def index
     @entries = Entry.paginate :page => params[:page], :per_page => 20
@@ -35,7 +35,7 @@ class EntriesController < ApplicationController
     end
   end
 
-  def confirm
+  def confirm_destroy
   end
 
   def destroy
@@ -44,7 +44,7 @@ class EntriesController < ApplicationController
   end
 
   private
-    def get_entry
+    def set_entry
       @entry = Entry.find(params[:id])
     end
 end

@@ -7,7 +7,7 @@
   <li><%= truncate(e.title, :length => 54) %>
   <span class="controls"><%= link_to 'view', entry_path(e) %>
     | <%= link_to 'edit', edit_entry_path(e) %>
-    | <%= link_to 'delete', entries_confirm_path(e) %>
+    | <%= link_to 'delete', confirm_destroy_entry_path(e) %>
   </span>
   </li>
   <% end %>
