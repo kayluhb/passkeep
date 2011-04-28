@@ -44,7 +44,19 @@ class User < ActiveRecord::Base
   validates :first_name, :presence => true
   validates :last_name, :presence => true
 
+  scope :super_skinny, select("users.id, users.first_name, users.last_name")
+
   def team_tokens=(ids)
     self.team_ids = ids.split(",")
   end
+
+  def full_name
+    return "#{first_name} #{last_name}"
+  end
+
+  protected
+
+    def password_required?
+      !persisted? || password.present? || password_confirmation.present?
+    end
 end

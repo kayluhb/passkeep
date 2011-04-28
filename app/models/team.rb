@@ -10,6 +10,15 @@
 #
 
 class Team < ActiveRecord::Base
-  attr_accessible :name
+  attr_accessible :name, :user_tokens
+  attr_reader :user_tokens
+
   validates :name, :presence => true
+
+  has_many :team_users
+  has_many :users, :through => :team_users
+
+  def user_tokens=(ids)
+    self.user_ids = ids.split(',')
+  end
 end

@@ -1,18 +1,19 @@
 class UsersController < ApplicationController
-  before_filter :set_entry, :only => [:edit, :show, :update, :confirm_destroy, :destroy]
+
+  before_filter :set_user, :only => [:edit, :show, :update, :confirm_destroy, :destroy]
 
   def index
-    @entries = Entry.paginate :page => params[:page], :per_page => 20
+    @users = User.paginate :page => params[:page], :per_page => 20
   end
 
   def new
-    @entry = Entry.new
+    @user = User.new
   end
 
   def create
-    @entry = Entry.new(params[:entry])
-    if @entry.save
-      redirect_to(@entry, :notice => render_to_string(:partial => "flash"))
+    @user = User.new(params[:user])
+    if @user.save
+      redirect_to @user, :notice => user_flash(@user).html_safe
     else
       flash.now[:notice] = "Couldn't save. Please check your form and submit it again!"
       render :new
@@ -26,8 +27,8 @@ class UsersController < ApplicationController
   end
 
   def update
-    if @entry.update_attributes(params[:entry])
-      redirect_to(entries_path, :notice => render_to_string(:partial => "flash"))
+    if @user.update_attributes(params[:user])
+      redirect_to @user, :notice => user_flash(@user).html_safe
     else
       flash.now[:error] = "Could not save. Please check the form and try again."
       render :edit
@@ -38,12 +39,25 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    @entry.destroy
-    redirect_to(entries_path, :notice => "Awesome. You deleted #{@entry.title}")
+    @user.destroy
+    redirect_to(users_path, :notice => "Awesome. You deleted #{@user.title}")
+  end
+
+  def search
+     @users = User.super_skinny.where("first_name like ? OR last_name like ?", "%#{params[:q]}%", "%#{params[:q]}%")
+     respond_to do |format|
+       format.html
+       format.json {
+         render :json => @users.map{ |user| { :name => user.full_name, :id => user.id } }
+       }
+    end
   end
 
   private
-    def set_entry
-      @entry = Entry.find(params[:id])
+    def set_user
+      @user = User.find(params[:id])
+    end
+    def user_flash user
+      render_to_string :partial => "flash", :locals => { :user => User }
     end
 end
