@@ -1,4 +1,4 @@
-<%= link_to "create a user", new_entry_path, :class => "button", :title => "create an entry"%>
+<%= link_to "create a user", new_user_path, :class => "button", :title => "create an entry"%>
 <%= page_entries_info @entries, :entry_name => 'user' %>
     <%= will_paginate @entries, :previous_label => '&lt; previous',
     :next_label => 'next &gt;', :separator => ' | ' %>

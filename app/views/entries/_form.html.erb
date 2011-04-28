@@ -29,6 +29,10 @@
     <%= f.text_field :tag_tokens, "data-pre" => @entry.tags.map(&:attributes).to_json %>
   </p>
   <p>
+    <%= f.label :team_tokens, "Teams with access" %><br />
+    <%= f.text_field :team_tokens, "data-pre" => @entry.teams.map(&:attributes).to_json %>
+  </p>
+  <p>
     <%= f.label :attachment %><br />
     <%= f.file_field :attachment %><br />
   </p>

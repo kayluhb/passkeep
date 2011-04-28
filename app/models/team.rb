@@ -13,10 +13,10 @@ class Team < ActiveRecord::Base
   attr_accessible :name, :user_tokens
   attr_reader :user_tokens
 
-  validates :name, :presence => true
-
   has_many :team_users
-  has_many :users, :through => :team_users
+  has_many :users, :through => :team_users, :order => :first_name
+
+  validates :name, :presence => true
 
   def user_tokens=(ids)
     self.user_ids = ids.split(',')

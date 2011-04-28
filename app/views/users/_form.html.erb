@@ -1,4 +1,4 @@
-<%= form_for @user do |f| %>
+<%= form_for @user, :html => { :autocomplete => :off, :multipart => true } do |f| %>
   <%= render 'shared/errors', :m => @user %>
   <p><%= f.label :email %> <span class="required">*</span><br/>
       <%= f.text_field :email, :required => 'required' %></p>

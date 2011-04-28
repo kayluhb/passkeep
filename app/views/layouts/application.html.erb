@@ -10,6 +10,16 @@
 <body>
 <div id="container">
   <div id="layout">
+    <% if notice %>
+      <p class="message notice">
+        <%= notice %>
+      </p>
+    <% end %>
+    <% if alert %>
+    <p class="message alert">
+      <%= alert %>
+    </p>
+    <% end %>
     <%= render 'layouts/header' %>
     <section>
       <%= yield %>
