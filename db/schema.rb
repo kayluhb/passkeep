@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110423180025) do
+ActiveRecord::Schema.define(:version => 20110428145853) do
 
   create_table "entries", :force => true do |t|
     t.string   "title"
@@ -44,6 +44,22 @@ ActiveRecord::Schema.define(:version => 20110423180025) do
   end
 
   add_index "tags", ["name"], :name => "index_tags_on_name", :unique => true
+
+  create_table "team_users", :force => true do |t|
+    t.integer  "team_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "team_users", ["team_id"], :name => "index_team_users_on_team_id"
+  add_index "team_users", ["user_id"], :name => "index_team_users_on_user_id"
+
+  create_table "teams", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", :force => true do |t|
     t.string   "email",                               :default => "",                           :null => false
