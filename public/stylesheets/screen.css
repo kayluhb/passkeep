@@ -87,7 +87,10 @@ a { -o-transition-property:color, background-color; -o-transition-duration:.15s;
 /* LAYOUT */
 #container { background:#fff; height:auto !important; height:500px; margin:0 auto; min-height:500px; text-align:left; width:960px; }
 #layout { margin:0 20px; }
-header { height:50px;  }
+header { height:50px; }
+header ul, header li { background:none; margin:0; padding:0; }
+header li { float:left; }
+header a { display:block; height:30px; line-height:30px; padding:0 10px;}
 article {  }
 section {  }
 footer { height:50px; }
