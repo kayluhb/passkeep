@@ -1,4 +1,4 @@
-class CreateTeamUsers < ActiveRecord::Migration
+class CreateTeamUser < ActiveRecord::Migration
   def self.up
     create_table :team_users do |t|
       t.references :team
