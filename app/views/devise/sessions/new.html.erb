@@ -1,0 +1,21 @@
+<% title "Sign in" %>
+
+<h2>Sign in</h2>
+
+<%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+  <p class="input-prepend">
+    <span class="add-on"><i class="icon-envelope"></i></span>
+    <%= f.email_field :email, :class => "span5", :type => "email", :placeholder => "email", :required => "required", :autofocus => "autofocus", :tabindex => 1 %>
+  </p>
+  <p class="input-prepend">
+    <span class="add-on"><i class="icon"></i></span>
+  <%= f.password_field :password, :class => "span5", :placeholder => "password", :required => "required", :tabindex => 2 %></p>
+
+  <% if devise_mapping.rememberable? -%>
+    <label class="checkbox"><%= f.check_box :remember_me, :tabindex => 3 %> Remember me</label>
+  <% end -%>
+
+  <p class="form-actions"><button class="btn btn-primary" type="submit" tabindex="4">Sign in</button> <%= render "links" %></p>
+<% end %>
+
+  

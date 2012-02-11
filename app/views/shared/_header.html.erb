@@ -1,12 +1,21 @@
 <div id="head-wrap">
   <header>
-    <%= link_to "Home", root_path, :id => "logo" %>
+    <%= link_to "Passkeep", root_path, :id => "logo" %>
     <% if user_signed_in? %>
     <nav>
       <ul id="account-info">
-        <li><%= link_to('Logout', destroy_user_session_path, :method => :delete, :id => 'logout') %></li>
+        <li></li>
       </ul>
     </nav>
+    <div class="btn-group">
+      <a class="btn" href="#"><i class="icon white user"></i> <%= current_user.full_name %></a>
+      <a class="btn dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
+      <ul class="dropdown-menu">
+        <li><a href="#"><i class="icon-pencil"></i> Edit</a></li>
+        <li class="divider"></li>
+        <li><%= link_to('<i class="i"></i> Logout'.html_safe, destroy_user_session_path, :method => :delete, :id => 'logout') %></li>
+      </ul>
+    </div>
     <% end %>
   </header>
 </div>
