@@ -1,4 +1,38 @@
 Passkeep::Application.routes.draw do
+  get "users/index"
+
+  get "users/new"
+
+  get "users/create"
+
+  get "users/edit"
+
+  get "users/update"
+
+  get "users/show"
+
+  get "users/confirm_destroy"
+
+  get "users/destroy"
+
+  get "users/search"
+
+  get "index/new"
+
+  get "index/create"
+
+  get "index/edit"
+
+  get "index/update"
+
+  get "index/show"
+
+  get "index/confirm_destroy"
+
+  get "index/destroy"
+
+  get "index/search"
+
   devise_for :users
   resources :entries do
     get 'search', :on => :collection
