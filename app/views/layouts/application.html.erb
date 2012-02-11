@@ -8,19 +8,13 @@
     <%= yield :css %>
 </head>
 <body>
-    <div id="layout">
-        <%= render 'shared/header' %>
-        <div id="content">
-            <% if notice %><p class="message notice"><%= notice %></p><% end %>
-            <% if alert %><p class="message alert"><%= alert %></p><% end %>
-            <%= yield :sub_nav %>
-            <section class="clearfix">
-            <%= yield %>
-            </section>
-            <%= yield :sub_section %>
-        </div>
-    </div>
+  <div class="container">
+    <%= render 'shared/header' %>
+    <% if notice %><p class="message notice"><%= notice %></p><% end %>
+    <% if alert %><p class="message alert"><%= alert %></p><% end %>
+    <%= yield %>
     <%= render 'shared/footer' %>
+  </div>
 <%= render 'shared/javascripts' %>
 <%= yield :js %>
 </body>

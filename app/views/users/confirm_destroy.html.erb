@@ -1,2 +1,6 @@
-<h1>Users#confirm_destroy</h1>
-<p>Find me in app/views/users/confirm_destroy.html.erb</p>
+<% form_for @entry, :html => { :method => :delete } do |f| %>
+  <h3>Are you sure you want to permanently destroy <%= @entry.title %>?</h3>
+  <p>
+    <%= submit_tag "Destroy" %> or <%= link_to "cancel", entries_path %>
+  </p>
+<% end %>
