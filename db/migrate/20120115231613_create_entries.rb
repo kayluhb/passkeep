@@ -1,6 +1,7 @@
 class CreateEntries < ActiveRecord::Migration
   def change
     create_table :entries do |t|
+      t.string :guid, :limit => 36
       t.string :title
       t.string :encrypted_username
       t.string :encrypted_password

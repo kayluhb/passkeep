@@ -1,26 +1,39 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js ie6 oldie" lang="en"><![endif]-->
+<!--[if IE 7]><html class="no-js ie7 oldie" lang="en"><![endif]-->
+<!--[if IE 8]><html class="no-js ie8 oldie" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
-  <title>We're sorry, but something went wrong (500)</title>
-  <style type="text/css">
-    body { background-color: #fff; color: #666; text-align: center; font-family: arial, sans-serif; }
-    div.dialog {
-      width: 25em;
-      padding: 0 4em;
-      margin: 4em auto 0 auto;
-      border: 1px solid #ccc;
-      border-right-color: #999;
-      border-bottom-color: #999;
-    }
-    h1 { font-size: 100%; color: #f00; line-height: 1.5em; }
-  </style>
+    <meta charset="utf-8" />
+    <title>We're sorry, but something went wrong</title>
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <!--[if ie]><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><![endif]-->
+    <link href="favicon.ico" rel="shortcut icon" />
+    <link href="apple-touch-icon.png" rel="apple-touch-icon" />
+    <script src="javascripts/libs/modernizr.min.js"></script>
+    <link href="stylesheets/all.css" rel="stylesheet" />
 </head>
-
 <body>
-  <!-- This file lives in public/500.html -->
-  <div class="dialog">
-    <h1>We're sorry, but something went wrong.</h1>
-    <p>We've been notified about this issue and we'll take a look at it shortly.</p>
-  </div>
+    <div id="container">
+        <div id="layout">
+            <h1>We're sorry, but something went wrong.</h1>
+            <p>We've been notified about this issue and we'll take a look at it shortly.</p>
+            <footer>
+                &copy;<script>var cur=new Date();var yr=cur.getFullYear();document.write(yr);</script>
+            </footer>
+        </div><!-- /layout -->
+    </div><!-- /container -->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+    <script>!window.jQuery && document.write('<script src="javascripts/libs/jquery-1.6.2.min.js"><\/script>')</script>
+    <!--[if lt IE 7 ]>
+    <script src="javascripts/libs/dd_belatedpng.js"></script>
+    <script>
+        DD_belatedPNG.fix("img, .png_bg"); // Fix any <img> or .png_bg bg-images. Also, please read goo.gl/mZiyb
+    </script>
+    <![endif]-->
+    <!-- scripts -->
+    <script src="javascripts/app/application.js"></script>
+    <!-- /scripts-->
 </body>
 </html>
