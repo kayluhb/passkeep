@@ -1,5 +1,0 @@
-.clearfix, .clearfix-left, .clearfix-right { clear:both; content:" "; display:block; font-size:0; height:0; visibility:hidden; }
-.clearfix-left { clear:left; }
-.clearfix-right { clear:right; }
-
-input { vertical-align: text-bottom; }

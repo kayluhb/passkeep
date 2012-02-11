@@ -1,30 +1,46 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.0.7'
+gem 'rails', '3.2.1'
 
 gem 'attr_encrypted'
+gem 'aws-ses', :require => 'aws/ses'
 gem 'capistrano'
-gem 'devise'
-gem 'mysql2'
-gem 'nokogiri'
-gem 'paperclip'
+gem 'delayed_job'
+gem 'devise', :git => 'git://github.com/plataformatec/devise.git'
+gem 'dragonfly', '~>0.9.8'
+gem 'exception_notification'
+gem 'jquery-rails'
+gem 'pg'
+gem 'rack'
+gem 'rack-cache', :require => 'rack/cache'
 gem 'settingslogic'
-gem 'will_paginate', '~> 3.0.pre2'
+gem 'sunspot', :git => 'https://github.com/sunspot/sunspot.git'
+gem 'will_paginate'
+gem 'uuidtools'
 
 group :development do
-  gem 'annotate-models'
-  gem 'jquery-rails', '>= 0.2.6'
+  gem 'annotate', :git => 'git://github.com/jeremyolliver/annotate_models.git', :branch => 'rake_compatibility'
+  gem 'execjs'
   gem 'rails_best_practices'
   gem 'rspec-rails'
+  gem 'therubyracer'
+end
+
+# Gems used only for assets and not required
+# in production environments by default.
+group :assets do
+  gem 'sass-rails',   '~> 3.1.5'
+  gem 'coffee-rails', '~> 3.1.1'
+  gem 'uglifier', '>= 1.0.3'
+end
+
+group :production do
+  gem 'therubyracer'
 end
 
 group :test do
-  gem 'cucumber'
-  gem 'cucumber-rails'
-  gem 'launchy'
-  gem 'pickle'
   gem 'rspec-rails'
-  gem 'treetop'
   gem 'factory_girl_rails'
-  gem 'webrat'
+  # Pretty printed test output
+  gem 'turn', '0.8.2', :require => false
 end

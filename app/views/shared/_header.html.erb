@@ -1,0 +1,22 @@
+<div id="head-wrap">
+  <header>
+    <%= link_to "Home", root_path, :id => "logo", :class => "ir" %>
+    <% if user_signed_in? %>
+    <nav>
+      <ul id="account-info">
+        <li><%= link_to('Logout', destroy_user_session_path, :method => :delete, :id => 'logout') %></li>
+        <li><%= link_to("Settings", settings_account_index_path, :class => 'button-gray') %></li>
+      </ul>
+      <ul id="main-nav">
+        <li><%= link_to("Home", root_path, :class => on_class_home(root_path)) %></li>
+        <li>
+        <%= form_tag '/search', :class => "search-form" do |f| %>
+            <input type="search" id="search-input" name="q" placeholder="Search" x-webkit-speech />
+            <button type="submit" class="ir icon" title="Search">Search</button>
+        <% end %>
+        </li>
+      </ul>
+    </nav>
+    <% end %>
+  </header>
+</div>

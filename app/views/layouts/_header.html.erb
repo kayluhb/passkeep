@@ -1,7 +1,0 @@
-<header>
-<ul>
-  <li<%= " class=on" if request.fullpath.starts_with? entries_path %>><%= link_to "Entries", entries_path, :class => 'first' %></li>
-  <li<%= " class=on" if request.fullpath.starts_with? teams_path %>><%= link_to "Teams", teams_path %></li>
-  <li<%= " class=on" if request.fullpath.starts_with? users_path %>><%= link_to "Users", users_path %></li>
-</ul>
-</header>

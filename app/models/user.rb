@@ -1,62 +1,9 @@
-# == Schema Information
-# Schema version: 20110226214519
-#
-# Table name: users
-#
-#  id                   :integer(4)      not null, primary key
-#  email                :string(255)     default(""), not null
-#  encrypted_password   :string(128)     default(""), not null
-#  password_salt        :string(255)     default(""), not null
-#  reset_password_token :string(255)
-#  remember_token       :string(255)
-#  remember_created_at  :datetime
-#  sign_in_count        :integer(4)      default(0)
-#  current_sign_in_at   :datetime
-#  last_sign_in_at      :datetime
-#  current_sign_in_ip   :string(255)
-#  last_sign_in_ip      :string(255)
-#  failed_attempts      :integer(4)      default(0)
-#  unlock_token         :string(255)
-#  locked_at            :datetime
-#  authentication_token :string(255)
-#  first_name           :string(255)     not null
-#  last_name            :string(255)     not null
-#  time_zone            :string(255)     default("Eastern Time (US & Canada)"), not null
-#  status               :integer(4)      default(1)
-#  created_at           :datetime
-#  updated_at           :datetime
-#
-
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
-  # :token_authenticatable, :confirmable, :lockable and :timeoutable
-  devise :database_authenticatable, :recoverable, :rememberable, :trackable,
-         :validatable, :token_authenticatable, :lockable
+  # :token_authenticatable, :registerable, :confirmable, :timeoutable and :omniauthable
+  devise :database_authenticatable, :encryptable, :lockable,
+         :recoverable, :rememberable, :trackable, :validatable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation,
-                  :remember_me, :first_name, :last_name, :team_tokens
-  attr_reader :team_tokens
-
-  has_many :team_users
-  has_many :teams, :through => :team_users, :order => :name
-
-  validates :first_name, :presence => true
-  validates :last_name, :presence => true
-
-  scope :super_skinny, select("users.id, users.first_name, users.last_name")
-
-  def team_tokens=(ids)
-    self.team_ids = ids.split(",")
-  end
-
-  def full_name
-    return "#{first_name} #{last_name}"
-  end
-
-  protected
-
-    def password_required?
-      !persisted? || password.present? || password_confirmation.present?
-    end
+  attr_accessible :email, :password, :password_confirmation, :remember_me
 end

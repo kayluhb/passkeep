@@ -1,35 +1,27 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js ie6 oldie" lang="en"><![endif]-->
+<!--[if IE 7]><html class="no-js ie7 oldie" lang="en"><![endif]-->
+<!--[if IE 8]><html class="no-js ie8 oldie" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
-  <meta charset="utf-8" />
-  <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><![endif]-->
-  <title>Passkeep</title>
-  <%= csrf_meta_tag %>
-  <%= render 'shared/stylesheets' %>
+    <%= render 'shared/head' %>
+    <%= yield :css %>
 </head>
 <body>
-<div id="container">
-  <div id="layout">
-    <% if notice %>
-      <p class="message notice">
-        <%= notice %>
-      </p>
-    <% end %>
-    <% if alert %>
-    <p class="message alert">
-      <%= alert %>
-    </p>
-    <% end %>
-    <%= render 'layouts/header' %>
-    <section>
-      <%= yield %>
-    </section>
-    <footer></footer>
-  </div>
-</div>
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
-<script>!window.jQuery && document.write('<script src="/javascripts/jquery/jquery-1.5.1.min.js"><\/script>')</script>
-<%= javascript_include_tag 'rails', 'modernizr-1.7.min', 'application', :cache => true %>
-<%= yield :additional_js %>
+    <div id="layout">
+        <%= render 'shared/header' %>
+        <div id="content">
+            <% if notice %><p class="message notice"><%= notice %></p><% end %>
+            <% if alert %><p class="message alert"><%= alert %></p><% end %>
+            <%= yield :sub_nav %>
+            <section class="clearfix">
+            <%= yield %>
+            </section>
+            <%= yield :sub_section %>
+        </div>
+    </div>
+    <%= render 'shared/footer' %>
+<%= render 'shared/javascripts' %>
+<%= yield :js %>
 </body>
 </html>

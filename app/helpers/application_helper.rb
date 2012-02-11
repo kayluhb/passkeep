@@ -1,14 +1,20 @@
 module ApplicationHelper
-  # Return a greeting to logged in users.
-  def greeting
-    return "" unless user_signed_in?
-    logout = link_to "logout", destroy_user_session_path
-    "Hello, #{current_user.full_name}! #{logout}".html_safe
-  end
-  def past str
-    "#{str}d"
-  end
+
   def title(page_title)
+    return content_for(:title) { "#{page_title.to_s} : Passkeep" } if @company
     content_for(:title) { "#{page_title.to_s} : Passkeep" }
   end
+
+  def meta_description(description)
+    content_for(:meta_description) { "#{description.to_s}" }
+  end
+
+  def on_class path
+    'on' if request.fullpath.starts_with? path
+  end
+
+  def on_class_home path
+    'on' if request.fullpath == path
+  end
+
 end

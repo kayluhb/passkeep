@@ -3,18 +3,5 @@
 #
 # Examples:
 #
-#   cities = City.create([{ :name => 'Chicago' }, { :name => 'Copenhagen' }])
-#   Mayor.create(:name => 'Daley', :city => cities.first)
-
-# Load up fake data for use in development environment
-if Rails.env.development?
-
-  require 'factory_girl'
-
-  Factory.definition_file_paths = [File.join(Rails.root.to_s, 'spec', 'factories')]
-  Factory.find_definitions
-
-  # Users
-  u = Factory(:user, :email => 'admin@passkeep.com')
-  puts "created #{u.email}"
-end
+#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
+#   Mayor.create(name: 'Emanuel', city: cities.first)

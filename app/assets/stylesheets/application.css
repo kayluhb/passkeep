@@ -1,0 +1,171 @@
+/*
+ *= require_self
+ *= require_tree . 
+*/
+/* HTML5 display definitions */
+article, aside, details, figcaption, figure, footer, header, hgroup, nav, section { display:block; }
+audio, canvas, video { display:inline-block; *display:inline; *zoom:1; }
+audio:not([controls]) { display:none; }
+[hidden] { display:none; }
+/* Base */
+html { font-size:100%; overflow-y:auto; -webkit-text-size-adjust:100%; -ms-text-size-adjust:100%; }
+body { background:#fff; margin:0; }
+body, button, input, select, textarea { color:#444; font:15px arial, verdana, sans-serif; line-height:1.22; }
+/* Links */
+a { color:#f47a4d; text-decoration:none; }
+a:visited {  }
+a:hover { color:#c01339; text-decoration:none; }
+/* Improve readability when focused and hovered in all browsers:h5bp.com/h */
+a:hover, a:active { outline:0; }
+p { margin:0; padding:10px 0; }
+/* Typography */
+abbr[title] { border-bottom:1px dotted; }
+b, strong { font-weight:bold; }
+blockquote { margin:1em 40px; }
+dfn { font-style:italic; }
+hr { border:0 #e2e6e6 solid; border-top-width:1px; clear:both; display:block; height:1px; margin:10px 0; }
+ins { background:#ff9; color:#000; text-decoration:none; }
+mark { background:#ff0; color:#000; font-style:italic; font-weight:bold; }
+/* Redeclare monospace font family:h5bp.com/j */
+pre, code, kbd, samp { font-family:monospace, monospace; _font-family:'courier new', monospace; font-size:1em; }
+/* Improve readability of pre-formatted text in all browsers */
+pre { white-space:pre; white-space:pre-wrap; word-wrap:break-word; }
+q { quotes:none; }
+q:before, q:after { content:""; content:none; }
+small { font-size:85%; }
+/* Position subscript and superscript content without affecting line-height:h5bp.com/k */
+sub, sup { font-size:75%; line-height:0; position:relative; vertical-align:baseline; }
+sup { top:-0.5em; }
+sub { bottom:-0.25em; }
+h1, h2, h3, h4, h5, h6 { color:#000; font-weight:bold; margin:0; padding:10px 0; text-rendering:optimizeLegibility; }
+h1, h1 a { font-size:26px; padding-top:0; }
+h2, h2 a { font-size:24px; }
+h3, h3 a { font-size:22px; }
+h4, h4 a { font-size:18px; }
+h5, h5 a { font-size:16px; }
+h6, h6 a { font-size:14px; }
+/* Lists */
+dd { margin:0 0 0 40px; }
+ul, ol { padding:10px 10px 10px 30px; }
+ul li { background:transparent url(../images/bullet.gif) 0 6px no-repeat; list-style:none; padding:0 0 8px 10px; }
+ol {  }
+ol li { list-style:decimal; margin:0 0 0 10px; padding:0 0 8px 0; }
+nav ul, nav ol, nav li { background:none; margin:0; padding:0; }
+blockquote { color:#76888a; font-size:16px; font-style:italic; padding:10px 0; }
+blockquote p { padding:0 }
+img { border:0; -ms-interpolation-mode:bicubic; vertical-align:middle; }
+/* Correct overflow not hidden in IE9 */
+svg:not(:root) { overflow:hidden; }
+/* Figures */
+figure { margin:0; }
+/* Forms */
+form { margin:0; }
+fieldset { border:0; margin:0; padding:0; }
+/* Indicate that 'label' will shift focus to the associated form element */
+label { cursor:pointer; font-weight:bold; }
+legend { border:0; *margin-left:-7px; padding:0; }
+button, input, select, textarea { font-size:100%; margin:0; vertical-align:baseline; *vertical-align:middle; }
+button, input { line-height:normal; *overflow:visible; }
+button:active, .button:active { position:relative; top:1px; }
+/* Reintroduce inner spacing in 'table' to avoid overlap and whitespace issues in IE6/7 */
+table button, table input { *overflow:auto; }
+button, select, input[type="button"], input[type="reset"], input[type="submit"], input[type='file'] { cursor:pointer; }
+button, input[type="button"], input[type="reset"], input[type="submit"] { -webkit-appearance:button; }
+/* Consistent box sizing and appearance  */
+input[type="checkbox"], input[type="radio"] { box-sizing:border-box; }
+input[type="search"] { -webkit-appearance:textfield; -moz-box-sizing:content-box; -webkit-box-sizing:content-box; box-sizing:content-box; }
+input[type="search"]::-webkit-search-decoration { -webkit-appearance:none; }
+button::-moz-focus-inner, input::-moz-focus-inner { border:0; padding:0; }
+input[type='text'], input[type='email'], input[type='password'], input[type='url'], input.input-field, textarea { border:1px solid #bccccd; padding:2px;
+-webkit-box-sizing:border-box;
+   -moz-box-sizing:border-box;
+        box-sizing:border-box;
+}
+textarea { overflow:auto; vertical-align:top; resize:vertical; }
+/* Colors for form validity */
+input:valid, textarea:valid {  }
+input:invalid, textarea:invalid { background-color:#f0dddd; }
+/*Tables*/
+table { border-collapse:collapse; border-spacing:0; padding:10px 0; }
+td, th { padding:5px; }
+th { font-weight:bold; }
+td { vertical-align:top; }
+
+::-moz-selection { background:#c01339; color:#fff; text-shadow: none; }
+::selection { background:#c01339; color:#fff; text-shadow: none; }
+::-webkit-input-placeholder { color:#282218; }
+::-moz-placeholder { color:#282218; }
+
+a:focus, button:focus, input:focus, label:focus, select:focus, textarea:focus { outline:1px dotted #c01339; }
+
+/* Put all the transition elements here */
+a {
+     -o-transition-duration:.15s;
+   -moz-transition-duration:.15s;
+-webkit-transition-duration:.15s;
+        transition-duration:.15s;
+     -o-transition-timing-function:ease-in;
+   -moz-transition-timing-function:ease-in;
+-webkit-transition-timing-function:ease-in;
+        transition-timing-function:ease-in;
+     -o-transition-property:color, background-color;
+   -moz-transition-property:color, background-color;
+-webkit-transition-property:color, background-color;
+        transition-property:color, background-color;
+}
+
+/* CLASSES */
+/* For image replacement */
+.ir { background-color:transparent; background-repeat:no-repeat; border:0; direction:ltr; display:block; overflow:hidden; text-align:left; text-indent:-999em; }
+.ir br { display:none; }
+
+.hide { display:none !important; visibility:hidden; }
+.invisible { visibility:hidden; }
+.clearfix:before, .clearfix:after { content:""; display:table; }
+.clearfix:after { clear:both; }
+.clearfix { zoom:1; }
+.clear { clear:both; display:block; overflow:hidden; visibility:hidden; width:0; height:0; }
+.alert { color:#ff0000; }
+
+/* LAYOUT */
+#container { background:#fff; height:auto !important; height:500px; margin:0 auto; min-height:500px; text-align:left; width:960px; }
+#layout {  }
+header {  }
+article {  }
+section {  }
+aside {  }
+footer {  }
+
+
+
+
+
+
+
+
+
+
+
+@media only screen and (min-width: 480px) {
+  /* media-query */
+}
+
+@media only screen and (min-width: 768px) {
+  /* media-query */
+}
+ 
+@media print {
+  * { background: transparent !important; color: black !important; text-shadow: none !important; filter:none !important; -ms-filter: none !important; } 
+  a, a:visited { text-decoration: underline; }
+  a[href]:after { content: " (" attr(href) ")"; }
+  abbr[title]:after { content: " (" attr(title) ")"; }
+  .ir a:after, a[href^="javascript:"]:after, a[href^="#"]:after { content: ""; } 
+  pre, blockquote { border: 1px solid #999; page-break-inside: avoid; }
+  thead { display: table-header-group; }
+  tr, img { page-break-inside: avoid; }
+  img { max-width: 100% !important; }
+  @page { margin: 0.5cm; }
+  p, h2, h3 { orphans: 3; widows: 3; }
+  h2, h3 { page-break-after: avoid; }
+}
+

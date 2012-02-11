@@ -4,4 +4,4 @@
 # If you change this key, all old signed cookies will become invalid!
 # Make sure the secret is at least 30 characters and all random,
 # no regular words or you'll be exposed to dictionary attacks.
-Passkeep::Application.config.secret_token = '8edbff4cd283c19a369efdb6751120f1976b5f601a50a36140e2eaf9b54de48478aaa25c6e0f64e0ad9d0434b8c7919a1c69e8c8aef87548fae1cd2928b8f58a'
+Passkeep::Application.config.secret_token = '83acede414f3a73d4ab08fe930d8346bfcbeef0a03e27684e552b050e4b48afd64865bec2071c3dda4b20842bc8680e9a34ff39d0cbd20c43606496a105d1728'
