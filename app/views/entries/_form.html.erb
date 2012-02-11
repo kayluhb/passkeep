@@ -19,6 +19,9 @@
     <%= f.text_field :expiration, :placeholder => 'expiration date' %>
   </p>
   <p>
+    <% unless entry.attachment_uid.blank? %>
+    <%= link_to "<i class=\"icon-download-alt\"></i> #{entry.attachment_name}".html_safe, entry.attachment.url, :target => "_blank" %><br/>
+    <% end %>
     <%= f.file_field :attachment %><br />
     <%= f.hidden_field :retained_attachment %>
     <label class="checkbox"><%= f.check_box :remove_attachment %> remove?</label>
