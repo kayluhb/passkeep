@@ -1,3 +1,20 @@
+GIT
+  remote: git://github.com/jeremyolliver/annotate_models.git
+  revision: 4d57e4fe6360125f17886168120a48091a268e45
+  branch: rake_compatibility
+  specs:
+    annotate (2.4.0)
+
+GIT
+  remote: git://github.com/plataformatec/devise.git
+  revision: f1a27b8f33d76b0da81f25e7c3b36291e2c0df12
+  specs:
+    devise (2.0.1)
+      bcrypt-ruby (~> 3.0)
+      orm_adapter (~> 0.0.3)
+      railties (~> 3.1)
+      warden (~> 1.1)
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -28,7 +45,6 @@ GEM
     activesupport (3.2.1)
       i18n (~> 0.6)
       multi_json (~> 1.0)
-    annotate (2.4.0)
     arel (3.0.0)
     attr_encrypted (1.2.0)
       encryptor (>= 1.1.1)
@@ -75,11 +91,6 @@ GEM
     database_cleaner (0.7.1)
     delayed_job (3.0.1)
       activesupport (~> 3.0)
-    devise (2.0.1)
-      bcrypt-ruby (~> 3.0)
-      orm_adapter (~> 0.0.3)
-      railties (~> 3.1)
-      warden (~> 1.1)
     diff-lcs (1.1.3)
     dragonfly (0.9.10)
       rack
@@ -195,6 +206,9 @@ GEM
       escape (~> 0.0.4)
       pr_geohash (~> 1.0)
       rsolr (~> 1.0.6)
+    sunspot_rails (1.3.0)
+      nokogiri
+      sunspot (= 1.3.0)
     sunspot_solr (1.3.0)
       escape (~> 0.0.4)
     term-ansicolor (1.0.7)
@@ -221,7 +235,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  annotate
+  annotate!
   attr_encrypted
   aws-ses
   capistrano
@@ -229,7 +243,7 @@ DEPENDENCIES
   cucumber-rails
   database_cleaner
   delayed_job
-  devise
+  devise!
   dragonfly (~> 0.9.8)
   exception_notification
   execjs
@@ -244,7 +258,7 @@ DEPENDENCIES
   rspec-rails
   sass-rails (~> 3.2.3)
   settingslogic
-  sunspot
+  sunspot_rails
   sunspot_solr
   therubyracer
   uglifier (>= 1.0.3)
