@@ -19,6 +19,10 @@
 #
 
 class Entry < ActiveRecord::Base
+
+  #versioned
+  image_accessor :attachment
+
   # Setup accessible (or protected) attributes for your model
   attr_accessible :title, :username, :password, :url, :notes, :expiration,
                   :attachment, :tag_tokens, :team_tokens

@@ -10,7 +10,7 @@ audio:not([controls]) { display:none; }
 [hidden] { display:none; }
 /* Base */
 html { font-size:100%; overflow-y:auto; -webkit-text-size-adjust:100%; -ms-text-size-adjust:100%; }
-body { background:#fff; margin:0; }
+body { background:#fff; margin:0; padding-top:10px; }
 body, button, input, select, textarea { color:#444; font:15px arial, verdana, sans-serif; line-height:1.22; }
 /* Links */
 a { color:#f47a4d; text-decoration:none; }
@@ -81,7 +81,7 @@ button::-moz-focus-inner, input::-moz-focus-inner { border:0; padding:0; }
 input[type='text'], input[type='email'], input[type='password'], input[type='url'], input.input-field, textarea { 
 
 }
-textarea { overflow:auto; vertical-align:top; resize:vertical; }
+textarea { height:200px; overflow:auto; vertical-align:top; resize:vertical; }
 /* Colors for form validity */
 input:valid, textarea:valid {  }
 input:invalid, textarea:invalid {  }
@@ -128,7 +128,7 @@ a {
 .alert {  }
 
 .dropdown-menu li { margin:0; padding:0;}
-
+.nav, .nav li { padding:0; }
 
 
 @media print {

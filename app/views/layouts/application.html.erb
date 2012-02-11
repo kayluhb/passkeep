@@ -12,7 +12,11 @@
     <%= render 'shared/header' %>
     <% if notice %><p class="alert alert-info"><%= notice %></p><% end %>
     <% if alert %><p class="alert alert-error"><%= alert %></p><% end %>
-    <%= yield %>
+    <div class="row">
+      <div class="span12">
+      <%= yield %>
+      </div>
+    </div>
     <%= render 'shared/footer' %>
   </div>
 <%= render 'shared/javascripts' %>

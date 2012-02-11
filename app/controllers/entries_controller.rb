@@ -3,7 +3,7 @@ class EntriesController < ApplicationController
   before_filter :set_entry, :only => [:edit, :show, :update, :confirm_destroy, :destroy]
 
   def index
-    @entries = Entry.paginate :page => params[:page], :per_page => 20
+    @entries = Entry.paginate :page => params[:page]
   end
 
   def new

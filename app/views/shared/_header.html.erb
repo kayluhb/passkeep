@@ -1,21 +1,35 @@
-<div id="head-wrap">
-  <header>
-    <%= link_to "Passkeep", root_path, :id => "logo" %>
-    <% if user_signed_in? %>
-    <nav>
-      <ul id="account-info">
-        <li></li>
-      </ul>
-    </nav>
-    <div class="btn-group">
-      <a class="btn" href="#"><i class="icon white user"></i> <%= current_user.full_name %></a>
-      <a class="btn dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
-      <ul class="dropdown-menu">
-        <li><a href="#"><i class="icon-pencil"></i> Edit</a></li>
-        <li class="divider"></li>
-        <li><%= link_to('<i class="i"></i> Logout'.html_safe, destroy_user_session_path, :method => :delete, :id => 'logout') %></li>
-      </ul>
+<div class="navbar">
+  <div class="navbar-inner">
+    <div class="container" style="width: auto;">
+      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </a>
+      <%= link_to "Passkeep", root_path, :id => "logo", :class => 'brand' %>
+      <div class="nav-collapse">
+        <ul class="nav">
+          <li class="active"><%= link_to "Home", root_path %></li>
+        </ul>
+        <% if user_signed_in? %>
+        <ul class="nav pull-right">
+          <li>
+          <form class="navbar-search pull-left" action="">
+            <input type="text" class="search-query span3" placeholder="Search">
+          </form>
+          </li>
+          <li class="divider-vertical"></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= gravatar_image_tag(current_user.email, :alt => current_user.full_name, :gravatar => { :size => 20 }) %> <%= current_user.full_name %> <b class="caret"></b></a>
+            <ul class="dropdown-menu">
+              <li><a href="#"><i class="icon-pencil"></i> Edit</a></li>
+              <li class="divider"></li>
+              <li><%= link_to('Logout', destroy_user_session_path, :method => :delete, :id => 'logout') %></li>
+            </ul>
+          </li>
+        </ul>
+        <% end %>
+      </div><!-- /.nav-collapse -->
     </div>
-    <% end %>
-  </header>
-</div>
+  </div><!-- /navbar-inner -->
+</div><!-- /navbar -->
