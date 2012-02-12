@@ -1,4 +1,5 @@
-<%= form_for entry, :html => { :class => 'well' } do |f| %>
+<%= form_for entry, :html => {  } do |f| %>
+<div class="well">
   <%= render 'shared/errors', :m => entry %>
   <p>
     <%= f.text_field :title, :class => 'span4 required', :placeholder => 'title', :required => 'required' %>
@@ -31,6 +32,7 @@
       <label class="checkbox"><%= f.check_box :remove_attachment %> remove?</label>
     <% end %>
   </p>
+</div>
   <p class="form-actions">
     <button class="btn btn-primary">Save</button>
     <%= link_to "Cancel", entries_path, :class => 'btn' %>

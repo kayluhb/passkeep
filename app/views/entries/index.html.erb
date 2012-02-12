@@ -1,8 +1,10 @@
+
 <div class="row">
-  <p class="span2 offset10">
-<%= link_to "create an entry", new_entry_path, :class => "btn btn-primary", :title => "create an entry" %>
-  </p>
+  <div class="span2 offset10">
+  <%= link_to "create an entry", new_entry_path, :class => "btn btn-primary", :title => "create an entry" %>
+  </div>
 </div>
+
 <%= page_entries_info @entries, :model => 'entry' %>
     <%= will_paginate @entries, :previous_label => '&lt; previous',
     :next_label => 'next &gt;', :separator => ' | ' %>
@@ -17,8 +19,3 @@
 </ul>
 <%= will_paginate @entries, :previous_label => '&lt; previous',
     :next_label => 'next &gt;', :separator => ' | ' %>
-<div class="row">
-  <p class="span2 offset10">
-<%= link_to "create an entry", new_entry_path, :class => "btn btn-primary", :title => "create an entry" %>
-  </p>
-</div>

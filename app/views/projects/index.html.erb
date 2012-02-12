@@ -1,12 +1,14 @@
 <% title "Projects" %>
 
-<h1>Projects</h1>
-
 <div class="row">
-  <p class="span2 offset10">
-<%= link_to "create a project", new_project_path, :class => "btn btn-primary", :title => "create a project" %>
-  </p>
+  <div class="span10">
+    <h1>Projects</h1>
+  </div>
+  <div class="span2">
+  <%= link_to "create a project", new_project_path, :class => "btn btn-primary", :title => "create a project" %>
+  </div>
 </div>
+
 <%= page_entries_info @projects, :model => 'project' %>
     <%= will_paginate @projects, :previous_label => '&lt; previous',
     :next_label => 'next &gt;', :separator => ' | ' %>
@@ -20,8 +22,3 @@
 </ul>
 <%= will_paginate @projects, :previous_label => '&lt; previous',
     :next_label => 'next &gt;', :separator => ' | ' %>
-<div class="row">
-  <p class="span2 offset10">
-<%= link_to "create a project", new_project_path, :class => "btn btn-primary", :title => "create a project" %>
-  </p>
-</div>

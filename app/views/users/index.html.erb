@@ -1,6 +1,13 @@
 <% title "Users" %>
 
-<%= link_to "create a user", new_user_path, :class => "btn btn-primary", :title => "create a user" %>
+<div class="row">
+  <div class="span10">
+    <h1>Users</h1>
+  </div>
+  <div class="span2">
+    <%= link_to "create a user", new_user_path, :class => "btn btn-primary", :title => "create a user" %>
+  </div>
+</div>
 
 <%= page_entries_info @entries, :entry_name => 'user' %>
     <%= will_paginate @entries, :previous_label => '&lt; previous',

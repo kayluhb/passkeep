@@ -1,12 +1,30 @@
-<%= form_for team, :html => { :class => 'well' } do |f| %>
+<%= form_for team, :html => {  } do |f| %>
+<div class="well">
   <%= render 'shared/errors', :m => team %>
   <p>
     <%= f.text_field :name, :class => 'span4 required', :placeholder => 'name', :required => 'required' %>
   </p>
+</div>
+<div class="row">
+  <div class="span6">
+    <h4>Team members</h4>
+    <div class="well">
+      
+    </div>
+  </div>
+  <div class="span6">
+    <h4>Projects</h4>
+    <div class="well">
+      
+    </div>
+  </div>
+</div>
   <p class="form-actions">
     <button class="btn btn-primary">Save</button>
     <%= link_to "Cancel", teams_path, :class => 'btn' %>
     <%= link_to '<i class="icon-trash icon-white"></i> Delete'.html_safe, confirm_destroy_team_path(team), :class => 'btn btn-danger' unless team.new_record? %>
   </p>
 <% end %>
-<%= content_for :js do %><% end %>
+<%= content_for :js do %>
+  <%= javascript_include_tag 'libs/jquery.tokeninput', 'app/teams' %>
+<% end %>
