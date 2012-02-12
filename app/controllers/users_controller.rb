@@ -15,7 +15,6 @@ class UsersController < ApplicationController
     if @user.save
       redirect_to @user, :notice => user_flash(@user).html_safe
     else
-      flash.now[:notice] = "Couldn't save. Please check your form and submit it again!"
       render :new
     end
   end
@@ -30,7 +29,6 @@ class UsersController < ApplicationController
     if @user.update_attributes(params[:user])
       redirect_to @user, :notice => user_flash(@user).html_safe
     else
-      flash.now[:error] = "Could not save. Please check the form and try again."
       render :edit
     end
   end
@@ -57,6 +55,7 @@ class UsersController < ApplicationController
     def set_user
       @user = User.find_by_guid!(params[:id])
     end
+
     def user_flash user
       render_to_string :partial => "flash", :locals => { :user => user }
     end

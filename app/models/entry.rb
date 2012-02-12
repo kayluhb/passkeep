@@ -37,6 +37,7 @@ class Entry < ActiveRecord::Base
 
   validates :title, :presence => true
   validates :guid, :presence => true
+  validates :project, :presence => true
 
   def to_param
     self.guid

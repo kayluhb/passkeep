@@ -13,9 +13,8 @@ class EntriesController < ApplicationController
   def create
     @entry = Entry.new(params[:entry])
     if @entry.save
-      redirect_to @entry, :notice => entry_flash(@entry).html_safe
+      redirect_to project_entry_path(@entry.project, @entry), :notice => entry_flash(@entry).html_safe
     else
-      flash.now[:notice] = "Couldn't save. Please check your form and submit it again!"
       render :new
     end
   end
@@ -28,9 +27,8 @@ class EntriesController < ApplicationController
 
   def update
     if @entry.update_attributes(params[:entry])
-      redirect_to @entry, :notice => entry_flash(@entry).html_safe
+      redirect_to project_entry_path(@entry.project, @entry), :notice => entry_flash(@entry).html_safe
     else
-      flash.now[:error] = "Could not save. Please check the form and try again."
       render :edit
     end
   end
@@ -47,6 +45,7 @@ class EntriesController < ApplicationController
     def set_entry
       @entry = Entry.find_by_guid!(params[:id])
     end
+
     def entry_flash entry
       render_to_string :partial => "flash", :locals => { :entry => entry }
     end

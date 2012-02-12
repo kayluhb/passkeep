@@ -15,7 +15,6 @@ class TeamsController < ApplicationController
     if @team.save
       redirect_to @team, :notice => team_flash(@team).html_safe
     else
-      flash.now[:notice] = "Couldn't save. Please check your form and submit it again!"
       render :new
     end
   end
@@ -30,7 +29,6 @@ class TeamsController < ApplicationController
     if @team.update_attributes(params[:team])
       redirect_to @team, :notice => team_flash(@team).html_safe
     else
-      flash.now[:error] = "Could not save. Please check the form and try again."
       render :edit
     end
   end
@@ -47,6 +45,7 @@ class TeamsController < ApplicationController
     def set_team
       @team = Team.find_by_guid!(params[:id])
     end
+
     def team_flash team
       render_to_string :partial => "flash", :locals => { :team => team }
     end

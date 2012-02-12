@@ -2,13 +2,15 @@ Passkeep::Application.routes.draw do
 
   devise_for :users
 
-  resources :entries do
-    get 'confirm_destroy', :on => :member
-  end
+  resources :entries, :only => [:index, :new, :create, :update, :destroy]
 
   resources :projects do
     get 'search', :on => :collection
     get 'confirm_destroy', :on => :member
+
+    resources :entries, :only => [:edit, :confirm_destroy] do
+      get 'confirm_destroy', :on => :member
+    end
   end
 
   resources :tags, :only => [:search]

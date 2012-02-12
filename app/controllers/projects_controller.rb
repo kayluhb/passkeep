@@ -15,7 +15,6 @@ class ProjectsController < ApplicationController
     if @project.save
       redirect_to @project, :notice => project_flash(@project).html_safe
     else
-      flash.now[:notice] = "Couldn't save. Please check your form and submit it again!"
       render :new
     end
   end
@@ -30,7 +29,6 @@ class ProjectsController < ApplicationController
     if @project.update_attributes(params[:project])
       redirect_to @project, :notice => project_flash(@project).html_safe
     else
-      flash.now[:error] = "Could not save. Please check the form and try again."
       render :edit
     end
   end
@@ -47,6 +45,7 @@ class ProjectsController < ApplicationController
     def set_project
       @project = Project.find_by_guid!(params[:id])
     end
+
     def project_flash project
       render_to_string :partial => "flash", :locals => { :project => project }
     end

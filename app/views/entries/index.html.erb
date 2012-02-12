@@ -9,9 +9,8 @@
 <ul class="index-list">
   <% @entries.each do |e| %>
   <li><%= truncate(e.title, :length => 54) %>
-  <span class="controls"><%= link_to 'view', entry_path(e) %>
-    | <%= link_to 'edit', edit_entry_path(e) %>
-    | <%= link_to 'delete', confirm_destroy_entry_path(e) %>
+  <span class="controls"><%= link_to 'view', project_entry_path(e.project, e) %>
+    | <%= link_to 'edit', edit_project_entry_path(e.project, e) %>
   </span>
   </li>
   <% end %>

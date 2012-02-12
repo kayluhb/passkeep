@@ -32,4 +32,15 @@ class Project < ActiveRecord::Base
       self.guid = UUIDTools::UUID.random_create.to_s if guid.blank?
     end
 
+  class << self
+    def skinny
+      select("projects.name, projects.id")
+    end
+
+    def ordered
+      order("projects.name")
+    end
+
+  end
+
 end
