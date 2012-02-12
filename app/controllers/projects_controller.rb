@@ -41,6 +41,17 @@ class ProjectsController < ApplicationController
     redirect_to(projects_path, :notice => "Awesome. You deleted #{@project.name}")
   end
 
+  def search
+    query = params[:term]
+    @projects = Project.skinny.where("name ILIKE ?", "%#{query}%")
+    respond_to do |format|
+      format.html
+      format.json {
+        render :json => @projects.map{ |p| { :name => p.name, :id => p.id } }
+      }
+    end
+  end
+
   private
     def set_project
       @project = Project.find_by_guid!(params[:id])

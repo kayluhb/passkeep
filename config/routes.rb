@@ -5,7 +5,7 @@ Passkeep::Application.routes.draw do
   resources :entries, :only => [:index, :new, :create, :update, :destroy]
 
   resources :projects do
-    get 'search', :on => :collection
+    post 'search', :on => :collection
     get 'confirm_destroy', :on => :member
 
     resources :entries, :only => [:edit, :confirm_destroy, :show] do

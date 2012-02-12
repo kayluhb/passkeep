@@ -43,7 +43,6 @@ class UsersController < ApplicationController
 
   def search
     query = params[:term]
-    # the old pure SQL way (hits the database).
     @users = User.skinny.where("first_name ILIKE ? OR last_name ILIKE ?", "%#{query}%", "%#{query}%")
     respond_to do |format|
       format.html
