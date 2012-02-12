@@ -1,15 +1,16 @@
 .bundle
-.DS_Store
 db/*.sqlite3
-log/*.log
+log/
 tmp/
-
-*.gem
-pkg
-doc/rdoc
+.DS_Store
+._*.*
+.*.sw*
 
 config/database.yml
 config/passkeep.yml
+
+solr/data
+solr/pids
 
 public/system
 

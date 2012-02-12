@@ -93,8 +93,8 @@ td { vertical-align:top; }
 
 ::-moz-selection { background:#c01339; color:#fff; text-shadow:none; }
 ::selection { background:#c01339; color:#fff; text-shadow:none; }
-::-webkit-input-placeholder { color:#282218; }
-::-moz-placeholder { color:#282218; }
+::-webkit-input-placeholder { color:#999999; }
+::-moz-placeholder { color:#999999; }
 
 a:focus, button:focus, input:focus, label:focus, select:focus, textarea:focus { outline:1px dotted #c01339; }
 
