@@ -1,0 +1,12 @@
+<%= form_for team, :html => { :class => 'well' } do |f| %>
+  <%= render 'shared/errors', :m => team %>
+  <p>
+    <%= f.text_field :name, :class => 'span4 required', :placeholder => 'name', :required => 'required' %>
+  </p>
+  <p class="form-actions">
+    <button class="btn btn-primary">Save</button>
+    <%= link_to "Cancel", teams_path, :class => 'btn' %>
+    <%= link_to '<i class="icon-trash icon-white"></i> Delete'.html_safe, confirm_destroy_team_path(team), :class => 'btn btn-danger' unless team.new_record? %>
+  </p>
+<% end %>
+<%= content_for :js do %><% end %>

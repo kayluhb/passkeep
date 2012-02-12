@@ -15,6 +15,8 @@ class Project < ActiveRecord::Base
   before_validation :make_guid
 
   has_many :entries
+  has_many :team_projects
+  has_many :teams, :through => :team_projects
 
   def to_param
     self.guid
