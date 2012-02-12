@@ -1,5 +1,5 @@
 var TEAMS = (function($) {
-    var app = {}, $el, $teamInput = $('#team-search'), $projectInput = $('#project-search');
+    var app = {}, $el, $teamInput = $('#team-search'), $teamList = $('#team-list'), $projectInput = $('#project-search'), $projectList = $('#project-list');
     // Public functions
     // app.foo = function() {  };
     // Private functions
@@ -17,15 +17,11 @@ var TEAMS = (function($) {
     }
     function onTeamSelect(e, ui) {
         console.log('on team select', ui.item.id, ui.item.name);
-        $teamInput.val(ui.item.name)
-            .data('id', ui.item.id)
-            .data('name', ui.item.name);
+        $teamList.append('<li id="team-' + ui.item.id + '">' + ui.item.name + '</li>');
     }
     function onProjectSelect(e, ui) {
         console.log('on project select', ui.item.id, ui.item.name);
-        $projectInput.val(ui.item.name)
-            .data('id', ui.item.id)
-            .data('name', ui.item.name);
+        $projectList.append('<li id="project-' + ui.item.id + '">' + ui.item.name + '</li>');
     }
     // Call the init function on load
     $(init);
