@@ -1,6 +1,6 @@
-<% form_for @entry, :html => { :method => :delete } do |f| %>
+<%= form_for @entry, :html => { :method => :delete } do |f| %>
   <h3>Are you sure you want to permanently destroy <%= @entry.title %>?</h3>
   <p>
-    <%= submit_tag "Destroy" %> or <%= link_to "cancel", entries_path %>
+    <%= submit_tag "Destroy", :class => "btn btn-danger" %> or <%= link_to "cancel", entries_path, :class => "btn" %>
   </p>
 <% end %>

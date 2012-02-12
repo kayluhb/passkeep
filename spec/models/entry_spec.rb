@@ -3,6 +3,7 @@
 # Table name: entries
 #
 #  id                 :integer         not null, primary key
+#  project_id         :integer
 #  guid               :string(36)
 #  title              :string(255)     not null
 #  encrypted_username :string(255)

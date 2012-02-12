@@ -20,18 +20,20 @@
   </p>
   <p>
     <% unless entry.attachment_uid.blank? %>
-    <%= link_to "<i class=\"icon-download-alt\"></i> #{entry.attachment_name}".html_safe, entry.attachment.url, :target => "_blank" %><br/>
+      <%= link_to "<i class=\"icon-download-alt\"></i> #{entry.attachment_name}".html_safe, entry.attachment.url, :target => "_blank" %><br/>
     <% end %>
     <%= f.file_field :attachment %><br />
     <%= f.hidden_field :retained_attachment %>
-    <label class="checkbox"><%= f.check_box :remove_attachment %> remove?</label>
+    <% unless entry.attachment_uid.blank? %>
+      <label class="checkbox"><%= f.check_box :remove_attachment %> remove?</label>
+    <% end %>
   </p>
   <p class="form-actions">
     <button class="btn btn-primary">Save</button>
     <%= link_to "Cancel", entries_path, :class => 'btn' %>
-    <%= link_to '<i class="icon-trash icon-white"></i> Delete'.html_safe, confirm_destroy_entry_path(entry), :class => 'btn btn-danger' %>
+    <%= link_to '<i class="icon-trash icon-white"></i> Delete'.html_safe, confirm_destroy_entry_path(entry), :class => 'btn btn-danger' unless entry.new_record? %>
   </p>
 <% end %>
 <%= content_for :js do %>
-  <%= javascript_include_tag 'jquery/jquery.tokeninput', 'app/entries' %>
+  <%= javascript_include_tag 'libs/jquery.tokeninput', 'app/entries' %>
 <% end %>

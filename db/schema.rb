@@ -11,9 +11,10 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120211213007) do
+ActiveRecord::Schema.define(:version => 20120212153207) do
 
   create_table "entries", :force => true do |t|
+    t.integer  "project_id"
     t.string   "guid",               :limit => 36
     t.string   "title",                            :null => false
     t.string   "encrypted_username"
@@ -27,10 +28,47 @@ ActiveRecord::Schema.define(:version => 20120211213007) do
     t.datetime "updated_at",                       :null => false
   end
 
+  add_index "entries", ["project_id"], :name => "index_entries_on_project_id"
+
+  create_table "projects", :force => true do |t|
+    t.string   "guid",       :limit => 36
+    t.string   "name",                                    :null => false
+    t.integer  "status",                   :default => 1
+    t.datetime "created_at",                              :null => false
+    t.datetime "updated_at",                              :null => false
+  end
+
   create_table "tags", :force => true do |t|
     t.string   "name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "team_members", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "team_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "team_members", ["team_id"], :name => "index_team_members_on_team_id"
+  add_index "team_members", ["user_id"], :name => "index_team_members_on_user_id"
+
+  create_table "team_projects", :force => true do |t|
+    t.integer  "project_id"
+    t.integer  "team_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "team_projects", ["project_id"], :name => "index_team_projects_on_project_id"
+  add_index "team_projects", ["team_id"], :name => "index_team_projects_on_team_id"
+
+  create_table "teams", :force => true do |t|
+    t.string   "guid",       :limit => 36
+    t.string   "name"
+    t.datetime "created_at",               :null => false
+    t.datetime "updated_at",               :null => false
   end
 
   create_table "users", :force => true do |t|
@@ -59,26 +97,5 @@ ActiveRecord::Schema.define(:version => 20120211213007) do
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
   add_index "users", ["unlock_token"], :name => "index_users_on_unlock_token", :unique => true
-
-  create_table "versions", :force => true do |t|
-    t.integer  "versioned_id"
-    t.string   "versioned_type"
-    t.integer  "user_id"
-    t.string   "user_type"
-    t.string   "user_name"
-    t.text     "modifications"
-    t.integer  "number"
-    t.integer  "reverted_from"
-    t.string   "tag"
-    t.datetime "created_at",     :null => false
-    t.datetime "updated_at",     :null => false
-  end
-
-  add_index "versions", ["created_at"], :name => "index_versions_on_created_at"
-  add_index "versions", ["number"], :name => "index_versions_on_number"
-  add_index "versions", ["tag"], :name => "index_versions_on_tag"
-  add_index "versions", ["user_id", "user_type"], :name => "index_versions_on_user_id_and_user_type"
-  add_index "versions", ["user_name"], :name => "index_versions_on_user_name"
-  add_index "versions", ["versioned_id", "versioned_type"], :name => "index_versions_on_versioned_id_and_versioned_type"
 
 end

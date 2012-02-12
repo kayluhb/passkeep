@@ -1,0 +1,12 @@
+<%= form_for project, :html => { :class => 'well' } do |f| %>
+  <%= render 'shared/errors', :m => project %>
+  <p>
+    <%= f.text_field :name, :class => 'span4 required', :placeholder => 'name', :required => 'required' %>
+  </p>
+  <p class="form-actions">
+    <button class="btn btn-primary">Save</button>
+    <%= link_to "Cancel", projects_path, :class => 'btn' %>
+    <%= link_to '<i class="icon-trash icon-white"></i> Delete'.html_safe, confirm_destroy_project_path(project), :class => 'btn btn-danger' unless project.new_record? %>
+  </p>
+<% end %>
+<%= content_for :js do %><% end %>

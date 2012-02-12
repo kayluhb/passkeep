@@ -1,6 +1,7 @@
 class CreateEntries < ActiveRecord::Migration
   def change
     create_table :entries do |t|
+      t.references :project
       t.string :guid, :limit => 36
       t.string :title, :null => false
       t.string :encrypted_username
@@ -14,5 +15,6 @@ class CreateEntries < ActiveRecord::Migration
 
       t.timestamps
     end
+    add_index :entries, :project_id
   end
 end

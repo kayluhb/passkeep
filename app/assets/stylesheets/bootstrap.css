@@ -67,6 +67,7 @@ textarea {
   vertical-align: middle;
 }
 button, input {
+  border:0;
   *overflow: visible;
   line-height: normal;
 }

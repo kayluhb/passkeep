@@ -10,11 +10,11 @@ module ApplicationHelper
   end
 
   def on_class path
-    'on' if request.fullpath.starts_with? path
+    ' class=active' if request.fullpath.starts_with? path
   end
 
-  def on_class_home path
-    'on' if request.fullpath == path
+  def on_class_exact path
+    ' class=active' if request.fullpath == path
   end
 
 end

@@ -1,24 +1,23 @@
-<%= form_for @user, :html => { :autocomplete => :off, :multipart => true } do |f| %>
-  <%= render 'shared/errors', :m => @user %>
-  <p><%= f.label :email %> <span class="required">*</span><br/>
+<%= form_for user, :html => { :autocomplete => :off, :multipart => true } do |f| %>
+  <%= render 'shared/errors', :m => user %>
+  <p>
       <%= f.text_field :email, :required => 'required' %></p>
-  <p><%= f.label :first_name %>  <span class="required">*</span><br/>
+  <p>
       <%= f.text_field :first_name, :required => 'required' %></p>
-  <p><%= f.label :last_name %>  <span class="required">*</span><br/>
+  <p>
       <%= f.text_field :last_name, :required => 'required' %></p>
-  <p><%= f.label :password %> <% if @user.new_record? %><span class="required">*</span><% end %><br />
+  <p><%= f.label :password %> <% if user.new_record? %><span class="required">*</span><% end %><br />
     <%= f.password_field :password %></p>
-  <p><%= f.label :password_confirmation %> <% if @user.new_record? %><span class="required">*</span><% end %><br />
+  <p><%= f.label :password_confirmation %> <% if user.new_record? %><span class="required">*</span><% end %><br />
     <%= f.password_field :password_confirmation %></p>
   <p>
     <%= f.label :team_tokens, "Teams" %><br />
-    <%= f.text_field :team_tokens, "data-pre" => @user.teams.map(&:attributes).to_json %>
+    <%= f.text_field :team_tokens, "data-pre" => user.teams.map(&:attributes).to_json %>
   </p>
   <p>
     <%= f.submit %>
   </p>
 <% end %>
-<%= content_for :additional_js do %>
-  <%= javascript_include_tag 'jquery/jquery.tokeninput' %>
-  <%= javascript_include_tag 'behaviors/users' %>
+<%= content_for :js do %>
+  <%= javascript_include_tag 'libs/jquery.tokeninput', 'app/users' %>
 <% end %>
