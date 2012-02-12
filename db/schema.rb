@@ -15,7 +15,7 @@ ActiveRecord::Schema.define(:version => 20120212153207) do
 
   create_table "entries", :force => true do |t|
     t.integer  "project_id"
-    t.string   "guid",               :limit => 36
+    t.string   "guid",               :limit => 36, :null => false
     t.string   "title",                            :null => false
     t.string   "encrypted_username"
     t.string   "encrypted_password"
@@ -31,9 +31,9 @@ ActiveRecord::Schema.define(:version => 20120212153207) do
   add_index "entries", ["project_id"], :name => "index_entries_on_project_id"
 
   create_table "projects", :force => true do |t|
-    t.string   "guid",       :limit => 36
+    t.string   "guid",       :limit => 36,                :null => false
     t.string   "name",                                    :null => false
-    t.integer  "status",                   :default => 1
+    t.integer  "status_id",                :default => 1, :null => false
     t.datetime "created_at",                              :null => false
     t.datetime "updated_at",                              :null => false
   end
@@ -65,8 +65,8 @@ ActiveRecord::Schema.define(:version => 20120212153207) do
   add_index "team_projects", ["team_id"], :name => "index_team_projects_on_team_id"
 
   create_table "teams", :force => true do |t|
-    t.string   "guid",       :limit => 36
-    t.string   "name"
+    t.string   "guid",       :limit => 36, :null => false
+    t.string   "name",                     :null => false
     t.datetime "created_at",               :null => false
     t.datetime "updated_at",               :null => false
   end

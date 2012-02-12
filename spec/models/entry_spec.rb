@@ -4,7 +4,7 @@
 #
 #  id                 :integer         not null, primary key
 #  project_id         :integer
-#  guid               :string(36)
+#  guid               :string(36)      not null
 #  title              :string(255)     not null
 #  encrypted_username :string(255)
 #  encrypted_password :string(255)

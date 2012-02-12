@@ -2,7 +2,7 @@ class CreateEntries < ActiveRecord::Migration
   def change
     create_table :entries do |t|
       t.references :project
-      t.string :guid, :limit => 36
+      t.string :guid, :limit => 36, :null => false
       t.string :title, :null => false
       t.string :encrypted_username
       t.string :encrypted_password

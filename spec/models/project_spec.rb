@@ -3,9 +3,9 @@
 # Table name: projects
 #
 #  id         :integer         not null, primary key
-#  guid       :string(36)
+#  guid       :string(36)      not null
 #  name       :string(255)     not null
-#  status     :integer         default(1)
+#  status_id  :integer         default(1), not null
 #  created_at :datetime        not null
 #  updated_at :datetime        not null
 #

@@ -3,9 +3,9 @@
 # Table name: projects
 #
 #  id         :integer         not null, primary key
-#  guid       :string(36)
+#  guid       :string(36)      not null
 #  name       :string(255)     not null
-#  status     :integer         default(1)
+#  status_id  :integer         default(1), not null
 #  created_at :datetime        not null
 #  updated_at :datetime        not null
 #
@@ -17,6 +17,8 @@ class Project < ActiveRecord::Base
   has_many :entries
   has_many :team_projects
   has_many :teams, :through => :team_projects
+
+  attr_accessible :name, :status_id
 
   def to_param
     self.guid
