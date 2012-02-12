@@ -26,18 +26,24 @@
 #
 
 class User < ActiveRecord::Base
+
   # Include default devise modules. Others available are:
   # :registerable, :confirmable, :token_authenticatable, :timeoutable and :omniauthable
   devise :database_authenticatable, :lockable, :encryptable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  has_many :team_members
+  has_many :teams, :through => :team_members
+
   attr_accessible :email, :password, :password_confirmation, :remember_me,
                   :first_name, :last_name, :full_name, :time_zone
 
   attr_accessor :full_name
+  attr_reader :team_tokens
 
   validates :first_name, :presence => true
   validates :last_name, :presence => true
+  validates :guid, :presence => true
 
   before_validation :make_guid
 
@@ -53,6 +59,10 @@ class User < ActiveRecord::Base
 
   def to_param
     self.guid
+  end
+
+  def team_tokens=(ids)
+    self.team_ids = ids.split(",")
   end
 
   private

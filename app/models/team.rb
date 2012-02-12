@@ -11,14 +11,17 @@
 
 class Team < ActiveRecord::Base
 
-  before_validation :make_guid
-
   has_many :team_members
   has_many :team_project
   has_many :users, :through => :team_members
   has_many :projects, :through => :team_projects
 
   attr_accessible :name
+
+  before_validation :make_guid
+
+  validates :guid, :presence => true
+  validates :name, :presence => true
 
   def to_param
     self.guid

@@ -12,13 +12,16 @@
 
 class Project < ActiveRecord::Base
 
-  before_validation :make_guid
-
   has_many :entries
   has_many :team_projects
   has_many :teams, :through => :team_projects
 
   attr_accessible :name, :status_id
+
+  before_validation :make_guid
+
+  validates :guid, :presence => true
+  validates :name, :presence => true
 
   def to_param
     self.guid

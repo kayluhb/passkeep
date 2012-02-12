@@ -7,13 +7,13 @@
         <span class="icon-bar"></span>
       </a>
       <%= link_to "Passkeep", root_path, :id => "logo", :class => 'brand' %>
+      <% if user_signed_in? %>
       <div class="nav-collapse">
         <ul class="nav">
           <li<%= on_class entries_path %>><%= link_to "Entries", entries_path %></li>
           <li<%= on_class teams_path %>><%= link_to "Teams", teams_path %></li>
           <li<%= on_class projects_path %>><%= link_to "Projects", projects_path %></li>
         </ul>
-        <% if user_signed_in? %>
         <ul class="nav pull-right">
           <li>
           <form class="navbar-search pull-left" action="">
@@ -31,8 +31,8 @@
             </ul>
           </li>
         </ul>
-        <% end %>
       </div><!-- /.nav-collapse -->
+      <% end %>
     </div>
   </div><!-- /navbar-inner -->
 </div><!-- /navbar -->
