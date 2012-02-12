@@ -8,7 +8,7 @@ Passkeep::Application.routes.draw do
     get 'search', :on => :collection
     get 'confirm_destroy', :on => :member
 
-    resources :entries, :only => [:edit, :confirm_destroy] do
+    resources :entries, :only => [:edit, :confirm_destroy, :show] do
       get 'confirm_destroy', :on => :member
     end
   end
