@@ -21,7 +21,7 @@ Passkeep::Application.routes.draw do
   end
 
   resources :users do
-    get 'search', :on => :collection
+    post 'search', :on => :collection
     get 'confirm_destroy', :on => :member
   end
   root :to => "entries#index"

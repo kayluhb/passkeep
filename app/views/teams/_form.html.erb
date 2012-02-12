@@ -9,13 +9,13 @@
   <div class="span6">
     <h4>Team members</h4>
     <div class="well">
-      
+      <input id="team_search" type="search" /> <a href="#" class="btn">Add</a>
     </div>
   </div>
   <div class="span6">
     <h4>Projects</h4>
     <div class="well">
-      
+      <input id="project_search" type="search" /> <a href="#" class="btn">Add</a>
     </div>
   </div>
 </div>
@@ -26,5 +26,6 @@
   </p>
 <% end %>
 <%= content_for :js do %>
-  <%= javascript_include_tag 'libs/jquery.tokeninput', 'app/teams' %>
+  <script>USER_SEARCH_URL='<%= search_users_path %>';</script>
+  <%= javascript_include_tag 'libs/jquery-ui-1.8.17.custom.min', 'app/teams' %>
 <% end %>

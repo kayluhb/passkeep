@@ -42,12 +42,14 @@ class UsersController < ApplicationController
   end
 
   def search
-     @users = User.super_skinny.where("first_name like ? OR last_name like ?", "%#{params[:q]}%", "%#{params[:q]}%")
-     respond_to do |format|
-       format.html
-       format.json {
-         render :json => @users.map{ |user| { :name => user.full_name, :id => user.id } }
-       }
+    query = params[:term]
+    # the old pure SQL way (hits the database).
+    @users = User.skinny.where("first_name ILIKE ? OR last_name ILIKE ?", "%#{query}%", "%#{query}%")
+    respond_to do |format|
+      format.html
+      format.json {
+        render :json => @users.map{ |user| { :name => user.full_name, :id => user.id } }
+      }
     end
   end
 
