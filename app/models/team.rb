@@ -13,8 +13,8 @@ class Team < ActiveRecord::Base
 
   has_many :team_members
   has_many :team_projects
-  has_many :users, :through => :team_members
-  has_many :projects, :through => :team_projects
+  has_many :users, :through => :team_members, :order => 'first_name'
+  has_many :projects, :through => :team_projects, :order => 'name'
 
   attr_accessible :name, :project_tokens, :user_tokens
 

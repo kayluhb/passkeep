@@ -13,7 +13,7 @@ class TeamsController < ApplicationController
   def create
     @team = Team.new(params[:team])
     if @team.save
-      redirect_to @team, :notice => team_flash(@team).html_safe
+      redirect_to teams_path, :notice => team_flash(@team).html_safe
     else
       render :new
     end
@@ -22,12 +22,9 @@ class TeamsController < ApplicationController
   def edit
   end
 
-  def show
-  end
-
   def update
     if @team.update_attributes(params[:team])
-      redirect_to @team, :notice => team_flash(@team).html_safe
+      redirect_to teams_path, :notice => team_flash(@team).html_safe
     else
       render :edit
     end

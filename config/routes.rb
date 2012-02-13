@@ -15,7 +15,7 @@ Passkeep::Application.routes.draw do
 
   resources :tags, :only => [:search]
 
-  resources :teams do
+  resources :teams, :except => [:show] do
     get 'search', :on => :collection
     get 'confirm_destroy', :on => :member
   end

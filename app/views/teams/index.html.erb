@@ -15,8 +15,7 @@
 <ul class="index-list">
   <% @teams.each do |e| %>
   <li><%= truncate(e.name, :length => 54) %>
-  <span class="controls"><%= link_to 'view', team_path(e) %> | <%= link_to 'edit', edit_team_path(e) %>
-  </span>
+  <span class="controls"><%= link_to 'edit', edit_team_path(e) %></span>
   </li>
   <% end %>
 </ul>
