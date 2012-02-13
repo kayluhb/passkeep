@@ -3,6 +3,7 @@
  *= require_self
  *= require bootstrap-responsive
  *= require autocomplete
+ *= require teams
 */
 /* HTML5 display definitions */
 article, aside, details, figcaption, figure, footer, header, hgroup, nav, section { display:block; }

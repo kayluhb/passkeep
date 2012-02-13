@@ -14,14 +14,16 @@ var TEAMS = (function($) {
         };
         $teamInput.autocomplete({ select:onTeamSelect, source:USER_SEARCH_URL });
         $projectInput.autocomplete({ select:onProjectSelect, source:PROJECT_SEARCH_URL });
-    }
-    function onTeamSelect(e, ui) {
-        console.log('on team select', ui.item.id, ui.item.name);
-        $teamList.append('<li id="team-' + ui.item.id + '">' + ui.item.name + '</li>');
+        $('.close').live('click', onRemove)
     }
     function onProjectSelect(e, ui) {
-        console.log('on project select', ui.item.id, ui.item.name);
-        $projectList.append('<li id="project-' + ui.item.id + '">' + ui.item.name + '</li>');
+        $projectList.append('<li id="project-' + ui.item.id + '"><a class="close" title="remove">&times;</a> ' + ui.item.name + '</li>');
+    }
+    function onRemove(e) {
+        $(e.currentTarget).parent().remove();
+    }
+    function onTeamSelect(e, ui) {
+        $teamList.append('<li id="team-' + ui.item.id + '"><a class="close" title="remove">&times;</a> ' + ui.item.name + '</li>');
     }
     // Call the init function on load
     $(init);

@@ -12,19 +12,37 @@
 class Team < ActiveRecord::Base
 
   has_many :team_members
-  has_many :team_project
+  has_many :team_projects
   has_many :users, :through => :team_members
   has_many :projects, :through => :team_projects
 
-  attr_accessible :name
+  attr_accessible :name, :project_tokens, :user_tokens
 
   before_validation :make_guid
 
   validates :guid, :presence => true
   validates :name, :presence => true
 
+  attr_accessor :project_tokens, :user_tokens
+
   def to_param
     self.guid
+  end
+
+  def project_tokens
+    return self.project_ids.join(',')
+  end
+
+  def project_tokens=(ids)
+    self.project_ids = ids.split(",")
+  end
+
+  def user_tokens=(ids)
+    self.user_ids = ids.split(",")
+  end
+
+  def user_tokens
+    return self.user_ids.join(',')
   end
 
   private

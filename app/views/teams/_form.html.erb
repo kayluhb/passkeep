@@ -9,15 +9,17 @@
   <div class="span6">
     <h4>Team members</h4>
     <div class="well">
-      <ul id="team-list"></ul>
-      <input id="team-search" type="search" /> <a href="#" class="btn">Add</a>
+      <ul id="team-list" class="team-list"><% @team.users.each do |u| %><li><a class="close" title="remove">&times;</a> <%= u.full_name %></li><% end %></ul>
+      <input id="team-search" type="search" placeholder="Search for a user" />
+      <%= f.text_field :user_tokens %>
     </div>
   </div>
   <div class="span6">
     <h4>Projects</h4>
     <div class="well">
-      <ul id="project-list"></ul>
-      <input id="project-search" type="search" /> <a href="#" class="btn">Add</a>
+      <ul id="project-list" class="team-list"><% @team.projects.each do |p| %><li><a class="close" title="remove">&times;</a> <%= p.name %> </li><% end %></ul>
+      <input id="project-search" type="search" placeholder="Search for a project" />
+      <%= f.text_field :project_tokens %>
     </div>
   </div>
 </div>
