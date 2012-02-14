@@ -1,31 +1,45 @@
-<div class="well">
-  <p>
-    <%= @entry.title %>
-  </p>
-  <% unless @entry.username.blank? %>
-  <p>
-    <strong>Username:</strong> <%= @entry.username %> <%= clippy @entry.username, 'username' %>
-  </p>
-  <% end %>
-  <% unless @entry.password.blank? %>
-  <p>
-    <strong>Password:</strong> <%= "*" * @entry.password.length %> <%= clippy @entry.password, 'password' %>
-  </p>
-  <% end %>
-  <% unless @entry.url %>
-  <p>
-    <strong>URL:</strong> <%= @entry.url %> <%= clippy @entry.url, 'url' %>
-  </p>
-  <% end %>
-  <% unless @entry.notes.blank? %>
-  <hr/>
-  <p>
-    <strong>Notes:</strong> <%= @entry.notes %>
-  </p>
-  <% end %>
-  <% unless @entry.expiration.blank? %>
-  <p>
-    <strong>Expiration:</strong> <%= l @entry.expiration %>
-  </p>
-  <% end %>
+<% title @entry.title + " - Entry" %>
+
+<div class="row">
+  <div class="span11">
+    <h1><%= @entry.title %></h1>
+  </div>
+  <div class="span1">
+    <%= link_to "Edit", edit_project_entry_path(@entry.project, @entry), :class => "btn" %>
+  </div>
+</div>
+<div class="row">
+  <div class="span12">
+    <div class="well">
+      <p>
+        <%= @entry.title %>
+      </p>
+      <% unless @entry.username.blank? %>
+      <p>
+        <strong>Username:</strong> <%= @entry.username %> <%= clippy @entry.username, 'username' %>
+      </p>
+      <% end %>
+      <% unless @entry.password.blank? %>
+      <p>
+        <strong>Password:</strong> <%= "*" * @entry.password.length %> <%= clippy @entry.password, 'password' %>
+      </p>
+      <% end %>
+      <% unless @entry.url.blank? %>
+      <p>
+        <strong>URL:</strong> <%= @entry.url %> <%= clippy @entry.url, 'url' %>
+      </p>
+      <% end %>
+      <% unless @entry.notes.blank? %>
+      <hr/>
+      <p>
+        <strong>Notes:</strong> <%= @entry.notes %>
+      </p>
+      <% end %>
+      <% unless @entry.expiration.blank? %>
+      <p>
+        <strong>Expiration:</strong> <%= l @entry.expiration %>
+      </p>
+      <% end %>
+    </div>
+  </div>
 </div>

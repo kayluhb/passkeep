@@ -1,21 +1,31 @@
+<% title "Entries" %>
 
 <div class="row">
-  <div class="span2 offset10">
-  <%= link_to "create an entry", new_entry_path, :class => "btn btn-primary", :title => "create an entry" %>
+  <div class="span10">
+    <h1>Entries</h1>
+  </div>
+  <div class="span2">
+    <%= link_to "create an entry", new_entry_path, :class => "btn btn-primary", :title => "create an entry" %>
   </div>
 </div>
 
-<%= page_entries_info @entries, :model => 'entry' %>
-    <%= will_paginate @entries, :previous_label => '&lt; previous',
-    :next_label => 'next &gt;', :separator => ' | ' %>
-<ul class="index-list">
-  <% @entries.each do |e| %>
-  <li><%= truncate(e.title, :length => 54) %>
-  <span class="controls"><%= link_to 'view', project_entry_path(e.project, e) %>
-    | <%= link_to 'edit', edit_project_entry_path(e.project, e) %>
-  </span>
-  </li>
-  <% end %>
-</ul>
-<%= will_paginate @entries, :previous_label => '&lt; previous',
-    :next_label => 'next &gt;', :separator => ' | ' %>
+<div class="row">
+  <div class="span12">
+    <%= page_entries_info @entries, :model => 'entry' %>
+    <%= will_paginate @entries, :previous_label => '&lt; previous', :next_label => 'next &gt;' %>
+  </div>
+</div>
+
+<div class="row">
+  <div class="span12">
+    <ul class="index index-tabs index-stacked">
+      <% @entries.each do |e| %>
+      <li>
+      <%= link_to e.title, project_entry_path(e.project, e) %> - 
+      <%= link_to 'edit', edit_project_entry_path(e.project, e) %>
+      </li>
+      <% end %>
+    </ul>
+    <%= will_paginate @entries, :previous_label => '&lt; previous', :next_label => 'next &gt;' %>
+  </div>
+</div>
