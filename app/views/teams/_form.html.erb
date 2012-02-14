@@ -1,13 +1,15 @@
 <%= form_for team, :html => {  } do |f| %>
 <div class="well">
   <%= render 'shared/errors', :m => team %>
-  <p>
-    <%= f.text_field :name, :class => 'span4 required', :placeholder => 'name', :required => 'required' %>
-  </p>
-  <p>
-      <%= f.label :status, "Permissons" %>
-      <%= select :team, :role_id, Team::ROLES %>
-  </p>
+  <div class="row form-inline">
+    <p class="span6">
+      <%= f.text_field :name, :class => 'span4 required', :placeholder => 'name', :required => 'required' %>
+    </p>
+    <p class="span5">
+        <%= f.label :role_id, "Permissons" %>
+        <%= select :team, :role_id, Team::ROLES %>
+    </p>
+  </div>
 </div>
 <div class="row">
   <div id="team-list" class="span6 team-list">
