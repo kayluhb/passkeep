@@ -2,18 +2,27 @@
   <p>
     <%= @entry.title %>
   </p>
+  <% unless @entry.username.blank? %>
   <p>
     <strong>Username:</strong> <%= @entry.username %> <%= clippy @entry.username, 'username' %>
   </p>
+  <% end %>
+  <% unless @entry.password.blank? %>
   <p>
     <strong>Password:</strong> <%= "*" * @entry.password.length %> <%= clippy @entry.password, 'password' %>
   </p>
+  <% end %>
+  <% unless @entry.url %>
   <p>
     <strong>URL:</strong> <%= @entry.url %> <%= clippy @entry.url, 'url' %>
   </p>
+  <% end %>
+  <% unless @entry.notes.blank? %>
+  <hr/>
   <p>
     <strong>Notes:</strong> <%= @entry.notes %>
   </p>
+  <% end %>
   <% unless @entry.expiration.blank? %>
   <p>
     <strong>Expiration:</strong> <%= l @entry.expiration %>

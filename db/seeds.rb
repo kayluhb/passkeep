@@ -42,4 +42,5 @@ if Rails.env.development?
     end
   end
 
+  Factory(:team, :project_ids => [1], :user_ids => [1])
 end
