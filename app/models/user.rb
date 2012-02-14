@@ -35,6 +35,7 @@ class User < ActiveRecord::Base
   has_many :team_members
   has_many :teams, :through => :team_members
   has_many :projects, :through => :teams
+  has_many :entries, :through => :projects
 
   attr_accessible :email, :password, :password_confirmation, :remember_me,
                   :first_name, :last_name, :full_name, :time_zone

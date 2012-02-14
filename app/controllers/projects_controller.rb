@@ -3,7 +3,7 @@ class ProjectsController < ApplicationController
   before_filter :set_project, :only => [:edit, :show, :update, :confirm_destroy, :destroy]
 
   def index
-    @projects = Project.paginate :page => params[:page]
+    @projects = current_user.projects.paginate :page => params[:page]
   end
 
   def new

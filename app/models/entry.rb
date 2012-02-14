@@ -48,4 +48,15 @@ class Entry < ActiveRecord::Base
       self.guid = UUIDTools::UUID.random_create.to_s if guid.blank?
     end
 
+  class << self
+
+    def ordered
+      order("entries.title")
+    end
+
+    def skinny
+      select("entries.title, entries.guid")
+    end
+  end
+
 end

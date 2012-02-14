@@ -4,7 +4,7 @@ gem 'rails', '3.2.1'
 
 gem 'attr_encrypted'
 gem 'capistrano'
-gem 'delayed_job'
+gem 'cancan'
 gem 'devise', :git => 'git://github.com/plataformatec/devise.git'
 gem 'dragonfly', '~>0.9.8'
 gem 'exception_notification'
