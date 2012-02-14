@@ -8,13 +8,13 @@
     <%= f.select :project_id, Project.skinny.ordered.collect {|c| [ c.name, c.id ] }, {} %>
   </p>
   <p>
-    <%= f.text_field :username, :placeholder => 'username', :class => 'span4' %>
+    <%= f.text_field :username, :placeholder => 'username', :class => 'span4 clippy' %><%= clippy entry.username, 'username' %>
   </p>
   <p>
-    <%= f.text_field :password, :placeholder => 'password', :class => 'span4' %>
+    <%= f.text_field :password, :placeholder => 'password', :class => 'span4 clippy' %><%= clippy entry.password, 'password' %>
   </p>
   <p>
-    <span class="help-block">add 'http://'</span> <%= f.text_field :url, :placeholder => 'url', :type => 'url', :class => 'span3' %>
+    <span class="help-block">add 'http://'</span> <%= f.text_field :url, :placeholder => 'url', :type => 'text', :class => 'span3 clippy' %> <%= clippy entry.url, 'url' %>
   </p>
   <p>
     <%= f.text_area :notes, :placeholder => 'notes', :class => 'span6' %>
