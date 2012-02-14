@@ -1,1 +1,21 @@
-Show me
+<div class="well">
+  <p>
+    <%= @entry.title %>
+  </p>
+  <p>
+    <strong>Username:</strong> <%= @entry.username %> <%= clippy @entry.username, 'username' %>
+  </p>
+  <p>
+    <strong>Password:</strong> <%= "*" * @entry.password.length %> <%= clippy @entry.password, 'password' %>
+  </p>
+  <p>
+    <strong>URL:</strong> <%= @entry.url %> <%= clippy @entry.url, 'url' %>
+  </p>
+  <p>
+    <strong>Notes:</strong> <%= @entry.notes %>
+  </p>
+  <% unless @entry.expiration.blank? %>
+  <p>
+    <strong>Expiration:</strong> <%= l @entry.expiration %>
+  </p>
+  <% end %>
