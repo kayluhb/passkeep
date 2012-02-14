@@ -5,8 +5,8 @@ if Rails.env.development?
   puts "-------------------------------------------------------------------------------"
   puts " Seeding the database"
   puts ""
-  puts " Please make sure your'e running solr for the factories to work.'"
-  puts " run rake `rake sunspot:solr:start` or you may get 'Connection refused - connect(2)'"
+  puts " You may need to make sure your'e running solr for the factories to work."
+  puts " If you see 'Connection refused - connect(2)', run rake `rake sunspot:solr:start`"
   puts "-------------------------------------------------------------------------------"
 
   require 'factory_girl'
@@ -20,19 +20,11 @@ if Rails.env.development?
   u = Factory(:user, :email => 'admin@passkeep.com')
   puts "created #{u.email}"
 
-  projects = [];
-  until projects.length == 134
-    begin
-      p = Factory(:project)
-      puts "Added a project"
-      projects << p
-    rescue $e
-      puts "error #{$e}"
-    end
-  end
+  p = Factory(:project)
+  puts "Added a project"
 
   entries = [];
-  until entries.length == 134
+  until entries.length == 1134
     begin
       e = Factory(:entry, :project_id => 1)
       puts "Added an entry"
