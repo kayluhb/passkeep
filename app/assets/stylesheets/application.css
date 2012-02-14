@@ -15,9 +15,9 @@ html { font-size:100%; overflow-y:auto; -webkit-text-size-adjust:100%; -ms-text-
 body { background:#fff; margin:0; padding-top:10px; }
 body, button, input, select, textarea { color:#444; font:15px arial, verdana, sans-serif; line-height:1.22; }
 /* Links */
-a { color:#f47a4d; text-decoration:none; }
+a { text-decoration:none; }
 a:visited {  }
-a:hover { color:#c01339; text-decoration:none; }
+a:hover { text-decoration:none; }
 a:focus { outline:thin dotted; }
 a:hover, a:active { outline:0; }
 
