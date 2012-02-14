@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(:version => 20120212153207) do
     t.datetime "updated_at",                       :null => false
   end
 
+  add_index "entries", ["guid"], :name => "index_entries_on_guid", :unique => true
   add_index "entries", ["project_id"], :name => "index_entries_on_project_id"
 
   create_table "projects", :force => true do |t|
@@ -37,6 +38,9 @@ ActiveRecord::Schema.define(:version => 20120212153207) do
     t.datetime "created_at",                              :null => false
     t.datetime "updated_at",                              :null => false
   end
+
+  add_index "projects", ["guid"], :name => "index_projects_on_guid", :unique => true
+  add_index "projects", ["status_id"], :name => "index_projects_on_status_id"
 
   create_table "tags", :force => true do |t|
     t.string   "name"
@@ -67,9 +71,13 @@ ActiveRecord::Schema.define(:version => 20120212153207) do
   create_table "teams", :force => true do |t|
     t.string   "guid",       :limit => 36, :null => false
     t.string   "name",                     :null => false
+    t.integer  "role_id",                  :null => false
     t.datetime "created_at",               :null => false
     t.datetime "updated_at",               :null => false
   end
+
+  add_index "teams", ["guid"], :name => "index_teams_on_guid", :unique => true
+  add_index "teams", ["role_id"], :name => "index_teams_on_role_id"
 
   create_table "users", :force => true do |t|
     t.string   "email",                                 :default => "",                           :null => false
@@ -88,7 +96,7 @@ ActiveRecord::Schema.define(:version => 20120212153207) do
     t.datetime "locked_at"
     t.string   "first_name",                                                                      :null => false
     t.string   "last_name",                                                                       :null => false
-    t.string   "guid",                   :limit => 36
+    t.string   "guid",                   :limit => 36,                                            :null => false
     t.string   "time_zone",                             :default => "Eastern Time (US & Canada)"
     t.datetime "created_at",                                                                      :null => false
     t.datetime "updated_at",                                                                      :null => false
