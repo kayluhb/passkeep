@@ -9,7 +9,7 @@
   <div id="team-list" class="span6 team-list">
     <h4>Team members</h4>
     <div class="well">
-      <ul><% @team.users.each do |u| %><li data-id="<%= u.id %>"><a class="close" title="remove">&times;</a> <%= u.full_name %></li><% end %></ul>
+      <ul><% team.users.each do |u| %><li data-id="<%= u.id %>"><a class="close" title="remove">&times;</a> <%= u.full_name %></li><% end %></ul>
       <input type="search" placeholder="Search for a user" />
       <%= f.hidden_field :user_tokens %>
     </div>
@@ -17,7 +17,7 @@
   <div id="project-list" class="span6 team-list">
     <h4>Projects</h4>
     <div class="well">
-      <ul><% @team.projects.each do |p| %>
+      <ul><% team.projects.each do |p| %>
         <li data-id="<%= p.id %>"><a class="close" title="remove">&times;</a> <%= p.name %> </li>
       <% end %></ul>
       <input type="search" placeholder="Search for a project" />
