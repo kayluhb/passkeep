@@ -19,4 +19,27 @@ if Rails.env.development?
   # Users
   u = Factory(:user, :email => 'admin@passkeep.com')
   puts "created #{u.email}"
+
+  projects = [];
+  until projects.length == 134
+    begin
+      p = Factory(:project)
+      puts "Added a project"
+      projects << p
+    rescue $e
+      puts "error #{$e}"
+    end
+  end
+
+  entries = [];
+  until entries.length == 134
+    begin
+      e = Factory(:entry, :project_id => 1)
+      puts "Added an entry"
+      entries << e
+    rescue $e
+      puts "error #{$e}"
+    end
+  end
+
 end

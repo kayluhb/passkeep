@@ -19,7 +19,7 @@
 #  locked_at              :datetime
 #  first_name             :string(255)     not null
 #  last_name              :string(255)     not null
-#  guid                   :string(36)
+#  guid                   :string(36)      not null
 #  time_zone              :string(255)     default("Eastern Time (US & Canada)")
 #  created_at             :datetime        not null
 #  updated_at             :datetime        not null
