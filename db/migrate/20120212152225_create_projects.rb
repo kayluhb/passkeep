@@ -3,7 +3,7 @@ class CreateProjects < ActiveRecord::Migration
     create_table :projects do |t|
       t.string :guid, :limit => 36, :null => false
       t.string :name, :null => false
-      t.integer :status_id, :default => 1, :null => false
+      t.integer :status_id, :null => false, :default => 1
 
       t.timestamps
     end

@@ -3,7 +3,7 @@ class CreateTeams < ActiveRecord::Migration
     create_table :teams do |t|
       t.string :guid, :limit => 36, :null => false
       t.string :name, :null => false
-      t.integer :role_id, :null => false
+      t.integer :role_id, :null => false, :default => 1
 
       t.timestamps
     end

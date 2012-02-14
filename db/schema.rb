@@ -69,11 +69,11 @@ ActiveRecord::Schema.define(:version => 20120212153207) do
   add_index "team_projects", ["team_id"], :name => "index_team_projects_on_team_id"
 
   create_table "teams", :force => true do |t|
-    t.string   "guid",       :limit => 36, :null => false
-    t.string   "name",                     :null => false
-    t.integer  "role_id",                  :null => false
-    t.datetime "created_at",               :null => false
-    t.datetime "updated_at",               :null => false
+    t.string   "guid",       :limit => 36,                :null => false
+    t.string   "name",                                    :null => false
+    t.integer  "role_id",                  :default => 1, :null => false
+    t.datetime "created_at",                              :null => false
+    t.datetime "updated_at",                              :null => false
   end
 
   add_index "teams", ["guid"], :name => "index_teams_on_guid", :unique => true

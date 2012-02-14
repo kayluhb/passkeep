@@ -4,6 +4,10 @@
   <p>
     <%= f.text_field :name, :class => 'span4 required', :placeholder => 'name', :required => 'required' %>
   </p>
+  <p>
+      <%= f.label :status, "Permissons" %>
+      <%= select :team, :role_id, Team::ROLES %>
+  </p>
 </div>
 <div class="row">
   <div id="team-list" class="span6 team-list">

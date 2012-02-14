@@ -12,6 +12,11 @@
 
 class Project < ActiveRecord::Base
 
+  STATUSES = {
+    'Archived' => 2,
+    'Active' => 1,
+  }
+
   has_many :entries
   has_many :team_projects
   has_many :teams, :through => :team_projects

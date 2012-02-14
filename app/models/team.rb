@@ -11,6 +11,12 @@
 
 class Team < ActiveRecord::Base
 
+  ROLES = {
+    'Read' => 1,
+    'Read and edit' => 2,
+    'Administer' => 3,
+  }
+
   has_many :team_members
   has_many :team_projects
   has_many :users, :through => :team_members, :order => 'first_name'
