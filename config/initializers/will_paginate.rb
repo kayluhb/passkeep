@@ -7,7 +7,11 @@ module WillPaginate
 
     class BootstrapLinkRenderer < LinkRenderer
       protected
-      
+
+      def gap
+        tag :li, link(super, '#'), :class => 'disabled'
+      end
+
       def html_container(html)
         tag :div, tag(:ul, html), container_attributes
       end
