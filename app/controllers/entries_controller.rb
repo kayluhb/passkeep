@@ -23,6 +23,11 @@ class EntriesController < ApplicationController
   end
 
   def show
+    respond_to do |format|
+      format.html
+      format.json { render :json => @entry.to_json(:include => [:project],
+          :methods => [:notes, :password, :username, :url]) }
+    end
   end
 
   def update

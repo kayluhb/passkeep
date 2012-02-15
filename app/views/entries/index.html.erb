@@ -20,12 +20,50 @@
   <div class="span12">
     <ul class="index index-tabs index-stacked">
       <% @entries.each do |e| %>
-      <li>
-      <%= link_to e.title, project_entry_path(e.project, e) %> - 
-      <%= link_to 'edit', edit_project_entry_path(e.project, e) %>
+      <li id="<%= e.id %>">
+      <%= link_to e.title, project_entry_path(e.project, e) %>
       </li>
       <% end %>
     </ul>
     <%= will_paginate @entries, :previous_label => '&lt; previous', :next_label => 'next &gt;' %>
   </div>
 </div>
+<%= content_for :js do %>
+  <%= javascript_include_tag 'app/entries' %>
+  
+  <script type="text/template" id="entry-template">
+  <div>
+    <a class="close" title="close">×</a>
+    <p>
+      <%%= title %>
+    </p>
+    <%% if (username) { %>
+    <p>
+      <strong>Username:</strong> <%%= username %>
+    </p>
+    <%% } %>
+    <%% if (password) { %>
+    <p>
+      <strong>Password:</strong> <%%= password %> 
+    </p>
+    <%% } %>
+    <%% if (url) { %>
+    <p>
+      <strong>URL:</strong> <%%= url %>
+    </p>
+    <%% } %>
+    <%% if (expiration) { %>
+    <p>
+      <strong>Expiration:</strong> <%%= expiration %>
+    </p>
+    <%% } %>
+    <%% if (notes) { %>
+    <hr/>
+    <p>
+      <strong>Notes:</strong> <%%= notes %>
+    </p>
+    <%% } %>
+    <a href="<%%= path %>/edit" class="btn">Edit</a>
+  </div>
+  </script>
+<% end %>
