@@ -11,11 +11,13 @@
 .index-tabs:before, .index-tabs:after { display:table; content:""; }
 .index-tabs:after, .index-pills:after { clear:both; }
 .index-tabs > li { background-image:none; padding:0; }
-.index-tabs > li { padding-right:12px; padding-left:12px; margin-right:2px; line-height:14px; }
+.index-tabs > li { margin-right:2px; line-height:14px; }
 .index-tabs { border-bottom:1px solid #ddd; }
-.index-tabs > li { margin:0 0 -1px; @include transition; @include transition-property('height, margin'); }
+.index-tabs > li { margin:0 0 -1px; @include transition; @include transition-property('height, margin'); 
+border:1px solid transparent; @include border-radius(4px 4px 0 0); }
 .index-tabs > li.on { margin:10px 0; @include border-radius(4px); }
-.index-tabs > li { padding-top:9px; padding-bottom:9px; border:1px solid transparent; @include border-radius(4px 4px 0 0); }
+.index-tabs > li > a { background:#fff; display: block; padding: 10px 13px; }
+.index-tabs .deets { padding:10px 13px; }
 .index-tabs.index-stacked { border-bottom:0; }
 .index-tabs.index-stacked > li  { border:1px solid #ddd; @include border-radius(0); }
 .index-tabs.index-stacked > li:first-child  { @include border-radius(4px 4px 0 0); }

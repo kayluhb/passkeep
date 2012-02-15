@@ -7,13 +7,12 @@ var ENTRIES = (function($) {
         tmpl = _.template($('#entry-template').html());
     }
     function onCloseClick(e) {
-        alert('foo')
-        //e.preventDefault();
+        e.preventDefault();
         
-        $el = $(e.currentTarget);
-        console.log($el);
-        $el.closest('li').find('a').show();
-        $el.parent().remove();
+        $el = $(e.currentTarget).closest('li');
+        $el.removeClass(on);
+        $el.find('a').show();
+        $el.find('.deets').remove();
     }
     function onEntryClick(e) {
         e.preventDefault();
@@ -29,11 +28,8 @@ var ENTRIES = (function($) {
         $el.find('a').hide();
         $el.addClass('on');
         r.path = $el.find('a').attr('href');
-        var deets = tmpl(r);
-        $el.append(deets);
-        $el = $(deets).find('.close');
-        $el.on('click', onCloseClick);
-        console.log($el)
+        $el.append(tmpl(r));
+        $('.close').click(onCloseClick);
     }
     // Call the init function on load
     $(init);
