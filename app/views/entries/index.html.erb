@@ -1,11 +1,11 @@
-<% title "Entries" %>
+<% title "Secrets" %>
 
 <div class="row">
   <div class="span10">
-    <h1>Entries</h1>
+    <h1>Secrets</h1>
   </div>
   <div class="span2">
-    <%= link_to "create an entry", new_entry_path, :class => "btn btn-primary", :title => "create an entry" %>
+    <%= link_to "create a secret", new_entry_path, :class => "btn btn-primary", :title => "create a secret" %>
   </div>
 </div>
 
@@ -34,34 +34,22 @@
   <script type="text/template" id="entry-template">
   <div class="deets">
     <a href="#" class="close" title="close">×</a>
-    <p>
-      <%%= title %>
-    </p>
+    <p><%%= title %></p>
     <%% if (username) { %>
-    <p>
-      <strong>Username:</strong> <%%= username %>
-    </p>
+    <p><strong>Username:</strong> <%%= username %></p>
     <%% } %>
     <%% if (password) { %>
-    <p>
-      <strong>Password:</strong> <%%= password %> 
-    </p>
+    <p><strong>Password:</strong> <%%= password %> </p>
     <%% } %>
     <%% if (url) { %>
-    <p>
-      <strong>URL:</strong> <%%= url %>
-    </p>
+    <p><strong>URL:</strong> <%%= url %></p>
     <%% } %>
     <%% if (expiration) { %>
-    <p>
-      <strong>Expiration:</strong> <%%= expiration %>
-    </p>
+    <p><strong>Expiration:</strong> <%%= expiration %></p>
     <%% } %>
     <%% if (notes) { %>
     <hr/>
-    <p>
-      <strong>Notes:</strong> <%%= notes %>
-    </p>
+    <p><strong>Notes:</strong> <%%= notes %></p>
     <%% } %>
     <a href="<%%= path %>/edit" class="btn">Edit</a>
   </div>
