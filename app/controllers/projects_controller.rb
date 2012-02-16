@@ -13,7 +13,7 @@ class ProjectsController < ApplicationController
   def create
     @project = Project.new(params[:project])
     if @project.save
-      redirect_to @project, :notice => project_flash(@project).html_safe
+      redirect_to projects_path, :notice => project_flash(@project).html_safe
     else
       render :new
     end
@@ -24,7 +24,7 @@ class ProjectsController < ApplicationController
 
   def update
     if @project.update_attributes(params[:project])
-      redirect_to @project, :notice => project_flash(@project).html_safe
+      redirect_to projects_path, :notice => project_flash(@project).html_safe
     else
       render :edit
     end
