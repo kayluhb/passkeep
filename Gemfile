@@ -2,6 +2,7 @@ source 'http://rubygems.org'
 
 gem 'rails', '3.2.1'
 
+gem 'acts-as-taggable-on'
 gem 'attr_encrypted'
 gem 'capistrano'
 gem 'cancan'

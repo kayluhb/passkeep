@@ -19,6 +19,8 @@
 
 class Entry < ActiveRecord::Base
 
+  acts_as_taggable
+
   belongs_to :project
 
   # Setup accessible (or protected) attributes for your model
