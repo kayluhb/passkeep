@@ -40,6 +40,13 @@
         <strong>Expiration:</strong> <%= l @entry.expiration %>
       </p>
       <% end %>
+      <% if @entry.tags.any? %>
+      <p>
+        <strong>Tags:</strong>
+        <% @entry.tags.each do |t| %>
+          <%= t.name %>
+        <% end %>
+      <% end %>
     </div>
   </div>
 </div>

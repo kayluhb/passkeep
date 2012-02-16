@@ -17,12 +17,25 @@
 </div>
 
 <div class="row">
-  <div class="span12">
+  <div class="span8">
     <ul class="index index-tabs index-stacked">
       <% @entries.each do |e| %>
       <li id="<%= e.id %>">
       <%= link_to e.title, project_entry_path(e.project, e) %>
       </li>
+      <% end %>
+    </ul>
+  </div>
+  <div class="span4">
+    <ul class="pager tags">
+      <% tag_cloud(@tags, %w()) do |tag, css_class| %>
+        <li>
+        <% if !@tag_name.blank? && @tag_name == tag.name %>
+        <%= link_to tag.name, entries_path, :class => "on" %>
+        <% else %>
+        <%= link_to tag.name, tagged_entries_path(tag.name) %>
+        <% end %>
+        </li>
       <% end %>
     </ul>
   </div>

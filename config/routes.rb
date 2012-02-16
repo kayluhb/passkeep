@@ -2,7 +2,10 @@ Passkeep::Application.routes.draw do
 
   devise_for :users
 
-  resources :entries, :only => [:index, :new, :create, :update, :destroy]
+  resources :entries, :only => [:index, :new, :create, :update, :destroy] do
+    #get 'tagged/:tag_name', :on => :collection
+    get 'tagged/:tag_name' => 'entries#tagged', :on => :collection, :as => 'tagged'
+  end
 
   resources :projects do
     post 'search', :on => :collection

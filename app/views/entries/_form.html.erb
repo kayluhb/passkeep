@@ -17,6 +17,9 @@
     <span class="help-block">add 'http://'</span> <%= f.text_field :url, :placeholder => 'url', :type => 'text', :class => 'span3 clippy' %> <%= clippy entry.url, 'url' %>
   </p>
   <p>
+    <%= f.text_area :tag_list, :placeholder => 'tags', :class => 'span6 small' %> <span class="help-text">(comma separated)</span>
+  </p>
+  <p>
     <%= f.text_area :notes, :placeholder => 'notes', :class => 'span6' %>
   </p>
   <p>

@@ -4,6 +4,7 @@ class EntriesController < ApplicationController
 
   def index
     @entries = current_user.entries.ordered.paginate :page => params[:page]
+    @tags = current_user.entries.tag_counts_on(:tags).order(:name)
   end
 
   def new
@@ -44,6 +45,13 @@ class EntriesController < ApplicationController
   def destroy
     @entry.destroy
     redirect_to(entries_path, :notice => "Awesome. You deleted #{@entry.title}")
+  end
+
+  def tagged
+    @tag_name = params[:tag_name]
+    @entries = current_user.entries.tagged_with(@tag_name).ordered.paginate :page => params[:page]
+    @tags = current_user.entries.tag_counts_on(:tags).order(:name)
+    render :index
   end
 
   private

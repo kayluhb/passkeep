@@ -134,6 +134,10 @@ a {
 .nav, .nav li { padding:0; }
 .nav li { background:none; }
 .pagination ul { padding:0; }
+.tags, .tags li { background:none; padding:0; }
+.tags li { display:block; float:left; margin:0 3px 5px 0; }
+.pager.tags a.on { background-color:whiteSmoke; }
+textarea.small { height:44px; }
 
 
 @media print {

@@ -27,6 +27,8 @@
 
 class User < ActiveRecord::Base
 
+  acts_as_tagger
+
   # Include default devise modules. Others available are:
   # :registerable, :confirmable, :token_authenticatable, :timeoutable and :omniauthable
   devise :database_authenticatable, :lockable, :encryptable,
