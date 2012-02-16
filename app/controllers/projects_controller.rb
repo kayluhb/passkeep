@@ -22,9 +22,6 @@ class ProjectsController < ApplicationController
   def edit
   end
 
-  def show
-  end
-
   def update
     if @project.update_attributes(params[:project])
       redirect_to @project, :notice => project_flash(@project).html_safe

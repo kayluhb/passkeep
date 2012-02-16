@@ -7,7 +7,7 @@ Passkeep::Application.routes.draw do
     get 'tagged/:tag_name' => 'entries#tagged', :on => :collection, :as => 'tagged'
   end
 
-  resources :projects do
+  resources :projects, :except => [:show] do
     post 'search', :on => :collection
     get 'confirm_destroy', :on => :member
 
@@ -23,7 +23,7 @@ Passkeep::Application.routes.draw do
     get 'confirm_destroy', :on => :member
   end
 
-  resources :users do
+  resources :users, :except => [:show] do
     post 'search', :on => :collection
     get 'confirm_destroy', :on => :member
   end
