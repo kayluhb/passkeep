@@ -2,7 +2,7 @@
 <div class="well">
   <%= render 'shared/errors', :m => user %>
   <p>
-      <%= f.text_field :email, :required => 'required', :placeholder => 'email' %></p>
+      <%= f.text_field :email, :required => 'required', :placeholder => 'email', :type => 'email' %></p>
   <p>
       <%= f.text_field :first_name, :required => 'required', :placeholder => "first name" %></p>
   <p>
@@ -15,11 +15,14 @@
     <%= f.label :team_tokens, "Teams" %>
     <%= f.text_field :team_tokens, "data-pre" => user.teams.map(&:attributes).to_json %>
   </p>
-</div>
-  <p class="form-actions">
-    <button class="btn btn-primary" type="submit">Save</button>
+  <p>
+    <%= time_zone_select(:user, :time_zone) %>
   </p>
+</div>
+<p class="form-actions">
+  <button class="btn btn-primary" type="submit">Save</button>
+</p>
 <% end %>
 <%= content_for :js do %>
-  <%= javascript_include_tag 'libs/jquery.tokeninput', 'app/users' %>
+  <%= javascript_include_tag 'app/users' %>
 <% end %>

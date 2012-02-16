@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   before_filter :set_user, :only => [:edit, :show, :update, :confirm_destroy, :destroy]
 
   def index
-    @users = User.paginate :page => params[:page]
+    @users = User.paginate :page => params[:page], :per_page => 100
   end
 
   def new
@@ -13,7 +13,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(params[:user])
     if @user.save
-      redirect_to @user, :notice => user_flash(@user).html_safe
+      redirect_to users_path, :notice => user_flash(@user).html_safe
     else
       render :new
     end
@@ -27,7 +27,7 @@ class UsersController < ApplicationController
 
   def update
     if @user.update_attributes(params[:user])
-      redirect_to @user, :notice => user_flash(@user).html_safe
+      redirect_to users_path, :notice => user_flash(@user).html_safe
     else
       render :edit
     end
