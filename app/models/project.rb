@@ -21,12 +21,18 @@ class Project < ActiveRecord::Base
   has_many :team_projects
   has_many :teams, :through => :team_projects
 
-  attr_accessible :name, :status_id
+  attr_accessible :name, :status_id, :default_team
 
   before_validation :make_guid
 
   validates :guid, :presence => true
   validates :name, :presence => true
+
+  attr_accessor :default_team
+
+  def default_team=(id)
+    self.team_ids = [id]
+  end
 
   def to_param
     self.guid

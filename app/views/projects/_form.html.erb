@@ -9,6 +9,12 @@
         <%= f.label :status_id, "Status" %>
         <%= select :project, :status_id, Project::STATUSES %>
     </p>
+    <% if project.new_record? %>
+    <p class="span6">
+        <%= f.label :default_team_id, "Add to team" %>
+        <%= f.select :default_team, current_user.teams.ordered.collect {|c| [ c.name, c.id ] } %>
+    </p>
+    <% end %>
   </div>
 </div>
   <p class="form-actions">

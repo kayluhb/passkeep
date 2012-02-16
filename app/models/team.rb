@@ -56,4 +56,10 @@ class Team < ActiveRecord::Base
     def make_guid
       self.guid = UUIDTools::UUID.random_create.to_s if guid.blank?
     end
+
+  class << self
+    def ordered
+      order("teams.name")
+    end
+  end
 end
