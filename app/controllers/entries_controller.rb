@@ -48,12 +48,15 @@ class EntriesController < ApplicationController
   end
 
   def paginate
-    entries = current_user.entries.skinny.ordered.limit(30).offset(params[:idx])
+    tag_name = params[:tag_name].to_s
+    entries = current_user.entries
+    entries = entries.tagged_with(tag_name) unless tag_name.blank?
+    entries = entries.skinny.ordered.limit(30).offset(params[:idx])
     render :json => entries.to_json(:methods => [:project_guid])
   end
 
   def tagged
-    @tag_name = params[:tag_name]
+    @tag_name = params[:tag_name].to_s
     @entries = current_user.entries.tagged_with(@tag_name).ordered.paginate :page => params[:page]
     @tags = current_user.entries.tag_counts_on(:tags).order(:name)
     render :index

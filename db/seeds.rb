@@ -26,7 +26,9 @@ if Rails.env.development?
   entries = [];
   until entries.length == 1134
     begin
-      e = Factory(:entry, :project_id => 1)
+      e = Factory(:entry,
+                  :project_id => 1,
+                  :tag_list => (entries.length < 84 ? 'foo, bar, Foo bar' : ''))
       puts "Added an entry"
       entries << e
     rescue $e

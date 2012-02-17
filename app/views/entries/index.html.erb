@@ -41,6 +41,9 @@
   </div>
 </div>
 <%= content_for :js do %>
+<% unless @tag_name.blank? %>
+<script>var FILTER_BY_TAG = true, TAG = '<%= @tag_name %>';</script>
+<% end %>
 <%= javascript_include_tag 'app/entries' %>
 <script type="text/template" id="list-template">
   <li id="<%%= id %>"><a href="/projects/<%%= project_guid %>/entries/<%%= guid %>"><%%= title %></a></li>

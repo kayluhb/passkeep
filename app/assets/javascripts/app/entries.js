@@ -43,21 +43,22 @@ var ENTRIES = (function($) {
     return app;
 } (jQuery));
 
-
 var SCROLLER = (function($) {
     var app = {},
     $doc = $(document),
     $list = $('ul.index'),
     $win = $(window),
     buffer = 100,
-    idx = 30 * getURLParameter('page'),
+    page = parseInt(getURLParameter('page'),10)||1,
     complete = false,
     loading = false,
     evt = 'scroll.SCROLLER',
     url = '/entries/paginate.json',
-    tmpl = null;
+    tmpl = null
+    data = {};
     
     function init() {
+        if (typeof FILTER_BY_TAG !== 'undefined' && FILTER_BY_TAG) { data.tag_name = TAG; }
         $win
             .on(evt, getPage)
             .trigger(evt);
@@ -69,7 +70,10 @@ var SCROLLER = (function($) {
     function getPage() {
         if (!isNearBottom() || loading || complete) { return; }
         loading = true;
-        $.ajax({ url:url, data: { idx:idx }})
+        ++page;
+        window.location = '#!/page/' + page;
+        data.idx = page * 30;
+        $.ajax({ url:url, data:data })
             .success(onReturn);
     }
     function getURLParameter(name) {
@@ -82,7 +86,6 @@ var SCROLLER = (function($) {
         if (complete) { return; }
         var item;
         _.each(r, function(el){ $list.append(tmpl(el)); });
-        idx += r.length;
         loading = false;
         item = null;
         return false;
