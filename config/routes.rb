@@ -5,6 +5,7 @@ Passkeep::Application.routes.draw do
   resources :entries, :only => [:index, :new, :create, :update, :destroy] do
     #get 'tagged/:tag_name', :on => :collection
     get 'tagged/:tag_name' => 'entries#tagged', :on => :collection, :as => 'tagged'
+    post 'paginate', :on => :collection
   end
 
   resources :projects, :except => [:show] do

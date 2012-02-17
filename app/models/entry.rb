@@ -46,6 +46,10 @@ class Entry < ActiveRecord::Base
     self.guid
   end
 
+  def project_guid
+    self.project.guid
+  end
+
   private
     def make_guid
       self.guid = UUIDTools::UUID.random_create.to_s if guid.blank?
@@ -58,7 +62,7 @@ class Entry < ActiveRecord::Base
     end
 
     def skinny
-      select("entries.title, entries.guid")
+      select("entries.title, entries.guid, entries.id, entries.project_id")
     end
   end
 

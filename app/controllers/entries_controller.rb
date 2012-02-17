@@ -47,6 +47,11 @@ class EntriesController < ApplicationController
     redirect_to(entries_path, :notice => "Awesome. You deleted #{@entry.title}")
   end
 
+  def paginate
+    entries = current_user.entries.skinny.ordered.limit(30).offset(params[:idx])
+    render :json => entries.to_json(:methods => [:project_guid])
+  end
+
   def tagged
     @tag_name = params[:tag_name]
     @entries = current_user.entries.tagged_with(@tag_name).ordered.paginate :page => params[:page]
