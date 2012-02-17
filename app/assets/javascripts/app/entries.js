@@ -46,6 +46,7 @@ var ENTRIES = (function($) {
 var SCROLLER = (function($) {
     var app = {},
     $doc = $(document),
+    $fixed = $('.tags, .navbar'),
     $list = $('ul.index'),
     $win = $(window),
     buffer = 100,
@@ -53,6 +54,7 @@ var SCROLLER = (function($) {
     complete = false,
     loading = false,
     evt = 'scroll.SCROLLER',
+    on = 'on',
     url = '/entries/paginate.json',
     tmpl = null
     data = {};
@@ -60,14 +62,20 @@ var SCROLLER = (function($) {
     function init() {
         if (typeof FILTER_BY_TAG !== 'undefined' && FILTER_BY_TAG) { data.tag_name = TAG; }
         $win
-            .on(evt, getPage)
+            .on(evt, scrollsies)
             .trigger(evt);
         tmpl = _.template($('#list-template').html());
     }
     function isNearBottom(){
         return $win.scrollTop() > $doc.height() - $win.height() - buffer;
     }
-    function getPage() {
+    function scrollsies() {
+        t = $win.scrollTop();
+        if (t > 200) {
+            $fixed.addClass(on);
+        } else {
+            $fixed.removeClass(on);
+        }
         if (!isNearBottom() || loading || complete) { return; }
         loading = true;
         ++page;

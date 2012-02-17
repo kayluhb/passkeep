@@ -66,6 +66,13 @@
     <strong>Expiration:</strong> <%%= expiration %><br/>
     <%% } %>
     </p>
+    <%% if (tags) { %>
+    <strong>Tags:</strong>
+      <%% _.each(tags, function(tag, idx) { %>
+        <%%= (idx !== 0 ? ', ' : '') + tag.name %>
+      <%% }); %>
+    <%% } %>
+    </p>
     <%% if (notes) { %>
     <hr/>
     <p><strong>Notes:</strong> <%%= notes %></p>

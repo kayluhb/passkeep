@@ -27,7 +27,7 @@ class EntriesController < ApplicationController
     respond_to do |format|
       format.html
       format.json { render :json => @entry.to_json(:include => [:project],
-          :methods => [:notes, :password, :username, :url]) }
+          :methods => [:notes, :password, :username, :url, :tags]) }
     end
   end
 
