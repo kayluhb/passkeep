@@ -12,6 +12,7 @@
   visibility: hidden;
 }
 @media (max-width: 480px) {
+  .pagination a { line-height:24px; padding:0 5px; }
   .nav-collapse {
     -webkit-transform: translate3d(0, 0, 0);
   }
