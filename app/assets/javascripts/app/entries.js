@@ -61,10 +61,12 @@ var SCROLLER = (function($) {
     
     function init() {
         if (typeof FILTER_BY_TAG !== 'undefined' && FILTER_BY_TAG) { data.tag_name = TAG; }
+        var $el = $('#list-template');
+        if ($el.length < 1) { return; }
+        tmpl = _.template($el.html());
         $win
             .on(evt, scrollsies)
             .trigger(evt);
-        tmpl = _.template($('#list-template').html());
     }
     function isNearBottom(){
         return $win.scrollTop() > $doc.height() - $win.height() - buffer;

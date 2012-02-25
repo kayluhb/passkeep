@@ -3,3 +3,16 @@
 <h1>Editing <%= @project.name %></h1>
 
 <%= render 'form', :project => @project %>
+
+<ul class="index index-tabs index-stacked">
+  <% @project.entries.each do |e| %>
+  <li id="<%= e.id %>">
+  <%= link_to e.title, project_entry_path(e.project, e) %>
+  </li>
+  <% end %>
+</ul>
+
+<%= content_for :js do %>
+<%= javascript_include_tag 'app/entries' %>
+<%= render 'entries/entry_template' %>
+<% end %>

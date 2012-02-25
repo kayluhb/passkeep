@@ -1,0 +1,32 @@
+<script type="text/template" id="entry-template">
+  <div class="deets">
+    <a href="#" class="close" title="close">×</a>
+    <p>
+    <%%= title %><br/>
+    <%% if (username) { %>
+    <strong>Username:</strong> <%%= username %><br/>
+    <%% } %>
+    <%% if (password) { %>
+    <strong>Password:</strong> <%%= password %><br/>
+    <%% } %>
+    <%% if (url) { %>
+    <strong>URL:</strong> <%%= url %></p>
+    <%% } %>
+    <%% if (expiration) { %>
+    <strong>Expiration:</strong> <%%= expiration %><br/>
+    <%% } %>
+    </p>
+    <%% if (tags) { %>
+    <strong>Tags:</strong>
+      <%% _.each(tags, function(tag, idx) { %>
+        <%%= (idx !== 0 ? ', ' : '') + tag.name %>
+      <%% }); %>
+    <%% } %>
+    </p>
+    <%% if (notes) { %>
+    <hr/>
+    <p><strong>Notes:</strong> <%%= notes %></p>
+    <%% } %>
+    <a href="<%%= path %>/edit" class="btn">Edit</a>
+  </div>
+</script>

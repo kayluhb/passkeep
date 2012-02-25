@@ -6,6 +6,7 @@
  *= require teams
  *= require index_list
 */
+@import 'mixins';
 /* HTML5 display definitions */
 article, aside, details, figcaption, figure, footer, header, hgroup, nav, section { display:block; }
 audio, canvas, video { display:inline-block; *display:inline; *zoom:1; }
@@ -13,7 +14,11 @@ audio:not([controls]) { display:none; }
 [hidden] { display:none; }
 /* Base */
 html { font-size:100%; overflow-y:auto; -webkit-text-size-adjust:100%; -ms-text-size-adjust:100%; }
-body { background:#fff; margin:0; padding-top:10px; }
+body { background:whiteSmoke; margin:0; padding-top:10px;
+background: -webkit-linear-gradient(-45deg, slateGray 22px, #D9ECFF 22px, #D9ECFF 24px, transparent 24px, transparent 67px, #D9ECFF 67px, #D9ECFF 69px, transparent 69px), -webkit-linear-gradient(225deg, slateGray 22px, #D9ECFF 22px, #D9ECFF 24px, transparent 24px, transparent 67px, #D9ECFF 67px, #D9ECFF 69px, transparent 69px)0 64px;
+background-color: slateGray;
+background-size: 64px 128px;
+}
 body, button, input, select, textarea { color:#444; font:15px arial, verdana, sans-serif; line-height:1.22; }
 /* Links */
 a { text-decoration:none; }
@@ -142,6 +147,7 @@ a {
 .pager.tags a.on { background-color:whiteSmoke; }
 textarea.small { height:44px; }
 
+#content { background:#fff; background:rgba(255, 255, 255, 0.9); margin-bottom:20px; min-height:400px; padding:10px 10px 20px; @include border-radius(10px); @include drop-shadow; }
 
 @media print {
   * { background:transparent !important; color:black !important; box-shadow:none !important; text-shadow:none !important; filter:none !important; -ms-filter:none !important; } 

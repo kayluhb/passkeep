@@ -8,7 +8,7 @@
     <%= yield :css %>
 </head>
 <body>
-  <div class="container">
+  <div id="content" class="container">
     <%= render 'shared/header' %>
     <% if notice %><p class="alert alert-info"><%= notice %></p><% end %>
     <% if alert %><p class="alert alert-error"><%= alert %></p><% end %>
