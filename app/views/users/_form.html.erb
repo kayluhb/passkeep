@@ -24,7 +24,12 @@
     <div id="team-list" class="span5 team-list">
       <h4>Teams</h4>
       <div class="well">
-        <ul></ul>
+        <ul>
+          <% user.teams.ordered.each do |t| %>
+            <li><%= t.name %> <a class="close" title="remove">&times;</a></li>
+          <% end %>
+        </ul>
+        <%= f.hidden_field :team_tokens %>
         <input type="search" placeholder="Search for a team" />
       </div>
     </div>
@@ -35,5 +40,5 @@
 </p>
 <% end %>
 <%= content_for :js do %>
-  <%= javascript_include_tag 'app/users' %>
+  <%= javascript_include_tag 'libs/jquery-ui-1.8.17.custom.min', 'app/users' %>
 <% end %>
