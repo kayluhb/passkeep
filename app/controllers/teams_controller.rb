@@ -38,6 +38,17 @@ class TeamsController < ApplicationController
     redirect_to(teams_path, :notice => "Awesome. You deleted #{@team.name}")
   end
 
+  def search
+    query = params[:term]
+    @teams = Team.where("name ILIKE ?", "%#{query}%")
+    respond_to do |format|
+      format.html
+      format.json {
+        render :json => @teams.map{ |team| { :name => team.name, :id => team.id } }
+      }
+    end
+  end
+
   private
     def set_team
       @team = Team.find_by_guid!(params[:id])

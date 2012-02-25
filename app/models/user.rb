@@ -40,7 +40,7 @@ class User < ActiveRecord::Base
   has_many :entries, :through => :projects
 
   attr_accessible :email, :password, :password_confirmation, :remember_me,
-                  :first_name, :last_name, :full_name, :time_zone
+                  :first_name, :last_name, :full_name, :time_zone, :team_tokens
 
   attr_accessor :full_name
   attr_reader :team_tokens

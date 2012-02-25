@@ -43,7 +43,7 @@ class UsersController < ApplicationController
 
   def search
     query = params[:term]
-    @users = User.skinny.where("first_name ILIKE ? OR last_name ILIKE ?", "%#{query}%", "%#{query}%")
+    @users = User.skinny.where("first_name ILIKE ? OR last_name ILIKE ? OR email ILIKE ?", "%#{query}%", "%#{query}%", "%#{query}%")
     respond_to do |format|
       format.html
       format.json {
