@@ -29,7 +29,7 @@
     <% unless entry.attachment_uid.blank? %>
       <%= link_to "<i class=\"icon-download-alt\"></i> #{entry.attachment_name}".html_safe, entry.attachment.url, :target => "_blank" %><br/>
     <% end %>
-    <%= f.file_field :attachment %><br />
+    <%= f.file_field :attachment, :class => 'attachment' %><br />
     <%= f.hidden_field :retained_attachment %>
     <% unless entry.attachment_uid.blank? %>
       <label class="checkbox"><%= f.check_box :remove_attachment %> remove?</label>

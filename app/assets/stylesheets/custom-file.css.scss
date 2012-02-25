@@ -1,0 +1,17 @@
+@import 'mixins';
+
+/* custom file elements*/
+.custom-file-input { border:0; cursor:pointer; position:absolute; width:100%; z-index:999; }
+.custom-file { cursor:pointer; display:block; height:30px; overflow:hidden; padding:0; position:relative; }
+.custom-file-feedback { display:block; height:30px; line-height:30px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+.custom-file-feedback-populated {  }
+.custom-file-button { background:#155189; color:#fff; display:inline-block; float:left; font-size:11px; height:30px; line-height:30px; margin-right:6px; text-align:center; @include border-radius; width:134px; }
+.custom-file-hover .custom-file-button, .custom-file-focus .custom-file-button { }
+.custom-file-focus .custom-file-button {}
+
+/* icons */
+.custom-file-ext-jpg, .custom-file-ext-gif, .custom-file-ext-png, .custom-file-ext-jpeg, .custom-file-ext-bmp { /* add image icon */ }
+.custom-file-ext-mp3, .custom-file-ext-mp4, .custom-file-ext-mov, .custom-file-ext-swf, .custom-file-ext-wav, .custom-file-ext-m4v { /* add audio icon */ }
+.custom-file-ext-zip, .custom-file-ext-tar, .custom-file-ext-sit { /* add compressed icon */ }
+
+
