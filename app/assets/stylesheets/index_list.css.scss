@@ -16,7 +16,7 @@
 .index-tabs > li {border:1px solid transparent; margin:0 0 -1px; min-height:34px; @include transition(0.1s); @include transition-property('height, margin'); @include border-radius(4px 4px 0 0); }
 
 .index-tabs > li:first-child.on { margin-top:0; }
-.index-tabs > li > a { background:#fff; display: block; padding: 10px 13px; }
+.index-tabs > li > a { display: block; padding: 10px 13px; }
 .index-tabs .deets { padding:10px 13px; }
 .index-tabs .deets p { padding:5px 0; }
 .index-tabs.index-stacked { border-bottom:0; }
