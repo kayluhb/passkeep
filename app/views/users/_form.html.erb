@@ -4,23 +4,31 @@
   <% unless user.new_record? %>
   <p><%= link_to gravatar_image_tag(user.email, :alt => "Click to change", :gravatar => { :size => 64 }).html_safe, "http://gravatar.com" %> <%= user.full_name %></p>
   <% end %>
-  <p>
-      <%= f.text_field :email, :required => 'required', :placeholder => 'email', :type => 'email' %></p>
-  <p>
-      <%= f.text_field :first_name, :required => 'required', :placeholder => "first name" %></p>
-  <p>
-      <%= f.text_field :last_name, :required => 'required', :placeholder => "last name" %></p>
-  <p>
-    <%= f.password_field :password, :placeholder => 'password' %></p>
-  <p>
-    <%= f.password_field :password_confirmation, :placeholder => 'password confirmation' %></p>
-  <p>
-    <%= f.label :team_tokens, "Teams" %>
-    <%= f.text_field :team_tokens, "data-pre" => user.teams.map(&:attributes).to_json %>
-  </p>
-  <p>
-    <%= time_zone_select(:user, :time_zone) %>
-  </p>
+  
+  <div class="row">
+    <div class="span5">
+      <p>
+          <%= f.text_field :email, :required => 'required', :placeholder => 'email', :type => 'email' %></p>
+      <p>
+          <%= f.text_field :first_name, :required => 'required', :placeholder => "first name" %></p>
+      <p>
+          <%= f.text_field :last_name, :required => 'required', :placeholder => "last name" %></p>
+      <p>
+        <%= f.password_field :password, :placeholder => 'password' %></p>
+      <p>
+        <%= f.password_field :password_confirmation, :placeholder => 'password confirmation' %></p>
+      <p>
+        <%= time_zone_select(:user, :time_zone) %>
+      </p>
+    </div>
+    <div id="team-list" class="span5 team-list">
+      <h4>Teams</h4>
+      <div class="well">
+        <ul></ul>
+        <input type="search" placeholder="Search for a team" />
+      </div>
+    </div>
+  </div>
 </div>
 <p class="form-actions">
   <button class="btn btn-primary" type="submit">Save</button>
