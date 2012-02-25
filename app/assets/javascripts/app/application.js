@@ -15,13 +15,19 @@ var APP = (function($) {
     // Private functions
     function init() {
         $('a[href=#]').attr('href', 'javascript:;');
+        $("a[href^=http]").click(open);
         // Set up the global ajax
         $.ajaxSetup({ cache: false, error: function errorLog(x, e) { log(x, e); }, type: 'POST' });
         if (!Modernizr.input.placeholder) { placeholder(); }
-        yepnope([{
-            test:Modernizr.csstransitions,
-            nope:'javascripts/app/css3.js'
-        }]);
+    }
+    function open(e) {
+        e.preventDefault();
+        var href = this.getAttribute("href");
+        if (window.location.host !== href.split('/')[2]) {
+            window.open(href);
+        } else {
+            window.location = href;
+        }
     }
     function placeholder() {
         var attr = 'placeholder';

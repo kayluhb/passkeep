@@ -1,6 +1,9 @@
 <%= form_for user, :html => { :autocomplete => :off, :multipart => true } do |f| %>
 <div class="well">
   <%= render 'shared/errors', :m => user %>
+  <% unless user.new_record? %>
+  <p><%= link_to gravatar_image_tag(user.email, :alt => "Click to change", :gravatar => { :size => 64 }).html_safe, "http://gravatar.com" %> <%= user.full_name %></p>
+  <% end %>
   <p>
       <%= f.text_field :email, :required => 'required', :placeholder => 'email', :type => 'email' %></p>
   <p>
