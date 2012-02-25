@@ -20,6 +20,7 @@ class ProjectsController < ApplicationController
   end
 
   def edit
+    @tags = @project.entries.tag_counts_on(:tags).order(:name)
   end
 
   def update
