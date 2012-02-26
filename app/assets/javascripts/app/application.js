@@ -10,9 +10,10 @@ window.log = function f(){ log.history = log.history || []; log.history.push(arg
 (function(){try{console.log();return window.console;}catch(a){return (window.console={});}}());
 
 var APP = (function($) {
-    var app = {}, $el;
+    var app = {
+        STOPS: ['I', 'a', 'about', 'an', 'are', 'as', 'at', 'be', 'by', 'c', 'co', 'com', 'for', 'from', 'how', 'in', 'is', 'it', 'of', 'on', 'or', 'org', 'that', 'the', 'this', 'to', 'was', 'what', 'when', 'where', 'who', 'will', 'with', 'the', 'w', 'ww', 'www']
+    }, $el;
     // Public functions
-    // app.foo = function() {  };
     // Private functions
     function init() {
         $('a[href=#]').attr('href', 'javascript:;');

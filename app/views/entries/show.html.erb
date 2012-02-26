@@ -45,6 +45,11 @@
         <strong>Tags:</strong> <%= @entry.tag_list %>
       </p>
       <% end %>
+      <% unless @entry.attachment_uid.blank? %>
+      <p>
+          <%= link_to "<i class=\"icon-download-alt\"></i> #{@entry.attachment_name}".html_safe, @entry.attachment.url, :target => "_blank" %>
+      </p>
+      <% end %>
     </div>
   </div>
 </div>
