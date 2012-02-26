@@ -10,6 +10,7 @@ Passkeep::Application.routes.draw do
 
   resources :projects, :except => [:show] do
     post 'search', :on => :collection
+    post 'tagged_entries', :on => :collection
     get 'confirm_destroy', :on => :member
 
     resources :entries, :only => [:edit, :confirm_destroy, :show] do

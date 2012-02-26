@@ -17,7 +17,7 @@
   <div class="span4">
     <ul class="pager tags">
       <% tag_cloud(@tags, %w()) do |tag, css_class| %>
-        <li>
+        <li data-name="<%= tag.name %>">
         <%= link_to tag.name, tagged_entries_path(tag.name) %>
         </li>
       <% end %>
@@ -25,6 +25,7 @@
   </div>
 </div>
 <%= content_for :js do %>
+<script>var TAGGED_PATH = '<%= tagged_entries_projects_path(@project) %>';</script>
 <%= javascript_include_tag 'app/entries' %>
 <%= render 'entries/entry_template' %>
 <% end %>

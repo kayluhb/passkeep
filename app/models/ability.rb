@@ -8,6 +8,7 @@ class Ability
     if user.admin?
       can :manage, :all
     else
+      can :read, :update, Project
       can :read, Team
       can :read, User
     end

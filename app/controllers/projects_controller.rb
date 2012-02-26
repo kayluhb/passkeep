@@ -1,6 +1,7 @@
 class ProjectsController < ApplicationController
 
-  before_filter :set_project, :only => [:edit, :show, :update, :confirm_destroy, :destroy]
+  before_filter :set_project, :only => [:edit, :show, :update, :confirm_destroy,
+                                        :destroy, :tagged_entries]
 
   def index
     @projects = current_user.projects.paginate :page => params[:page]
@@ -48,6 +49,9 @@ class ProjectsController < ApplicationController
         render :json => @projects.map{ |p| { :name => p.name, :id => p.id } }
       }
     end
+  end
+
+  def tagged_entries
   end
 
   private
