@@ -18,7 +18,7 @@ module ApplicationHelper
       <param name="allowScriptAccess" value="always" />
       <param name="quality" value="high" />
       <param name="scale" value="noscale" />
-      <param NAME="FlashVars" value="text=#{text}">
+      <param name="FlashVars" value="text=#{text}">
       <param name="bgcolor" value="#{bgcolor}">
       <embed src="/swfs/clippy.swf"
              width="110"
