@@ -22,6 +22,7 @@
 #  guid                   :string(36)      not null
 #  time_zone              :string(255)     default("Eastern Time (US & Canada)")
 #  super_user             :boolean         default(FALSE)
+#  administrator          :boolean         default(FALSE)
 #  created_at             :datetime        not null
 #  updated_at             :datetime        not null
 #
@@ -42,7 +43,7 @@ class User < ActiveRecord::Base
 
   attr_accessible :email, :password, :password_confirmation, :remember_me,
                   :first_name, :last_name, :full_name, :time_zone, :team_tokens,
-                  :super_user
+                  :administrator
 
   attr_accessor :full_name
   attr_accessor :team_tokens
@@ -52,6 +53,10 @@ class User < ActiveRecord::Base
   validates :guid, :presence => true
 
   before_validation :make_guid
+
+  def admin?
+    super_user || administrator
+  end
 
   def full_name
     "#{first_name} #{last_name}".strip
@@ -63,16 +68,16 @@ class User < ActiveRecord::Base
     self.last_name = split.last
   end
 
-  def to_param
-    self.guid
-  end
-
   def team_tokens=(ids)
     self.team_ids = ids.split(",")
   end
 
   def team_tokens
     return self.team_ids.join(',')
+  end
+
+  def to_param
+    self.guid
   end
 
   private

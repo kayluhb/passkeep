@@ -16,6 +16,7 @@ class DeviseCreateUsers < ActiveRecord::Migration
       t.string :guid, :limit => 36, :null => false
       t.string :time_zone, :default => 'Eastern Time (US & Canada)'
       t.boolean :super_user, :default => false
+      t.boolean :administrator, :default => false
 
       t.timestamps
     end

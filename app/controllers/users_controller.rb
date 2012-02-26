@@ -12,6 +12,7 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(params[:user])
+    authorize! :create, @user
     if @user.save
       redirect_to users_path, :notice => user_flash(@user).html_safe
     else
@@ -34,9 +35,11 @@ class UsersController < ApplicationController
   end
 
   def confirm_destroy
+    authorize! :destroy, @user
   end
 
   def destroy
+    authorize! :destroy, @user
     @user.destroy
     redirect_to(users_path, :notice => "Awesome. You deleted #{@user.title}")
   end

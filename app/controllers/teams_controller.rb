@@ -8,10 +8,12 @@ class TeamsController < ApplicationController
 
   def new
     @team = Team.new
+    authorize! :create, @team
   end
 
   def create
     @team = Team.new(params[:team])
+    authorize! :create, @team
     if @team.save
       redirect_to teams_path, :notice => team_flash(@team).html_safe
     else
@@ -23,6 +25,7 @@ class TeamsController < ApplicationController
   end
 
   def update
+    authorize! :update, @team
     if @team.update_attributes(params[:team])
       redirect_to teams_path, :notice => team_flash(@team).html_safe
     else
@@ -31,9 +34,11 @@ class TeamsController < ApplicationController
   end
 
   def confirm_destroy
+    authorize! :destroy, @team
   end
 
   def destroy
+    authorize! :destroy, @team
     @team.destroy
     redirect_to(teams_path, :notice => "Awesome. You deleted #{@team.name}")
   end

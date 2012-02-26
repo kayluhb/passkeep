@@ -5,7 +5,9 @@
     <h1>Teams</h1>
   </div>
   <div class="span2">
-    <%= link_to "add a team", new_team_path, :class => "btn btn-primary", :title => "add a team" %>
+    <% if can? :create, @team %>
+      <%= link_to "add a team", new_team_path, :class => "btn btn-primary", :title => "add a team" %>
+    <% end %>
   </div>
 </div>
 

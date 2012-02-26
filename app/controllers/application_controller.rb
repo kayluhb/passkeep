@@ -10,6 +10,10 @@ class ApplicationController < ActionController::Base
     rescue_from ActionController::UnknownAction, :with => :render_404
   end
 
+  rescue_from CanCan::AccessDenied do |exception|
+    redirect_to root_url, :alert => exception.message
+  end
+
   protected
     def set_time_zone
       Time.zone = current_user.time_zone if user_signed_in?

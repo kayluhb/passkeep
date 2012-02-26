@@ -111,6 +111,7 @@ ActiveRecord::Schema.define(:version => 20120216002547) do
     t.string   "guid",                   :limit => 36,                                            :null => false
     t.string   "time_zone",                             :default => "Eastern Time (US & Canada)"
     t.boolean  "super_user",                            :default => false
+    t.boolean  "administrator",                         :default => false
     t.datetime "created_at",                                                                      :null => false
     t.datetime "updated_at",                                                                      :null => false
   end
