@@ -151,6 +151,7 @@ textarea.small { height:44px; }
 #content { background:#fff; background:rgba(255, 255, 255, 0.95); margin-bottom:20px; min-height:400px; padding:10px 10px 40px; position:relative; @include border-radius(10px); @include drop-shadow; @include transition; @include transition-property(height); }
 footer { bottom:20px; left:30px; position:absolute; }
 .entry-info { margin-bottom:10px; }
+.delete { float:right; }
 
 @media print {
   * { background:transparent !important; color:black !important; box-shadow:none !important; text-shadow:none !important; filter:none !important; -ms-filter:none !important; } 

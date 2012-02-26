@@ -19,10 +19,12 @@
 </div>
   <p class="form-actions">
     <button class="btn btn-primary">Save</button>
+    <% unless project.new_record? %>
+    <%= link_to '<i class="icon-plus-sign icon-white"></i> Add entry'.html_safe, new_entry_path, :class => 'btn btn-primary' %>
+    <% end %>
     <%= link_to "Cancel", projects_path, :class => 'btn' %>
     <% unless project.new_record? %>
-    <%= link_to '<i class="icon-trash icon-white"></i> Delete'.html_safe, confirm_destroy_project_path(project), :class => 'btn btn-danger' %>
-    <%= link_to '<i class="icon-plus-sign icon-white"></i> Add entry'.html_safe, new_entry_path, :class => 'btn btn-primary' %>
+    <%= link_to '<i class="icon-trash icon-white"></i> Delete'.html_safe, confirm_destroy_project_path(project), :class => 'btn btn-danger delete' %>
     <% end %>
   </p>
 <% end %>

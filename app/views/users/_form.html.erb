@@ -26,7 +26,7 @@
       <div class="well">
         <ul>
           <% user.teams.ordered.each do |t| %>
-            <li><%= t.name %> <a class="close" title="remove">&times;</a></li>
+            <li data-id="<%= t.id %>"><%= t.name %> <a class="close" title="remove">&times;</a></li>
           <% end %>
         </ul>
         <%= f.hidden_field :team_tokens %>
@@ -37,6 +37,7 @@
 </div>
 <p class="form-actions">
   <button class="btn btn-primary" type="submit">Save</button>
+  <%= link_to "Cancel", users_path, :class => 'btn' %>
 </p>
 <% end %>
 <%= content_for :js do %>

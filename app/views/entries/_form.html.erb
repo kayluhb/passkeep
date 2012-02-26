@@ -39,7 +39,7 @@
   <p class="form-actions">
     <button class="btn btn-primary">Save</button>
     <%= link_to "Cancel", entries_path, :class => 'btn' %>
-    <%= link_to '<i class="icon-trash icon-white"></i> Delete'.html_safe, confirm_destroy_project_entry_path(entry.project, entry), :class => 'btn btn-danger' unless entry.new_record? %>
+    <%= link_to '<i class="icon-trash icon-white"></i> Delete'.html_safe, confirm_destroy_project_entry_path(entry.project, entry), :class => 'btn btn-danger delete' unless entry.new_record? %>
   </p>
 <% end %>
 <%= content_for :js do %>

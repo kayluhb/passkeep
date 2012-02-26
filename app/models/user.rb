@@ -43,7 +43,7 @@ class User < ActiveRecord::Base
                   :first_name, :last_name, :full_name, :time_zone, :team_tokens
 
   attr_accessor :full_name
-  attr_reader :team_tokens
+  attr_accessor :team_tokens
 
   validates :first_name, :presence => true
   validates :last_name, :presence => true
@@ -67,6 +67,10 @@ class User < ActiveRecord::Base
 
   def team_tokens=(ids)
     self.team_ids = ids.split(",")
+  end
+
+  def team_tokens
+    return self.team_ids.join(',')
   end
 
   private
