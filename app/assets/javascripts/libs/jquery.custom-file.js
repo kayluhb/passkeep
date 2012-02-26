@@ -1,6 +1,6 @@
 /* 
 
-Call the plugin with $('jquery-selector').customFile({ status:true, text: 'Choose File' });
+Call the plugin with $('jquery-selector').customFile({ status:true, text: 'Choose File', root:'p' });
 
 */
 
@@ -10,11 +10,11 @@ Call the plugin with $('jquery-selector').customFile({ status:true, text: 'Choos
         var settings = $.extend({}, $.fn.customFile.defaults, opts),
         $el = $(el), klass = 'custom-file', hover = '-hover', focus = '-focus',
         //create custom control container
-        upload = $('<' + settings.element + ' class="' + klass + ' ' + $el.attr('class') + '"></' + settings.element + '>'),
+        upload = $('<' + settings.root + ' class="' + klass + ' ' + $el.attr('class') + '" />'),
         //create custom control button
         button = $('<span class="' + klass + '-button" aria-hidden="true">' + settings.text + '</span>').appendTo(upload),
         //create custom control feedback
-        feedback = $('<span class="' + klass + '-feedback" aria-hidden="true"></span>');
+        feedback = $('<span class="' + klass + '-feedback" aria-hidden="true" />');
         if (settings.status) {
             feedback.appendTo(upload);
         }
@@ -79,6 +79,5 @@ Call the plugin with $('jquery-selector').customFile({ status:true, text: 'Choos
         });
     };
     // default settings
-    $.fn.customFile.defaults = { status:true, text: 'Choose File', element:'p' };
+    $.fn.customFile.defaults = { status: true, text: 'Choose File', root: 'span' };
 })(jQuery);
-
