@@ -7,7 +7,7 @@
 <div class="row">
   <div class="span8">
     <ul class="index index-tabs index-stacked">
-      <% @project.entries.ordered.each do |e| %>
+      <% @project.entries.skinny.ordered.each do |e| %>
       <li id="<%= e.id %>" class="<%= e.tag_list %>">
       <%= link_to e.title, project_entry_path(e.project, e) %>
       </li>
@@ -18,14 +18,15 @@
     <ul class="pager tags">
       <% tag_cloud(@tags, %w()) do |tag, css_class| %>
         <li data-name="<%= tag.name %>">
-        <%= link_to tag.name, tagged_entries_path(tag.name) %>
+        <%= link_to tag.name, tagged_entries_project_path(@project) %>
         </li>
       <% end %>
     </ul>
+    &nbsp;
   </div>
 </div>
 <%= content_for :js do %>
-<script>var TAGGED_PATH = '<%= tagged_entries_projects_path(@project) %>';</script>
+<script>var TAGGED_PATH = '<%= tagged_entries_project_path @project, "json" %>';</script>
 <%= javascript_include_tag 'app/entries' %>
 <%= render 'entries/entry_template' %>
 <% end %>

@@ -52,6 +52,19 @@ class ProjectsController < ApplicationController
   end
 
   def tagged_entries
+    tags = params[:tags]
+    unless tags.blank?
+      @entries = @project.entries.tagged_with(params[:tags])
+    else
+      @entries = @project.entries
+    end
+    @entries = @entries.skinny.ordered
+    respond_to do |format|
+      format.html
+      format.json {
+        render :json => @entries.to_json(:methods => [:project_guid])
+      }
+    end
   end
 
   private
