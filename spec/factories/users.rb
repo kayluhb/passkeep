@@ -7,4 +7,5 @@ Factory.define :user do |u|
   u.last_name   'Istrator'
   u.email       { Factory.next :email }
   u.password    'Passkeep1!'
+  u.super_user false
 end

@@ -15,7 +15,6 @@ class Team < ActiveRecord::Base
   ROLES = {
     'Read' => 1,
     'Read and edit' => 2,
-    'Administer' => 3,
   }
 
   has_many :team_members

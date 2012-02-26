@@ -17,7 +17,7 @@ if Rails.env.development?
   end
 
   # Users
-  u = Factory(:user, :email => 'admin@passkeep.com')
+  u = Factory(:user, :email => 'admin@passkeep.com', :super_user => true)
   puts "created #{u.email}"
 
   p = Factory(:project)

@@ -3,8 +3,8 @@
 # Table name: team_projects
 #
 #  id         :integer         not null, primary key
-#  project_id :integer
-#  team_id    :integer
+#  project_id :integer         not null
+#  team_id    :integer         not null
 #  created_at :datetime        not null
 #  updated_at :datetime        not null
 #

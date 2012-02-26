@@ -4,7 +4,6 @@
   <% unless user.new_record? %>
   <p><%= link_to gravatar_image_tag(user.email, :alt => "Click to change", :gravatar => { :size => 64 }).html_safe, "http://gravatar.com" %> <%= user.full_name %></p>
   <% end %>
-  
   <div class="row">
     <div class="span5">
       <p>
@@ -19,6 +18,10 @@
         <%= f.password_field :password_confirmation, :placeholder => 'password confirmation' %></p>
       <p>
         <%= time_zone_select(:user, :time_zone) %>
+      </p>
+      <p>
+        <%= f.label :super_user %>
+        <%= f.check_box :super_user %>
       </p>
     </div>
     <div id="team-list" class="span5 team-list">

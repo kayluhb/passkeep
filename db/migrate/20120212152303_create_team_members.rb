@@ -1,8 +1,8 @@
 class CreateTeamMembers < ActiveRecord::Migration
   def change
     create_table :team_members do |t|
-      t.references :user
-      t.references :team
+      t.references :user, :null => false
+      t.references :team, :null => false
 
       t.timestamps
     end

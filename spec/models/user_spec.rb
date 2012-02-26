@@ -21,6 +21,7 @@
 #  last_name              :string(255)     not null
 #  guid                   :string(36)      not null
 #  time_zone              :string(255)     default("Eastern Time (US & Canada)")
+#  super_user             :boolean         default(FALSE)
 #  created_at             :datetime        not null
 #  updated_at             :datetime        not null
 #

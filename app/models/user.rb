@@ -21,6 +21,7 @@
 #  last_name              :string(255)     not null
 #  guid                   :string(36)      not null
 #  time_zone              :string(255)     default("Eastern Time (US & Canada)")
+#  super_user             :boolean         default(FALSE)
 #  created_at             :datetime        not null
 #  updated_at             :datetime        not null
 #
@@ -40,7 +41,8 @@ class User < ActiveRecord::Base
   has_many :entries, :through => :projects
 
   attr_accessible :email, :password, :password_confirmation, :remember_me,
-                  :first_name, :last_name, :full_name, :time_zone, :team_tokens
+                  :first_name, :last_name, :full_name, :time_zone, :team_tokens,
+                  :super_user
 
   attr_accessor :full_name
   attr_accessor :team_tokens

@@ -61,8 +61,8 @@ ActiveRecord::Schema.define(:version => 20120216002547) do
   end
 
   create_table "team_members", :force => true do |t|
-    t.integer  "user_id"
-    t.integer  "team_id"
+    t.integer  "user_id",    :null => false
+    t.integer  "team_id",    :null => false
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
@@ -71,8 +71,8 @@ ActiveRecord::Schema.define(:version => 20120216002547) do
   add_index "team_members", ["user_id"], :name => "index_team_members_on_user_id"
 
   create_table "team_projects", :force => true do |t|
-    t.integer  "project_id"
-    t.integer  "team_id"
+    t.integer  "project_id", :null => false
+    t.integer  "team_id",    :null => false
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
@@ -110,11 +110,13 @@ ActiveRecord::Schema.define(:version => 20120216002547) do
     t.string   "last_name",                                                                       :null => false
     t.string   "guid",                   :limit => 36,                                            :null => false
     t.string   "time_zone",                             :default => "Eastern Time (US & Canada)"
+    t.boolean  "super_user",                            :default => false
     t.datetime "created_at",                                                                      :null => false
     t.datetime "updated_at",                                                                      :null => false
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
+  add_index "users", ["guid"], :name => "index_users_on_guid", :unique => true
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
   add_index "users", ["unlock_token"], :name => "index_users_on_unlock_token", :unique => true
 

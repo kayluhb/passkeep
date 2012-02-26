@@ -15,6 +15,7 @@ class DeviseCreateUsers < ActiveRecord::Migration
       t.string :last_name, :null => false
       t.string :guid, :limit => 36, :null => false
       t.string :time_zone, :default => 'Eastern Time (US & Canada)'
+      t.boolean :super_user, :default => false
 
       t.timestamps
     end
@@ -23,5 +24,6 @@ class DeviseCreateUsers < ActiveRecord::Migration
     # add_index :users, :confirmation_token,   :unique => true
     add_index :users, :unlock_token,         :unique => true
     # add_index :users, :authentication_token, :unique => true
+    add_index :users, :guid, :unique => true
   end
 end
