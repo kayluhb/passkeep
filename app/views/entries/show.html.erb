@@ -42,10 +42,8 @@
       <% end %>
       <% if @entry.tags.any? %>
       <p>
-        <strong>Tags:</strong>
-        <% @entry.tags.each do |t| %>
-          <%= t.name %>
-        <% end %>
+        <strong>Tags:</strong> <%= @entry.tag_list %>
+      </p>
       <% end %>
     </div>
   </div>
