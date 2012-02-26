@@ -11,7 +11,7 @@ window.log = function f(){ log.history = log.history || []; log.history.push(arg
 
 var APP = (function($) {
     var app = {
-        STOPS: ['I', 'a', 'about', 'an', 'are', 'as', 'at', 'be', 'by', 'c', 'co', 'com', 'for', 'from', 'how', 'in', 'is', 'it', 'of', 'on', 'or', 'org', 'that', 'the', 'this', 'to', 'was', 'what', 'when', 'where', 'who', 'will', 'with', 'the', 'w', 'ww', 'www']
+        STOPS: ['about', 'are', 'com', 'for', 'from', 'how', 'htt', 'http', 'https', 'org', 'that', 'the', 'this', 'was', 'what', 'when', 'where', 'who', 'will', 'with', 'the', 'www']
     }, $el;
     // Public functions
     // Private functions
