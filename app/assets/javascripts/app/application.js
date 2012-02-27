@@ -1,6 +1,7 @@
 //= require jquery_ujs
 //= require ../libs/bootstrap
 //= require ../libs/underscore-min
+//= require ../libs/chosen.jquery.min
 //= require ./team-list
 
 // usage: log('inside coolFunc', this, arguments);
@@ -20,6 +21,7 @@ var APP = (function($) {
         $("a[href^=http]").click(open);
         // Set up the global ajax
         $.ajaxSetup({ cache: false, error: function errorLog(x, e) { log(x, e); }, type: 'POST' });
+        $("select.chosen").chosen({ no_results_text: "No results matched" });
         if (!Modernizr.input.placeholder) { placeholder(); }
     }
     function open(e) {

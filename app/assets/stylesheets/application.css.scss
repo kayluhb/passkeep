@@ -3,6 +3,7 @@
  *= require_self
  *= require bootstrap-responsive
  *= require custom-file
+ *= require chosen
  *= require autocomplete
  *= require teams
  *= require index_list
@@ -20,7 +21,7 @@ background: -webkit-linear-gradient(-45deg, slateGray 22px, #D9ECFF 22px, #D9ECF
 background-color: slateGray;
 background-size: 64px 128px;
 }
-body, button, input, select, textarea { color:#444; font:15px arial, verdana, sans-serif; line-height:1.22; }
+body, button, input, select, textarea { color:#444; font:15px 'Droid Sans', sans-serif; line-height:1.22; }
 /* Links */
 a { text-decoration:none; }
 a:visited {  }
@@ -100,12 +101,12 @@ td, th { padding:5px; }
 th { font-weight:bold; }
 td { vertical-align:top; }
 
-::-moz-selection { background:#c01339; color:#fff; text-shadow:none; }
-::selection { background:#c01339; color:#fff; text-shadow:none; }
+::-moz-selection { background:#9CF9F9; color:#fff; text-shadow:none; }
+::selection { background:#9CF9F9; color:#fff; text-shadow:none; }
 ::-webkit-input-placeholder { color:#999999; }
 ::-moz-placeholder { color:#999999; }
 
-a:focus, button:focus, input:focus, label:focus, select:focus, textarea:focus { outline:1px dotted #c01339; }
+a:focus, button:focus, input:focus, label:focus, select:focus, textarea:focus {  }
 
 /* Put all the transition elements here */
 a {

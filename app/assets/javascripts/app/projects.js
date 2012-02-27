@@ -1,6 +1,6 @@
 var PROJECTS = (function($) {
     var app = {}, $el, $tags = $('.tags'), $list = $('ul.index'),
-    on = 'on', tmpl = null;
+    on = 'on', tmpl = null, loading = false;
     // Public functions
     // Private functions
     function init() {
@@ -8,6 +8,8 @@ var PROJECTS = (function($) {
         $tags.find('a').click(updateTags);
     }
     function updateTags(e) {
+        if (loading) { return; }
+        loading = true;
         e.preventDefault();
         $el = $(e.currentTarget);
         $el.toggleClass(on);
@@ -21,6 +23,7 @@ var PROJECTS = (function($) {
             .success(onReturn);
     }
     function onReturn(r) {
+        loading = false;
         $list.children().remove();
         _.each(r, function(el){ $list.append(tmpl(el)); });
         $list.slideDown();

@@ -9,6 +9,10 @@ class EntriesController < ApplicationController
 
   def new
     @entry = Entry.new
+    project_guid = params[:project]
+    unless project_guid.blank?
+      @entry.project_id = Project.find_by_guid(project_guid).id
+    end
   end
 
   def create
