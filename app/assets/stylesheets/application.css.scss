@@ -124,12 +124,11 @@ a { @include transition; @include transition-property(#{"color, background-color
 .clear { clear:both; display:block; overflow:hidden; visibility:hidden; width:0; height:0; }
 .alert {  }
 
-.navbar.on { position:fixed; top:10px; width:300px; }
-.navbar.on .pull-right { display:none; }
+.navbar.on { @include border-radius(none); @include drop-shadow; left:0; position:fixed; top:0; width:100%; }
 .dropdown-menu li { margin:0; padding:0;}
 .nav, .nav li { padding:0; }
 .nav li { background:none; }
-.pagination ul { padding:0; }
+.pagination ul { @include no-shadow; padding:0; }
 .tags, .tags li { background:none; padding:0; }
 .tags.on { position:fixed; right:20px; top:20px; width:300px;}
 .tags li { display:block; float:left; margin:0 3px 5px 0; }
