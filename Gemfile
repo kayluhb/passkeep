@@ -15,8 +15,6 @@ gem 'pg'
 gem 'rack'
 gem 'rack-cache', :require => 'rack/cache'
 gem 'settingslogic'
-gem 'sunspot_rails'
-gem 'sunspot_solr'
 gem 'will_paginate'
 gem 'uuidtools'
 
@@ -26,7 +24,6 @@ group :development do
   gem 'rails_best_practices'
   gem 'railroady'
   gem 'rspec-rails'
-  gem 'sunspot_solr' # A standalone solr server for development
   gem 'therubyracer'
 end
 
