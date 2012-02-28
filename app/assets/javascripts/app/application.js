@@ -15,7 +15,7 @@ window.log = function f(){ log.history = log.history || []; log.history.push(arg
 var APP = (function($) {
     var app = {
         STOPS: ['about', 'are', 'com', 'for', 'from', 'how', 'htt', 'http', 'https', 'org', 'that', 'the', 'this', 'was', 'what', 'when', 'where', 'who', 'will', 'with', 'the', 'www']
-    }, $el, $search = $('#search');
+    }, $el, $win = $(window), $search = $('#search'), $fixed = $('.navbar'), on = 'on';
     // Public functions
     // Private functions
     function init() {
@@ -35,6 +35,8 @@ var APP = (function($) {
         };
         $search.autocomplete({ select:onSearchSelect, source:'/search' });
         $(document).bind('keydown', 'shift+l', onSearchFocus);
+        $(window)
+            .on('scroll', scrollsies)
     }
     function open(e) {
         e.preventDefault();
@@ -66,6 +68,13 @@ var APP = (function($) {
     }
     function onSearchSelect(e, ui) {
         window.location = ui.item.path;
+    }
+    function scrollsies() {
+        if ($win.scrollTop() > 200) {
+            $fixed.addClass(on);
+        } else {
+            $fixed.removeClass(on);
+        }
     }
     // Call the init function on load
     $(init);

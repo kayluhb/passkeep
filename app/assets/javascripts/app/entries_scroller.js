@@ -2,7 +2,6 @@
 var SCROLLER = (function($) {
     var app = {},
     $doc = $(document),
-    $fixed = $('.navbar'),
     $list = $('ul.index'),
     $win = $(window),
     buffer = 100,
@@ -26,12 +25,6 @@ var SCROLLER = (function($) {
         return $win.scrollTop() > $doc.height() - $win.height() - buffer;
     }
     function scrollsies() {
-        t = $win.scrollTop();
-        if (t > 200) {
-            $fixed.addClass(on);
-        } else {
-            $fixed.removeClass(on);
-        }
         if (!isNearBottom() || loading || complete) { return; }
         loading = true;
         ++page;
