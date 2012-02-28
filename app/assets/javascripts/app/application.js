@@ -2,6 +2,8 @@
 //= require ../libs/bootstrap
 //= require ../libs/underscore-min
 //= require ../libs/chosen.jquery.min
+//= require ../libs/jquery-ui-1.8.17.custom.min
+//= require ../libs/jquery.hotkeys
 //= require ./team-list
 
 // usage: log('inside coolFunc', this, arguments);
@@ -13,7 +15,7 @@ window.log = function f(){ log.history = log.history || []; log.history.push(arg
 var APP = (function($) {
     var app = {
         STOPS: ['about', 'are', 'com', 'for', 'from', 'how', 'htt', 'http', 'https', 'org', 'that', 'the', 'this', 'was', 'what', 'when', 'where', 'who', 'will', 'with', 'the', 'www']
-    }, $el;
+    }, $el, $search = $('#search');
     // Public functions
     // Private functions
     function init() {
@@ -23,6 +25,16 @@ var APP = (function($) {
         $.ajaxSetup({ cache: false, error: function errorLog(x, e) { log(x, e); }, type: 'POST' });
         $("select.chosen").chosen({ no_results_text: "No results matched" });
         if (!Modernizr.input.placeholder) { placeholder(); }
+        $.ui.autocomplete.prototype._renderItem = function(ul, item) {
+            var re = new RegExp("^" + this.term, "gm"),
+            t = item.name.replace(re, '<span class="highlight">' + this.term + '</span>');
+            return $('<li></li>')
+                .data('item.autocomplete', item)
+                .append('<a>' + t + '</a>')
+                .appendTo(ul);
+        };
+        $search.autocomplete({ select:onSearchSelect, source:'/search' });
+        $(document).bind('keydown', 'shift+l', onSearchFocus);
     }
     function open(e) {
         e.preventDefault();
@@ -46,6 +58,14 @@ var APP = (function($) {
             });
             $el.blur();
         });
+    }
+    function onSearchFocus() {
+        $search.focus();
+        $search.val('');
+        return false;
+    }
+    function onSearchSelect(e, ui) {
+        window.location = ui.item.path;
     }
     // Call the init function on load
     $(init);

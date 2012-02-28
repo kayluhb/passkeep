@@ -50,7 +50,7 @@ sub, sup { font-size:75%; line-height:0; position:relative; vertical-align:basel
 sup { top:-0.5em; }
 sub { bottom:-0.25em; }
 h1, h2, h3, h4, h5, h6 { color:#000; font-weight:bold; margin:0; padding:10px 0; text-rendering:optimizeLegibility; }
-h1, h1 a { font-size:26px; padding-top:0; }
+h1, h1 a { font-size:26px; margin-left:20px; padding-top:0; }
 h2, h2 a { font-size:24px; }
 h3, h3 a { font-size:22px; }
 h4, h4 a { font-size:18px; }
@@ -109,20 +109,7 @@ td { vertical-align:top; }
 a:focus, button:focus, input:focus, label:focus, select:focus, textarea:focus {  }
 
 /* Put all the transition elements here */
-a {
-     -o-transition-duration:.15s;
-   -moz-transition-duration:.15s;
--webkit-transition-duration:.15s;
-        transition-duration:.15s;
-     -o-transition-timing-function:ease-in;
-   -moz-transition-timing-function:ease-in;
--webkit-transition-timing-function:ease-in;
-        transition-timing-function:ease-in;
-     -o-transition-property:color, background-color;
-   -moz-transition-property:color, background-color;
--webkit-transition-property:color, background-color;
-        transition-property:color, background-color;
-}
+a { @include transition; @include transition-property(#{"color, background-color"}); }
 
 /* CLASSES */
 /* For image replacement */
@@ -153,6 +140,7 @@ textarea.small { height:44px; }
 footer { bottom:20px; left:30px; position:absolute; }
 .entry-info { margin-bottom:10px; }
 .delete { float:right; }
+.ava { @include border-radius(50%); }
 
 @media print {
   * { background:transparent !important; color:black !important; box-shadow:none !important; text-shadow:none !important; filter:none !important; -ms-filter:none !important; } 

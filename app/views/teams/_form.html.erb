@@ -41,5 +41,5 @@
 <% end %>
 <%= content_for :js do %>
   <script>USER_SEARCH_URL='<%= search_users_path %>', PROJECT_SEARCH_URL='<%= search_projects_path %>';</script>
-  <%= javascript_include_tag 'libs/jquery-ui-1.8.17.custom.min', 'app/teams' %>
+  <%= javascript_include_tag 'app/teams' %>
 <% end %>

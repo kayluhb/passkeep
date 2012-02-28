@@ -18,6 +18,8 @@ Passkeep::Application.routes.draw do
     end
   end
 
+  post 'search' => 'search#index'
+
   resources :tags, :only => [:search]
 
   resources :teams, :except => [:show] do

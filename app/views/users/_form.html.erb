@@ -2,7 +2,7 @@
   <div class="well">
     <%= render 'shared/errors', :m => user %>
     <% unless user.new_record? %>
-    <p><%= link_to gravatar_image_tag(user.email, :alt => "Click to change", :gravatar => { :size => 64 }).html_safe, "http://gravatar.com" %> <%= user.full_name %></p>
+    <p><%= link_to gravatar_image_tag(user.email, :alt => "Click to change", :gravatar => { :size => 64 }, :class => 'ava').html_safe, "http://gravatar.com" %> <%= user.full_name %></p>
     <% end %>
     <div class="row">
       <div class="span5">
@@ -51,5 +51,5 @@
 <% end %>
 <%= content_for :js do %>
 <script>var TEAM_SEARCH_URL = '<%= search_teams_path %>';</script>
-<%= javascript_include_tag 'libs/jquery-ui-1.8.17.custom.min', 'app/users' %>
+<%= javascript_include_tag 'app/users' %>
 <% end %>
