@@ -10,8 +10,8 @@
   <p>
     <%= f.text_field :username, :placeholder => 'username', :class => 'span4 clippy' %><%= clippy entry.username, 'username' %>
   </p>
-  <p>
-    <%= f.text_field :password, :placeholder => 'password', :class => 'span4 clippy' %><%= clippy entry.password, 'password' %>
+  <p class="input-append">
+    <%= f.text_field :password, :placeholder => 'password', :class => 'span4 clippy' %><span class="add-on"><i class="icon-leaf"></i></span><%= clippy entry.password, 'password' %>
   </p>
   <p>
     <span class="help-block">add 'http://'</span> <%= f.text_field :url, :placeholder => 'url', :type => 'text', :class => 'span3 clippy' %> <%= clippy entry.url, 'url' %>
