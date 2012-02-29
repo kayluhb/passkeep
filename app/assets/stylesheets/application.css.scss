@@ -125,8 +125,9 @@ a { @include transition; @include transition-property(#{"color, background-color
 .clear { clear:both; display:block; overflow:hidden; visibility:hidden; width:0; height:0; }
 .alert {  }
 
-.navbar.on { @include border-radius(none); @include drop-shadow; left:0; position:fixed; top:0; width:100%; }
-.dropdown-menu li { margin:0; padding:0;}
+.navbar { top:-65px; }
+.navbar.on { @include border-radius(none); @include drop-shadow; left:0; position:fixed; top:0; width:100%; @include transition; @include transition-property(top); }
+.dropdown-menu li { margin:0; padding:0; }
 .nav, .nav li { padding:0; }
 .nav li { background:none; }
 .pagination ul { @include no-shadow; padding:0; }

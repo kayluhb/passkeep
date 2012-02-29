@@ -71,7 +71,8 @@ var APP = (function($) {
         window.location = ui.item.path;
     }
     function scrollsies() {
-        if ($win.scrollTop() > 200) {
+        //console.log($win.scrollTop())
+        if ($win.scrollTop() > 65) {
             $fixed.addClass(on);
         } else {
             $fixed.removeClass(on);
