@@ -2,7 +2,7 @@
   <div class="well">
     <%= render 'shared/errors', :m => user %>
     <% unless user.new_record? %>
-    <p><%= link_to gravatar_image_tag(user.email, :alt => "Click to change", :gravatar => { :size => 64 }, :class => 'ava').html_safe, "http://gravatar.com",  :rel => "tooltip", :title => "Click to change" %> <%= user.full_name %></p>
+    <p><%= link_to gravatar_image_tag(user.email, :alt => "Click to change", :gravatar => { :size => 64 }, :class => 'ava').html_safe, "http://gravatar.com",  :rel => "tooltip", :title => "Click to change", :class => 'large-ava' %> <%= user.full_name %></p>
     <% end %>
     <div class="row">
       <div class="span5">
