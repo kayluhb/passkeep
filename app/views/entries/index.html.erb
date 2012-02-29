@@ -23,7 +23,7 @@
     <ul class="index index-tabs index-stacked">
       <% @entries.each do |e| %>
       <li id="<%= e.id %>">
-      <%= link_to e.title, project_entry_path(e.project, e) %>
+      <%= link_to "#{e.project_name}: #{e.title}", project_entry_path(e.project, e) %>
       </li>
       <% end %>
     </ul>

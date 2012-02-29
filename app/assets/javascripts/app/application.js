@@ -34,6 +34,7 @@ var APP = (function($) {
                 .appendTo(ul);
         };
         $search.autocomplete({ select:onSearchSelect, source:'/search' });
+        $('a[rel=tooltip]').tooltip({ placement:'bottom' });
         $(document).bind('keydown', 'shift+l', onSearchFocus);
         $(window)
             .on('scroll', scrollsies)

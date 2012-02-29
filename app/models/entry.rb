@@ -35,7 +35,7 @@ class Entry < ActiveRecord::Base
 
   image_accessor :attachment
 
-  delegate :name, :to => :project, :prefix => true
+  delegate :name, :guid, :to => :project, :prefix => true
 
   before_validation :make_guid
 
@@ -45,10 +45,6 @@ class Entry < ActiveRecord::Base
 
   def to_param
     self.guid
-  end
-
-  def project_guid
-    self.project.guid
   end
 
   private

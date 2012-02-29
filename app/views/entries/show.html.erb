@@ -12,7 +12,7 @@
   <div class="span12">
     <div class="well">
       <p>
-        <%= @entry.title %>
+        <strong><%= @entry.project_name %>: <%= @entry.title %></strong>
       </p>
       <% unless @entry.username.blank? %>
       <p>

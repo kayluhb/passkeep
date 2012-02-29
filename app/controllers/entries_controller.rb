@@ -56,7 +56,7 @@ class EntriesController < ApplicationController
     entries = current_user.entries
     entries = entries.tagged_with(tag_name) unless tag_name.blank?
     entries = entries.skinny.ordered.limit(30).offset(params[:idx])
-    render :json => entries.to_json(:methods => [:project_guid])
+    render :json => entries.to_json(:methods => [:project_guid, :project_name])
   end
 
   def tagged
