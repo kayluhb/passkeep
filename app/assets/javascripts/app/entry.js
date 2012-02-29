@@ -15,12 +15,21 @@ var ENTRY = (function($) {
         lowers = 'abcdefghijklmnopqrstuvwxyz',
         uppers = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
         others = '~!@#$%^&*()-_=+[{]}\\|<>/? ',
-        chars = [rando(nums), rando(lowers), rando(uppers), rando(others), rando(nums), rando(lowers), rando(uppers), rando(others), rando(uppers), rando(others)];
+        chars = [rando(nums),
+                 rando(lowers),
+                 rando(uppers),
+                 rando(others),
+                 rando(nums),
+                 rando(lowers),
+                 rando(uppers),
+                 rando(others),
+                 rando(uppers),
+                 rando(others)];
         $('#entry_password').val(_.shuffle(chars).join(''));
     }
     function rando(str) {
-        var num = Math.floor(Math.random() * str.length);
-		    return str.substring(num, num + 1);
+        var idx = Math.floor(Math.random() * str.length);
+		    return str.substring(idx, idx + 1);
 		}
     function suggest() {
         var suggestions = $('#entry_url').val().split('http://').join('').split('https://').join('').split('.');
