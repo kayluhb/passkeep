@@ -15,7 +15,7 @@ window.log = function f(){ log.history = log.history || []; log.history.push(arg
 var APP = (function($) {
     var app = {
         STOPS: ['about', 'are', 'com', 'for', 'from', 'how', 'htt', 'http', 'https', 'org', 'that', 'the', 'this', 'was', 'what', 'when', 'where', 'who', 'will', 'with', 'the', 'www']
-    }, $el, $win = $(window), $search = $('#search'), $fixed = $('.navbar'), on = 'on';
+    }, $el, $win = $(window), $search = $('#search'), $fixed = $('.navbar,#content'), on = 'on';
     // Public functions
     // Private functions
     function init() {

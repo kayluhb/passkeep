@@ -62,7 +62,7 @@ class ProjectsController < ApplicationController
     respond_to do |format|
       format.html
       format.json {
-        render :json => @entries.to_json(:methods => [:project_guid])
+        render :json => @entries.to_json(:methods => [:project_guid, :project_name])
       }
     end
   end
