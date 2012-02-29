@@ -127,7 +127,7 @@ a { @include transition; @include transition-property(#{"color, background-color
 .alert {  }
 
 .navbar { top:-65px; }
-.navbar.on { @include border-radius(none); @include drop-shadow; left:0; position:fixed; top:0; width:100%; @include transition; @include transition-property(top); }
+.navbar.on { @include border-radius(none); @include drop-shadow; left:0; position:fixed; top:0; width:100%; @include transition; @include transition-property(top); z-index:99999; }
 .dropdown-menu li { margin:0; padding:0; }
 .nav, .nav li { padding:0; }
 .nav li { background:none; }
