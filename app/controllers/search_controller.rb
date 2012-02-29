@@ -6,7 +6,7 @@ class SearchController < ApplicationController
       format.html
       format.json {
         render :json => @entries.map{ |entry| {
-          :name => entry.title,
+          :name => "#{entry.project_name}: #{entry.title}",
           :id => entry.guid,
           :path => project_entry_path(entry.project, entry)
         }}

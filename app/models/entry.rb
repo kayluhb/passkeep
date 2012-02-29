@@ -33,8 +33,9 @@ class Entry < ActiveRecord::Base
   attr_encrypted :url, :key => Settings.entry.url
   attr_encrypted :notes, :key => Settings.entry.notes
 
-  #versioned
   image_accessor :attachment
+
+  delegate :name, :to => :project, :prefix => true
 
   before_validation :make_guid
 
