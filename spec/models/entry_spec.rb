@@ -6,6 +6,7 @@
 #  project_id         :integer
 #  guid               :string(36)      not null
 #  title              :string(255)     not null
+#  search_text        :string(255)
 #  encrypted_username :string(255)
 #  encrypted_password :string(255)
 #  encrypted_url      :string(255)

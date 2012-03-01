@@ -4,6 +4,7 @@ class CreateEntries < ActiveRecord::Migration
       t.references :project
       t.string :guid, :limit => 36, :null => false
       t.string :title, :null => false
+      t.string :search_text
       t.string :encrypted_username
       t.string :encrypted_password
       t.string :encrypted_url

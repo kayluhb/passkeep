@@ -17,6 +17,7 @@ ActiveRecord::Schema.define(:version => 20120216002547) do
     t.integer  "project_id"
     t.string   "guid",               :limit => 36, :null => false
     t.string   "title",                            :null => false
+    t.string   "search_text"
     t.string   "encrypted_username"
     t.string   "encrypted_password"
     t.string   "encrypted_url"

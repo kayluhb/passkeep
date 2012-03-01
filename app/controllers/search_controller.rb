@@ -1,7 +1,7 @@
 class SearchController < ApplicationController
   def index
     query = params[:term]
-    @entries = current_user.entries.skinny.where("title ILIKE ?", "%#{query}%")
+    @entries = current_user.entries.skinny.where("search_text ILIKE ?", "%#{query}%")
     respond_to do |format|
       format.html
       format.json {

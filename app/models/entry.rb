@@ -6,6 +6,7 @@
 #  project_id         :integer
 #  guid               :string(36)      not null
 #  title              :string(255)     not null
+#  search_text        :string(255)
 #  encrypted_username :string(255)
 #  encrypted_password :string(255)
 #  encrypted_url      :string(255)
@@ -37,7 +38,7 @@ class Entry < ActiveRecord::Base
 
   delegate :name, :guid, :to => :project, :prefix => true
 
-  before_validation :make_guid
+  before_validation :make_guid, :set_search_text
 
   validates :title, :presence => true
   validates :guid, :presence => true
@@ -50,6 +51,10 @@ class Entry < ActiveRecord::Base
   private
     def make_guid
       self.guid = UUIDTools::UUID.random_create.to_s if guid.blank?
+    end
+
+    def set_search_text
+      self.search_text = "#{self.project_name} #{self.title}"
     end
 
   class << self

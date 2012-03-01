@@ -37,7 +37,7 @@ var APP = (function($) {
         $('a[rel=tooltip]').tooltip({ placement:'bottom' });
         $(document).bind('keydown', 'shift+l', onSearchFocus);
         $(window)
-            .on('scroll', scrollsies)
+            .on('scroll', scrollsies);
     }
     function open(e) {
         e.preventDefault();
