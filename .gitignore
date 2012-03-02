@@ -15,3 +15,6 @@ solr/pids
 public/system
 
 rails_best_practices_output.html
+
+Capfile
+config/deploy.rb
