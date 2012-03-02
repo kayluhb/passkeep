@@ -40,8 +40,9 @@ class UsersController < ApplicationController
 
   def destroy
     authorize! :destroy, @user
-    @user.destroy
-    redirect_to(users_path, :notice => "Awesome. You deleted #{@user.title}")
+    @user.destroy unless @user.super_user
+    notice = !@user.super_user ? "Awesome. You deleted #{@user.title}" : "Woah. Not so fast. They're a super user"
+    redirect_to(users_path, :notice => notice)
   end
 
   def search
