@@ -15,7 +15,11 @@ Passkeep::Application.configure do
   config.assets.compress = true
 
   # Don't fallback to assets pipeline if a precompiled asset is missed
-  config.assets.compile = false
+  config.assets.compile = true
+
+  config.assets.paths << File.join(Rails.root, 'app', 'assets', 'javascripts', 'app')
+  config.assets.paths << File.join(Rails.root, 'app', 'assets', 'javascripts', 'admin')
+  config.assets.paths << File.join(Rails.root, 'app', 'assets', 'javascripts', 'libs')
 
   # Generate digests for assets URLs
   config.assets.digest = true
