@@ -17,7 +17,6 @@ var PROJECTS = (function($) {
         $tags.find('.' + on).each(function(idx, el){
             tags[tags.length] = $(el).parent().data('name');
         });
-        
         $list.fadeTo(100, 0, onListOut);
     }
     function onListOut() {
@@ -27,7 +26,11 @@ var PROJECTS = (function($) {
     function onReturn(r) {
         loading = false;
         $list.children().remove();
-        _.each(r, function(el){ $list.append(tmpl(el)); });
+        if (r.length > 0) {
+            _.each(r, function(el){ $list.append(tmpl(el)); });
+        } else {
+            $list.append('<li><a href="javascript:;">No secrets have all those tags.</a></li>');
+        }
         $list.fadeTo(100, 1);
     }
     // Call the init function on load

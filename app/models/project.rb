@@ -46,7 +46,7 @@ class Project < ActiveRecord::Base
 
   class << self
     def skinny
-      select("projects.name, projects.id")
+      select("projects.name, projects.guid, projects.id")
     end
 
     def ordered
