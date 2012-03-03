@@ -144,6 +144,7 @@ footer { bottom:20px; left:30px; position:absolute; }
 .entry-info { margin:0 10px 10px 20px; }
 .delete { float:right; }
 .ava { @include border-radius(50%); }
+#logo { background:url(../images/logo.png) no-repeat 8px 8px; padding-left:34px; }
 
 @media print {
   * { background:transparent !important; color:black !important; box-shadow:none !important; text-shadow:none !important; filter:none !important; -ms-filter:none !important; } 
