@@ -26,3 +26,4 @@
 .index-tabs.index-stacked > li:last-child  { @include border-radius(0 0 4px 4px); }
 
 .index-tabs > li.on { background:whiteSmoke; margin:10px 0; @include border-radius(4px); }
+.index-tabs .details { color:#999; font-size:12px; }

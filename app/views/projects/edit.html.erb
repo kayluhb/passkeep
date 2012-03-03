@@ -1,6 +1,6 @@
-<% title "Editing #{@project.name} "%>
+<% title "#{@project.name} "%>
 
-<h1>Editing <%= @project.name %></h1>
+<h1><%= @project.name %></h1>
 
 <%= render 'form', :project => @project %>
 
@@ -24,7 +24,7 @@
     </ul>
     &nbsp;
     <h5>People with Access</h5>
-    <% @project.users.each do |u| %>
+    <% @project.users.skinny.ordered.each do |u| %>
     <%= u.full_name %><br/>
     <% end %>
   </div>

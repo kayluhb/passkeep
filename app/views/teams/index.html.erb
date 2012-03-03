@@ -25,7 +25,7 @@
     <ul class="index index-tabs index-stacked">
       <% @teams.each do |e| %>
       <li>
-      <%= link_to e.name, edit_team_path(e) %>
+      <%= link_to "#{e.name}: <span class='details'>#{pluralize(e.users.length, 'member')} - #{pluralize(e.projects.length, 'bucket')}</span>".html_safe, edit_team_path(e) %>
       </li>
       <% end %>
     </ul>

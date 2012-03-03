@@ -2,7 +2,7 @@
 
 <div class="row">
   <div class="span10">
-    <h1>Secrets</h1>
+    <h1>Secrets<%= " tagged '#{@tag_name}'" unless @tag_name.blank? %></h1>
   </div>
   <div class="span2">
     <%= link_to "add a secret", new_entry_path, :class => "btn btn-primary", :title => "add a secret" %>

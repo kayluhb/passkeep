@@ -96,7 +96,7 @@ class User < ActiveRecord::Base
     end
 
     def skinny
-      select("users.id, guid, email, first_name, last_name")
+      select("users.id, users.guid, email, users.first_name, users.last_name")
     end
   end
 end
