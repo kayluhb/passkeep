@@ -17,8 +17,10 @@ var PROJECTS = (function($) {
         $tags.find('.' + on).each(function(idx, el){
             tags[tags.length] = $(el).parent().data('name');
         });
-        console.log(TAGGED_PATH, tags);
-        $list.slideUp();
+        
+        $list.fadeTo(100, 0, onListOut);
+    }
+    function onListOut() {
         $.ajax({ url:TAGGED_PATH, data:{ tags: tags.join(',') } })
             .success(onReturn);
     }
@@ -26,7 +28,7 @@ var PROJECTS = (function($) {
         loading = false;
         $list.children().remove();
         _.each(r, function(el){ $list.append(tmpl(el)); });
-        $list.slideDown();
+        $list.fadeTo(100, 1);
     }
     // Call the init function on load
     $(init);

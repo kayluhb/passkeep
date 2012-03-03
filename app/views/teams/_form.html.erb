@@ -21,12 +21,12 @@
       </div>
     </div>
     <div id="project-list" class="span6 team-list">
-      <h4>Projects</h4>
+      <h4>Buckets</h4>
       <div class="well">
         <ul><% team.projects.each do |p| %>
           <li data-id="<%= p.id %>"><a class="close" title="remove">&times;</a> <%= p.name %> </li>
         <% end %></ul>
-        <input type="search" placeholder="Search for a project" />
+        <input type="search" placeholder="Search for a bucket" />
         <%= f.hidden_field :project_tokens %>
       </div>
     </div>

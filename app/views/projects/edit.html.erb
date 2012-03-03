@@ -23,6 +23,10 @@
       <% end %>
     </ul>
     &nbsp;
+    <h5>People with Access</h5>
+    <% @project.users.each do |u| %>
+    <%= u.full_name %><br/>
+    <% end %>
   </div>
 </div>
 <%= content_for :js do %>

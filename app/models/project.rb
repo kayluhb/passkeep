@@ -20,6 +20,7 @@ class Project < ActiveRecord::Base
   has_many :entries
   has_many :team_projects
   has_many :teams, :through => :team_projects
+  has_many :users, :through => :teams, :uniq => true
 
   attr_accessible :name, :status_id, :default_team
 
