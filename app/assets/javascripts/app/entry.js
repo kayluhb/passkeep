@@ -29,8 +29,8 @@ var ENTRY = (function($) {
     }
     function rando(str) {
         var idx = Math.floor(Math.random() * str.length);
-		    return str.substring(idx, idx + 1);
-		}
+        return str.substring(idx, idx + 1);
+    }
     function suggest() {
         var suggestions = $('#entry_url').val().split('http://').join('').split('https://').join('').split('.');
         suggestions.push($et.val());

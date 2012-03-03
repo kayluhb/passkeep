@@ -25,6 +25,7 @@
             <ul class="dropdown-menu">
               <li><%= link_to('<i class="icon-edit"></i> Edit your account'.html_safe, edit_user_path(current_user)) %></li>
               <% if can? :manage, User %><li><%= link_to('<i class="icon-pencil"></i> Users'.html_safe, users_path) %></li><% end %>
+              <% if can? :manage, EntryImport %><li><%= link_to('Import Secrets'.html_safe, new_entry_import_path) %></li><% end %>
               <li class="divider"></li>
               <li><%= link_to('Logout', destroy_user_session_path, :method => :delete) %></li>
             </ul>

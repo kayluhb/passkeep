@@ -16,7 +16,7 @@ if Rails.env.development?
   # Users
   u = Factory(:user, :email => 'admin@passkeep.com', :super_user => true)
   puts "created #{u.email}"
-
+=begin
   p1 = Factory(:project)
   puts "Added a project"
 
@@ -37,7 +37,7 @@ if Rails.env.development?
   end
 
   Factory(:team, :project_ids => [p1.id, p2.id], :user_ids => [u.id])
-
+=end
   puts "-------------------------------------------------------------------------------"
   puts " Seeded like a boss."
   puts "-------------------------------------------------------------------------------"

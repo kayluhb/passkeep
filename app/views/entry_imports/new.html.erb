@@ -1,0 +1,23 @@
+<% title "Import secrets" %>
+
+<h1>Import secrets</h1>
+
+<%= form_for @entry_import do |f| %>
+  <div class="well">
+    <%= render 'shared/errors', :m => @entry_import %>
+    <p>
+        <%= f.label :team_id, "Add to team" %>
+        <%= f.select :team_id, current_user.teams.ordered.collect {|c| [ c.name, c.id ] } %>
+    </p>
+    <p>
+      <%= f.file_field :attachment, :class => 'attachment' %><br />
+      <%= f.hidden_field :retained_attachment %>
+    </p>
+  </div>
+  <p class="form-actions">
+    <button class="btn btn-primary">Save</button>
+  </p>
+<% end %>
+<%= content_for :js do %>
+  <%= javascript_include_tag 'app/entry_import' %>
+<% end %>

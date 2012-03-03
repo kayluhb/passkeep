@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120216002547) do
+ActiveRecord::Schema.define(:version => 20120303210847) do
 
   create_table "entries", :force => true do |t|
     t.integer  "project_id"
@@ -31,6 +31,16 @@ ActiveRecord::Schema.define(:version => 20120216002547) do
 
   add_index "entries", ["guid"], :name => "index_entries_on_guid", :unique => true
   add_index "entries", ["project_id"], :name => "index_entries_on_project_id"
+
+  create_table "entry_imports", :force => true do |t|
+    t.integer  "team_id"
+    t.string   "attachment_uid"
+    t.string   "attachment_name"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+  end
+
+  add_index "entry_imports", ["team_id"], :name => "index_entry_imports_on_team_id"
 
   create_table "projects", :force => true do |t|
     t.string   "guid",       :limit => 36,                :null => false

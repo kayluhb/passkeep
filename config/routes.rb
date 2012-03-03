@@ -13,6 +13,8 @@ Passkeep::Application.routes.draw do
     post 'paginate', :on => :collection
   end
 
+  resources :entry_imports, :only => [:new, :create]
+
   resources :projects, :except => [:show] do
     post 'search', :on => :collection
     post 'tagged_entries', :on => :member
