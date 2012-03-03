@@ -15,7 +15,7 @@
         <p>
             <%= f.text_field :last_name, :required => 'required', :placeholder => "last name" %></p>
         <p>
-          <%= f.password_field :password, :placeholder => 'password' %></p>
+          <%= f.password_field :password, :placeholder => 'password' %><br/> <span class="help-block">(at least 8 chars.)</span></p>
         <p>
           <%= f.password_field :password_confirmation, :placeholder => 'password confirmation' %></p>
         <p>
@@ -39,7 +39,7 @@
           <%= f.hidden_field :team_tokens %>
           <input type="search" placeholder="Search for a team" />
         </div>
-        <h5>This user can access these projects:</h5>
+        <h5><% if user == current_user %>You<% else %>This user<% end %> can access these projects:</h5>
         <% user.projects.skinny.ordered.each_with_index do |p, idx| %><%= ", " unless idx == 0 %><%= link_to p.name, edit_project_path(p) %><% end %>
       </div>
       <% end %>
