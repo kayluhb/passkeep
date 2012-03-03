@@ -40,6 +40,8 @@ class User < ActiveRecord::Base
   has_many :teams, :through => :team_members
   has_many :projects, :through => :teams, :uniq => true
   has_many :entries, :through => :projects, :uniq => true
+#  has_many :edit_teams, :class_name => "Team", :source => :user,
+#           :through => :team_members, :conditions => "role_id = 2"
 
   attr_accessible :email, :password, :password_confirmation, :remember_me,
                   :first_name, :last_name, :full_name, :time_zone, :team_tokens,

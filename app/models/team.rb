@@ -22,7 +22,7 @@ class Team < ActiveRecord::Base
   has_many :users, :through => :team_members, :order => 'first_name'
   has_many :projects, :through => :team_projects, :order => 'name'
 
-  attr_accessible :name, :project_tokens, :user_tokens
+  attr_accessible :name, :project_tokens, :user_tokens, :role_id
 
   before_validation :make_guid
 
@@ -57,6 +57,10 @@ class Team < ActiveRecord::Base
     end
 
   class << self
+    def editable
+      where(:role_id => ROLES['Read and edit'])
+    end
+
     def ordered
       order("teams.name")
     end

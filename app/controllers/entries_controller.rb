@@ -1,6 +1,7 @@
 class EntriesController < ApplicationController
 
-  before_filter :set_entry, :only => [:edit, :show, :update, :confirm_destroy, :destroy]
+  before_filter :set_entry, :only => [:edit, :show, :update, :confirm_destroy,
+                                      :destroy]
 
   def index
     @entries = current_user.entries.ordered.paginate :page => params[:page]
