@@ -26,7 +26,7 @@
       <% end %>
       <% unless @entry.url.blank? %>
       <p>
-        <strong>URL:</strong> <%= @entry.url %> <%= clippy @entry.url, 'url' %>
+        <strong>URL:</strong> <%= external_link @entry.url %> <%= clippy @entry.url, 'url' %>
       </p>
       <% end %>
       <% unless @entry.notes.blank? %>

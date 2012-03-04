@@ -17,6 +17,10 @@ var APP = (function($) {
         STOPS: ['about', 'are', 'com', 'for', 'from', 'how', 'htt', 'http', 'https', 'org', 'that', 'the', 'this', 'was', 'what', 'when', 'where', 'who', 'will', 'with', 'the', 'www']
     }, $el, $win = $(window), $search = $('#search'), $fixed = $('.navbar,#content'), on = 'on';
     // Public functions
+    app.externalLink = function(link) {
+        if (link.indexOf('http') < 0) { link = 'http://' + link; }
+        return '<a href="' + link + '" target="_blank">' + link.split('http://').join('').split('https://').join('') + '</a>';
+    };
     // Private functions
     function init() {
         $('a[href=#]').attr('href', 'javascript:;');

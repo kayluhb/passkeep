@@ -24,6 +24,11 @@ var ENTRY = (function($) {
                  rando(uppers),
                  rando(others),
                  rando(uppers),
+                 rando(others),
+                 rando(lowers),
+                 rando(uppers),
+                 rando(others),
+                 rando(uppers),
                  rando(others)];
         $('#entry_password').val(_.shuffle(chars).join(''));
     }

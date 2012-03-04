@@ -54,7 +54,7 @@ class Entry < ActiveRecord::Base
     end
 
     def set_search_text
-      self.search_text = "#{self.project_name} #{self.title}"
+      self.search_text = "#{self.project_name} #{self.title}".downcase
     end
 
   class << self
@@ -64,7 +64,7 @@ class Entry < ActiveRecord::Base
     end
 
     def skinny
-      select("entries.title, entries.guid, entries.id, entries.project_id")
+      select("entries.title, entries.guid, entries.id, entries.project_id, search_text")
     end
   end
 
