@@ -9,6 +9,7 @@
  *= require index_list
  *= require entries
  *= require users
+ *= require print
 */
 @import 'mixins';
 /* HTML5 display definitions */
@@ -147,18 +148,18 @@ footer { bottom:20px; left:30px; position:absolute; }
 #logo { background:url(../images/logo.png) no-repeat 14px 8px; font-weight:400; padding-left:40px; }
 #logo:hover { opacity:0.9; @include transition-property(opacity); }
 
-@media print {
-  * { background:transparent !important; color:black !important; box-shadow:none !important; text-shadow:none !important; filter:none !important; -ms-filter:none !important; } 
-  a, a:visited { text-decoration:underline; }
-  a[href]:after { content:" (" attr(href) ")"; }
-  abbr[title]:after { content:" (" attr(title) ")"; }
-  .ir a:after, a[href^="javascript:"]:after, a[href^="#"]:after { content:""; }
-  pre, blockquote { border:1px solid #999; page-break-inside:avoid; }
-  thead { display:table-header-group; } 
-  tr, img { page-break-inside:avoid; }
-  img { max-width:100% !important; }
-  @page { margin:0.5cm; }
-  p, h2, h3 { orphans:3; widows:3; }
-  h2, h3 { page-break-after:avoid; }
+@-moz-keyframes poof {
+    from { background-position:0 0; }
+    to { background-position:0 -192px; }
 }
+@-webkit-keyframes poof {
+    from { background-position:0 0; }
+    to { background-position:0 -192px; }
+}
+.poof { background:url(../images/poof.png) no-repeat; height:32px; position:absolute; top:0; right:0; width:32px; z-index:99999;
+   -moz-animation:poof .6s steps(6, end) 1 forwards;
+-webkit-animation:poof .6s steps(6, end) 1 forwards;
+}
+
+
 

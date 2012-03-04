@@ -4,6 +4,7 @@
 //= require ../libs/chosen.jquery.min
 //= require ../libs/jquery-ui-1.8.17.custom.min
 //= require ../libs/jquery.hotkeys
+//= require ../libs/request-interval
 //= require ./team-list
 
 // usage: log('inside coolFunc', this, arguments);

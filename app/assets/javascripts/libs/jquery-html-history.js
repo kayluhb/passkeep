@@ -108,14 +108,14 @@
 // requestAnimationFrame() shim by Paul Irish
 // http://paulirish.com/2011/requestanimationframe-for-smart-animating/
 window.requestAnimFrame = (function() {
-	return  window.requestAnimationFrame   || 
-			window.webkitRequestAnimationFrame || 
-			window.mozRequestAnimationFrame    || 
-			window.oRequestAnimationFrame      || 
-			window.msRequestAnimationFrame     || 
-			function(/* function */ callback, /* DOMElement */ element){
+    return  window.requestAnimationFrame   || 
+            window.webkitRequestAnimationFrame || 
+            window.mozRequestAnimationFrame    || 
+            window.oRequestAnimationFrame      || 
+            window.msRequestAnimationFrame     || 
+            function(/* function */ callback, /* DOMElement */ element){
           window.setTimeout(callback, 1000 / 60);
-			};
+            };
 })();
 /**
  * Behaves the same as setInterval except uses requestAnimationFrame() where possible for better performance
@@ -123,23 +123,23 @@ window.requestAnimFrame = (function() {
  * @param {int} delay The delay in milliseconds
  */
 window.requestInterval = function(fn, delay) {
-	if( !window.requestAnimationFrame     && 
-		!window.webkitRequestAnimationFrame && 
-		!window.mozRequestAnimationFrame    && 
-		!window.oRequestAnimationFrame      && 
-		!window.msRequestAnimationFrame)
-			return window.setInterval(fn, delay);
-	var start = new Date().getTime(),
-		handle = new Object();
-	function loop() {
-		var current = new Date().getTime(),
-			delta = current - start;
-		if(delta >= delay) {
-			fn.call();
-			start = new Date().getTime();
-		}
-		handle.value = requestAnimFrame(loop);
-	};
-	handle.value = requestAnimFrame(loop);
-	return handle;
+    if( !window.requestAnimationFrame     && 
+        !window.webkitRequestAnimationFrame && 
+        !window.mozRequestAnimationFrame    && 
+        !window.oRequestAnimationFrame      && 
+        !window.msRequestAnimationFrame)
+            return window.setInterval(fn, delay);
+    var start = new Date().getTime(),
+        handle = new Object();
+    function loop() {
+        var current = new Date().getTime(),
+            delta = current - start;
+        if(delta >= delay) {
+            fn.call();
+            start = new Date().getTime();
+        }
+        handle.value = requestAnimFrame(loop);
+    };
+    handle.value = requestAnimFrame(loop);
+    return handle;
 }

@@ -24,7 +24,15 @@ Call the teamList with $('jquery-selector').teamList({ url:'the-search-url' });
             $tokens.val(ids.join(','));
         }
         function onRemove(e) {
-            $(e.currentTarget).parent().remove();
+            var targ = $(e.currentTarget).parent(),
+            poof = $('<div class="poof"/>');
+            poof.css({ left:e.clientX - targ.width() * 0.5, top:e.clientY - targ.height() * 0.5 });
+            $('body').append(poof);
+            requestTimeout(function(){ poof.remove(); }, 1000);
+            targ.fadeTo(200, 0, function(){ onRemoveComplete(targ, poof); });
+        }
+        function onRemoveComplete(targ, poof) {
+            targ.remove();
             serialize();
         }
         function onSelect(e, ui) {

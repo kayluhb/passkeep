@@ -20,7 +20,7 @@
     <strong>Expiration:</strong> <%%= expiration %><br/>
     <%% } %>
     </p>
-    <%% if (tags) { %>
+    <%% if (tags.length > 0) { %>
     <strong>Tags:</strong>
       <%% _.each(tags, function(tag, idx) {
         %><%%= (idx !== 0 ? ', ' : '') + tag.name %><%% });
