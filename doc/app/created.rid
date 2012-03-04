@@ -1,0 +1,20 @@
+Sat, 03 Mar 2012 19:29:09 -0500
+doc/README_FOR_APP	Sun, 15 Jan 2012 17:28:09 -0500
+app/controllers/application_controller.rb	Sun, 26 Feb 2012 10:51:17 -0500
+app/controllers/entries_controller.rb	Sat, 03 Mar 2012 18:18:41 -0500
+app/controllers/entry_imports_controller.rb	Sat, 03 Mar 2012 17:09:32 -0500
+app/controllers/projects_controller.rb	Sat, 03 Mar 2012 16:01:07 -0500
+app/controllers/search_controller.rb	Sat, 03 Mar 2012 09:22:57 -0500
+app/controllers/teams_controller.rb	Sun, 26 Feb 2012 11:11:38 -0500
+app/controllers/users_controller.rb	Sat, 03 Mar 2012 09:22:57 -0500
+app/helpers/application_helper.rb	Sat, 03 Mar 2012 19:20:23 -0500
+app/helpers/users_helper.rb	Sat, 03 Mar 2012 15:14:47 -0500
+app/models/ability.rb	Sun, 26 Feb 2012 11:45:34 -0500
+app/models/entry.rb	Sat, 03 Mar 2012 18:27:10 -0500
+app/models/entry_import.rb	Sat, 03 Mar 2012 17:19:02 -0500
+app/models/project.rb	Sat, 03 Mar 2012 13:55:07 -0500
+app/models/settings.rb	Sat, 11 Feb 2012 10:44:52 -0500
+app/models/team.rb	Sat, 03 Mar 2012 15:41:22 -0500
+app/models/team_member.rb	Sun, 26 Feb 2012 10:40:47 -0500
+app/models/team_project.rb	Sun, 26 Feb 2012 10:40:47 -0500
+app/models/user.rb	Sat, 03 Mar 2012 15:41:55 -0500

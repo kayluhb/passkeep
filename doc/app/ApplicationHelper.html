@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+
+<title>module ApplicationHelper - Rails Application Documentation</title>
+
+<link type="text/css" media="screen" href="./rdoc.css" rel="stylesheet">
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "./";
+</script>
+
+<script type="text/javascript" charset="utf-8" src="./js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/navigation.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/search_index.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/search.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/searcher.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/darkfish.js"></script>
+
+
+<body id="top" class="module">
+<nav id="metadata">
+  <nav id="home-section" class="section">
+  <h3 class="section-header">
+    <a href="./index.html">Home</a>
+    <a href="./table_of_contents.html#classes">Classes</a>
+    <a href="./table_of_contents.html#methods">Methods</a>
+  </h3>
+</nav>
+
+
+  <nav id="search-section" class="section project-section" class="initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <h3 class="section-header">
+      <input type="text" name="search" placeholder="Search" id="search-field"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </h3>
+  </form>
+
+  <ul id="search-results" class="initially-hidden"></ul>
+</nav>
+
+
+  <div id="file-metadata">
+    <nav id="file-list-section" class="section">
+  <h3 class="section-header">Defined In</h3>
+  <ul>
+    <li>app/helpers/application_helper.rb
+  </ul>
+</nav>
+
+    
+  </div>
+
+  <div id="class-metadata">
+    
+    
+    
+    <!-- Method Quickref -->
+<nav id="method-list-section" class="section">
+  <h3 class="section-header">Methods</h3>
+
+  <ul class="link-list">
+    
+    <li><a href="#method-i-clippy">#clippy</a>
+    
+    <li><a href="#method-i-external_link">#external_link</a>
+    
+    <li><a href="#method-i-on_class">#on_class</a>
+    
+    <li><a href="#method-i-title">#title</a>
+    
+  </ul>
+</nav>
+
+  </div>
+
+  <div id="project-metadata">
+    <nav id="fileindex-section" class="section project-section">
+  <h3 class="section-header">Pages</h3>
+
+  <ul>
+  
+    <li class="file"><a href="./doc/README_FOR_APP.html">README_FOR_APP</a>
+  
+  </ul>
+</nav>
+
+    <nav id="classindex-section" class="section project-section">
+  <h3 class="section-header">Class and Module Index</h3>
+
+  <ul class="link-list">
+  
+    <li><a href="./Ability.html">Ability</a>
+  
+    <li><a href="./ApplicationController.html">ApplicationController</a>
+  
+    <li><a href="./ApplicationHelper.html">ApplicationHelper</a>
+  
+    <li><a href="./EntriesController.html">EntriesController</a>
+  
+    <li><a href="./Entry.html">Entry</a>
+  
+    <li><a href="./EntryImport.html">EntryImport</a>
+  
+    <li><a href="./EntryImportsController.html">EntryImportsController</a>
+  
+    <li><a href="./Project.html">Project</a>
+  
+    <li><a href="./ProjectsController.html">ProjectsController</a>
+  
+    <li><a href="./SearchController.html">SearchController</a>
+  
+    <li><a href="./Settings.html">Settings</a>
+  
+    <li><a href="./Team.html">Team</a>
+  
+    <li><a href="./TeamMember.html">TeamMember</a>
+  
+    <li><a href="./TeamProject.html">TeamProject</a>
+  
+    <li><a href="./TeamsController.html">TeamsController</a>
+  
+    <li><a href="./User.html">User</a>
+  
+    <li><a href="./UsersController.html">UsersController</a>
+  
+    <li><a href="./UsersHelper.html">UsersHelper</a>
+  
+  </ul>
+</nav>
+
+  </div>
+</nav>
+
+<div id="documentation">
+  <h1 class="module">module ApplicationHelper</h1>
+
+  <div id="description" class="description">
+    
+  </div><!-- description -->
+
+  
+  
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+
+    <!-- Methods -->
+    
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Public Instance Methods</h3>
+
+    
+      <div id="method-i-clippy" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">clippy</span><span
+            class="method-args">(text, id, bgcolor='</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="clippy-source">
+            <pre><span class="ruby-comment"># File app/helpers/application_helper.rb, line 3</span>
+  <span class="ruby-keyword">def</span> <span class="ruby-identifier">clippy</span>(<span class="ruby-identifier">text</span>, <span class="ruby-identifier">id</span>, <span class="ruby-identifier">bgcolor</span>=<span class="ruby-string">'#F5F5F5'</span>)
+    <span class="ruby-keyword">return</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">text</span>.<span class="ruby-identifier">blank?</span>
+    <span class="ruby-identifier">html</span> = <span class="ruby-string">&quot;      &lt;object classid=&quot;clsid:d27cdb6e-ae6d-11cf-96b8-444553540000&quot; width=&quot;110&quot; height=&quot;14&quot; id=&quot;clippy-#{id}&quot; &gt;
+      &lt;param name=&quot;movie&quot; value=&quot;/swfs/clippy.swf&quot; /&gt;
+      &lt;param name=&quot;allowScriptAccess&quot; value=&quot;always&quot; /&gt;
+      &lt;param name=&quot;quality&quot; value=&quot;high&quot; /&gt;
+      &lt;param name=&quot;scale&quot; value=&quot;noscale&quot; /&gt;
+      &lt;param name=&quot;FlashVars&quot; value=&quot;text=#{text}&quot; /&gt;
+      &lt;param name=&quot;bgcolor&quot; value=&quot;#{bgcolor}&quot; /&gt;
+      &lt;embed src=&quot;/swfs/clippy.swf&quot; width=&quot;110&quot; height=&quot;14&quot; name=&quot;clippy-#{id}&quot; quality=&quot;high&quot; allowScriptAccess=&quot;always&quot; type=&quot;application/x-shockwave-flash&quot; pluginspage=&quot;http://www.macromedia.com/go/getflashplayer&quot; FlashVars=&quot;text=#{text}&quot; bgcolor=&quot;#{bgcolor}&quot; /&gt;
+      &lt;/object&gt;
+&quot;</span>
+    <span class="ruby-identifier">html</span>.<span class="ruby-identifier">html_safe</span>
+  <span class="ruby-keyword">end</span></pre>
+          </div><!-- clippy-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- clippy-method -->
+
+    
+      <div id="method-i-external_link" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">external_link</span><span
+            class="method-args">(url, text="")</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="external_link-source">
+            <pre><span class="ruby-comment"># File app/helpers/application_helper.rb, line 19</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">external_link</span>(<span class="ruby-identifier">url</span>, <span class="ruby-identifier">text</span>=<span class="ruby-string">&quot;&quot;</span>)
+  <span class="ruby-identifier">text</span> = <span class="ruby-identifier">url</span>.<span class="ruby-identifier">gsub</span>(<span class="ruby-string">'http://'</span>, <span class="ruby-string">''</span>).<span class="ruby-identifier">gsub</span>(<span class="ruby-string">'https://'</span>, <span class="ruby-string">''</span>).<span class="ruby-identifier">gsub</span>(<span class="ruby-string">'www.'</span>, <span class="ruby-string">''</span>) <span class="ruby-keyword">if</span> <span class="ruby-identifier">text</span> <span class="ruby-operator">==</span> <span class="ruby-string">&quot;&quot;</span>
+  <span class="ruby-identifier">url</span> = <span class="ruby-node">&quot;http://#{url}&quot;</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">url</span>.<span class="ruby-identifier">index</span>(<span class="ruby-string">&quot;http&quot;</span>).<span class="ruby-identifier">blank?</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-node">&quot;&lt;a href='#{url}'&gt;#{text}&lt;/a&gt;&quot;</span>.<span class="ruby-identifier">html_safe</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- external_link-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- external_link-method -->
+
+    
+      <div id="method-i-on_class" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">on_class</span><span
+            class="method-args">(path)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="on_class-source">
+            <pre><span class="ruby-comment"># File app/helpers/application_helper.rb, line 25</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">on_class</span> <span class="ruby-identifier">path</span>
+  <span class="ruby-string">' class=active'</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">request</span>.<span class="ruby-identifier">fullpath</span>.<span class="ruby-identifier">starts_with?</span> <span class="ruby-identifier">path</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- on_class-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- on_class-method -->
+
+    
+      <div id="method-i-title" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">title</span><span
+            class="method-args">(page_title)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="title-source">
+            <pre><span class="ruby-comment"># File app/helpers/application_helper.rb, line 29</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">title</span>(<span class="ruby-identifier">page_title</span>)
+  <span class="ruby-keyword">return</span> <span class="ruby-identifier">content_for</span>(<span class="ruby-value">:title</span>) { <span class="ruby-node">&quot;#{page_title.to_s} : Passkeep&quot;</span> } <span class="ruby-keyword">if</span> <span class="ruby-ivar">@company</span>
+  <span class="ruby-identifier">content_for</span>(<span class="ruby-value">:title</span>) { <span class="ruby-node">&quot;#{page_title.to_s} : Passkeep&quot;</span> }
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- title-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- title-method -->
+
+    
+    </section><!-- public-instance-method-details -->
+  
+  </section><!-- 5Buntitled-5D -->
+
+</div><!-- documentation -->
+
+
+<footer id="validator-badges">
+  <p><a href="http://validator.w3.org/check/referer">[Validate]</a>
+  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 3.12.
+  <p>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish Rdoc Generator</a> 3.
+</footer>
+

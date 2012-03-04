@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+
+<title>class EntryImport - Rails Application Documentation</title>
+
+<link type="text/css" media="screen" href="./rdoc.css" rel="stylesheet">
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "./";
+</script>
+
+<script type="text/javascript" charset="utf-8" src="./js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/navigation.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/search_index.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/search.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/searcher.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/darkfish.js"></script>
+
+
+<body id="top" class="class">
+<nav id="metadata">
+  <nav id="home-section" class="section">
+  <h3 class="section-header">
+    <a href="./index.html">Home</a>
+    <a href="./table_of_contents.html#classes">Classes</a>
+    <a href="./table_of_contents.html#methods">Methods</a>
+  </h3>
+</nav>
+
+
+  <nav id="search-section" class="section project-section" class="initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <h3 class="section-header">
+      <input type="text" name="search" placeholder="Search" id="search-field"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </h3>
+  </form>
+
+  <ul id="search-results" class="initially-hidden"></ul>
+</nav>
+
+
+  <div id="file-metadata">
+    <nav id="file-list-section" class="section">
+  <h3 class="section-header">Defined In</h3>
+  <ul>
+    <li>app/models/entry_import.rb
+  </ul>
+</nav>
+
+    
+  </div>
+
+  <div id="class-metadata">
+    
+    <nav id="parent-class-section" class="section">
+  <h3 class="section-header">Parent</h3>
+  
+  <p class="link">ActiveRecord::Base
+  
+</nav>
+
+    
+    <!-- Method Quickref -->
+<nav id="method-list-section" class="section">
+  <h3 class="section-header">Methods</h3>
+
+  <ul class="link-list">
+    
+    <li><a href="#method-i-process_import">#process_import</a>
+    
+    <li><a href="#method-i-process_row">#process_row</a>
+    
+  </ul>
+</nav>
+
+  </div>
+
+  <div id="project-metadata">
+    <nav id="fileindex-section" class="section project-section">
+  <h3 class="section-header">Pages</h3>
+
+  <ul>
+  
+    <li class="file"><a href="./doc/README_FOR_APP.html">README_FOR_APP</a>
+  
+  </ul>
+</nav>
+
+    <nav id="classindex-section" class="section project-section">
+  <h3 class="section-header">Class and Module Index</h3>
+
+  <ul class="link-list">
+  
+    <li><a href="./Ability.html">Ability</a>
+  
+    <li><a href="./ApplicationController.html">ApplicationController</a>
+  
+    <li><a href="./ApplicationHelper.html">ApplicationHelper</a>
+  
+    <li><a href="./EntriesController.html">EntriesController</a>
+  
+    <li><a href="./Entry.html">Entry</a>
+  
+    <li><a href="./EntryImport.html">EntryImport</a>
+  
+    <li><a href="./EntryImportsController.html">EntryImportsController</a>
+  
+    <li><a href="./Project.html">Project</a>
+  
+    <li><a href="./ProjectsController.html">ProjectsController</a>
+  
+    <li><a href="./SearchController.html">SearchController</a>
+  
+    <li><a href="./Settings.html">Settings</a>
+  
+    <li><a href="./Team.html">Team</a>
+  
+    <li><a href="./TeamMember.html">TeamMember</a>
+  
+    <li><a href="./TeamProject.html">TeamProject</a>
+  
+    <li><a href="./TeamsController.html">TeamsController</a>
+  
+    <li><a href="./User.html">User</a>
+  
+    <li><a href="./UsersController.html">UsersController</a>
+  
+    <li><a href="./UsersHelper.html">UsersHelper</a>
+  
+  </ul>
+</nav>
+
+  </div>
+</nav>
+
+<div id="documentation">
+  <h1 class="class">class EntryImport</h1>
+
+  <div id="description" class="description">
+    
+  </div><!-- description -->
+
+  
+  
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+
+    <!-- Methods -->
+    
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Public Instance Methods</h3>
+
+    
+      <div id="method-i-process_import" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">process_import</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="process_import-source">
+            <pre><span class="ruby-comment"># File app/models/entry_import.rb, line 26</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">process_import</span>
+  <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;PROCESS IMPORT #{attachment.path}&quot;</span>
+  <span class="ruby-identifier">open</span>(<span class="ruby-keyword">self</span>.<span class="ruby-identifier">attachment</span>.<span class="ruby-identifier">path</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">f</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">f</span>.<span class="ruby-identifier">each_line</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">line</span><span class="ruby-operator">|</span>
+      <span class="ruby-constant">CSV</span>.<span class="ruby-identifier">parse</span>(<span class="ruby-identifier">line</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">row</span><span class="ruby-operator">|</span>
+        <span class="ruby-keyword">begin</span>
+          <span class="ruby-identifier">ret</span> = <span class="ruby-keyword">self</span>.<span class="ruby-identifier">process_row</span>(<span class="ruby-identifier">row</span>)
+        <span class="ruby-keyword">rescue</span>
+          <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;can't process this one #{row[0]}&quot;</span>
+        <span class="ruby-keyword">end</span>
+      <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">self</span>.<span class="ruby-identifier">destroy</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- process_import-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- process_import-method -->
+
+    
+      <div id="method-i-process_row" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">process_row</span><span
+            class="method-args">(row)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="process_row-source">
+            <pre><span class="ruby-comment"># File app/models/entry_import.rb, line 42</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">process_row</span>(<span class="ruby-identifier">row</span>)
+  <span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;PROCESS ROW&quot;</span>
+  <span class="ruby-identifier">project</span> = <span class="ruby-constant">Project</span>.<span class="ruby-identifier">find_by_name</span>(<span class="ruby-identifier">row</span>[<span class="ruby-value">0</span>].<span class="ruby-identifier">strip</span>)
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">project</span>.<span class="ruby-identifier">nil?</span>
+    <span class="ruby-identifier">project</span> = <span class="ruby-constant">Project</span>.<span class="ruby-identifier">new</span>({ <span class="ruby-value">:name</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">row</span>[<span class="ruby-value">0</span>].<span class="ruby-identifier">strip</span> })
+    <span class="ruby-identifier">project</span>.<span class="ruby-identifier">save</span>
+    <span class="ruby-identifier">team</span>.<span class="ruby-identifier">projects</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">project</span>
+    <span class="ruby-identifier">team</span>.<span class="ruby-identifier">save</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-identifier">h</span> = {
+    <span class="ruby-value">:title</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">row</span>[<span class="ruby-value">1</span>],
+    <span class="ruby-value">:username</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">row</span>[<span class="ruby-value">2</span>],
+    <span class="ruby-value">:password</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">row</span>[<span class="ruby-value">3</span>],
+    <span class="ruby-value">:url</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">row</span>[<span class="ruby-value">4</span>],
+  }
+  <span class="ruby-identifier">puts</span> <span class="ruby-identifier">h</span>.<span class="ruby-identifier">to_yaml</span>
+  <span class="ruby-identifier">entry</span> = <span class="ruby-constant">Entry</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">h</span>)
+  <span class="ruby-identifier">entry</span>.<span class="ruby-identifier">project</span> = <span class="ruby-identifier">project</span>
+  <span class="ruby-identifier">entry</span>.<span class="ruby-identifier">save</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- process_row-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- process_row-method -->
+
+    
+    </section><!-- public-instance-method-details -->
+  
+  </section><!-- 5Buntitled-5D -->
+
+</div><!-- documentation -->
+
+
+<footer id="validator-badges">
+  <p><a href="http://validator.w3.org/check/referer">[Validate]</a>
+  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 3.12.
+  <p>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish Rdoc Generator</a> 3.
+</footer>
+
