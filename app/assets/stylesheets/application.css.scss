@@ -106,8 +106,8 @@ td { vertical-align:top; }
 
 ::-moz-selection { background:#9CF9F9; color:#fff; text-shadow:none; }
 ::selection { background:#9CF9F9; color:#fff; text-shadow:none; }
-::-webkit-input-placeholder { color:#999999; }
-::-moz-placeholder { color:#999999; }
+::-webkit-input-placeholder { color:#999; }
+::-moz-placeholder { color:#999; }
 
 a:focus, button:focus, input:focus, label:focus, select:focus, textarea:focus {  }
 
@@ -129,7 +129,10 @@ a { @include transition; @include transition-property(#{"color, background-color
 
 .navbar { top:-65px; }
 .navbar.on { @include border-radius(none); @include drop-shadow; left:0; position:fixed; top:0; width:100%; @include transition; @include transition-property(top); z-index:99999; }
-.dropdown-menu li { margin:0; padding:0; }
+.navbar-search .search-query { width:134px; @include transition; @include transition-property(#{"width, background-color"}); }
+.navbar-search .search-query:focus { color:#999; width:234px; }
+
+dropdown-menu li { margin:0; padding:0; }
 .nav, .nav li { padding:0; }
 .nav li { background:none; }
 .pagination ul { @include no-shadow; padding:0; }
@@ -157,8 +160,8 @@ footer { bottom:20px; left:30px; position:absolute; }
     to { background-position:0 -192px; }
 }
 .poof { background:url(../images/poof.png) no-repeat; height:32px; position:absolute; top:0; right:0; width:32px; z-index:99999;
-   -moz-animation:poof .6s steps(6, end) 1 forwards;
--webkit-animation:poof .6s steps(6, end) 1 forwards;
+   -moz-animation:poof .4s steps(6, end) 1 forwards;
+-webkit-animation:poof .4s steps(6, end) 1 forwards;
 }
 
 
