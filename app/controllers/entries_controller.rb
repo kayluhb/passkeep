@@ -4,7 +4,9 @@ class EntriesController < ApplicationController
                                       :destroy]
 
   def index
-    @entries = current_user.entries.skinny.order(:search_text).paginate :page => params[:page]
+    @entries = current_user.entries.skinny.order(:search_text)
+    count = @entries.count(:distinct => true)
+    @entries = @entries.paginate(:page => params[:page], :total_entries => count)
     @tags = current_user.entries.tag_counts_on(:tags).order(:name)
   end
 
@@ -63,7 +65,8 @@ class EntriesController < ApplicationController
   def tagged
     @tag_name = params[:tag_name].to_s
     @entries = current_user.entries.tagged_with(@tag_name).order(:search_text)
-                           .paginate :page => params[:page]
+    count = @entries.count(:distinct => true)
+    @entries = @entries.paginate(:page => params[:page], :total_entries => count)
     @tags = current_user.entries.tag_counts_on(:tags).order(:name)
     render :index
   end

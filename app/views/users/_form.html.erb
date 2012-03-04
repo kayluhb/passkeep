@@ -39,10 +39,12 @@
           <%= f.hidden_field :team_tokens %>
           <input type="search" placeholder="Search for a team" />
         </div>
+        <% unless user.new_record? %>
         <div class="well">
           <h5><% if user == current_user %>You<% else %>This user<% end %> can access these projects:</h5>
           <% user.projects.skinny.ordered.each_with_index do |p, idx| %><%= ", " unless idx == 0 %><%= link_to p.name, edit_project_path(p) %><% end %>
         </div>
+        <% end %>
       </div>
       <% end %>
     </div>

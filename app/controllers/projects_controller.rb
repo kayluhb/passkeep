@@ -4,7 +4,9 @@ class ProjectsController < ApplicationController
                                         :destroy, :tagged_entries]
 
   def index
-    @projects = current_user.projects.ordered.paginate :page => params[:page]
+    @projects = current_user.projects.ordered
+    count = @projects.count(:distinct => true)
+    @projects = @projects.paginate(:page => params[:page], :total_entries => count)
   end
 
   def new
