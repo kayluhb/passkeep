@@ -1,5 +1,7 @@
 <% title "Editing #{@entry.title} "%>
 
+<%= render 'crumb', :entry => @entry %>
+
 <h1>Editing <%= @entry.title %></h1>
 
 <%= render 'form', :entry => @entry %>

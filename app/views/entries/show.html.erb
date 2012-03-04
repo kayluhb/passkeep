@@ -1,5 +1,7 @@
 <% title @entry.title + " - Entry" %>
 
+<%= render 'crumb', :entry => @entry %>
+
 <div class="row">
   <div class="span11">
     <h1><%= @entry.title %></h1>

@@ -27,6 +27,10 @@
     <% @project.users.skinny.ordered.each do |u| %>
     <%= u.full_name %><br/>
     <% end %>
+    <h5>Teams with Access</h5>
+    <% @project.teams.ordered.each do |t| %>
+    <%= link_to t.name, edit_team_path(t) %><br/>
+    <% end %>
   </div>
 </div>
 <%= content_for :js do %>

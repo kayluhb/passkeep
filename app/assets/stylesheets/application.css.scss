@@ -151,6 +151,8 @@ footer { bottom:20px; left:30px; position:absolute; }
 #logo { background:url(../images/logo.png) no-repeat 14px 8px; font-weight:400; padding-left:40px; }
 #logo:hover { opacity:0.9; @include transition-property(opacity); }
 
+.breadcrumb li { background:none; padding:0; }
+
 @-moz-keyframes poof {
     from { background-position:0 0; }
     to { background-position:0 -192px; }
