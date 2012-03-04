@@ -22,8 +22,11 @@ module ApplicationHelper
     return "<a href='#{url}'>#{text}</a>".html_safe
   end
 
-  def on_class path
-    ' class=active' if request.fullpath.starts_with? path
+  def on_class(path, exclude_path='')
+    cls = ' class=active'
+    if exclude_path.blank? || !request.fullpath.starts_with?(exclude_path)
+      return cls if request.fullpath.starts_with? path
+    end
   end
 
   def title(page_title)
