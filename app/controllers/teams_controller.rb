@@ -39,13 +39,16 @@ class TeamsController < ApplicationController
 
   def destroy
     authorize! :destroy, @team
-    @team.destroy
-    redirect_to(teams_path, :notice => "Awesome. You deleted #{@team.name}")
+    if @team.destroy
+      redirect_to(teams_path, :notice => "Awesome. You deleted #{@team.name}")
+    else
+      render :confirm_destroy
+    end
   end
 
   def search
     query = params[:term]
-    @teams = Team.where("name ILIKE ?", "%#{query}%")
+    @teams = Team.where("name ILIKE ?", "%#{query}%").where(:master => false)
     respond_to do |format|
       format.html
       format.json {

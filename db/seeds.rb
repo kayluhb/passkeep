@@ -16,6 +16,8 @@ if Rails.env.development?
   # Users
   u = Factory(:user, :email => 'admin@passkeep.com', :super_user => true)
   puts "created #{u.email}"
+
+  Factory(:team, :name => "Master", :user_ids => [u.id], :master => true)
 =begin
   p1 = Factory(:project)
   puts "Added a project"

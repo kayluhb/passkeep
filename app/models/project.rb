@@ -24,6 +24,7 @@ class Project < ActiveRecord::Base
 
   attr_accessible :name, :status_id, :default_team
 
+  before_create :add_to_master_team
   before_validation :make_guid
 
   validates :guid, :presence => true
@@ -40,6 +41,9 @@ class Project < ActiveRecord::Base
   end
 
   private
+    def add_to_master_team
+      self.teams << Team.where(:master => true)
+    end
     def make_guid
       self.guid = UUIDTools::UUID.random_create.to_s if guid.blank?
     end

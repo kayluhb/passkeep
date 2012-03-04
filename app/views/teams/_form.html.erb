@@ -15,7 +15,7 @@
     <div id="team-list" class="span6 team-list">
       <h4>Team members</h4>
       <div class="well">
-        <ul><% team.users.each do |u| %><li data-id="<%= u.id %>"><a class="close" title="remove">&times;</a> <%= u.full_name %></li><% end %></ul>
+        <ul><% team.users.each do |u| %><li data-id="<%= u.id %>"><%= u.full_name %> <% if team.master && !u.super_user %><a class="close" title="remove">&times;</a><% end %></li><% end %></ul>
         <input type="search" placeholder="Search for a user" />
         <%= f.hidden_field :user_tokens %>
       </div>
@@ -24,7 +24,7 @@
       <h4>Buckets</h4>
       <div class="well">
         <ul><% team.projects.each do |p| %>
-          <li data-id="<%= p.id %>"><a class="close" title="remove">&times;</a> <%= p.name %> </li>
+          <li data-id="<%= p.id %>"><%= p.name %> <% unless team.master %><a class="close" title="remove">&times;</a><% end %></li>
         <% end %></ul>
         <input type="search" placeholder="Search for a bucket" />
         <%= f.hidden_field :project_tokens %>
@@ -35,7 +35,7 @@
   <p class="form-actions">
     <button class="btn btn-primary">Save</button>
     <%= link_to "Cancel", teams_path, :class => 'btn' %>
-    <%= link_to '<i class="icon-trash icon-white"></i> Delete'.html_safe, confirm_destroy_team_path(team), :class => 'btn btn-danger delete' unless team.new_record? %>
+    <%= link_to '<i class="icon-trash icon-white"></i> Delete'.html_safe, confirm_destroy_team_path(team), :class => 'btn btn-danger delete' unless team.new_record? || team.master %>
   </p>
   <% end %>
 <% end %>

@@ -25,6 +25,7 @@ class Team < ActiveRecord::Base
   attr_accessible :name, :project_tokens, :user_tokens, :role_id
 
   before_validation :make_guid
+  before_destroy :check_for_master
 
   validates :guid, :presence => true
   validates :name, :presence => true
@@ -52,6 +53,14 @@ class Team < ActiveRecord::Base
   end
 
   private
+
+    def check_for_master
+      if master
+        self.errors[:base] << "cannot delete master lists"
+        return false
+      end
+    end
+
     def make_guid
       self.guid = UUIDTools::UUID.random_create.to_s if guid.blank?
     end
