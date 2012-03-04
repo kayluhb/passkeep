@@ -45,7 +45,7 @@ class User < ActiveRecord::Base
 
   attr_accessible :email, :password, :password_confirmation, :remember_me,
                   :first_name, :last_name, :full_name, :time_zone, :team_tokens,
-                  :administrator
+                  :administrator, :super_user
 
   attr_accessor :full_name
   attr_accessor :team_tokens
