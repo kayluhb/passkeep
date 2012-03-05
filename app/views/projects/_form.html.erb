@@ -9,6 +9,25 @@
           <%= f.label :status_id, "Status" %>
           <%= select :project, :status_id, Project::STATUSES %>
       </p -->
+      <% unless project.new_record? %>
+        <% if can? :manage, project.teams %>
+        <div class="span5">
+          <p><a href="#" id="edit-teams">Edit Teams</a></p>
+          <div id="team-list" class="team-list">
+            <h4>Teams</h4>
+            <div class="well">
+              <ul>
+                <% project.teams.ordered.each do |t| %>
+                  <li data-id="<%= t.id %>"><%= t.name %> <%= '<a class="close" title="remove">&times;</a>'.html_safe unless t.master %></li>
+                <% end %>
+              </ul>
+              <%= f.hidden_field :team_tokens %>
+              <input type="search" placeholder="Search for a team" />
+            </div>
+          </div>
+        </div>
+        <% end %>
+      <% end %>
       <% if project.new_record? %>
       <p class="span6">
           <%= f.label :default_team_id, "Add to team" %>
@@ -17,23 +36,6 @@
       <% end %>
     </div>
   </div>
-  <% unless project.new_record? %>
-    <% if can? :manage, project.teams %>
-      <a href="#" id="edit-teams">Edit Teams</a>
-      <div id="team-list" class="team-list">
-        <h4>Teams</h4>
-        <div class="well">
-          <ul>
-            <% project.teams.ordered.each do |t| %>
-              <li data-id="<%= t.id %>"><%= t.name %> <%= '<a class="close" title="remove">&times;</a>'.html_safe unless t.master %></li>
-            <% end %>
-          </ul>
-          <%= f.hidden_field :team_tokens %>
-          <input type="search" placeholder="Search for a team" />
-        </div>
-      </div>
-    <% end %>
-  <% end %>
   <p class="form-actions">
     <button class="btn btn-primary">Save</button>
     <% unless project.new_record? %>
