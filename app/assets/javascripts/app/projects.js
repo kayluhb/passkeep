@@ -7,6 +7,7 @@ var PROJECTS = (function($) {
         tmpl = _.template($('#list-template').html());
         $tags.find('a').click(updateTags);
         $('#team-list').teamList({ url:TEAM_SEARCH_URL });
+        $('#edit-teams').click(toggleTeamList);
     }
     function updateTags(e) {
         if (loading) { return; }
@@ -33,6 +34,9 @@ var PROJECTS = (function($) {
             $list.append('<li><a href="javascript:;">No secrets have all those tags.</a></li>');
         }
         $list.fadeTo(100, 1);
+    }
+    function toggleTeamList(e) {
+        $('#team-list').slideToggle(200);
     }
     // Call the init function on load
     $(init);
