@@ -45,5 +45,6 @@
   <% end %>
 <% end %>
 <%= content_for :js do %>
+  <script>var TEAM_SEARCH_URL = '<%= search_teams_path %>';</script>
   <%= javascript_include_tag 'app/projects' %>
 <% end %>

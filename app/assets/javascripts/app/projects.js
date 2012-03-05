@@ -6,6 +6,7 @@ var PROJECTS = (function($) {
     function init() {
         tmpl = _.template($('#list-template').html());
         $tags.find('a').click(updateTags);
+        $('#team-list').teamList({ url:TEAM_SEARCH_URL });
     }
     function updateTags(e) {
         if (loading) { return; }
