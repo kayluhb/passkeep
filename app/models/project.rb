@@ -22,10 +22,10 @@ class Project < ActiveRecord::Base
   has_many :teams, :through => :team_projects
   has_many :users, :through => :teams, :uniq => true
 
-  attr_accessible :name, :status_id, :default_team
+  attr_accessible :name, :status_id, :default_team, :team_tokens
 
   before_create :add_to_master_team
-  before_validation :make_guid
+  before_validation :make_guid, :sanitize_teams
 
   validates :guid, :presence => true
   validates :name, :presence => true
@@ -38,6 +38,18 @@ class Project < ActiveRecord::Base
 
   def to_param
     self.guid
+  end
+
+  def sanitize_teams
+    self.team_ids.uniq
+  end
+
+  def team_tokens=(ids)
+    self.team_ids = ids.split(",")
+  end
+
+  def team_tokens
+    return self.team_ids.join(',')
   end
 
   private

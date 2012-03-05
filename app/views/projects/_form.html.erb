@@ -27,6 +27,22 @@
     <%= link_to '<i class="icon-trash icon-white"></i> Delete'.html_safe, confirm_destroy_project_path(project), :class => 'btn btn-danger delete' %>
     <% end %>
   </p>
+  <% unless project.new_record? %>
+    <% if can? :manage, project.teams %>
+      <div id="team-list" class="span5 team-list">
+        <h4>Teams</h4>
+        <div class="well">
+          <ul>
+            <% project.teams.ordered.each do |t| %>
+              <li data-id="<%= t.id %>"><%= t.name %> <%= '<a class="close" title="remove">&times;</a>'.html_safe unless t.master %></li>
+            <% end %>
+          </ul>
+          <%= f.hidden_field :team_tokens %>
+          <input type="search" placeholder="Search for a team" />
+        </div>
+      </div>
+    <% end %>
+  <% end %>
 <% end %>
 <%= content_for :js do %>
   <%= javascript_include_tag 'app/projects' %>
