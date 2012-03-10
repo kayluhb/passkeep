@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   before_filter :set_user, :only => [:edit, :show, :update, :confirm_destroy, :destroy]
 
   def index
-    @users = User.paginate :page => params[:page], :per_page => 100
+    @users = User.ordered.paginate :page => params[:page], :per_page => 100
   end
 
   def new
