@@ -1,5 +1,5 @@
 var ENTRIES = (function($) {
-    var app = {}, $el, tmpl, on = 'on';
+    var app = {}, $el, tmpl, on = 'on', dur = 250;
     // Public functions
     // Private functions
     function init() {
@@ -11,8 +11,11 @@ var ENTRIES = (function($) {
         
         $el = $(e.currentTarget).closest('li');
         $el.removeClass(on);
-        $el.find('a').show();
-        $el.find('.deets').remove();
+        var $a = $el.find('a');
+        $el.find('.deets').slideUp(dur, function(){
+            $(this).remove();
+            $a.delay(100).fadeTo(dur, 1);
+        });
     }
     function onEntryClick(e) {
         e.preventDefault();
@@ -24,11 +27,14 @@ var ENTRIES = (function($) {
     }
     function onEntry(r) {
         $el = $('#' + r.id);
-        $el.find('a').hide();
+        $el.find('a').hide().css({ opacity:0 });;
         $el.addClass('on');
         r.path = $el.find('a').attr('href');
-        $el.append(tmpl(r));
-        $('.close').click(onCloseClick);
+        var $t = $(tmpl(r));
+        $t.hide();
+        $el.append($t);
+        $t.slideDown();
+        $t.find('.close').click(onCloseClick);
     }
     // Call the init function on load
     $(init);
