@@ -48,6 +48,7 @@ var APP = (function($) {
                 .appendTo(ul);
         };
         $search.autocomplete({ select:onSearchSelect, source:'/search' });
+        
         $('a[rel=tooltip]').tooltip({ placement:'bottom' });
         $dom
             .bind('keydown', 'shift+a', onAddEntry)

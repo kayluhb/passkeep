@@ -16,9 +16,9 @@
         </ul>
         <ul class="nav pull-right">
           <li>
-          <form class="navbar-search pull-left" action="">
+          <div class="navbar-search pull-left" action="">
             <input type="search" id="search" class="search-query" placeholder="Search entries" title="shift+l to focus" x-webkit-speech />
-          </form>
+          </div>
           </li>
           <li class="divider-vertical"></li>
           <li class="dropdown">
@@ -28,6 +28,7 @@
               <% if can? :manage, User %><li><%= link_to('<i class="icon-pencil"></i> Users'.html_safe, users_path) %></li><% end %>
               <% if can? :manage, EntryImport %><li><%= link_to('Import Secrets'.html_safe, new_entry_import_path) %></li><% end %>
               <li class="divider"></li>
+              <li><a href="#passkeep-tips" data-toggle="modal">Passkeep Tips</a></li>
               <li><%= link_to('Logout', destroy_user_session_path, :method => :delete) %></li>
             </ul>
           </li>
