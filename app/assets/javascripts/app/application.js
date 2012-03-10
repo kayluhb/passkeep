@@ -47,8 +47,10 @@ var APP = (function($) {
         $search.autocomplete({ select:onSearchSelect, source:'/search' });
         $('a[rel=tooltip]').tooltip({ placement:'bottom' });
         $dom
+            .bind('keydown', 'shift+a', onAddEntry)
+            .bind('keydown', 'shift+b', onBucket)
             .bind('keydown', 'shift+l', onSearchFocus)
-            .bind('keydown', 'shift+a', onAddEntry);
+            .bind('keydown', 'shift+t', onTeams);
         $(window)
             .on('scroll', scrollsies);
     }
@@ -75,9 +77,17 @@ var APP = (function($) {
             $el.blur();
         });
     }
+    function locate(p) {
+        if (window.location.pathname !== p) { window.location = p; }
+    }
     function onAddEntry() {
-        var newEntry = '/entries/new';
-        if (window.location.pathname !== newEntry) { window.location = newEntry; }
+        locate('/entries/new');
+    }
+    function onBucket() {
+        locate('/');
+    }
+    function onTeams() {
+        locate('/teams');
     }
     function onSearchFocus() {
         $search.focus();
