@@ -44,6 +44,8 @@ class Entry < ActiveRecord::Base
   validates :guid, :presence => true
   validates :project, :presence => true
 
+  attr_accessor :can_edit
+
   def to_param
     self.guid
   end

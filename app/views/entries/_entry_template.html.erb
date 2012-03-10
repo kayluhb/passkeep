@@ -31,7 +31,9 @@
     <hr/>
     <p><strong>Notes:</strong> <%%= notes %></p>
     <%% } %>
+    <%% if (can_edit) { %>
     <hr/>
     <a href="<%%= path %>/edit" class="btn">Edit</a>
+    <%% } %>
   </div>
 </script>

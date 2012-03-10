@@ -18,7 +18,7 @@
     </div>
   </div>
   <% unless project.new_record? %>
-    <% if can? :manage, project.teams %>
+    <% if (can? :manage, project.teams) && current_user.can_edit?(project) %>
       <a href="#" id="edit-teams">Edit Teams</a>
       <div id="team-list" class="team-list">
         <h4>Teams</h4>
@@ -35,13 +35,15 @@
     <% end %>
   <% end %>
   <p class="form-actions">
+    <% if current_user.can_edit? project %>
     <button class="btn btn-primary">Save</button>
+    <% end %>
     <% unless project.new_record? %>
     <%= link_to '<i class="icon-plus-sign icon-white"></i> Add a secret'.html_safe, new_entry_path(:project => project.guid), :class => 'btn btn-primary' %>
     <% end %>
     <%= link_to "Cancel", projects_path, :class => 'btn' %>
     <% unless project.new_record? %>
-    <%= link_to '<i class="icon-trash icon-white"></i> Delete'.html_safe, confirm_destroy_project_path(project), :class => 'btn btn-danger delete' %>
+    <%= link_to '<i class="icon-trash icon-white"></i> Delete'.html_safe, confirm_destroy_project_path(project), :class => 'btn btn-danger delete' if current_user.can_edit? project %>
     <% end %>
   </p>
 <% end %>

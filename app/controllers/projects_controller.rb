@@ -2,6 +2,7 @@ class ProjectsController < ApplicationController
 
   before_filter :set_project, :only => [:edit, :show, :update, :confirm_destroy,
                                         :destroy, :tagged_entries]
+  before_filter :check_permissions, :only => [:update, :confirm_destroy, :destroy]
 
   def index
     @projects = current_user.projects.ordered
@@ -70,12 +71,16 @@ class ProjectsController < ApplicationController
   end
 
   private
-    def set_project
-      @project = Project.find_by_guid!(params[:id])
+    def check_permissions
+      return redirect_to project_path(@project) unless current_user.can_edit? @project
     end
 
     def project_flash project
       render_to_string :partial => "flash", :locals => { :project => project }
+    end
+
+    def set_project
+      @project = Project.find_by_guid!(params[:id])
     end
 
 end
