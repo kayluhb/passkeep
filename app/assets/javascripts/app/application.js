@@ -16,7 +16,13 @@ window.log = function f(){ log.history = log.history || []; log.history.push(arg
 var APP = (function($) {
     var app = {
         STOPS: ['about', 'are', 'com', 'for', 'from', 'how', 'htt', 'http', 'https', 'org', 'that', 'the', 'this', 'was', 'what', 'when', 'where', 'who', 'will', 'with', 'the', 'www']
-    }, $el, $win = $(window), $search = $('#search'), $fixed = $('.navbar,#content'), on = 'on';
+    },
+    $el,
+    $dom = $(document),
+    $win = $(window),
+    $search = $('#search'),
+    $fixed = $('.navbar,#content'),
+    on = 'on';
     // Public functions
     app.externalLink = function(link) {
         if (link.indexOf('http') < 0) { link = 'http://' + link; }
@@ -40,7 +46,9 @@ var APP = (function($) {
         };
         $search.autocomplete({ select:onSearchSelect, source:'/search' });
         $('a[rel=tooltip]').tooltip({ placement:'bottom' });
-        $(document).bind('keydown', 'shift+l', onSearchFocus);
+        $dom
+            .bind('keydown', 'shift+l', onSearchFocus)
+            .bind('keydown', 'shift+a', onAddEntry);
         $(window)
             .on('scroll', scrollsies);
     }
@@ -66,6 +74,10 @@ var APP = (function($) {
             });
             $el.blur();
         });
+    }
+    function onAddEntry() {
+        var newEntry = '/entries/new';
+        if (window.location.pathname !== newEntry) { window.location = newEntry; }
     }
     function onSearchFocus() {
         $search.focus();

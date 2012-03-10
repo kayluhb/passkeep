@@ -3,7 +3,10 @@
     <%= render 'shared/errors', :m => project %>
     <div class="row form-inline">
       <p class="span6">
-        <%= f.text_field :name, :class => 'span4 required', :placeholder => 'name', :required => 'required' %>
+        <%= f.text_field :name, :class => 'span4 required',
+                         :placeholder => 'name',
+                         :required => 'required',
+                         :disabled => (!current_user.can_edit?(project)) %>
       </p>
       <!-- p class="span5">
           <%= f.label :status_id, "Status" %>
@@ -35,15 +38,15 @@
     <% end %>
   <% end %>
   <p class="form-actions">
-    <% if current_user.can_edit? project %>
+    <% if current_user.can_edit?(project) %>
     <button class="btn btn-primary">Save</button>
     <% end %>
     <% unless project.new_record? %>
     <%= link_to '<i class="icon-plus-sign icon-white"></i> Add a secret'.html_safe, new_entry_path(:project => project.guid), :class => 'btn btn-primary' %>
     <% end %>
     <%= link_to "Cancel", projects_path, :class => 'btn' %>
-    <% unless project.new_record? %>
-    <%= link_to '<i class="icon-trash icon-white"></i> Delete'.html_safe, confirm_destroy_project_path(project), :class => 'btn btn-danger delete' if current_user.can_edit? project %>
+    <% unless project.new_record? || !current_user.can_edit?(project) %>
+    <%= link_to '<i class="icon-trash icon-white"></i> Delete'.html_safe, confirm_destroy_project_path(project), :class => 'btn btn-danger delete' %>
     <% end %>
   </p>
 <% end %>

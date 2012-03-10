@@ -3,11 +3,12 @@
     <%= render 'shared/errors', :m => team %>
     <div class="row form-inline">
       <p class="span6">
-        <%= f.text_field :name, :class => 'span4 required', :placeholder => 'name', :required => 'required' %>
+        <%= f.text_field :name, :class => 'span4 required', :placeholder => 'name', :required => 'required', :disabled => !can?(:manage, team) %>
       </p>
       <p class="span5">
           <%= f.label :role_id, "Permissons" %>
-          <%= select :team, :role_id, Team::ROLES %>
+          <%= select :team, :role_id, Team::ROLES %><br/>
+          <span class="help-block">Users with "Read" permissions can only view and add bucket secrets.</span>
       </p>
     </div>
   </div>
@@ -16,7 +17,7 @@
       <h4>Team members</h4>
       <div class="well">
         <ul><% team.users.each do |u| %><li data-id="<%= u.id %>"><%= u.full_name %> <%= team_remove_link team, u %></li><% end %></ul>
-        <input type="search" placeholder="Search for a user" />
+        <% if can?(:manage, team) %><input type="search" placeholder="Search for a user" /><% end %>
         <%= f.hidden_field :user_tokens %>
       </div>
     </div>
@@ -26,7 +27,7 @@
         <ul><% team.projects.each do |p| %>
           <li data-id="<%= p.id %>"><%= p.name %> <% unless team.master %><a class="close" title="remove">&times;</a><% end %></li>
         <% end %></ul>
-        <input type="search" placeholder="Search for a bucket" />
+        <% if can?(:manage, team) %><input type="search" placeholder="Search for a bucket" /><% end %>
         <%= f.hidden_field :project_tokens %>
       </div>
     </div>
