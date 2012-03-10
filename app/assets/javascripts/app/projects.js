@@ -42,3 +42,4 @@ var PROJECTS = (function($) {
     $(init);
     return app;
 } (jQuery));
+

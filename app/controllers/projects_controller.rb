@@ -43,6 +43,11 @@ class ProjectsController < ApplicationController
     redirect_to(projects_path, :notice => "Awesome. You deleted #{@project.name}")
   end
 
+  def paginate
+    projects = current_user.projects.skinny.ordered.limit(30).offset(params[:idx])
+    render :json => projects.to_json(:methods => [:entry_count])
+  end
+
   def search
     query = params[:term]
     @projects = Project.skinny.where("name ILIKE ?", "%#{query}%")
