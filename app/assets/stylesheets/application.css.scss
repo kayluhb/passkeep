@@ -146,7 +146,6 @@ textarea.small { height:44px; }
 #content { background:#fff; background:rgba(255, 255, 255, 0.95); margin-bottom:20px; min-height:400px; padding:10px 10px 40px; position:relative; @include border-radius(10px); @include drop-shadow; @include transition; @include transition-property(height); }
 #content.on { padding-top:61px; }
 footer { bottom:20px; left:30px; position:absolute; }
-.entry-info { margin:0 10px 10px 20px; }
 .delete { float:right; }
 .ava { @include border-radius(50%); }
 #logo { background:url(../images/logo.png) no-repeat 14px 8px; font-weight:400; padding-left:40px; }
@@ -168,6 +167,7 @@ span.clippy { height:30px; line-height:30px; }
    -moz-animation:poof .4s steps(6, end) 1 forwards;
 -webkit-animation:poof .4s steps(6, end) 1 forwards;
 }
-
+.pagination { text-align:right; }
+.entry-info { margin:0 10px 10px 20px; text-align:right; }
 
 
