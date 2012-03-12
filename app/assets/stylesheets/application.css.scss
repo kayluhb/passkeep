@@ -21,9 +21,9 @@ audio:not([controls]) { display:none; }
 /* Base */
 html { font-size:100%; overflow-y:auto; -webkit-text-size-adjust:100%; -ms-text-size-adjust:100%; }
 body { background:whiteSmoke; margin:0; padding-top:10px;
-background: -webkit-linear-gradient(-45deg, slateGray 22px, #D9ECFF 22px, #D9ECFF 24px, transparent 24px, transparent 67px, #D9ECFF 67px, #D9ECFF 69px, transparent 69px), -webkit-linear-gradient(225deg, slateGray 22px, #D9ECFF 22px, #D9ECFF 24px, transparent 24px, transparent 67px, #D9ECFF 67px, #D9ECFF 69px, transparent 69px)0 64px;
-background-color: slateGray;
-background-size: 64px 128px;
+background:-webkit-linear-gradient(-45deg, slateGray 22px, #D9ECFF 22px, #D9ECFF 24px, transparent 24px, transparent 67px, #D9ECFF 67px, #D9ECFF 69px, transparent 69px), -webkit-linear-gradient(225deg, slateGray 22px, #D9ECFF 22px, #D9ECFF 24px, transparent 24px, transparent 67px, #D9ECFF 67px, #D9ECFF 69px, transparent 69px)0 64px;
+background-color:slateGray;
+background-size:64px 128px;
 }
 body, button, input, select, textarea { color:#444; font:15px 'Droid Sans', sans-serif; line-height:1.22; }
 /* Links */
@@ -136,7 +136,6 @@ a { @include transition; @include transition-property(#{"color, background-color
 dropdown-menu li { margin:0; padding:0; }
 .nav, .nav li { padding:0; }
 .nav li { background:none; }
-.pagination ul { @include no-shadow; padding:0; }
 .tags, .tags li { background:none; padding:0; }
 .tags.on { position:fixed; right:20px; top:20px; width:300px;}
 .tags li { display:block; float:left; margin:0 3px 5px 0; }
@@ -168,6 +167,8 @@ span.clippy { height:30px; line-height:30px; }
 -webkit-animation:poof .4s steps(6, end) 1 forwards;
 }
 .pagination { text-align:right; }
+.pagination ul { @include no-shadow; padding:0; }
+.pagination a { padding:0 6px; line-height:24px; }
 .entry-info { margin:0 10px 10px 20px; text-align:right; }
 
 
