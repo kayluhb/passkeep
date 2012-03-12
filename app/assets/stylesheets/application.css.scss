@@ -166,9 +166,12 @@ span.clippy { height:30px; line-height:30px; }
    -moz-animation:poof .4s steps(6, end) 1 forwards;
 -webkit-animation:poof .4s steps(6, end) 1 forwards;
 }
-.pagination { text-align:right; }
-.pagination ul { @include no-shadow; padding:0; }
-.pagination a { padding:0 6px; line-height:24px; }
+.pagination {
+  text-align:right;
+  ul { @include no-shadow; float:right; margin:0; padding:0; }
+  li { background:#fff; }
+  a { padding:0 6px; line-height:24px; }
+}
 .entry-info { margin:0 10px 10px 20px; text-align:right; }
 
 
