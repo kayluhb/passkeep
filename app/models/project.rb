@@ -36,8 +36,8 @@ class Project < ActiveRecord::Base
     self.team_ids = [id]
   end
 
-  def to_param
-    self.guid
+  def entry_count
+    self.entries.count
   end
 
   def sanitize_teams
@@ -50,6 +50,10 @@ class Project < ActiveRecord::Base
 
   def team_tokens
     return self.team_ids.join(',')
+  end
+
+  def to_param
+    self.guid
   end
 
   private

@@ -41,10 +41,14 @@ var ENTRY = (function($) {
         return str.substring(idx, idx + 1);
     }
     function suggest() {
-        var suggestions = $('#entry_url').val().split('http://').join('').split('https://').join('').split('.');
+        var suggestions = $('#entry_url').val()
+                                .split('http://').join('')
+                                .split('https://').join('')
+                                .split('.');
+        suggestions = _.union(suggestions, suggestions.pop().split('/'));
         suggestions.push($et.val());
         suggestions = _.difference(suggestions, stops);
-        suggestions = _.reject(suggestions, function(val){ return val.length < 3; });
+        suggestions = _.reject(suggestions, function(val){ return val.length < 3 || val.length > 20; });
         suggestions = _.uniq(suggestions);
         if (suggestions.length > 0) {
             suggestions = _.map(suggestions, function(suggest){ return '<a href="javascript:;" class="tag">' + suggest + '</a>'; });

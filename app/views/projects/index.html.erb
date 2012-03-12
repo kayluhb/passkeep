@@ -27,6 +27,11 @@
       </li>
       <% end %>
     </ul>
-    <%= will_paginate @projects, :previous_label => '&lt; previous', :next_label => 'next &gt;' %>
   </div>
 </div>
+<%= content_for :js do %>
+  <script type="text/template" id="list-template">
+    <li><a href="/projects/<%%= guid %>/edit"><%%= name %>: <span class="details"><%%= entry_count %> entr<%%= entry_count !== 1 ? 'ies' : 'y' %></span></a></li>
+  </script>
+  <%= javascript_include_tag 'app/projects_scroller' %>
+<% end %>

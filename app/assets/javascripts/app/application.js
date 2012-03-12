@@ -16,8 +16,17 @@ window.log = function f(){ log.history = log.history || []; log.history.push(arg
 var APP = (function($) {
     var app = {
         STOPS: ['about', 'are', 'com', 'for', 'from', 'how', 'htt', 'http', 'https', 'org', 'that', 'the', 'this', 'was', 'what', 'when', 'where', 'who', 'will', 'with', 'the', 'www']
-    }, $el, $win = $(window), $search = $('#search'), $fixed = $('.navbar,#content'), on = 'on';
+    },
+    $el,
+    $dom = $(document),
+    $win = $(window),
+    $search = $('#search'),
+    $fixed = $('.navbar,#content'),
+    on = 'on';
     // Public functions
+    app.clippy = function(id, param, value) {
+        return '<object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" width="110" height="14" id="clippy-' + param + '-' + id + '" ><param name="movie" value="/swfs/clippy.swf"/><param name="allowScriptAccess" value="always" /><param name="quality" value="high" /><param name="scale" value="noscale" /><param name="FlashVars" value="text=' + value + '"><param name="bgcolor" value="#F5F5F5"><embed src="/swfs/clippy.swf" width="110" height="14" name="clippy-' + param + '-' + id + '" quality="high" allowScriptAccess="always" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" FlashVars="text=' + value + '" bgcolor="#F5F5F5" /></object>';
+    }
     app.externalLink = function(link) {
         if (link.indexOf('http') < 0) { link = 'http://' + link; }
         return '<a href="' + link + '" target="_blank">' + link.split('http://').join('').split('https://').join('') + '</a>';
@@ -39,8 +48,13 @@ var APP = (function($) {
                 .appendTo(ul);
         };
         $search.autocomplete({ select:onSearchSelect, source:'/search' });
+        
         $('a[rel=tooltip]').tooltip({ placement:'bottom' });
-        $(document).bind('keydown', 'shift+l', onSearchFocus);
+        $dom
+            .bind('keydown', 'shift+a', onAddEntry)
+            .bind('keydown', 'shift+b', onBucket)
+            .bind('keydown', 'shift+l', onSearchFocus)
+            .bind('keydown', 'shift+t', onTeams);
         $(window)
             .on('scroll', scrollsies);
     }
@@ -66,6 +80,18 @@ var APP = (function($) {
             });
             $el.blur();
         });
+    }
+    function locate(p) {
+        if (window.location.pathname !== p) { window.location = p; }
+    }
+    function onAddEntry() {
+        locate('/entries/new');
+    }
+    function onBucket() {
+        locate('/');
+    }
+    function onTeams() {
+        locate('/teams');
     }
     function onSearchFocus() {
         $search.focus();

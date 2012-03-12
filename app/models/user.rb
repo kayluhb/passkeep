@@ -82,6 +82,13 @@ class User < ActiveRecord::Base
     self.guid
   end
 
+  def can_edit?(p)
+    return true if p.new_record?
+    user_teams = self.teams.where(:role_id => 2).select("teams.id").collect(&:id)
+    project_teams = p.teams.where(:role_id => 2).select("teams.id").collect(&:id)
+    (user_teams & project_teams).length > 0
+  end
+
   private
     def make_guid
       self.guid = UUIDTools::UUID.random_create.to_s if guid.blank?

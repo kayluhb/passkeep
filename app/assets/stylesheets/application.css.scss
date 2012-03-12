@@ -153,6 +153,8 @@ footer { bottom:20px; left:30px; position:absolute; }
 #logo:hover { opacity:0.9; @include transition-property(opacity); }
 
 .breadcrumb li { background:none; padding:0; }
+span.clippy { height:30px; line-height:30px; }
+#passkeep-tips label { display:inline-block; margin-right:10px; text-align:right; width:134px; }
 
 @-moz-keyframes poof {
     from { background-position:0 0; }

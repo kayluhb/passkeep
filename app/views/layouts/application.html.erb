@@ -4,8 +4,8 @@
 <!--[if IE 8]><html class="no-js ie8 oldie" lang="en"><![endif]-->
 <!--[if gt IE 8]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
-    <%= render 'shared/head' %>
-    <%= yield :css %>
+  <%= render 'shared/head' %>
+  <%= yield :css %>
 </head>
 <body>
   <div id="content" class="container">
@@ -19,6 +19,25 @@
     </div>
     <%= render 'shared/footer' %>
   </div>
+<div class="modal fade" id="passkeep-tips">
+  <div class="modal-header">
+    <a class="close" data-dismiss="modal">×</a>
+    <h3>Passkeep tips</h3>
+  </div>
+  <div class="modal-body">
+    <h4>Hot keys</h4>
+    <p>
+      <label>Focus the search:</label> <span class="help-block">shift+l</span><br/>
+      <label>Add a new Secret:</label> <span class="help-block">shift+a</span><br/>
+      <label>Go to Buckets:</label> <span class="help-block">shift+b</span><br/>
+      <label>Go to Teams:</label> <span class="help-block">shift+t</span><br/>
+      <label>Close this window:</label> <span class="help-block">Esc</span>
+    </p>
+  </div>
+  <div class="modal-footer">
+    <a href="#" class="btn" data-dismiss="modal">Close</a>
+  </div>
+</div>
 <%= render 'shared/javascripts' %>
 <%= yield :js %>
 </body>

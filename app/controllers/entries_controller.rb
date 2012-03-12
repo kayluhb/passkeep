@@ -2,6 +2,8 @@ class EntriesController < ApplicationController
 
   before_filter :set_entry, :only => [:edit, :show, :update, :confirm_destroy,
                                       :destroy]
+  before_filter :check_permissions, :only => [:edit, :update, :confirm_destroy,
+                                              :destroy]
 
   def index
     @entries = current_user.entries.skinny.order(:search_text)
@@ -27,15 +29,18 @@ class EntriesController < ApplicationController
     end
   end
 
-  def edit
-  end
-
   def show
     respond_to do |format|
       format.html
-      format.json { render :json => @entry.to_json(:include => [:project],
-          :methods => [:notes, :password, :username, :url, :tags]) }
+      format.json {
+        @entry.can_edit = current_user.can_edit? @entry.project
+        render :json => @entry.to_json(:include => [:project],
+          :methods => [:notes, :password, :username, :url, :tags, :can_edit])
+      }
     end
+  end
+
+  def edit
   end
 
   def update
@@ -72,12 +77,16 @@ class EntriesController < ApplicationController
   end
 
   private
-    def set_entry
-      @entry = Entry.find_by_guid!(params[:id])
+    def check_permissions
+      return redirect_to project_entry_path(@entry.project, @entry) unless current_user.can_edit? @entry.project
     end
 
     def entry_flash entry
       render_to_string :partial => "flash", :locals => { :entry => entry }
+    end
+
+    def set_entry
+      @entry = Entry.find_by_guid!(params[:id])
     end
 
 end
