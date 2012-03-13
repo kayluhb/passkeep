@@ -2,8 +2,13 @@
 
 var ENTRY = (function($) {
     var app = {}, $el,
-    $et = $('#entry_title'), $suggestions = $('#suggestions'), $suggestList = $('#suggestion-list'), $tagList = $('#entry_tag_list'),
-    evts = 'keyup unfocus blur update', stops = null;
+    $et = $('#entry_title'),
+    $options = $('#password-options'),
+    $suggestions = $('#suggestions'),
+    $suggestList = $('#suggestion-list'),
+    $tagList = $('#entry_tag_list'),
+    evts = 'keyup unfocus blur update',
+    stops = null;
     // Public functions
     // Private functions
     function init() {
@@ -35,6 +40,12 @@ var ENTRY = (function($) {
                  rando(uppers),
                  rando(others)];
         $('#entry_password').val(_.shuffle(chars).join(''));
+        var offset = $('.icon-leaf').offset();
+        $options
+            .css({ left:offset.left + 18, top:offset.top - $options.height() * 0.5 })
+            .addClass('in')
+            .show();
+        $options.find('.close').click(onOptionsClose);
     }
     function rando(str) {
         var idx = Math.floor(Math.random() * str.length);
@@ -57,6 +68,9 @@ var ENTRY = (function($) {
         } else {
             $suggestions.hide();
         }
+    }
+    function onOptionsClose(e) {
+        $options.removeClass('in');
     }
     function onTagClick(e) {
         $el = $(e.currentTarget);

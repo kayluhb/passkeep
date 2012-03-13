@@ -23,7 +23,8 @@
     <ul class="index index-tabs index-stacked">
       <% @users.each do |e| %>
       <li>
-        <%= link_to "#{e.full_name} <span class='details'>#{(e.administrator ? "Administrator - " : "")} Last sign in: #{last_sign_in e}</span>".html_safe, edit_user_path(e) %>
+        <%= link_to "#{gravatar_image_tag(e.email, :alt => e.full_name,
+            :gravatar => { :size => 24 }, :class => 'ava')} #{e.full_name} <span class='details'>#{(e.administrator ? "Administrator - " : "")} Last sign in: #{last_sign_in e}</span>".html_safe, edit_user_path(e) %>
       </li>
       <% end %>
     </ul>

@@ -11,7 +11,8 @@
     <%= f.text_field :username, :placeholder => 'username', :class => 'span4 clippy' %><%= clippy entry.username, 'username' %>
   </p>
   <p class="input-append password">
-    <%= f.text_field :password, :placeholder => 'password', :class => 'span4 clippy' %><a href="#" class="add-on" rel="tooltip" title="Generate a password"><i class="icon-leaf"></i></a> <%= clippy entry.password, 'password' %>
+    <%= f.text_field :password, :placeholder => 'password', :class => 'span4 clippy' %><a href="#" class="add-on" rel="tooltip" title="Generate a password"><i class="icon-leaf"></i></a>
+    <%= clippy entry.password, 'password' %>
   </p>
   <p>
     <%= f.text_field :url, :placeholder => 'url', :type => 'text', :class => 'span3 clippy' %> <%= clippy entry.url, 'url' %>
@@ -45,5 +46,10 @@
   </p>
 <% end %>
 <%= content_for :js do %>
+  <div id="password-options" class="popover fade right"><div class="arrow"></div><div class="popover-inner">
+    <a href="#" class="close" title="close">×</a>
+    <h3 class="popover-title">Password Options</h3>
+    <div class="popover-content"><p>Here are where the password generation options will go.</p></div></div>
+  </div>
   <%= javascript_include_tag 'app/entry' %>
 <% end %>
