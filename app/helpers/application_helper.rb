@@ -2,6 +2,7 @@ module ApplicationHelper
 
   def clippy(text, id, bgcolor='#F5F5F5')
     return if text.blank?
+    text = CGI.escape(text)
     html = <<-EOF
       <span class="clippy">
         <object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" width="110" height="14" id="clippy-#{id}" >
