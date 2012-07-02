@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.2.1'
+gem 'rails', '3.2.6'
 
 gem 'acts-as-taggable-on', :git => 'https://github.com/mbleigh/acts-as-taggable-on.git'
 gem 'attr_encrypted'
@@ -18,6 +18,7 @@ gem 'pg'
 gem 'rack'
 gem 'rack-cache', :require => 'rack/cache'
 gem 'settingslogic'
+gem 'thin'
 gem 'will_paginate'
 gem 'uuidtools'
 
