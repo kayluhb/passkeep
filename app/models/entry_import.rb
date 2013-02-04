@@ -3,6 +3,7 @@
 # Table name: entry_imports
 #
 #  id              :integer         not null, primary key
+#  team_id         :integer
 #  attachment_uid  :string(255)
 #  attachment_name :string(255)
 #  created_at      :datetime        not null
