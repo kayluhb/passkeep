@@ -1,7 +1,9 @@
-Factory.sequence :project_name do |n|
-  "Project #{n}"
-end
+# Read about factories at https://github.com/thoughtbot/factory_girl
 
-Factory.define :project do |u|
-  u.name      { Factory.next :project_name }
+FactoryGirl.define do
+  sequence(:project_name) {|n| "Project #{n}" }
+
+  factory :project do
+    name { generate(:project_name) }
+  end
 end

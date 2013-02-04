@@ -1,37 +1,50 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.2.6'
+gem 'rails', '3.2.11'
 
-gem 'acts-as-taggable-on', :git => 'https://github.com/mbleigh/acts-as-taggable-on.git'
+gem 'acts-as-taggable-on', git: 'https://github.com/mbleigh/acts-as-taggable-on.git'
 gem 'attr_encrypted'
 gem 'capistrano'
 gem 'cancan'
 gem 'daemons'
-gem 'delayed_job', :git => 'git://github.com/collectiveidea/delayed_job.git'
 gem 'delayed_job_active_record'
-gem 'devise', :git => 'git://github.com/plataformatec/devise.git'
+gem 'devise'
+gem 'devise-encryptable'
 gem 'dragonfly', '~>0.9.8'
 gem 'exception_notification'
 gem 'gravatar_image_tag'
 gem 'jquery-rails'
 gem 'pg'
 gem 'rack'
-gem 'rack-cache', :require => 'rack/cache'
+gem 'rack-cache', require: 'rack/cache'
 gem 'settingslogic'
 gem 'thin'
 gem 'will_paginate'
 gem 'uuidtools'
 
+group :assets do
+  gem 'asset_sync'
+  gem 'sass-rails',   '~> 3.2.3'
+  gem 'turbo-sprockets-rails3'
+  gem 'uglifier', '>= 1.0.3'
+end
+
 group :development do
-  gem 'annotate', :git => 'git://github.com/jeremyolliver/annotate_models.git', :branch => 'rake_compatibility'
+  gem 'annotate', git: 'git://github.com/jeremyolliver/annotate_models.git', branch: 'rake_compatibility'
+  gem 'bullet'
+  gem 'capistrano_colors'
   gem 'execjs'
+  gem 'factory_girl_rails'
+  gem 'quiet_assets'
+  gem 'rack-mini-profiler'
   gem 'rails_best_practices'
   gem 'railroady'
   gem 'rspec-rails'
-  gem 'therubyracer'
+  gem 'thin'
 end
 
 group :production do
+  gem 'exception_notification'
   gem 'therubyracer'
 end
 
@@ -40,12 +53,4 @@ group :test do
   gem 'factory_girl_rails'
   gem 'database_cleaner'
   gem 'rspec-rails'
-end
-
-# Gems used only for assets and not required
-# in production environments by default.
-group :assets do
-  gem 'sass-rails',   '~> 3.2.3'
-  gem 'coffee-rails', '~> 3.2.1'
-  gem 'uglifier', '>= 1.0.3'
 end

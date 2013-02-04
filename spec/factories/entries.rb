@@ -1,9 +1,11 @@
-Factory.sequence :entry_title do |n|
-  "Entry #{n}"
-end
+# Read about factories at https://github.com/thoughtbot/factory_girl
 
-Factory.define :entry do |u|
-  u.title         { Factory.next :entry_title }
-  u.project_id    1
-  u.tag_list      ''
+FactoryGirl.define do
+  sequence(:entry_title) {|n| "Entry #{n}" }
+
+  factory :entry do
+    title { generate(:entry_title) }
+    project_id 1
+    tag_list
+  end
 end

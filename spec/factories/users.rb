@@ -1,11 +1,14 @@
-Factory.sequence :email do |n|
-  "user#{n}@passkeep.com"
-end
+# Read about factories at https://github.com/thoughtbot/factory_girl
 
-Factory.define :user do |u|
-  u.first_name  'Admin'
-  u.last_name   'Istrator'
-  u.email       { Factory.next :email }
-  u.password    'Passkeep1!'
-  u.super_user false
+FactoryGirl.define do
+
+  sequence(:email) {|n| "user#{n}@passkeep.com" }
+
+  factory :user do
+    first_name 'Admin'
+    last_name 'Istrator'
+    email { generate(:email) }
+    password 'Passkeep1!'
+    super_user false
+  end
 end

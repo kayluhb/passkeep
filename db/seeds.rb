@@ -14,10 +14,10 @@ if Rails.env.development?
   end
 
   # Users
-  u = Factory(:user, :email => 'admin@passkeep.com', :super_user => true)
+  u = Factory(:user, email: 'admin@passkeep.com', super_user: true)
   puts "created #{u.email}"
 
-  Factory(:team, :name => "Master", :user_ids => [u.id], :master => true)
+  Factory(:team, name: "Master", user_ids: [u.id], master: true)
 =begin
   p1 = Factory(:project)
   puts "Added a project"
@@ -29,8 +29,8 @@ if Rails.env.development?
   until entries.length == 837
     begin
       e = Factory(:entry,
-                  :project_id => rand(2) + 1,
-                  :tag_list => (entries.length < 84 ? 'foo, bar' : 'Foo bar'))
+                  project_id: rand(2) + 1,
+                  tag_list: (entries.length < 84 ? 'foo, bar' : 'Foo bar'))
       puts "Added entry #{entries.length}"
       entries << e
     rescue $e
@@ -38,7 +38,7 @@ if Rails.env.development?
     end
   end
 
-  Factory(:team, :project_ids => [p1.id, p2.id], :user_ids => [u.id])
+  Factory(:team, project_ids: [p1.id, p2.id], user_ids: [u.id])
 =end
   puts "-------------------------------------------------------------------------------"
   puts " Seeded like a boss."

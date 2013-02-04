@@ -1,10 +1,13 @@
-Factory.sequence :team_name do |n|
-  "Team #{n}"
-end
+# Read about factories at https://github.com/thoughtbot/factory_girl
 
-Factory.define :team do |u|
-  u.name          { Factory.next :team_name }
-  u.user_ids      []
-  u.project_ids   []
-  u.master        false
+FactoryGirl.define do
+
+  sequence(:team_name) {|n| "Team #{n}" }
+
+  factory :team do
+    name { generate(:team_name) }
+    user_ids []
+    project_ids []
+    master false
+  end
 end
