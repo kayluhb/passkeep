@@ -1,16 +1,28 @@
 @import 'mixins';
 
 /* AUTOCOMPLETE */
-.ui-autocomplete { cursor:default; position:absolute; z-index:1000 !important; }	
+.ui-autocomplete { cursor:default; position:absolute; z-index:1000 !important; }
+
 /* workarounds */
 * html .ui-autocomplete { width:1px; } /* without this, the menu expands to 100% in IE6 */
+
 .ui-menu {
-  background:#fff; display:block; float:left; list-style:none; margin:0; padding:5px 0; @include drop-shadow;
+  background:#fff; display:block; float:left; list-style:none; margin:0;
+  padding:5px 0; @include drop-shadow;
+
   .ui-menu { margin-top:-3px; }
+  
   .ui-menu-item {
-    background:none; clear:left; float:left; margin:0; padding:0; text-align:left; width:100%; zoom:1; 
-    a { color:#182435; font-size:14px; display:block; line-height:1; padding:3px 18px; text-decoration:none; zoom:1; }
+    background:none; clear:left; float:left; margin:0; padding:0;
+    text-align:left; width:100%; zoom:1; 
+    
+    a {
+      color:#182435; font-size:14px; display:block; line-height:1;
+      padding:3px 18px; text-decoration:none; zoom:1;
+    }
+  
     .highlight { font-weight:bold; }
+  
     a.ui-state-hover, a.ui-state-active { background:#99CCFF; }
   }
 }

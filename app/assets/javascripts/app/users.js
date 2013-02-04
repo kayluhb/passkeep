@@ -1,7 +1,9 @@
 var USERS = (function($) {
-    var app = {}, $el, $teamInput = $('#team-search'), $teamList = $('#team-list');
-    // Public functions
-    // Private functions
+    var app = {},
+        $el,
+        $teamInput = $('#team-search'),
+        $teamList = $('#team-list');
+    
     function init() {
         $.ui.autocomplete.prototype._renderItem = function(ul, item) {
             var re = new RegExp("^" + this.term, "gm"),

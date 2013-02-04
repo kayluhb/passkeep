@@ -1,16 +1,16 @@
 //= require ../libs/jquery.custom-file
 
 var ENTRY = (function($) {
-    var app = {}, $el,
-    $et = $('#entry_title'),
-    $options = $('#password-options'),
-    $suggestions = $('#suggestions'),
-    $suggestList = $('#suggestion-list'),
-    $tagList = $('#entry_tag_list'),
-    evts = 'keyup unfocus blur update',
-    stops = null;
-    // Public functions
-    // Private functions
+    var app = {},
+        $el,
+        $et = $('#entry_title'),
+        $options = $('#password-options'),
+        $suggestions = $('#suggestions'),
+        $suggestList = $('#suggestion-list'),
+        $tagList = $('#entry_tag_list'),
+        evts = 'keyup unfocus blur update',
+        stops = null;
+
     function init() {
         $('#entry_attachment').customFile({ element:'span', status:true, text: 'Choose Attachment' });
         $('#entry_url, #entry_title').on(evts, suggest);
@@ -19,6 +19,7 @@ var ENTRY = (function($) {
         $('#suggestion-list .tag').live('click', onTagClick);
         suggest();
     }
+
     function generate(e) {
         var nums = '0123456789',
         lowers = 'abcdefghijklmnopqrstuvwxyz',
@@ -47,10 +48,12 @@ var ENTRY = (function($) {
             .show();
         $options.find('.close').click(onOptionsClose);
     }
+
     function rando(str) {
         var idx = Math.floor(Math.random() * str.length);
         return str.substring(idx, idx + 1);
     }
+
     function suggest() {
         var suggestions = $('#entry_url').val()
                                 .split('http://').join('')
@@ -69,9 +72,11 @@ var ENTRY = (function($) {
             $suggestions.hide();
         }
     }
+
     function onOptionsClose(e) {
         $options.removeClass('in');
     }
+
     function onTagClick(e) {
         $el = $(e.currentTarget);
         var tags = $tagList.val();
@@ -79,7 +84,6 @@ var ENTRY = (function($) {
         stops = _.union(APP.STOPS, $tagList.val().split(', '));
         suggest();
     }
-    // Call the init function on load
     $(init);
     return app;
 } (jQuery));

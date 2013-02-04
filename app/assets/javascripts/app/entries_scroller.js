@@ -1,19 +1,19 @@
 
 var SCROLLER = (function($) {
     var app = {},
-    $doc = $(document),
-    $list = $('ul.index'),
-    $win = $(window),
-    buffer = 100,
-    page = parseInt(getURLParameter('page'),10)||1,
-    complete = false,
-    loading = false,
-    evt = 'scroll.SCROLLER',
-    on = 'on',
-    url = '/entries/paginate.json',
-    tmpl = null
-    data = {};
-    
+        $doc = $(document),
+        $list = $('ul.index'),
+        $win = $(window),
+        buffer = 100,
+        page = parseInt(getURLParameter('page'),10)||1,
+        complete = false,
+        loading = false,
+        evt = 'scroll.SCROLLER',
+        on = 'on',
+        url = '/entries/paginate.json',
+        tmpl = null,
+        data = {};
+
     function init() {
         if (typeof FILTER_BY_TAG !== 'undefined' && FILTER_BY_TAG) { data.tag_name = TAG; }
         tmpl = _.template($('#list-template').html());
@@ -35,7 +35,7 @@ var SCROLLER = (function($) {
     }
     function getURLParameter(name) {
         return decodeURI(
-            (RegExp(name + '=' + '(.+?)(&|$)').exec(location.search)||[,null])[1]
+            (RegExp(name + '=' + '(.+?)(&|$)').exec(location.search)||[null])[1]
         );
     }
     function onReturn(r) {

@@ -11,7 +11,6 @@ gem 'delayed_job_active_record'
 gem 'devise'
 gem 'devise-encryptable'
 gem 'dragonfly', '~>0.9.8'
-gem 'exception_notification'
 gem 'gravatar_image_tag'
 gem 'jquery-rails'
 gem 'pg'
@@ -44,7 +43,6 @@ group :development do
 end
 
 group :production do
-  gem 'exception_notification'
   gem 'therubyracer'
 end
 

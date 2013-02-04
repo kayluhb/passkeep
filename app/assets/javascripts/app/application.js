@@ -15,7 +15,9 @@ window.log = function f(){ log.history = log.history || []; log.history.push(arg
 
 var APP = (function($) {
     var app = {
-            STOPS: ['about', 'are', 'com', 'for', 'from', 'how', 'htt', 'http', 'https', 'org', 'that', 'the', 'this', 'was', 'what', 'when', 'where', 'who', 'will', 'with', 'the', 'www']
+            STOPS: ['about', 'are', 'com', 'for', 'from', 'how', 'htt', 'http',
+            'https', 'org', 'that', 'the', 'this', 'was', 'what', 'when',
+            'where', 'who', 'will', 'with', 'the', 'www']
         },
         $el,
         $dom = $(document),
@@ -23,23 +25,31 @@ var APP = (function($) {
         $search = $('#search'),
         $fixed = $('.navbar,#content'),
         on = 'on';
+
     // Public functions
     app.clippy = function(id, param, value) {
         value = encodeURI(value);
-        return '<object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" width="110" height="14" id="clippy-' + param + '-' + id + '" ><param name="movie" value="/swfs/clippy.swf"/><param name="allowScriptAccess" value="always" /><param name="quality" value="high" /><param name="scale" value="noscale" /><param name="FlashVars" value="text=' + value + '"><param name="bgcolor" value="#F5F5F5"><embed src="/swfs/clippy.swf" width="110" height="14" name="clippy-' + param + '-' + id + '" quality="high" allowScriptAccess="always" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" FlashVars="text=' + value + '" bgcolor="#F5F5F5" /></object>';
+        return '<object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" width="110" height="14" id="clippy-' + param + '-' + id + '" ><param name="movie" value="/assets/swfs/clippy.swf"/><param name="allowScriptAccess" value="always" /><param name="quality" value="high" /><param name="scale" value="noscale" /><param name="FlashVars" value="text=' + value + '"><param name="bgcolor" value="#F5F5F5"><embed src="/assets/swfs/clippy.swf" width="110" height="14" name="clippy-' + param + '-' + id + '" quality="high" allowScriptAccess="always" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" FlashVars="text=' + value + '" bgcolor="#F5F5F5" /></object>';
     };
+
     app.externalLink = function(link) {
         if (link.indexOf('http') < 0) { link = 'http://' + link; }
         return '<a href="' + link + '" target="_blank">' + link.split('http://').join('').split('https://').join('') + '</a>';
     };
+
     // Private functions
     function init() {
         $('a[href=#]').attr('href', 'javascript:;');
+
         $("a[href^=http]").click(open);
+
         // Set up the global ajax
         $.ajaxSetup({ cache: false, error: function errorLog(x, e) { log(x, e); }, type: 'POST' });
+
         $("select.chosen").chosen({ no_results_text: "No results matched" });
+
         if (!Modernizr.input.placeholder) { placeholder(); }
+
         $.ui.autocomplete.prototype._renderItem = function(ul, item) {
             var re = new RegExp("^" + this.term, "gm"),
             t = item.name.replace(re, '<span class="highlight">' + this.term + '</span>');

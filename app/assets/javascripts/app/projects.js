@@ -1,14 +1,19 @@
 var PROJECTS = (function($) {
-    var app = {}, $el, $tags = $('.tags'), $list = $('ul.index'),
-    on = 'on', tmpl = null, loading = false;
-    // Public functions
-    // Private functions
+    var app = {},
+        $el,
+        $tags = $('.tags'),
+        $list = $('ul.index'),
+        on = 'on',
+        tmpl = null,
+        loading = false;
+
     function init() {
         tmpl = _.template($('#list-template').html());
         $tags.find('a').click(updateTags);
         $('#team-list').teamList({ url:TEAM_SEARCH_URL });
         $('#edit-teams').click(toggleTeamList);
     }
+
     function updateTags(e) {
         if (loading) { return; }
         loading = true;
@@ -21,10 +26,12 @@ var PROJECTS = (function($) {
         });
         $list.fadeTo(100, 0, onListOut);
     }
+
     function onListOut() {
         $.ajax({ url:TAGGED_PATH, data:{ tags: tags.join(',') } })
             .success(onReturn);
     }
+
     function onReturn(r) {
         loading = false;
         $list.children().remove();
@@ -35,6 +42,7 @@ var PROJECTS = (function($) {
         }
         $list.fadeTo(100, 1);
     }
+    
     function toggleTeamList(e) {
         $('#team-list').slideToggle(200);
     }

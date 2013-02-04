@@ -1,11 +1,14 @@
 //= require ../libs/jquery.custom-file
 
 var ENTRY_IMPORT = (function($) {
-    var app = {}, $el;
-    // Public functions
-    // Private functions
+    var app = {};
+    
     function init() {
-        $('#entry_import_attachment').customFile({ element:'span', status:true, text: 'Choose CSV' });
+        $('#entry_import_attachment').customFile({
+            element:'span',
+            status:true,
+            text: 'Choose CSV'
+        });
     }
     // Call the init function on load
     $(init);
