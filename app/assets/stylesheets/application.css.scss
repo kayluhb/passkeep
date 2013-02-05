@@ -1,7 +1,6 @@
 /*
  *= require bootstrap
  *= require_self
- *= require bootstrap-responsive
  *= require custom-file
  *= require chosen
  *= require autocomplete
@@ -148,7 +147,7 @@ a { @include transition; @include transition-property(#{"color, background-color
 .ir { background-color:transparent; background-repeat:no-repeat; border:0; direction:ltr; display:block; overflow:hidden; text-align:left; text-indent:-999em; }
 .ir br { display:none; }
 
-.hide { display:none !important; visibility:hidden; }
+
 .invisible { visibility:hidden; }
 .clearfix:before,
 .clearfix:after { content:""; display:table; }
@@ -176,7 +175,15 @@ textarea.small { height:44px; }
 footer { bottom:20px; left:30px; position:absolute; }
 .delete { float:right; }
 .ava { @include border-radius(50%); }
-#logo { background:url(image-path("logo.png")) no-repeat 14px 8px; font-weight:400; padding-left:40px; }
+#logo {
+  background:url(image-path("logo.png")) no-repeat 14px 8px; font-weight:400; padding-left:40px;
+
+
+height: 40px;
+padding-bottom: 0;
+padding-top: 0;
+line-height: 40px;
+}
 #logo:hover { opacity:0.9; @include transition-property(opacity); }
 
 .breadcrumb li { background:none; padding:0; }

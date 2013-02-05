@@ -2,7 +2,6 @@
 <title><%= content_for?(:title) ? yield(:title) : "Passkeep" %></title>
 <meta name="description" content="<%= content_for?(:meta_description) ? yield(:meta_description) : "" %>" />
 <%= csrf_meta_tag %>
-<!--[if ie]><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><![endif]-->
-<%= javascript_include_tag 'libs/modernizr.min' %>
 <link href='//fonts.googleapis.com/css?family=Droid+Sans:400,700' rel='stylesheet' type='text/css'>
 <%= stylesheet_link_tag 'application', :media => 'all' %>
+<%= javascript_include_tag 'libs/modernizr.min' %>
