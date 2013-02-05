@@ -20,6 +20,7 @@ Passkeep::Application.routes.draw do
     post 'tagged_entries', on: :member
     get 'confirm_destroy', on: :member
     post 'paginate', on: :collection
+
     resources :entries, only: [:edit, :confirm_destroy, :show] do
       get 'confirm_destroy', on: :member
     end

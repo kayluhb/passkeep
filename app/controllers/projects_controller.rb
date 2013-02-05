@@ -61,12 +61,12 @@ class ProjectsController < ApplicationController
 
   def tagged_entries
     tags = params[:tags]
+    @entries = @project.entries
     unless tags.blank?
-      @entries = @project.entries.tagged_with(params[:tags])
-    else
-      @entries = @project.entries
+      @entries = @entries.tagged_with(params[:tags])
     end
     @entries = @entries.skinny.ordered
+
     respond_to do |format|
       format.html
       format.json {
