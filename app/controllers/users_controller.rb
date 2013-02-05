@@ -1,9 +1,9 @@
 class UsersController < ApplicationController
 
-  before_filter :set_user, :only => [:edit, :show, :update, :confirm_destroy, :destroy]
+  before_filter :set_user, only: [:edit, :show, :update, :confirm_destroy, :destroy]
 
   def index
-    @users = User.ordered.paginate :page => params[:page], :per_page => 100
+    @users = User.ordered.paginate page: params[:page], per_page: 100
   end
 
   def new
@@ -14,7 +14,7 @@ class UsersController < ApplicationController
     @user = User.new(params[:user])
     authorize! :create, @user
     if @user.save
-      redirect_to users_path, :notice => user_flash(@user).html_safe
+      redirect_to users_path, notice: user_flash(@user).html_safe
     else
       render :new
     end
@@ -28,7 +28,7 @@ class UsersController < ApplicationController
 
   def update
     if @user.update_attributes(params[:user])
-      redirect_to users_path, :notice => user_flash(@user).html_safe
+      redirect_to users_path, notice: user_flash(@user).html_safe
     else
       render :edit
     end
@@ -42,7 +42,7 @@ class UsersController < ApplicationController
     authorize! :destroy, @user
     @user.destroy unless @user.super_user
     notice = !@user.super_user ? "Awesome. You deleted #{@user.title}" : "Woah. Not so fast. They're a super user"
-    redirect_to(users_path, :notice => notice)
+    redirect_to(users_path, notice: notice)
   end
 
   def search
@@ -51,7 +51,7 @@ class UsersController < ApplicationController
     respond_to do |format|
       format.html
       format.json {
-        render :json => @users.map{ |user| { :name => user.full_name, :id => user.id } }
+        render json: @users.map{ |user| { name: user.full_name, id: user.id } }
       }
     end
   end
@@ -62,6 +62,6 @@ class UsersController < ApplicationController
     end
 
     def user_flash user
-      render_to_string :partial => "flash", :locals => { :user => user }
+      render_to_string partial: "flash", locals: { user: user }
     end
 end

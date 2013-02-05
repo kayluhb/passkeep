@@ -21,8 +21,8 @@ class EntryImport < ActiveRecord::Base
 
   belongs_to :team
 
-  validates :attachment_name, :presence => true
-  validates :team, :presence => true
+  validates :attachment_name, presence: true
+  validates :team, presence: true
 
   def process_import
     puts "PROCESS IMPORT #{attachment.path}"
@@ -30,7 +30,7 @@ class EntryImport < ActiveRecord::Base
       f.each_line do |line|
         CSV.parse(line) do |row|
           begin
-            ret = self.process_row(row)
+            self.process_row(row)
           rescue
             puts "can't process this one #{row[0]}"
           end
@@ -44,21 +44,21 @@ class EntryImport < ActiveRecord::Base
     puts "PROCESS ROW"
     project = Project.find_by_name(row[0].strip)
     if project.nil?
-      project = Project.new({ :name => row[0].strip })
-      project.save
+      project = Project.new({ name: row[0].strip })
+      project.save!
       team.projects << project
-      team.save
+      team.save!
     end
 
     h = {
-      :title => row[1],
-      :username => row[2],
-      :password => row[3],
-      :url => row[4],
+      title: row[1],
+      username: row[2],
+      password: row[3],
+      url: row[4],
     }
     puts h.to_yaml
     entry = Entry.new(h)
     entry.project = project
-    entry.save
+    entry.save!
   end
 end

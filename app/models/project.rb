@@ -19,16 +19,16 @@ class Project < ActiveRecord::Base
 
   has_many :entries
   has_many :team_projects
-  has_many :teams, :through => :team_projects
-  has_many :users, :through => :teams, :uniq => true
+  has_many :teams, through: :team_projects
+  has_many :users, through: :teams, uniq: true
 
   attr_accessible :name, :status_id, :default_team, :team_tokens
 
   before_create :add_to_master_team
   before_validation :make_guid, :sanitize_teams
 
-  validates :guid, :presence => true
-  validates :name, :presence => true
+  validates :guid, presence: true
+  validates :name, presence: true
 
   attr_accessor :default_team
 
@@ -58,7 +58,7 @@ class Project < ActiveRecord::Base
 
   private
     def add_to_master_team
-      self.teams << Team.where(:master => true)
+      self.teams << Team.where(master: true)
     end
     def make_guid
       self.guid = UUIDTools::UUID.random_create.to_s if guid.blank?

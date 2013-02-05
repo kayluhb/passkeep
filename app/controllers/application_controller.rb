@@ -4,14 +4,14 @@ class ApplicationController < ActionController::Base
 
   # 404
   unless Rails.env.development?
-    rescue_from ActiveRecord::RecordNotFound, :with => :render_404
-    rescue_from ActionController::RoutingError, :with => :render_404
-    rescue_from ActionController::UnknownController, :with => :render_404
-    rescue_from ActionController::UnknownAction, :with => :render_404
+    rescue_from ActiveRecord::RecordNotFound, with: :render_404
+    rescue_from ActionController::RoutingError, with: :render_404
+    rescue_from ActionController::UnknownController, with: :render_404
+    rescue_from ActionController::UnknownAction, with: :render_404
   end
 
   rescue_from CanCan::AccessDenied do |exception|
-    redirect_to root_url, :alert => exception.message
+    redirect_to root_url, alert: exception.message
   end
 
   protected

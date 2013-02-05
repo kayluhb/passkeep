@@ -8,7 +8,7 @@ class EntryImportsController < ApplicationController
     @entry_import = EntryImport.new(params[:entry_import])
     if @entry_import.save
       @entry_import.process_import
-      redirect_to entries_path, :notice => "Yay. Imported!"
+      redirect_to entries_path, notice: "Yay. Imported!"
     else
       render :new
     end

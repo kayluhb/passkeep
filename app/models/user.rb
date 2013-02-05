@@ -37,11 +37,11 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :team_members
-  has_many :teams, :through => :team_members
-  has_many :projects, :through => :teams, :uniq => true
-  has_many :entries, :through => :projects, :uniq => true
-#  has_many :edit_teams, :class_name => "Team", :source => :user,
-#           :through => :team_members, :conditions => "role_id = 2"
+  has_many :teams, through: :team_members
+  has_many :projects, through: :teams, uniq: true
+  has_many :entries, through: :projects, uniq: true
+#  has_many :edit_teams, class_name: "Team", source: :user,
+#           through: :team_members, conditions: "role_id = 2"
 
   attr_accessible :email, :password, :password_confirmation, :remember_me,
                   :first_name, :last_name, :full_name, :time_zone, :team_tokens,
@@ -50,9 +50,9 @@ class User < ActiveRecord::Base
   attr_accessor :full_name
   attr_accessor :team_tokens
 
-  validates :first_name, :presence => true
-  validates :last_name, :presence => true
-  validates :guid, :presence => true
+  validates :first_name, presence: true
+  validates :last_name, presence: true
+  validates :guid, presence: true
 
   before_validation :make_guid
 
@@ -84,8 +84,8 @@ class User < ActiveRecord::Base
 
   def can_edit?(p)
     return true if p.new_record?
-    user_teams = self.teams.where(:role_id => 2).select("teams.id").collect(&:id)
-    project_teams = p.teams.where(:role_id => 2).select("teams.id").collect(&:id)
+    user_teams = self.teams.where(role_id: 2).select("teams.id").collect(&:id)
+    project_teams = p.teams.where(role_id: 2).select("teams.id").collect(&:id)
     (user_teams & project_teams).length > 0
   end
 

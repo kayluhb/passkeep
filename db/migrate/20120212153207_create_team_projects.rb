@@ -1,8 +1,8 @@
 class CreateTeamProjects < ActiveRecord::Migration
   def change
     create_table :team_projects do |t|
-      t.references :project, :null => false
-      t.references :team, :null => false
+      t.references :project, null: false
+      t.references :team, null: false
 
       t.timestamps
     end

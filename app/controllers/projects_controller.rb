@@ -1,13 +1,13 @@
 class ProjectsController < ApplicationController
 
-  before_filter :set_project, :only => [:edit, :show, :update, :confirm_destroy,
+  before_filter :set_project, only: [:edit, :show, :update, :confirm_destroy,
                                         :destroy, :tagged_entries]
-  before_filter :check_permissions, :only => [:update, :confirm_destroy, :destroy]
+  before_filter :check_permissions, only: [:update, :confirm_destroy, :destroy]
 
   def index
     @projects = current_user.projects.ordered
-    count = @projects.count(:distinct => true)
-    @projects = @projects.paginate(:page => params[:page], :total_entries => count)
+    count = @projects.count(distinct: true)
+    @projects = @projects.paginate(page: params[:page], total_entries: count)
   end
 
   def new
@@ -17,7 +17,7 @@ class ProjectsController < ApplicationController
   def create
     @project = Project.new(params[:project])
     if @project.save
-      redirect_to projects_path, :notice => project_flash(@project).html_safe
+      redirect_to projects_path, notice: project_flash(@project).html_safe
     else
       render :new
     end
@@ -29,7 +29,7 @@ class ProjectsController < ApplicationController
 
   def update
     if @project.update_attributes(params[:project])
-      redirect_to projects_path, :notice => project_flash(@project).html_safe
+      redirect_to projects_path, notice: project_flash(@project).html_safe
     else
       render :edit
     end
@@ -40,12 +40,12 @@ class ProjectsController < ApplicationController
 
   def destroy
     @project.destroy
-    redirect_to(projects_path, :notice => "Awesome. You deleted #{@project.name}")
+    redirect_to(projects_path, notice: "Awesome. You deleted #{@project.name}")
   end
 
   def paginate
     projects = current_user.projects.skinny.ordered.limit(30).offset(params[:idx])
-    render :json => projects.to_json(:methods => [:entry_count])
+    render json: projects.to_json(methods: [:entry_count])
   end
 
   def search
@@ -54,7 +54,7 @@ class ProjectsController < ApplicationController
     respond_to do |format|
       format.html
       format.json {
-        render :json => @projects.map{ |p| { :name => p.name, :id => p.id } }
+        render json: @projects.map{ |p| { name: p.name, id: p.id } }
       }
     end
   end
@@ -70,7 +70,7 @@ class ProjectsController < ApplicationController
     respond_to do |format|
       format.html
       format.json {
-        render :json => @entries.to_json(:methods => [:project_guid, :project_name])
+        render json: @entries.to_json(methods: [:project_guid, :project_name])
       }
     end
   end
@@ -81,7 +81,7 @@ class ProjectsController < ApplicationController
     end
 
     def project_flash project
-      render_to_string :partial => "flash", :locals => { :project => project }
+      render_to_string partial: "flash", locals: { project: project }
     end
 
     def set_project

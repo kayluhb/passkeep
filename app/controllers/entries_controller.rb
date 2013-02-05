@@ -1,14 +1,14 @@
 class EntriesController < ApplicationController
 
-  before_filter :set_entry, :only => [:edit, :show, :update, :confirm_destroy,
+  before_filter :set_entry, only: [:edit, :show, :update, :confirm_destroy,
                                       :destroy]
-  before_filter :check_permissions, :only => [:edit, :update, :confirm_destroy,
+  before_filter :check_permissions, only: [:edit, :update, :confirm_destroy,
                                               :destroy]
 
   def index
     @entries = current_user.entries.skinny.order(:search_text)
-    count = @entries.count(:distinct => true)
-    @entries = @entries.paginate(:page => params[:page], :total_entries => count)
+    count = @entries.count(distinct: true)
+    @entries = @entries.paginate(page: params[:page], total_entries: count)
     @tags = current_user.entries.tag_counts_on(:tags).order(:name)
   end
 
@@ -23,7 +23,7 @@ class EntriesController < ApplicationController
   def create
     @entry = Entry.new(params[:entry])
     if @entry.save
-      redirect_to project_entry_path(@entry.project, @entry), :notice => entry_flash(@entry).html_safe
+      redirect_to project_entry_path(@entry.project, @entry), notice: entry_flash(@entry).html_safe
     else
       render :new
     end
@@ -34,8 +34,8 @@ class EntriesController < ApplicationController
       format.html
       format.json {
         @entry.can_edit = current_user.can_edit? @entry.project
-        render :json => @entry.to_json(:include => [:project],
-          :methods => [:notes, :password, :username, :url, :tags, :can_edit])
+        render json: @entry.to_json(include: [:project],
+          methods: [:notes, :password, :username, :url, :tags, :can_edit])
       }
     end
   end
@@ -45,7 +45,7 @@ class EntriesController < ApplicationController
 
   def update
     if @entry.update_attributes(params[:entry])
-      redirect_to project_entry_path(@entry.project, @entry), :notice => entry_flash(@entry).html_safe
+      redirect_to project_entry_path(@entry.project, @entry), notice: entry_flash(@entry).html_safe
     else
       render :edit
     end
@@ -56,7 +56,7 @@ class EntriesController < ApplicationController
 
   def destroy
     @entry.destroy
-    redirect_to(entries_path, :notice => "Awesome. You deleted #{@entry.title}")
+    redirect_to(entries_path, notice: "Awesome. You deleted #{@entry.title}")
   end
 
   def paginate
@@ -64,14 +64,14 @@ class EntriesController < ApplicationController
     entries = current_user.entries
     entries = entries.tagged_with(tag_name) unless tag_name.blank?
     entries = entries.skinny.order(:search_text).limit(30).offset(params[:idx])
-    render :json => entries.to_json(:methods => [:project_guid, :project_name])
+    render json: entries.to_json(methods: [:project_guid, :project_name])
   end
 
   def tagged
     @tag_name = params[:tag_name].to_s
     @entries = current_user.entries.tagged_with(@tag_name).order(:search_text)
-    count = @entries.count(:distinct => true)
-    @entries = @entries.paginate(:page => params[:page], :total_entries => count)
+    count = @entries.count(distinct: true)
+    @entries = @entries.paginate(page: params[:page], total_entries: count)
     @tags = current_user.entries.tag_counts_on(:tags).order(:name)
     render :index
   end
@@ -82,7 +82,7 @@ class EntriesController < ApplicationController
     end
 
     def entry_flash entry
-      render_to_string :partial => "flash", :locals => { :entry => entry }
+      render_to_string partial: "flash", locals: { entry: entry }
     end
 
     def set_entry

@@ -5,10 +5,10 @@ class SearchController < ApplicationController
     respond_to do |format|
       format.html
       format.json {
-        render :json => @entries.map{ |entry| {
-          :name => "#{entry.project_name}: #{entry.title}",
-          :id => entry.guid,
-          :path => project_entry_path(entry.project, entry)
+        render json: @entries.map{ |entry| {
+          name: "#{entry.project_name}: #{entry.title}",
+          id: entry.guid,
+          path: project_entry_path(entry.project, entry)
         }}
       }
     end

@@ -29,20 +29,20 @@ class Entry < ActiveRecord::Base
                   :attachment, :tag_tokens, :project_id, :tag_list,
                   :retained_attachment
 
-  attr_encrypted :username, :key => Settings.entry.username
-  attr_encrypted :password, :key => Settings.entry.password
-  attr_encrypted :url, :key => Settings.entry.url
-  attr_encrypted :notes, :key => Settings.entry.notes
+  attr_encrypted :username, key: Settings.entry.username
+  attr_encrypted :password, key: Settings.entry.password
+  attr_encrypted :url, key: Settings.entry.url
+  attr_encrypted :notes, key: Settings.entry.notes
 
   image_accessor :attachment
 
-  delegate :name, :guid, :to => :project, :prefix => true
+  delegate :name, :guid, to: :project, prefix: true
 
   before_validation :make_guid, :set_search_text
 
-  validates :title, :presence => true
-  validates :guid, :presence => true
-  validates :project, :presence => true
+  validates :title, presence: true
+  validates :guid, presence: true
+  validates :project, presence: true
 
   attr_accessor :can_edit
 

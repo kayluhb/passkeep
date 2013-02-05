@@ -20,16 +20,16 @@ class Team < ActiveRecord::Base
 
   has_many :team_members
   has_many :team_projects
-  has_many :users, :through => :team_members, :order => 'first_name'
-  has_many :projects, :through => :team_projects, :order => 'name'
+  has_many :users, through: :team_members, order: 'first_name'
+  has_many :projects, through: :team_projects, order: 'name'
 
   attr_accessible :name, :project_tokens, :user_tokens, :role_id
 
   before_validation :make_guid
   before_destroy :check_for_master
 
-  validates :guid, :presence => true
-  validates :name, :presence => true
+  validates :guid, presence: true
+  validates :name, presence: true
 
   attr_accessor :project_tokens, :user_tokens
 
@@ -68,7 +68,7 @@ class Team < ActiveRecord::Base
 
   class << self
     def editable
-      where(:role_id => ROLES['Read and edit'])
+      where(role_id: ROLES['Read and edit'])
     end
 
     def ordered

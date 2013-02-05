@@ -13,7 +13,7 @@ class TeamProject < ActiveRecord::Base
   belongs_to :project
   belongs_to :team
 
-  validates :project, :presence => true
-  validates :team, :presence => true
+  validates :project, presence: true
+  validates :team, presence: true
 
 end
