@@ -68,7 +68,6 @@ module Passkeep
       app/*.*
       images/*.*
       libs/*.*
-      swfs/*.*
     )
   end
 end

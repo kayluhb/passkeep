@@ -29,7 +29,11 @@ var APP = (function($) {
     // Public functions
     app.clippy = function(id, param, value) {
         value = encodeURI(value);
-        return '<object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" width="110" height="14" id="clippy-' + param + '-' + id + '" ><param name="movie" value="/assets/swfs/clippy.swf"/><param name="allowScriptAccess" value="always" /><param name="quality" value="high" /><param name="scale" value="noscale" /><param name="FlashVars" value="text=' + value + '"><param name="bgcolor" value="#F5F5F5"><embed src="/assets/swfs/clippy.swf" width="110" height="14" name="clippy-' + param + '-' + id + '" quality="high" allowScriptAccess="always" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" FlashVars="text=' + value + '" bgcolor="#F5F5F5" /></object>';
+        return '<object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" width="110" height="14" id="clippy-' + param + '-' + id +
+        '" ><param name="movie" value="/assets/clippy.swf"/><param name="allowScriptAccess" value="always" /><param name="quality" value="high" /><param name="scale" value="noscale" /><param name="FlashVars" value="text=' +
+        value + '"><param name="bgcolor" value="#F5F5F5"><embed src="/assets/clippy.swf" width="110" height="14" name="clippy-' + param + '-' + id +
+        '" quality="high" allowScriptAccess="always" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" FlashVars="text=' + value +
+        '" bgcolor="#F5F5F5" /></object>';
     };
 
     app.externalLink = function(link) {
