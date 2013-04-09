@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.2.11'
+gem 'rails', '3.2.13'
 
 gem 'acts-as-taggable-on', git: 'https://github.com/mbleigh/acts-as-taggable-on.git'
 gem 'attr_encrypted'
@@ -22,7 +22,6 @@ gem 'will_paginate'
 gem 'uuidtools'
 
 group :assets do
-  gem 'asset_sync'
   gem 'sass-rails',   '~> 3.2.3'
   gem 'turbo-sprockets-rails3'
   gem 'uglifier', '>= 1.0.3'
