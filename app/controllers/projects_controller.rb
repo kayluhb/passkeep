@@ -5,7 +5,7 @@ class ProjectsController < ApplicationController
   before_filter :check_permissions, only: [:update, :confirm_destroy, :destroy]
 
   def index
-    @projects = current_user.projects.ordered
+    @projects = Project.skinny.ordered
     count = @projects.count(distinct: true)
     @projects = @projects.paginate(page: params[:page], total_entries: count)
   end
@@ -44,7 +44,7 @@ class ProjectsController < ApplicationController
   end
 
   def paginate
-    projects = current_user.projects.skinny.ordered.limit(30).offset(params[:idx])
+    projects = Project.skinny.ordered.limit(30).offset(params[:idx])
     render json: projects.to_json(methods: [:entry_count])
   end
 

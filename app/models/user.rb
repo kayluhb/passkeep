@@ -89,6 +89,10 @@ class User < ActiveRecord::Base
     (user_teams & project_teams).length > 0
   end
 
+  def can_view?(project)
+    self.projects.include? project
+  end
+
   private
     def make_guid
       self.guid = UUIDTools::UUID.random_create.to_s if guid.blank?
