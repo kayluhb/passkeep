@@ -17,7 +17,6 @@ gem 'pg'
 gem 'rack'
 gem 'rack-cache', require: 'rack/cache'
 gem 'settingslogic'
-gem 'thin'
 gem 'will_paginate'
 gem 'uuidtools'
 
@@ -28,16 +27,14 @@ group :assets do
 end
 
 group :development do
-  gem 'annotate', git: 'git://github.com/jeremyolliver/annotate_models.git', branch: 'rake_compatibility'
+  gem 'annotate'
   gem 'bullet'
   gem 'capistrano_colors'
   gem 'execjs'
-  gem 'factory_girl_rails'
   gem 'quiet_assets'
   gem 'rack-mini-profiler'
   gem 'rails_best_practices'
   gem 'railroady'
-  gem 'rspec-rails'
   gem 'thin'
 end
 
@@ -45,7 +42,7 @@ group :production do
   gem 'therubyracer'
 end
 
-group :test do
+group :development, :test do
   gem 'cucumber-rails'
   gem 'factory_girl_rails'
   gem 'database_cleaner'

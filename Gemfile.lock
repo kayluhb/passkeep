@@ -1,11 +1,4 @@
 GIT
-  remote: git://github.com/jeremyolliver/annotate_models.git
-  revision: 4d57e4fe6360125f17886168120a48091a268e45
-  branch: rake_compatibility
-  specs:
-    annotate (2.4.0)
-
-GIT
   remote: https://github.com/mbleigh/acts-as-taggable-on.git
   revision: 7ca87d1967929d91990e70edecf929ce304a7de7
   specs:
@@ -42,6 +35,9 @@ GEM
     activesupport (3.2.13)
       i18n (= 0.6.1)
       multi_json (~> 1.0)
+    annotate (2.6.2)
+      activerecord (>= 2.3.0)
+      rake (>= 0.8.7)
     arel (3.0.2)
     attr_encrypted (1.2.1)
       encryptor (>= 1.1.1)
@@ -229,7 +225,7 @@ PLATFORMS
 
 DEPENDENCIES
   acts-as-taggable-on!
-  annotate!
+  annotate
   attr_encrypted
   bullet
   cancan
