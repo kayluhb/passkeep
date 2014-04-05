@@ -19,6 +19,7 @@ gem 'rack-cache', require: 'rack/cache'
 gem 'settingslogic'
 gem 'will_paginate'
 gem 'uuidtools'
+gem 'pg'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
@@ -29,7 +30,6 @@ end
 group :development do
   gem 'annotate'
   gem 'bullet'
-  gem 'capistrano_colors'
   gem 'execjs'
   gem 'quiet_assets'
   gem 'rack-mini-profiler'
