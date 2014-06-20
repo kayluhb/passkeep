@@ -1,2 +1,13 @@
-h1 Projects#confirm_destroy
-p Find me in app/views/projects/confirm_destroy.html.slim
+- title "Delete #{@project.name}"
+
+= form_for :project, url: project_path(@project), html: { method: :delete } do |f|
+
+  h1 Are you sure you want to permanently destroy #{@project.name}?
+
+  p This action cannot be undone.
+
+  p
+    button.button-danger type="submit"
+      i.icon.icon-remove
+      | Delete
+    |  or #{link_to "cancel", project_path(@project), class: 'button button-info'}

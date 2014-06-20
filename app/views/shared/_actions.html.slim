@@ -1,0 +1,16 @@
+- cancel_path = local_assigns[:cancel_path].nil? ? "" : local_assigns[:cancel_path]
+- delete_path = local_assigns[:delete_path].nil? ? "" : local_assigns[:delete_path]
+
+.button-group
+
+  - unless m.new_record? || delete_path.blank?
+    a.button.button-danger href="#{delete_path}"
+      i.icon.icon-remove
+      | delete
+
+  - unless cancel_path.blank?
+    = link_to "cancel", cancel_path, class: 'button button-info cancel'
+
+  button type="submit"
+    i.icon.icon-pencil
+    | save

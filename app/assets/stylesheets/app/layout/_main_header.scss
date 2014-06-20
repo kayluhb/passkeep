@@ -51,6 +51,7 @@
       border-right: 0;
       height: 34px;
       width: 250px;
+      @include border-radius(0);
       @include transition(all $transition-timing $transition-function);
 
       &:focus {

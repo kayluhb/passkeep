@@ -1,0 +1,10 @@
+= simple_form_for [project] do |f|
+
+  = render 'shared/errors', m: project
+
+  = f.input :name
+
+  = render 'shared/actions',
+    m: project,
+    cancel_path: projects_path,
+    delete_path: project.new_record? ? nil : confirm_destroy_project_path(project)

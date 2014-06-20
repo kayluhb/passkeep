@@ -139,25 +139,25 @@ h6 {
 }
 
 h1 {
-  font-size:68px;
-  margin-top:0;
+  font-size: 48px;
+  margin-top: 0;
 }
 
 h2 {
-  font-size: 54px;
+  font-size: 40px;
   margin-top: 34px;
 }
 
 h3 {
-  font-size:42px;
+  font-size: 34px;
 }
 
 h4 {
-  font-size:34px;
+  font-size: 30px;
 }
 
 h5 {
-  font-size:26px;
+  font-size: 26px;
 }
 
 h6 {
@@ -364,7 +364,7 @@ textarea {
   padding: 0 10px;
   width: 100%;
   -webkit-appearance:none;
-  @include border-radius(0);
+  @include border-radius(2px);
   @include transition(border-color $transition-timing $transition-function);
 }
 

@@ -65,7 +65,9 @@ Rails.application.routes.draw do
   #     resources :products
   #   end
 
-  resources :projects, :entries, :teams, :users, :search
+  resources :projects, :entries, :teams, :users, :search do
+    get :confirm_destroy, on: :member
+  end
 
   root 'projects#index'
 end

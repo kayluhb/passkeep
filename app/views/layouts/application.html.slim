@@ -49,7 +49,14 @@ html.no-js lang="en"
             li = link_to '<i class="icon icon-exit"></i> Logout'.html_safe, destroy_user_session_path, method: :delete
 
   .wrap
-    .inner = yield
+    .inner
+      - if notice
+        p.message.notice = notice
+
+      - if alert
+        p.message.alert = alert
+
+      = yield
 
   footer.main-footer
     .inner &copy; #{DateTime.now.strftime("%Y")} Passkeep

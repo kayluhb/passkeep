@@ -1,0 +1,14 @@
+- title "#{@project.name} - Projects"
+
+h1 = @project.name
+
+a.md-trigger href="#" data-modal="#project-form" edit
+
+#project-form.md-modal.md-effect-18
+  .md-content
+
+    h4.head Edit #{@project.name}
+
+    .body = render 'form', project: @project
+
+.md-overlay

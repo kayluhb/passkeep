@@ -1,8 +1,9 @@
 button,
 .button {
-  border: 0;
   background: $col-blue;
+  border: 2px solid $col-blue;
   color: #fff;
+  display: inline-block;
   font-family: $font-sans-medium;
   height: 34px;
   line-height: 34px;
@@ -12,7 +13,8 @@ button,
   @include transition-property(background-color, border-color, color, opacity);
 
   &:hover {
-    background: $col-blue-dark;
+    background: $col-blue-light;
+    color: $col-blue-dark;
   }
 
   &:focus {
@@ -21,9 +23,61 @@ button,
   }
 
   &:active {
-    background: $col-blue-light;
-    color: $col-blue-dark;
+    background: $col-blue-dark;
+    color: #fff;
     position:relative;
     top:1px;
+  }
+
+  .icon {
+    float: left;
+    display: block;
+    line-height: 29px;
+    margin-right: 4px;
+  }
+}
+
+.button-danger {
+  background-color: #e74c3c;
+  border-color: #e74c3c;
+
+  &:hover,
+  &:focus {
+    background-color: #ec7063;
+    color: #fff;
+  }
+  &:active,
+  &.active {
+    background-color: #dc2d1b;
+  }
+}
+
+.button-info {
+  background-color: $col-gray;
+  border-color: $col-gray;
+
+  &:hover,
+  &:focus {
+    background-color: $col-gray-light;
+    color: $col-gray;
+  }
+
+  &:active,
+  &.active {
+    background-color: $col-gray;
+    color: #fff;
+  }
+}
+
+.button-group {
+  margin: 30px 0;
+
+  .button,
+  button {
+    margin-left: 8px;
+
+    &:first-child {
+      margin-left: 0;
+    }
   }
 }

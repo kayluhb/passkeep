@@ -1,2 +1,5 @@
-h1 Projects#edit
-p Find me in app/views/projects/edit.html.slim
+- title "Edit #{@project.name}"
+
+h1 Editing #{@project.name}
+
+= render 'form', project: @project

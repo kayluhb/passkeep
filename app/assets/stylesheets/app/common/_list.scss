@@ -1,0 +1,17 @@
+.list {
+  margin: 30px 0;
+
+  li {
+    padding: 4px 20px;
+    font-family: $font-sans-regular;
+
+    &:nth-child(2n) {
+      background: $col-gray-light;
+    }
+  }
+
+  .meta {
+    float: right;
+    font-size: 12px;
+  }
+}
