@@ -34,4 +34,22 @@ class Entry < ActiveRecord::Base
 
   delegate :name, :guid, to: :project, prefix: true
 
+  attr_accessor :can_edit
+
+  private
+    def set_search_text
+      self.search_text = "#{self.project_name} #{self.title}".downcase
+    end
+
+  class << self
+
+    def ordered
+      order("#{self.table_name}.title")
+    end
+
+    def skinny
+      select(['id', 'guid', 'title', 'project_id', 'search_text']\
+        .collect {|s| "#{self.table_name}.#{s}"}.join(","))
+    end
+  end
 end

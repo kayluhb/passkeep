@@ -15,8 +15,8 @@
 
 FactoryGirl.define do
   factory :team do
-    name "MyString"
-    guid "MyString"
+    name "Team Name"
+    guid ''
     master false
     role_id 1
   end

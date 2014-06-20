@@ -2,7 +2,33 @@
 
 h1 = @project.name
 
-a.md-trigger href="#" data-modal="#project-form" edit
+a href="#" data-modal="#project-form" edit
+
+nav.list
+  ul
+
+    - if current_user.can_view? @project
+      - @entries.each do |e|
+        li id="#{e.id}" = link_to e.title, project_entry_path(e.project, e)
+
+    - else
+      li
+        a href="#" You do not have permission to view these entries
+
+hr
+
+h5 People with Access
+p
+  - @project.users.skinny.ordered.each do |u|
+    = u.full_name
+    br
+
+h5 Teams with Access
+p
+  - @project.teams.ordered.each do |t|
+    = link_to t.name, edit_team_path(t)
+    br
+
 
 #project-form.md-modal.md-effect-18
   .md-content

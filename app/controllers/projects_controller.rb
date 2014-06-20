@@ -33,6 +33,7 @@ class ProjectsController < ApplicationController
   end
 
   def show
+    @entries = @project.entries.skinny.ordered
   end
 
   def destroy
