@@ -35,4 +35,65 @@ class User < ActiveRecord::Base
   # :registerable, :confirmable and :omniauthable
   devise :database_authenticatable, :lockable, :timeoutable,
          :recoverable, :rememberable, :trackable, :validatable
+
+  # Relations
+  has_many :team_members
+  has_many :teams, through: :team_members
+  has_many :projects, -> { uniq }, through: :teams
+  has_many :entries, -> { uniq }, through: :projects
+
+  attr_accessor :full_name
+  attr_accessor :team_tokens
+
+  validates :first_name, :last_name, presence: true
+
+  def admin?
+    super_user || administrator
+  end
+
+  def full_name
+    "#{first_name} #{last_name}".strip
+  end
+
+  def full_name=(name)
+    split = name.split(' ', 2)
+    self.first_name = split.first
+    self.last_name = split.last
+  end
+
+  def team_tokens=(ids)
+    self.team_ids = ids.split(",")
+  end
+
+  def team_tokens
+    self.team_ids.join(',')
+  end
+
+  def can_edit?(project)
+    return true if project.new_record?
+    user_teams = self.teams.where(role_id: 2).select("teams.id").collect(&:id)
+    project_teams = project.teams.where(role_id: 2).select("teams.id").collect(&:id)
+    (user_teams & project_teams).length > 0
+  end
+
+  def can_view?(project)
+    self.projects.include? project
+  end
+
+  protected
+    def password_required?
+      !persisted? || password.present? || password_confirmation.present?
+    end
+
+  class << self
+
+    def ordered
+      order("#{self.table_name}.last_name, #{self.table_name}.first_name")
+    end
+
+    def skinny
+      select(['id', 'guid', 'email', 'first_name', 'last_name', 'updated_at']\
+        .collect {|s| "#{self.table_name}.#{s}"}.join(","))
+    end
+  end
 end

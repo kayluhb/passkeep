@@ -1,0 +1,22 @@
+html,
+body {
+  height:100%;
+}
+
+.wrap {
+  height: auto;
+  min-height: 100%;
+  padding: ($footer-height + 20) 0;
+}
+
+.inner {
+  margin:0 auto;
+  width:680px;
+}
+
+.main-footer {
+  clear: both;
+  height: $footer-height;
+  margin-top: -$footer-height;
+  position: relative;
+}

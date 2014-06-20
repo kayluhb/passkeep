@@ -15,7 +15,52 @@ html.no-js lang="en"
 
   body
 
-  = yield
+  header.main-header
+    nav
+
+      = link_to 'Passkeep', root_path, class: 'logo'
+
+      - if user_signed_in?
+        ul
+          li class="#{on_class projects_path}" = link_to "Projects", projects_path
+          li class="#{on_class entries_path}" = link_to "Entries", entries_path
+          li class="#{on_class teams_path}" = link_to "Teams", teams_path
+
+        ul.dropdown
+          li
+            a href="#" class="dropdown-toggle"
+              = gravatar_image_tag(current_user.email, alt: current_user.full_name, gravatar: { size: 20 }, class: 'ava')
+              = current_user.full_name
+              i.icon.icon-down-caret
+
+            ul
+              li = link_to '<i class="icon icon-edit"></i> Edit your account'.html_safe, edit_user_path(current_user)
+
+              - if can? :manage, User
+                li = link_to '<i class="icon-user"></i> Users'.html_safe, users_path
+
+              li
+                a href="#passkeep-tips" Passkeep Tips
+
+              li = link_to 'Logout', destroy_user_session_path, method: :delete
+
+    input#search.search-query type="search" placeholder="Search for a project or entry" title="shift+l to focus"
+
+  .wrap
+    = yield
+
+    p Pellentesque auctor neque nec urna. Suspendisse nisl elit, rhoncus eget, elementum ac, condimentum eget, diam. Aenean tellus metus, bibendum sed, posuere ac, mattis non, nunc. Nunc nonummy metus. Nunc sed turpis.
+
+    p Donec vitae sapien ut libero venenatis faucibus. Praesent blandit laoreet nibh. Nam at tortor in tellus interdum sagittis. Pellentesque posuere. Fusce egestas elit eget lorem.
+
+    p Nulla sit amet est. Vestibulum fringilla pede sit amet augue. Quisque id odio. Etiam sollicitudin, ipsum eu pulvinar rutrum, tellus ipsum laoreet sapien, quis venenatis ante odio sit amet eros. Morbi nec metus.
+
+    p Proin magna. Duis lobortis massa imperdiet quam. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; In ac dui quis mi consectetuer lacinia. Praesent nec nisl a purus blandit viverra. Pellentesque commodo eros a enim.
+
+    p Vivamus laoreet. Cras sagittis. Nunc sed turpis. Mauris sollicitudin fermentum libero. Cras ultricies mi eu turpis hendrerit fringilla.
+
+  footer.main-footer &copy; #{DateTime.now.strftime("%Y")} Passkeep
+
 
   script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"
 
