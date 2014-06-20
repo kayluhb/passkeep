@@ -29,7 +29,7 @@ html.no-js lang="en"
         ul.dropdown
           li
             a href="#" class="dropdown-toggle"
-              = gravatar_image_tag(current_user.email, alt: current_user.full_name, gravatar: { size: 20 }, class: 'ava')
+              = gravatar_image_tag current_user.email, alt: current_user.full_name, gravatar: { size: 20 }, class: 'avatar'
               = current_user.full_name
               i.icon.icon-down-caret
 
@@ -37,7 +37,7 @@ html.no-js lang="en"
               li = link_to '<i class="icon icon-edit"></i> Edit your account'.html_safe, edit_user_path(current_user)
 
               - if can? :manage, User
-                li = link_to '<i class="icon-user"></i> Users'.html_safe, users_path
+                li = link_to '<i class="icon icon-user"></i> Users'.html_safe, users_path
 
               li
                 a href="#passkeep-tips" Passkeep Tips
