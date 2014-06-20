@@ -11,4 +11,8 @@
 #
 
 class Project < ActiveRecord::Base
+
+  # Concerns
+  include Guidable
+
 end

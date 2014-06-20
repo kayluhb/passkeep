@@ -30,5 +30,10 @@
 
 FactoryGirl.define do
   factory :user do
+    email ''
+    password ''
+    first_name 'Passkeep'
+    last_name 'Administrator'
+    super_user false
   end
 end

@@ -12,4 +12,15 @@
 #
 
 class Team < ActiveRecord::Base
+
+  # Concerns
+  include Guidable
+
+  # Relations
+  has_many :team_members, dependent: :destroy
+  has_many :users, -> { order('users.first_name') }, through: :team_members
+
+  has_many :team_projects, dependent: :destroy
+  has_many :projects, -> { order('projects.name') }, through: :team_projects
+
 end

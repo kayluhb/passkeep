@@ -5,3 +5,13 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+
+u = FactoryGirl.create(:user,
+  email: 'admin@passkeep.com',
+  password: 'Passkeep1!',
+  super_user: true
+)
+puts "created #{u.email}"
+
+FactoryGirl.create(:team, name: "Master", user_ids: [u.id], master: true)

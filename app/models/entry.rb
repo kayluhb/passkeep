@@ -19,5 +19,19 @@
 #
 
 class Entry < ActiveRecord::Base
+
+  # Concerns
+  include Guidable
+
+  # attr_encrypted :username, key: Settings.entry.username
+  # attr_encrypted :password, key: Settings.entry.password
+  # attr_encrypted :url, key: Settings.entry.url
+  # attr_encrypted :notes, key: Settings.entry.notes
+
   belongs_to :project
+
+  validates :title, :project, presence: true
+
+  delegate :name, :guid, to: :project, prefix: true
+
 end

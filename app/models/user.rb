@@ -27,6 +27,10 @@
 #
 
 class User < ActiveRecord::Base
+
+  # Concerns
+  include Guidable
+
   # Include default devise modules. Others available are:
   # :registerable, :confirmable and :omniauthable
   devise :database_authenticatable, :lockable, :timeoutable,
