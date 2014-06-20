@@ -1,0 +1,24 @@
+doctype html
+html.no-js lang="en"
+
+  head
+    meta charset="utf-8"
+    title
+      = content_for?(:title) ? yield(:title) : default_title
+
+    meta name="viewport" content="width=device-width"
+
+    link rel="dns-prefetch" href="//ajax.googleapis.com"
+
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+    = csrf_meta_tags
+
+  body
+
+  = yield
+
+  script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"
+
+  = javascript_include_tag 'application', :'data-turbolinks-eval' => false
+
+  = yield :js

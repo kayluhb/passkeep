@@ -1,0 +1,21 @@
+- title "Page not found"
+
+style
+
+  | .goog-wm .content li { background: none; list-style:none; }
+    input[type="text"] { border:1px solid #ccc;border-radius:3px;padding-left:10px;}
+    input[type="submit"] {border:0;border-radius:3px;background:#666;color:#fff;cursor: pointer;}
+    input[type="submit"]:hover {background:#333;}
+
+
+h1 Oh boy.
+p I'm sorry, but there was an error finding that.
+p This page may no longer exist, so please visit the <a href="/">home page</a> or try the following:
+ul
+  li If you typed the page address in the Address bar, make sure that it was spelled correctly.
+  li Open the home page and look for the links to the information you want.
+  li Click the "Back" button to try another link.
+
+script
+  | var GOOG_FIXURL_LANG = (navigator.language || '').slice(0,2), GOOG_FIXURL_SITE = location.host;
+script src="http://linkhelp.clients.google.com/tbproxy/lh/wm/fixurl.js"
