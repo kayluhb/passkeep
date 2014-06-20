@@ -1,19 +1,19 @@
 @font-face {
-  @include font-face("sans-bold", "edmond/bold");
+  @include font-face($font-sans-bold, "edmond/bold");
 }
 
 @font-face {
-  @include font-face("sans-medium", "edmond/medium");
+  @include font-face($font-sans-medium, "edmond/medium");
 }
 
 @font-face {
-  @include font-face("sans-regular", "edmond/regular");
+  @include font-face($font-sans-regular, "edmond/regular");
 }
 
 @font-face {
-  @include font-face("serif-bold", "tisa/bold");
+  @include font-face($font-serif-bold, "tisa/bold");
 }
 
 @font-face {
-  @include font-face("serif-regular", "tisa/regular");
+  @include font-face($font-serif-regular, "tisa/regular");
 }

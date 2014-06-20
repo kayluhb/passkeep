@@ -94,7 +94,7 @@ abbr[title] {
 
 b,
 strong {
-  font-family: 'serif-bold';
+  font-family: $font-serif-bold;
   font-weight: normal;
 }
 
@@ -130,7 +130,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: 'sans-bold', sans-serif;
+  font-family: $font-sans-bold, sans-serif;
   font-weight: normal;
   line-height: 1.44;
   margin:26px 0 16px;
@@ -277,7 +277,7 @@ fieldset {
 /* Indicate that 'label' will shift focus to the associated form element */
 label {
   cursor:pointer;
-  font-family: 'sans-bold';
+  font-family: $font-sans-bold;
   font-weight: normal;
 }
 
@@ -301,12 +301,6 @@ button,
 input {
   line-height:normal;
   *overflow:visible;
-}
-
-button:active,
-.button:active {
-  position:relative;
-  top:1px;
 }
 
 /* Reintroduce inner spacing in 'table' to avoid overlap and whitespace issues in IE6/7 */
@@ -364,8 +358,11 @@ input[type="search"],
 input[type="tel"],
 input[type="url"],
 textarea {
-  border:1px solid #bccccd;
-  padding:2px;
+  border:1px solid $col-blue-light;
+  font-family: $font-sans-regular;
+  height: 34px;
+  padding: 0 10px;
+  width: 100%;
   -webkit-appearance:none;
   @include border-radius(0);
   @include transition(border-color $transition-timing $transition-function);
@@ -440,7 +437,6 @@ input.placeholder {
 
 /* Focus */
 a:focus,
-button:focus,
 label:focus {
   outline:1px dashed #c01339;
 }
@@ -454,9 +450,7 @@ textarea:focus {
 }
 
 /* Transition elements */
-a,
-button,
-.button {
+a {
   @include transition(color $transition-timing $transition-function);
   @include transition-property(background-color, border-color, color, opacity);
 }

@@ -1,6 +1,128 @@
 .main-header {
   background: #fff;
   position: fixed;
-  height: $header-height;
   width: 100%;
+
+  .logo {
+    display: block;
+    float: left;
+    height: $header-height;
+    line-height: $header-height;
+    text-align: center;
+    width: $header-height;
+  }
+
+  nav {
+    height: $header-height;
+  }
+}
+
+.main-menu {
+  float: left;
+
+  li {
+    float: left;
+
+    &.on {
+      background: $col-blue;
+
+      a {
+        color: #fff;
+      }
+    }
+  }
+
+  a {
+    display: block;
+    font-family: $font-sans-medium;
+    height: $header-height;
+    line-height: $header-height;
+    padding: 0 10px;
+    text-transform: uppercase;
+  }
+
+  .search {
+    padding: 8px 0 0 20px;
+
+    input {
+      background: #fff;
+      border-top: 0;
+      border-left: 0;
+      border-right: 0;
+      height: 34px;
+      width: 250px;
+      @include transition(all $transition-timing $transition-function);
+
+      &:focus {
+        border-bottom-width: 3px;
+        width: 300px;
+        @include box-shadow(none);
+      }
+    }
+  }
+}
+
+.drop-down {
+  cursor: pointer;
+  float: right;
+  font-family: $font-sans-regular;
+  font-size: 14px;
+  position: relative;
+  @include transition(all $transition-timing $transition-function);
+
+  &:hover {
+    background: $col-blue;
+    color: #fff;
+
+    ul {
+      display: block;
+    }
+  }
+
+  .avatar {
+    margin-right: 10px;
+    @include border-radius(50%);
+  }
+
+  .icon-caret-down {
+    margin-left: 8px;
+  }
+
+  div {
+    height: $header-height;
+    line-height: $header-height;
+    padding: 0 20px 0 10px;
+  }
+
+  ul {
+    background: #fff;
+    display: none;
+    padding: 10px 4px;
+    position: absolute;
+    right: 8px;
+    top: $header-height;
+    width: 240px;
+    @include border-radius(8px);
+    @include box-shadow(0px 0px 5px 1px rgba(50, 50, 50, 0.25));
+
+    &:before {
+      border-width: 0 10px 11px 10px;
+      border-color: transparent transparent #fff transparent;
+      position: absolute;
+      right: 20px;
+      top: -10px;
+      @include triangle;
+    }
+  }
+
+  a {
+    display: block;
+    padding: 4px 12px;
+
+    .icon {
+      margin-right: 4px;
+      width: 30px;
+    }
+  }
+
 }

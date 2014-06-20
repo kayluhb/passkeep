@@ -1,0 +1,29 @@
+button,
+.button {
+  border: 0;
+  background: $col-blue;
+  color: #fff;
+  font-family: $font-sans-medium;
+  height: 34px;
+  line-height: 34px;
+  padding: 0 10px;
+  text-transform: uppercase;
+  @include transition(color $transition-timing $transition-function);
+  @include transition-property(background-color, border-color, color, opacity);
+
+  &:hover {
+    background: $col-blue-dark;
+  }
+
+  &:focus {
+    background: $col-blue-dark;
+    outline: none;
+  }
+
+  &:active {
+    background: $col-blue-light;
+    color: $col-blue-dark;
+    position:relative;
+    top:1px;
+  }
+}

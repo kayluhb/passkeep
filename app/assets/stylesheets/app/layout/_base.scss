@@ -10,12 +10,14 @@ body {
 }
 
 .inner {
-  margin:0 auto;
-  width:680px;
+  margin: 0 auto;
+  max-width: 1220px;
+  padding: 0 30px;
 }
 
 .main-footer {
   clear: both;
+  font-size: 12px;
   height: $footer-height;
   margin-top: -$footer-height;
   position: relative;
