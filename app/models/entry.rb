@@ -23,10 +23,11 @@ class Entry < ActiveRecord::Base
   # Concerns
   include Guidable
 
-  attr_encrypted :username, key: Rails.application.secrets.entry.username
-  attr_encrypted :password, key: Rails.application.secrets.entry.password
-  attr_encrypted :url, key: Rails.application.secrets.entry.url
-  attr_encrypted :notes, key: Rails.application.secrets.entry.notes
+  attr_encrypted :username, key: Rails.application.secrets.entry_username_key
+  attr_encrypted :password, key: Rails.application.secrets.entry_password_key
+  attr_encrypted :url, key: Rails.application.secrets.entry_url_key
+  attr_encrypted :notes, key: Rails.application.secrets.entry_notes_key
+  attr_encrypted :email, key: Rails.application.secrets.entry_email_key
 
   belongs_to :project
 

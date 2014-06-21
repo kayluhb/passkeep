@@ -378,7 +378,9 @@ input[type="number"] {
 }
 
 textarea {
+  height: 134px;
   overflow:auto;
+  padding: 10px;
   resize:vertical;
   vertical-align:top;
 }

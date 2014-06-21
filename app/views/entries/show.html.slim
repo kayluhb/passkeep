@@ -1,2 +1,55 @@
-h1 Entries#show
-p Find me in app/views/entries/show.html.slim
+- title "#{@entry.title} - #{@entry.project_name} Entry"
+
+= link_to "<i class='icon icon-caret-left'></i> #{@entry.project_name}".html_safe, project_path(@entry.project)
+
+h1 = @entry.title
+
+- if current_user.can_edit?(@entry.project)
+  a href="#" class="button button-small" data-modal="#entry-form"
+    i.icon.icon-pencil
+    | edit
+
+- unless @entry.title.blank?
+  p
+    strong title:
+    | &nbsp;
+    = @entry.title
+
+- unless @entry.username.blank?
+  p
+    strong username:
+    | &nbsp;
+    = @entry.username
+
+- unless @entry.email.blank?
+  p
+    strong email:
+    | &nbsp;
+    = @entry.email
+
+- unless @entry.password.blank?
+  p
+    strong password:
+    | &nbsp;
+    = @entry.password
+
+- unless @entry.url.blank?
+  p
+    strong url:
+    | &nbsp;
+    = @entry.url
+
+- unless @entry.notes.blank?
+  p
+    strong notes:
+    | &nbsp;
+    = @entry.notes
+
+#entry-form.md-modal.md-effect-18
+  .md-content
+
+    h4.head Edit #{@entry.title}
+
+    .body = render 'form', entry: @entry
+
+.md-overlay

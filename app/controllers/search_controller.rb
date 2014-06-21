@@ -13,7 +13,7 @@ class SearchController < ApplicationController
 
         entry_suggestions = entries.map{ |entry| {
           value: "#{entry.project_name}: #{entry.title}",
-          data: project_entry_path(entry.project, entry)
+          data: entry_path(entry)
         }}
 
         project_suggestions = projects.map{ |project| {

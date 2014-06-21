@@ -4,9 +4,16 @@ h1 Entries
 
 = link_to '<i class="icon icon-plus-square"></i> add an entry'.html_safe, new_entry_path, class: 'button'
 
+p.pagination-info
+  = page_entries_info @entries
+
+= paginate @entries
+
 nav.list
   ul
     - @entries.each do |entry|
       li
-        = link_to entry.title, entry_path(entry)
+        = link_to "#{entry.project_name}: #{entry.title}", entry_path(entry)
         .meta updated on #{l entry.updated_at}
+
+= paginate @entries

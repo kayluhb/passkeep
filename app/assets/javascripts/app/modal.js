@@ -31,6 +31,8 @@
 
     $modal = $($(e.currentTarget).data('modal'));
 
+    $modal.find('.body').css({ maxHeight: $(window).height() - 200 });
+
     $overlay
       .off(CLICK_EVT, removeModal)
       .on(CLICK_EVT, removeModal);

@@ -5,8 +5,12 @@ class EntriesController < ApplicationController
   before_filter :verify_permission, only: [
     :edit, :update, :confirm_destroy, :destroy]
 
+  before_filter :set_projects, only: [
+    :new, :edit, :show
+  ]
+
   def index
-    @entries = current_user.entries.skinny.order(:search_text)
+    @entries = current_user.entries.page(params[:page]).skinny.order(:search_text)
   end
 
   def new
@@ -22,18 +26,20 @@ class EntriesController < ApplicationController
     @entry = Entry.new(entry_params)
 
     if @entry.save
-      redirect_to project_entry_path(@entry.project, @entry),
+      redirect_to entry_path(@entry),
         notice: flash_message(@entry).html_safe
     else
+      set_projects
       render action: :new
     end
   end
 
   def update
     if @entry.update(entry_params)
-      redirect_to project_entry_path(@entry.project, @entry),
+      redirect_to entry_path(@entry),
         notice: flash_message(@entry).html_safe
     else
+      set_projects
       render action: :edit
     end
   end
@@ -46,25 +52,19 @@ class EntriesController < ApplicationController
     redirect_to entries_path, notice: 'Deleted.'
   end
 
-  # def search
-  #   entries = Entry.skinny.search(params[:term])
-  #   render json: entries.map{ |entry| {
-  #     id: entry.id,
-  #     label: entry.name,
-  #     url: entry_path(entry),
-  #   }}
-  # end
-
   private
     def verify_permission
       unless current_user.can_edit? @entry.project
-        return redirect_to project_entry_path(@entry.project, @entry)
+        return redirect_to entry_path(@entry)
       end
     end
 
     # Use callbacks to share common setup or constraints between actions.
     def setup_model
       @entry = current_user.entries.from_param(params[:id])
+    end
+
+    def set_projects
       @projects = current_user.projects.skinny.ordered.distinct
     end
 
@@ -73,6 +73,11 @@ class EntriesController < ApplicationController
       params.require(:entry).permit(
         :title,
         :project_id,
+        :username,
+        # :email,
+        # :password,
+        # :url,
+        # :notes,
       )
     end
 end

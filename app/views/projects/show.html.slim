@@ -2,20 +2,23 @@
 
 h1 = @project.name
 
-a href="#" data-modal="#project-form" edit
+- if current_user.can_edit?(@project)
+  a href="#" class="button button-small" data-modal="#project-form"
+    i.icon.icon-pencil
+    | edit
 
 nav.list
   ul
 
     - if current_user.can_view? @project
-      - @entries.each do |e|
-        li id="#{e.id}" = link_to e.title, project_entry_path(e.project, e)
+      - @entries.each do |entry|
+        li id="#{entry.id}" = link_to entry.title, entry_path(entry)
 
     - else
       li
         a href="#" You do not have permission to view these entries
 
-- unless @project.new_record? || !current_user.can_view?(@project)
+- unless @project.new_record? || !current_user.can_edit?(@project)
   p = link_to '<i class="icon icon-plus-square"></i> Add an entry'.html_safe, new_entry_path(project: @project.guid), class: 'button'
 
 hr
@@ -31,7 +34,6 @@ p
   - @project.teams.ordered.each do |t|
     = link_to t.name, edit_team_path(t)
     br
-
 
 #project-form.md-modal.md-effect-18
   .md-content

@@ -69,6 +69,17 @@ button,
   }
 }
 
+.button-small {
+  font-size: 13px;
+  height: 20px;
+  line-height: 18px;
+  padding: 0 6px;
+
+  .icon {
+    line-height: 16px;
+  }
+}
+
 .button-group {
   margin: 30px 0;
 
