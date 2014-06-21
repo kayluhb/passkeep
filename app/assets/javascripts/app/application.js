@@ -9,11 +9,6 @@ var APP = (function($, undefined) {
 
   // private functions
   function init() {
-    $('a[href=#]').attr('href', 'javascript:;');
-
-    // Open links starting with "http(s)://" in a new window unless they're targeted at this host.
-    $("a[href^=http]").click(open);
-
     // Set up the global ajax
     $.ajaxSetup({
       cache: false,
@@ -25,16 +20,24 @@ var APP = (function($, undefined) {
       type: 'POST'
     });
 
-    /*
-    Yepnope is available through Modernizr.
+    $(document).on('page:change', initPage);
+  }
 
-    Yepnope example usage:
+  function initPage() {
+    $('a[href=#]').attr('href', 'javascript:;');
 
-    yepnope([{
-      test:Modernizr.csstransitions,
-      nope:'/javascripts/app/css3.js'
-    }]);
-    */
+    // Open links starting with "http(s)://" in a new window unless they're targeted at this host.
+    $("a[href^=http]")
+      .off('click', open)
+      .on('click', open);
+
+    $('.chosen-select').chosen({
+      allow_single_deselect: true,
+      disable_search_threshold: 10,
+      no_results_text: 'No results match',
+      search_contains: true,
+      width: '100%'
+    });
   }
 
   function open(e) {

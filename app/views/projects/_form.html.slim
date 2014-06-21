@@ -4,6 +4,11 @@
 
   = f.input :name
 
+  = f.association :teams,
+    collection: Team.all,
+    include_blank: true,
+    input_html: { class: 'chosen-select' }
+
   = render 'shared/actions',
     m: project,
     cancel_path: projects_path,

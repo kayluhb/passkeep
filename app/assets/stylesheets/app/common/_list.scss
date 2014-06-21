@@ -1,12 +1,18 @@
 .list {
+  border-bottom: 1px solid $col-gray-light;
   margin: 30px 0;
 
   li {
     padding: 4px 20px;
     font-family: $font-sans-regular;
+    @include transition(all $transition-timing);
 
-    &:nth-child(2n) {
+    &:nth-child(2n + 1) {
       background: $col-gray-light;
+    }
+
+    &:hover {
+      background: $col-blue-light;
     }
   }
 

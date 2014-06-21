@@ -49,7 +49,7 @@ class Project < ActiveRecord::Base
   end
 
   def team_tokens
-    return self.team_ids.join(',')
+    self.team_ids.join(',')
   end
 
   private
