@@ -1,0 +1,24 @@
+﻿
+.autocomplete-suggestions {
+  background: #FFF;
+  border: 1px solid $col-gray;
+  cursor: default;
+  font-size: 13px;
+  overflow: auto;
+  @include box-shadow(1px 4px 3px rgba(50, 50, 50, 0.64));
+
+  strong {
+    font-weight: normal;
+    color: $col-blue;
+  }
+}
+
+.autocomplete-suggestion {
+  padding: 2px 5px;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.autocomplete-selected {
+  background: $col-gray-light;
+}

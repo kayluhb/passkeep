@@ -32,6 +32,8 @@ class Entry < ActiveRecord::Base
 
   validates :title, :project, presence: true
 
+  before_validation :set_search_text
+
   delegate :name, :guid, to: :project, prefix: true
 
   attr_accessor :can_edit

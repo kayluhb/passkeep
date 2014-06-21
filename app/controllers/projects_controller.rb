@@ -2,6 +2,8 @@ class ProjectsController < ApplicationController
 
   include Adminable
 
+  before_filter :verify_permission, only: [:update, :confirm_destroy, :destroy]
+
   def index
     @projects = Project.skinny.ordered
 
@@ -41,16 +43,22 @@ class ProjectsController < ApplicationController
     redirect_to projects_path, notice: 'Deleted.'
   end
 
-  def search
-    projects = Project.skinny.search(params[:term])
-    render json: projects.map{ |project| {
-      id: project.id,
-      label: project.name,
-      url: project_path(project),
-    }}
-  end
+  # def search
+  #   projects = Project.skinny.search(params[:term])
+  #   render json: projects.map{ |project| {
+  #     id: project.id,
+  #     label: project.name,
+  #     url: project_path(project),
+  #   }}
+  # end
 
   private
+    def verify_permission
+      unless current_user.can_edit? @project
+        return redirect_to project_path(@project)
+      end
+    end
+
     # Use callbacks to share common setup or constraints between actions.
     def setup_model
       @project = Project.from_param(params[:id])

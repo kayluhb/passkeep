@@ -2,7 +2,8 @@ var APP = (function($, undefined) {
   'use strict';
 
   var app = {},
-    $el;
+      $el,
+      $search = $('#search');
 
   // public functions
   // app.foo = function() {  };
@@ -21,6 +22,15 @@ var APP = (function($, undefined) {
     });
 
     $(document).on('page:change', initPage);
+
+    // $search.autocomplete().disable();
+
+    $search.autocomplete({
+      serviceUrl: $search.data('url'),
+      onSelect: function (suggestion) {
+       window.location = suggestion.data;
+      }
+    });
   }
 
   function initPage() {

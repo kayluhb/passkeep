@@ -27,7 +27,7 @@ html.no-js lang="en"
           li class="#{on_class teams_path}" = link_to "Teams", teams_path
 
           li.search
-            input#search.search-query type="search" placeholder="Search for a project or entry" title="shift+l to focus"
+            input#search.search-query data-url="#{search_index_path(format: :json)}" placeholder="Search for a project or entry" title="shift+l to focus" type="search"
 
         .drop-down
           div

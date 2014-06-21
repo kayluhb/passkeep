@@ -40,7 +40,7 @@ class User < ActiveRecord::Base
   has_many :team_members
   has_many :teams, through: :team_members
   has_many :projects, -> { uniq }, through: :teams
-  has_many :entries, -> { uniq }, through: :projects
+  has_many :entries, through: :projects
 
   attr_accessor :full_name
   attr_accessor :team_tokens
