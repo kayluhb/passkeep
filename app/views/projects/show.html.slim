@@ -17,13 +17,13 @@ nav.list
 
 hr
 
-h5 People with Access
+h5 People with access
 p
   - @project.users.skinny.ordered.each do |u|
     = u.full_name
     br
 
-h5 Teams with Access
+h5 Teams with access
 p
   - @project.teams.ordered.each do |t|
     = link_to t.name, edit_team_path(t)

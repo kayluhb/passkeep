@@ -71,8 +71,8 @@ class User < ActiveRecord::Base
 
   def can_edit?(project)
     return true if project.new_record?
-    user_teams = self.teams.where(role_id: 2).select("teams.id").collect(&:id)
-    project_teams = project.teams.where(role_id: 2).select("teams.id").collect(&:id)
+    user_teams = self.teams.editors.pluck(:id)
+    project_teams = project.teams.editors.pluck(:id)
     (user_teams & project_teams).length > 0
   end
 

@@ -14,4 +14,9 @@ u = FactoryGirl.create(:user,
 )
 puts "created #{u.email}"
 
-FactoryGirl.create(:team, name: "Master", user_ids: [u.id], master: true)
+FactoryGirl.create(:team,
+  master: true,
+  name: "Master",
+  user_ids: [u.id],
+  role_id: 2,
+)

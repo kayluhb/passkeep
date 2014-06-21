@@ -61,6 +61,7 @@ class ProjectsController < ApplicationController
       params.require(:project).permit(
         :name,
         :status_id,
+        { team_ids: [] },
       )
     end
 

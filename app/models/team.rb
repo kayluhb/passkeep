@@ -60,7 +60,7 @@ class Team < ActiveRecord::Base
     end
 
   class << self
-    def editable
+    def editors
       where(role_id: ROLES['Read and edit'])
     end
 

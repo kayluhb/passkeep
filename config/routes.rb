@@ -10,8 +10,16 @@ Rails.application.routes.draw do
       unlock: 'unblock'
     }
 
-  resources :projects, :entries, :teams, :users, :search do
+  resources :entries, :teams, :users, :search do
     get :confirm_destroy, on: :member
+  end
+
+  resources :projects do
+    get :confirm_destroy, on: :member
+
+    resources :entries, only: [:edit, :confirm_destroy, :show] do
+      get :confirm_destroy, on: :member
+    end
   end
 
   root 'home#index'
