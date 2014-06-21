@@ -3,7 +3,7 @@ var APP = (function($, undefined) {
 
   var app = {},
       $el,
-      $search = $('#search');
+      $search;
 
   // public functions
   // app.foo = function() {  };
@@ -21,16 +21,9 @@ var APP = (function($, undefined) {
       type: 'POST'
     });
 
-    $(document).on('page:change', initPage);
-
-    // $search.autocomplete().disable();
-
-    $search.autocomplete({
-      serviceUrl: $search.data('url'),
-      onSelect: function (suggestion) {
-       window.location = suggestion.data;
-      }
-    });
+    $(document)
+      .on('page:change', initPage)
+      .bind('keydown', 'shift+l', onSearchFocus);
   }
 
   function initPage() {
@@ -48,6 +41,21 @@ var APP = (function($, undefined) {
       search_contains: true,
       width: '100%'
     });
+
+    $search = $('#search');
+    $search.autocomplete({
+      serviceUrl: $search.data('url'),
+      onSelect: function (suggestion) {
+        window.location = suggestion.data;
+      }
+    });
+  }
+
+  function onSearchFocus() {
+    $('#search')
+      .val('')
+      .focus();
+    return false;
   }
 
   function open(e) {

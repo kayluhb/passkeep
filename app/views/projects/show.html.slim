@@ -15,6 +15,9 @@ nav.list
       li
         a href="#" You do not have permission to view these entries
 
+- unless @project.new_record? || !current_user.can_view?(@project)
+  p = link_to '<i class="icon icon-plus-square"></i> Add an entry'.html_safe, new_entry_path(project: @project.guid), class: 'button'
+
 hr
 
 h5 People with access
