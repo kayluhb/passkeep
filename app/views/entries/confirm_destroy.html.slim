@@ -1,2 +1,13 @@
-h1 Entries#confirm_destroy
-p Find me in app/views/entries/confirm_destroy.html.slim
+- title "Delete #{@entry.title}"
+
+= form_for :entry, url: entry_path(@entry), html: { method: :delete } do |f|
+
+  h1 Are you sure you want to permanently destroy #{@entry.title}?
+
+  p This action cannot be undone.
+
+  p
+    button.button-danger type="submit"
+      i.icon.icon-remove
+      | Delete
+    |  or #{link_to "cancel", entry_path(@entry), class: 'button button-info'}

@@ -1,2 +1,5 @@
-h1 Entries#edit
-p Find me in app/views/entries/edit.html.slim
+- title "Edit #{@entry.title}"
+
+h1 Editing #{@entry.title}
+
+= render 'form', entry: @entry

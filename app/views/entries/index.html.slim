@@ -1,4 +1,12 @@
-- title "Entries"
+- title 'Entries'
 
-h1 Entries#index
-p Find me in app/views/entries/index.html.slim
+h1 Entries
+
+= link_to '<i class="icon icon-plus-square"></i> add an entry'.html_safe, new_entry_path, class: 'button'
+
+nav.list
+  ul
+    - @entries.each do |entry|
+      li
+        = link_to entry.title, entry_path(entry)
+        .meta updated on #{l entry.updated_at}

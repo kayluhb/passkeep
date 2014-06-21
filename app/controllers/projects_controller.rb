@@ -2,7 +2,8 @@ class ProjectsController < ApplicationController
 
   include Adminable
 
-  before_filter :verify_permission, only: [:update, :confirm_destroy, :destroy]
+  before_filter :verify_permission, only: [
+    :edit, :update, :confirm_destroy, :destroy]
 
   def index
     @projects = Project.skinny.ordered

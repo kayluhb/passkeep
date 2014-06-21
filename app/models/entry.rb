@@ -23,10 +23,10 @@ class Entry < ActiveRecord::Base
   # Concerns
   include Guidable
 
-  # attr_encrypted :username, key: Settings.entry.username
-  # attr_encrypted :password, key: Settings.entry.password
-  # attr_encrypted :url, key: Settings.entry.url
-  # attr_encrypted :notes, key: Settings.entry.notes
+  attr_encrypted :username, key: Rails.application.secrets.entry.username
+  attr_encrypted :password, key: Rails.application.secrets.entry.password
+  attr_encrypted :url, key: Rails.application.secrets.entry.url
+  attr_encrypted :notes, key: Rails.application.secrets.entry.notes
 
   belongs_to :project
 
@@ -50,7 +50,7 @@ class Entry < ActiveRecord::Base
     end
 
     def skinny
-      select(['id', 'guid', 'title', 'project_id', 'search_text']\
+      select(['id', 'guid', 'title', 'project_id', 'search_text', 'updated_at']\
         .collect {|s| "#{self.table_name}.#{s}"}.join(","))
     end
   end

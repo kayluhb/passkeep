@@ -1,2 +1,5 @@
-h1 Entries#new
-p Find me in app/views/entries/new.html.slim
+- title "Add an entry"
+
+h1 New Entry
+
+= render 'form', entry: @entry

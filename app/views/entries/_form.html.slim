@@ -1,0 +1,23 @@
+= simple_form_for [entry] do |f|
+
+  = render 'shared/errors', m: entry
+
+  = f.input :title
+
+  = f.input :username
+
+  = f.input :password
+
+  = f.input :url
+
+  = f.input :notes
+
+  = f.association :project,
+    collection: @projects,
+    include_blank: true,
+    input_html: { class: 'chosen-select' }
+
+  = render 'shared/actions',
+    m: entry,
+    cancel_path: entries_path,
+    delete_path: entry.new_record? ? nil : confirm_destroy_entry_path(entry)
