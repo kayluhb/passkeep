@@ -16,6 +16,7 @@
 #  project_id         :integer
 #  created_at         :datetime
 #  updated_at         :datetime
+#  encrypted_email    :string(255)
 #
 
 class Entry < ActiveRecord::Base
@@ -23,21 +24,26 @@ class Entry < ActiveRecord::Base
   # Concerns
   include Guidable
 
+  # Third party
   attr_encrypted :username, key: Rails.application.secrets.entry_username_key
   attr_encrypted :password, key: Rails.application.secrets.entry_password_key
   attr_encrypted :url, key: Rails.application.secrets.entry_url_key
   attr_encrypted :notes, key: Rails.application.secrets.entry_notes_key
   attr_encrypted :email, key: Rails.application.secrets.entry_email_key
 
-  belongs_to :project
+  dragonfly_accessor :attachment
 
+  # Relations
+  belongs_to :project, counter_cache: true
+
+  # Validations
   validates :title, :project, presence: true
 
+  # Callbacks
   before_validation :set_search_text
 
-  delegate :name, :guid, to: :project, prefix: true
-
-  attr_accessor :can_edit
+  # Delegates
+  delegate :name, to: :project, prefix: true
 
   private
     def set_search_text

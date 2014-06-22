@@ -15,6 +15,10 @@ module ApplicationHelper
   end
 
   # Text helpers
+  def broken_text(text)
+    h(text).gsub("\n", "<br>").html_safe
+  end
+
   def external_link(url, text="")
 
     return "" if url.blank?

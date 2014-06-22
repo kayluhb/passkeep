@@ -4,6 +4,7 @@ gem 'rails', '4.1.1'
 
 gem 'acts-as-taggable-on'
 gem 'attr_encrypted'
+gem 'rails_autolink'
 gem 'cancan'
 gem 'chosen-rails'
 gem 'compass-rails'

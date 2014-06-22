@@ -74,10 +74,12 @@ class EntriesController < ApplicationController
         :title,
         :project_id,
         :username,
-        # :email,
-        # :password,
-        # :url,
-        # :notes,
+        :email,
+        :password,
+        :url,
+        :notes,
+        :attachment,
+        :remove_attachment,
       )
     end
 end

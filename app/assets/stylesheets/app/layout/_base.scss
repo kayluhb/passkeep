@@ -22,3 +22,22 @@ body {
   margin-top: -$footer-height;
   position: relative;
 }
+
+.head-index {
+  @include clearfix;
+
+  h1 {
+    float: left;
+  }
+
+  .button {
+    float: right;
+    margin-top: 20px;
+  }
+}
+
+.head-show {
+  .button {
+    margin:0 0 4px 10px;
+  }
+}

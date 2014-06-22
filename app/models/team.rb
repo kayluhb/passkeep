@@ -67,5 +67,10 @@ class Team < ActiveRecord::Base
     def ordered
       order("#{self.table_name}.name")
     end
+
+    def skinny
+      select(['id', 'guid', 'name', 'updated_at']\
+        .collect {|s| "#{self.table_name}.#{s}"}.join(","))
+    end
   end
 end

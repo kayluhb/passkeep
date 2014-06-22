@@ -2,50 +2,58 @@
 
 = link_to "<i class='icon icon-caret-left'></i> #{@entry.project_name}".html_safe, project_path(@entry.project)
 
-h1 = @entry.title
-
-- if current_user.can_edit?(@entry.project)
-  a href="#" class="button button-small" data-modal="#entry-form"
-    i.icon.icon-pencil
-    | edit
-
-- unless @entry.title.blank?
-  p
-    strong title:
-    | &nbsp;
+.head-show
+  h1
     = @entry.title
 
-- unless @entry.username.blank?
-  p
-    strong username:
-    | &nbsp;
-    = @entry.username
+    - if current_user.can_edit?(@entry.project)
+      a href="#" class="button button-small" data-modal="#entry-form"
+        i.icon.icon-pencil
+        | edit
 
-- unless @entry.email.blank?
-  p
-    strong email:
-    | &nbsp;
-    = @entry.email
+.entry-details
+  - unless @entry.title.blank?
+    p
+      strong.label title:
+      | &nbsp;
+      = @entry.title
 
-- unless @entry.password.blank?
-  p
-    strong password:
-    | &nbsp;
-    = @entry.password
+  - unless @entry.username.blank?
+    p
+      strong.label username:
+      | &nbsp;
+      = @entry.username
 
-- unless @entry.url.blank?
-  p
-    strong url:
-    | &nbsp;
-    = @entry.url
+  - unless @entry.email.blank?
+    p
+      strong.label email:
+      | &nbsp;
+      = auto_link @entry.email
 
-- unless @entry.notes.blank?
-  p
-    strong notes:
-    | &nbsp;
-    = @entry.notes
+  - unless @entry.password.blank?
+    p
+      strong.label password:
+      | &nbsp;
+      = @entry.password
 
-#entry-form.md-modal.md-effect-18
+  - unless @entry.url.blank?
+    p
+      strong.label url:
+      | &nbsp;#{auto_link @entry.url}&nbsp;
+      i.icon.icon-newtab
+
+  - unless @entry.notes.blank?
+    p
+      strong.label notes:
+    p.indented
+      = auto_link broken_text(@entry.notes)
+
+  - unless @entry.attachment_uid.blank?
+    p
+      strong.label attachment:
+      a href="#{@entry.attachment.url}" target="_blank" = @entry.attachment_name
+
+#entry-form.md-modal
   .md-content
 
     h4.head Edit #{@entry.title}

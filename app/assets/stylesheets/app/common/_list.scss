@@ -3,21 +3,42 @@
   margin: 30px 0;
 
   li {
-    padding: 4px 20px;
     font-family: $font-sans-regular;
     @include transition(all $transition-timing);
 
-    &:nth-child(2n + 1) {
+    &:nth-child(2n + 1) a {
       background: $col-gray-light;
-    }
 
-    &:hover {
-      background: $col-blue-light;
+      &:hover {
+        background: $col-blue-light;
+      }
     }
   }
 
+  a {
+    display: block;
+    padding: 4px 20px;
+    @include clearfix;
+
+    &:hover {
+      background: $col-blue-light;
+      color: $col-blue-dark;
+    }
+  }
+
+  span {
+    float: left;
+  }
+
+  .title {
+    float: left;
+    width: 70%;
+    @include text-overflow;
+  }
+
   .meta {
-    float: right;
     font-size: 12px;
+    text-align: right;
+    width: 30%;
   }
 }

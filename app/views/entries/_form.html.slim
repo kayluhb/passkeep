@@ -13,11 +13,21 @@
 
   = f.input :email
 
-  = f.input :password
+  = f.input :password, as: :string
 
-  = f.input :url
+  = f.input :url, as: :string
 
   = f.input :notes, as: :text
+
+  = f.label :attachment
+  br
+
+  - unless entry.attachment_uid.blank?
+    a href="#{@entry.attachment.url}" target="_blank" = @entry.attachment_name
+    br
+    = f.input :remove_attachment, as: :boolean
+
+  = f.input_field :attachment, as: :file
 
   = render 'shared/actions',
     m: entry,

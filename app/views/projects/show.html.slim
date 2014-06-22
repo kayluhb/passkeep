@@ -1,13 +1,18 @@
 - title "#{@project.name} - Projects"
 
-h1 = @project.name
+.head-show
+  h1
+    = @project.name
 
-- if current_user.can_edit?(@project)
-  a href="#" class="button button-small" data-modal="#project-form"
-    i.icon.icon-pencil
-    | edit
+    - if current_user.can_edit?(@project)
+      a href="#" class="button button-small" data-modal="#project-form"
+        i.icon.icon-pencil
+        | edit
 
 nav.list
+
+  h4 Entries
+
   ul
 
     - if current_user.can_view? @project
@@ -25,17 +30,19 @@ hr
 
 h5 People with access
 p
-  - @project.users.skinny.ordered.each do |u|
+  - @project.users.skinny.ordered.each_with_index do |u, idx|
+    - unless idx == 0
+      | , 
     = u.full_name
-    br
 
 h5 Teams with access
 p
-  - @project.teams.ordered.each do |t|
+  - @project.teams.ordered.each_with_index do |t, idx|
+    - unless idx == 0
+      | , 
     = link_to t.name, edit_team_path(t)
-    br
 
-#project-form.md-modal.md-effect-18
+#project-form.md-modal
   .md-content
 
     h4.head Edit #{@project.name}

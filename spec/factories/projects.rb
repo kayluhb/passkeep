@@ -2,12 +2,13 @@
 #
 # Table name: projects
 #
-#  id         :integer          not null, primary key
-#  guid       :string(36)       not null
-#  name       :string(255)
-#  status_id  :integer          default(1)
-#  created_at :datetime
-#  updated_at :datetime
+#  id            :integer          not null, primary key
+#  guid          :string(36)       not null
+#  name          :string(255)
+#  status_id     :integer          default(1)
+#  created_at    :datetime
+#  updated_at    :datetime
+#  entries_count :integer          default(0)
 #
 
 # Read about factories at https://github.com/thoughtbot/factory_girl

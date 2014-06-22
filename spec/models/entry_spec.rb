@@ -16,6 +16,7 @@
 #  project_id         :integer
 #  created_at         :datetime
 #  updated_at         :datetime
+#  encrypted_email    :string(255)
 #
 
 require 'rails_helper'

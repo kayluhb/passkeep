@@ -2,12 +2,13 @@
 #
 # Table name: projects
 #
-#  id         :integer          not null, primary key
-#  guid       :string(36)       not null
-#  name       :string(255)
-#  status_id  :integer          default(1)
-#  created_at :datetime
-#  updated_at :datetime
+#  id            :integer          not null, primary key
+#  guid          :string(36)       not null
+#  name          :string(255)
+#  status_id     :integer          default(1)
+#  created_at    :datetime
+#  updated_at    :datetime
+#  entries_count :integer          default(0)
 #
 
 class Project < ActiveRecord::Base
@@ -20,41 +21,28 @@ class Project < ActiveRecord::Base
     Active: 1,
   }
 
+  # Relations
   has_many :entries
   has_many :team_projects
   has_many :teams, through: :team_projects
   has_many :users, -> { uniq }, through: :teams
 
-  attr_accessor :default_team
+  # attr_accessor :default_team
 
-  before_create :add_to_master_team
-  before_validation :sanitize_teams
-
+  # Validations
   validates :name, presence: true
+
+  # Callbacks
+  before_validation :add_to_master_teams
 
   def default_team=(id)
     self.team_ids = [id]
   end
 
-  def entry_count
-    self.entries.count
-  end
-
-  def sanitize_teams
-    self.team_ids.uniq
-  end
-
-  def team_tokens=(ids)
-    self.team_ids = ids.split(",")
-  end
-
-  def team_tokens
-    self.team_ids.join(',')
-  end
-
   private
-    def add_to_master_team
-      self.teams << Team.where(master: true)
+    def add_to_master_teams
+      self.team_ids << Team.where(master: true).pluck('id')
+      self.team_ids = self.team_ids.uniq
     end
 
   class << self
@@ -64,7 +52,7 @@ class Project < ActiveRecord::Base
     end
 
     def skinny
-      select(['id', 'guid', 'name', 'updated_at']\
+      select(['id', 'guid', 'name', 'entries_count', 'updated_at']\
         .collect {|s| "#{self.table_name}.#{s}"}.join(","))
     end
 

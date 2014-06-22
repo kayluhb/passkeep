@@ -1,12 +1,14 @@
 - title 'Projects'
 
-h1 Projects
+.head-index
+  h1 Projects
 
-= link_to '<i class="icon icon-plus-square"></i> add a project'.html_safe, new_project_path, class: 'button'
+  = link_to '<i class="icon icon-plus-square"></i> add a project'.html_safe, new_project_path, class: 'button'
 
 nav.list
   ul
     - @projects.each do |project|
       li
-        = link_to project.name, project_path(project)
-        .meta updated on #{l project.updated_at}
+        a href="#{project_path(project)}"
+          span.title #{project.name} (#{project.entries_count})
+          span.meta updated on #{l project.updated_at}

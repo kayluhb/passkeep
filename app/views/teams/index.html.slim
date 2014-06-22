@@ -1,4 +1,14 @@
 - title "Teams"
 
-h1 Teams#index
-p Find me in app/views/teams/index.html.slim
+.head-index
+  h1 Teams
+
+  = link_to '<i class="icon icon-plus-square"></i> add a team'.html_safe, new_team_path, class: 'button'
+
+nav.list
+  ul
+    - @teams.each do |team|
+      li
+        a href="#{team_path(team)}"
+          span.title = team.name
+          span.meta updated on #{l team.updated_at}
