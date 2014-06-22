@@ -1,0 +1,7 @@
+
+ul
+  - entries.each do |entry|
+    li
+      a href="#{entry_path(entry)}"
+        span.title #{entry.project_name}: #{entry.title}
+        span.meta updated on #{l entry.updated_at}

@@ -35,8 +35,8 @@ class ProjectsController < ApplicationController
   end
 
   def show
-    @entries = @project.entries.active.skinny.ordered
-    @archived_entries = @project.entries.archived.skinny.ordered
+    @entries = @project.entries.active.ordered
+    @archived_entries = @project.entries.archived.ordered
   end
 
   def destroy

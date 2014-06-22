@@ -19,18 +19,19 @@
 
   = f.input :notes, as: :text
 
-  = f.label :attachment
-  br
-
-  - unless entry.attachment_uid.blank?
-    a href="#{@entry.attachment.url}" target="_blank" = @entry.attachment_name
+  .field
+    = f.label :attachment
     br
-    = f.input :remove_attachment, as: :boolean
 
-  = f.input_field :attachment, as: :file
+    - unless entry.attachment_uid.blank?
+      a href="#{@entry.attachment.url}" target="_blank" = @entry.attachment_name
+      br
+      = f.input :remove_attachment, as: :boolean
+
+    = f.input_field :attachment, as: :file
 
   = f.input :status_id,
-    collection: Entry.status_ids,
+    collection: Entry.status_ids.map {|k,v| [k,k]},
     include_blank: false
 
   = render 'shared/actions',

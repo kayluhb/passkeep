@@ -12,6 +12,10 @@
         | edit
 
 .entry-details
+
+  - if @entry.archived?
+    p.message This is archived.
+
   - unless @entry.title.blank?
     p
       strong.label title:

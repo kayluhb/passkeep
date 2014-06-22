@@ -9,7 +9,7 @@ form {
   background-color: #fcf8e3;
   border: 1px solid #fbeed5;
   clear: both;
-  color: #fff;
+  color: $col-default;
   font-size: 16px;
   margin: 18px 0;
   padding: 8px 14px;
@@ -48,10 +48,12 @@ form {
   &.notice {
     background-color:#3498DB;
     border-color:#2980B9;
+    color: #fff;
   }
 
   &.success {
     background-color:#2ECC71;
     border-color:#27AE60;
+    color: #fff;
   }
 }

@@ -9,18 +9,18 @@
         i.icon.icon-pencil
         | edit
 
+- if @project.archived?
+  p.message This is archived.
+
 nav.list
 
   h4 Entries
 
-  ul
+  - if current_user.can_view? @project
+    = render 'entries/list', entries: @entries
 
-    - if current_user.can_view? @project
-      = render @entries
-
-    - else
-      li
-        a href="#" You do not have permission to view these entries
+  - else
+    h4 You do not have permission to view these entries
 
 - unless @project.new_record? || !current_user.can_edit?(@project)
   p = link_to '<i class="icon icon-plus-square"></i> Add an entry'.html_safe, new_entry_path(project: @project.guid), class: 'button'
@@ -41,9 +41,11 @@ p
       | , 
     = link_to t.name, team_path(t)
 
-h5 Archived Entries
-- if current_user.can_view? @project
-  = render @archived_entries
+- if @archived_entries.any?  && current_user.can_view?(@project)
+
+  nav.list
+    h5 Archived Entries
+    = render 'entries/list', entries: @entries
 
 - if current_user.can_edit?(@project)
   #project-form.md-modal

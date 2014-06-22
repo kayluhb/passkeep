@@ -11,11 +11,6 @@ p.pagination-info
 = paginate @entries
 
 nav.list
-  ul
-    - @entries.each do |entry|
-      li
-        a href="#{entry_path(entry)}"
-          span.title #{entry.project_name}: #{entry.title}
-          span.meta updated on #{l entry.updated_at}
+  = render 'list', entries: @entries
 
 = paginate @entries
