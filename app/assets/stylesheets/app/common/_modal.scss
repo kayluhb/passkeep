@@ -46,8 +46,10 @@
   .head {
     background: $col-gray-light;
     margin: 0;
+    padding: 0 20px;
     text-align: center;
     @include border-radius(3px 3px 0 0);
+    @include text-overflow;
   }
 
   .body {

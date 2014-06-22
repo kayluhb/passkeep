@@ -9,7 +9,7 @@ form {
   background-color: #fcf8e3;
   border: 1px solid #fbeed5;
   clear: both;
-  color: $col-default;
+  color: #fff;
   font-size: 16px;
   margin: 18px 0;
   padding: 8px 14px;
@@ -42,18 +42,19 @@ form {
   &.error {
     background-color:#E74C3C;
     border-color:#C0392B;
-    color:#fff;
   }
 
   &.notice {
     background-color:#3498DB;
     border-color:#2980B9;
-    color: #fff;
   }
 
   &.success {
     background-color:#2ECC71;
     border-color:#27AE60;
-    color: #fff;
+  }
+
+  &.info {
+    color: $col-default;
   }
 }

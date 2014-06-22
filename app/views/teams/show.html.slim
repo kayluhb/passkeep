@@ -5,7 +5,7 @@
     = @team.name
 
     - if can?(:manage, @team)
-      a href="#" class="button button-small" data-modal="#team-form"
+      a href="#{edit_team_path(@team)}" class="button button-small" data-modal="#team-form"
         i.icon.icon-pencil
         | edit
 

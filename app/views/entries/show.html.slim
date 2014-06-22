@@ -7,14 +7,14 @@
     = @entry.title
 
     - if current_user.can_edit?(@entry.project)
-      a href="#" class="button button-small" data-modal="#entry-form"
+      a href="#{edit_entry_path(@entry)}" class="button button-small" data-modal="#entry-form"
         i.icon.icon-pencil
         | edit
 
 .entry-details
 
   - if @entry.archived?
-    p.message This is archived.
+    p.message.info This is archived.
 
   - unless @entry.title.blank?
     p

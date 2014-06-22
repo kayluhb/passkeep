@@ -5,12 +5,12 @@
     = @project.name
 
     - if current_user.can_edit?(@project)
-      a href="#" class="button button-small" data-modal="#project-form"
+      a href="#{edit_project_path(@project)}" class="button button-small" data-modal="#project-form"
         i.icon.icon-pencil
         | edit
 
 - if @project.archived?
-  p.message This is archived.
+  p.message.info This is archived.
 
 nav.list
 

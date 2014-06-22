@@ -1,4 +1,15 @@
 - title "Users"
 
-h1 Users#index
-p Find me in app/views/users/index.html.slim
+.head-index
+  h1 Users
+
+  = link_to '<i class="icon icon-plus-square"></i> add a user'.html_safe, new_user_path, class: 'button'
+
+- cache @users do
+  nav.list
+    ul
+      - @users.each do |user|
+        li
+          a href="#{edit_user_path(user)}"
+            span.title #{user.full_name}
+            span.meta updated on #{l user.updated_at}

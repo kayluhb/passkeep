@@ -1,0 +1,23 @@
+= simple_form_for [user], html: { autocomplete: false } do |f|
+
+  = render 'shared/errors', m: user
+
+  = f.input :email, required: true
+
+  = f.input :first_name
+
+  = f.input :last_name
+
+  = f.input :password
+
+  = f.input :password_confirmation
+
+  = f.association :teams,
+    collection: Team.ordered,
+    include_blank: true,
+    input_html: { class: 'chosen-select' }
+
+  = render 'shared/actions',
+    m: user,
+    cancel_path: users_path,
+    delete_path: user.new_record? ? nil : confirm_destroy_user_path(user)

@@ -42,9 +42,6 @@ class User < ActiveRecord::Base
   has_many :projects, -> { uniq }, through: :teams
   has_many :entries, through: :projects
 
-  attr_accessor :full_name
-  attr_accessor :team_tokens
-
   validates :first_name, :last_name, presence: true
 
   def admin?
@@ -59,14 +56,6 @@ class User < ActiveRecord::Base
     split = name.split(' ', 2)
     self.first_name = split.first
     self.last_name = split.last
-  end
-
-  def team_tokens=(ids)
-    self.team_ids = ids.split(",")
-  end
-
-  def team_tokens
-    self.team_ids.join(',')
   end
 
   def can_edit?(project)

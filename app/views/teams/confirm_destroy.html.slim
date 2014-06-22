@@ -1,2 +1,13 @@
-h1 Teams#confirm_destroy
-p Find me in app/views/teams/confirm_destroy.html.slim
+- title "Delete #{@team.name}"
+
+= form_for :team, url: team_path(@team), html: { method: :delete } do |f|
+
+  h1 Are you sure you want to permanently destroy #{@team.name}?
+
+  p This action cannot be undone.
+
+  p
+    button.button-danger type="submit"
+      i.icon.icon-remove
+      | Delete
+    |  or #{link_to "cancel", team_path(@team), class: 'button button-info'}

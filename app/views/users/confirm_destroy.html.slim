@@ -1,2 +1,13 @@
-h1 Users#confirm_destroy
-p Find me in app/views/users/confirm_destroy.html.slim
+- title "Delete #{@user.full_name}"
+
+= form_for :user, url: user_path(@user), html: { method: :delete } do |f|
+
+  h1 Are you sure you want to permanently destroy #{@user.full_name}?
+
+  p This action cannot be undone.
+
+  p
+    button.button-danger type="submit"
+      i.icon.icon-remove
+      | Delete
+    |  or #{link_to "cancel", users_path, class: 'button button-info'}

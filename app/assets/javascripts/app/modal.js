@@ -6,6 +6,7 @@
       CANCEL_SELECTOR = '.cancel',
       CLICK_EVT = 'click',
       KEY_EVT = 'keyup',
+      MIN_WIDTH = 400,
       OVERLAY_SELECTOR = '.md-overlay',
       SHOW_CLASS = 'md-show';
 
@@ -28,6 +29,13 @@
   }
 
   function open(e) {
+    var metaClick = e.metaKey || e.ctrlKey;
+
+    if (metaClick || $(window).width() < MIN_WIDTH) {
+      return true;
+    }
+
+    e.preventDefault();
 
     $modal = $($(e.currentTarget).data('modal'));
 
