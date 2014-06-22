@@ -1,3 +1,11 @@
 .field {
   margin-bottom: 10px;
+
+  label.boolean input {
+    margin-right: 6px;
+  }
+
+  .hint {
+    font-size: 13px;
+  }
 }

@@ -10,5 +10,5 @@ nav.list
     - @teams.each do |team|
       li
         a href="#{team_path(team)}"
-          span.title = team.name
+          span.title #{team.name} #{team.master ? '(Master)' : ''}
           span.meta updated on #{l team.updated_at}

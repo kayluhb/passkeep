@@ -5,10 +5,17 @@
 
   = link_to '<i class="icon icon-plus-square"></i> add a project'.html_safe, new_project_path, class: 'button'
 
-nav.list
-  ul
-    - @projects.each do |project|
-      li
-        a href="#{project_path(project)}"
-          span.title #{project.name} (#{project.entries_count})
-          span.meta updated on #{l project.updated_at}
+- cache @projects do
+  nav.list
+    ul
+      - @projects.each do |project|
+        li
+          a href="#{project_path(project)}"
+            span.title #{project.name} (#{project.entries_count})
+            span.meta updated on #{l project.updated_at}
+
+- if @status_id == 1
+  = link_to "Archived projects", projects_path(status_id: 2)
+
+- else
+  = link_to "Active projects", projects_path

@@ -1,0 +1,26 @@
+= simple_form_for [team] do |f|
+
+  = render 'shared/errors', m: team
+
+  = f.input :name, input_html: { disabled: !can?(:manage, team) }
+
+  - if team.master
+    p This team is a master team, which means it's special.  All projects will automatically be added to this team and it cannot be deleted
+
+  - else
+    = f.input :role_id, collection: Team::ROLES, disabled: !can?(:manage, team)
+
+    = f.association :projects,
+      collection: Project.skinny.ordered,
+      input_html: { class: 'chosen-select' }
+
+    = f.association :users,
+      collection: User.skinny.ordered,
+      label_method: :full_name,
+      input_html: { class: 'chosen-select' }
+
+  - if can?(:manage, team)
+    = render 'shared/actions',
+      m: team,
+      cancel_path: teams_path,
+      delete_path: team.new_record? || team.master ? nil : confirm_destroy_team_path(team)

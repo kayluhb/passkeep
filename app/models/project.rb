@@ -16,9 +16,9 @@ class Project < ActiveRecord::Base
   # Concerns
   include Guidable
 
-  STATUSES = {
-    Archived: 2,
-    Active: 1,
+  enum status_id: {
+    active: 1,
+    archived: 2
   }
 
   # Relations

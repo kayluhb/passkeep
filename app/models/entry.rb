@@ -17,9 +17,15 @@
 #  created_at         :datetime
 #  updated_at         :datetime
 #  encrypted_email    :string(255)
+#  status_id          :integer          default(1)
 #
 
 class Entry < ActiveRecord::Base
+
+  enum status_id: {
+    active: 1,
+    archived: 2
+  }
 
   # Concerns
   include Guidable

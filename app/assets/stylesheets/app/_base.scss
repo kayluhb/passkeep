@@ -385,6 +385,14 @@ textarea {
   vertical-align:top;
 }
 
+select {
+  border:1px solid $col-blue-light;
+  display: block;
+  font-family: $font-sans-regular;
+  height: 34px;
+  padding: 0 10px;
+}
+
 /* Colors for form validity */
 input:valid,
 textarea:valid {}

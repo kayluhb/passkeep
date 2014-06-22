@@ -1,0 +1,34 @@
+- title "#{@team.name} - Teams"
+
+.head-show
+  h1
+    = @team.name
+
+    - if can?(:manage, @team)
+      a href="#" class="button button-small" data-modal="#team-form"
+        i.icon.icon-pencil
+        | edit
+
+h5 People in this team
+p
+  - @team.users.skinny.ordered.each_with_index do |u, idx|
+    - unless idx == 0
+      | , 
+    = u.full_name
+
+h5 Projects on this team
+p
+  - @team.projects.ordered.each_with_index do |p, idx|
+    - unless idx == 0
+      | , 
+    = link_to p.name, project_path(p)
+
+- if can?(:manage, @team)
+  #team-form.md-modal
+    .md-content
+
+      h4.head Edit #{@team.name}
+
+      .body = render 'form', team: @team
+
+  .md-overlay

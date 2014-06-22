@@ -29,6 +29,10 @@
 
   = f.input_field :attachment, as: :file
 
+  = f.input :status_id,
+    collection: Entry.status_ids,
+    include_blank: false
+
   = render 'shared/actions',
     m: entry,
     cancel_path: entries_path,

@@ -34,22 +34,6 @@ class Team < ActiveRecord::Base
 
   before_destroy :check_for_master
 
-  def project_tokens
-    self.project_ids.join(',')
-  end
-
-  def project_tokens=(ids)
-    self.project_ids = ids.split(",")
-  end
-
-  def user_tokens=(ids)
-    self.user_ids = ids.split(",")
-  end
-
-  def user_tokens
-    return self.user_ids.join(',')
-  end
-
   private
 
     def check_for_master
@@ -69,7 +53,7 @@ class Team < ActiveRecord::Base
     end
 
     def skinny
-      select(['id', 'guid', 'name', 'updated_at']\
+      select(['id', 'guid', 'name', 'master', 'updated_at']\
         .collect {|s| "#{self.table_name}.#{s}"}.join(","))
     end
   end

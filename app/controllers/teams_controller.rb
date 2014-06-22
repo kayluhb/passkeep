@@ -29,7 +29,6 @@ class TeamsController < ApplicationController
   end
 
   def show
-    @entries = @team.entries.skinny.ordered
   end
 
   def destroy
@@ -48,8 +47,9 @@ class TeamsController < ApplicationController
     def team_params
       params.require(:team).permit(
         :name,
-        :master,
         :role_id,
+        { project_ids: [] },
+        { user_ids: [] },
       )
     end
 

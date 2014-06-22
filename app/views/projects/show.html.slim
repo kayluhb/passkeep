@@ -16,8 +16,7 @@ nav.list
   ul
 
     - if current_user.can_view? @project
-      - @entries.each do |entry|
-        li id="#{entry.id}" = link_to entry.title, entry_path(entry)
+      = render @entries
 
     - else
       li
@@ -40,13 +39,18 @@ p
   - @project.teams.ordered.each_with_index do |t, idx|
     - unless idx == 0
       | , 
-    = link_to t.name, edit_team_path(t)
+    = link_to t.name, team_path(t)
 
-#project-form.md-modal
-  .md-content
+h5 Archived Entries
+- if current_user.can_view? @project
+  = render @archived_entries
 
-    h4.head Edit #{@project.name}
+- if current_user.can_edit?(@project)
+  #project-form.md-modal
+    .md-content
 
-    .body = render 'form', project: @project
+      h4.head Edit #{@project.name}
 
-.md-overlay
+      .body = render 'form', project: @project
+
+  .md-overlay

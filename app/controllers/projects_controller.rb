@@ -8,9 +8,8 @@ class ProjectsController < ApplicationController
   def index
     @projects = Project.skinny.ordered
 
-    @status_id = params[:status_id]
-    @projects = @projects.where(status_id: @status_id) unless @status_id.blank?
-
+    @status_id = params[:status_id] || 1
+    @projects = @projects.where(status_id: @status_id)
   end
 
   def new
@@ -36,22 +35,14 @@ class ProjectsController < ApplicationController
   end
 
   def show
-    @entries = @project.entries.skinny.ordered
+    @entries = @project.entries.active.skinny.ordered
+    @archived_entries = @project.entries.archived.skinny.ordered
   end
 
   def destroy
     @project.destroy
     redirect_to projects_path, notice: 'Deleted.'
   end
-
-  # def search
-  #   projects = Project.skinny.search(params[:term])
-  #   render json: projects.map{ |project| {
-  #     id: project.id,
-  #     label: project.name,
-  #     url: project_path(project),
-  #   }}
-  # end
 
   private
     def verify_permission

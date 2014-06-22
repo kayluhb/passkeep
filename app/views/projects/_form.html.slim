@@ -5,9 +5,13 @@
   = f.input :name, input_html: { disabled: (!current_user.can_edit?(project)) }
 
   = f.association :teams,
-    collection: Team.all,
+    collection: Team.ordered,
     include_blank: true,
     input_html: { class: 'chosen-select' }
+
+  = f.input :status_id,
+    collection: Project.status_ids.map {|k,v| [k,k]},
+    include_blank: false
 
   - if current_user.can_edit?(project)
     = render 'shared/actions',

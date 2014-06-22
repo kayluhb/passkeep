@@ -11,6 +11,9 @@ class EntriesController < ApplicationController
 
   def index
     @entries = current_user.entries.page(params[:page]).skinny.order(:search_text)
+
+    @status_id = params[:status_id] || 1
+    @entries = @entries.where(status_id: @status_id)
   end
 
   def new
@@ -80,6 +83,7 @@ class EntriesController < ApplicationController
         :notes,
         :attachment,
         :remove_attachment,
+        :status_id,
       )
     end
 end
