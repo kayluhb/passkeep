@@ -8,4 +8,12 @@
   .hint {
     font-size: 13px;
   }
+
+}
+
+input[type="text"],
+input[type="number"] {
+  &.small {
+    width: 60px;
+  }
 }

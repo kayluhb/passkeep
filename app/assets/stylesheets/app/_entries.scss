@@ -12,3 +12,21 @@
     padding-left: 130px;
   }
 }
+
+.password-generator {
+  input {
+    margin: 0 6px 0 10px;
+  }
+
+  .fields {
+    display: none;
+  }
+
+  a .icon {
+    @include transition(all $transition-timing);
+  }
+
+  a:hover .icon {
+    @include transform(rotate(270deg));
+  }
+}

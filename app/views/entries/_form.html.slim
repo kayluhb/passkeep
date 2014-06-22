@@ -15,8 +15,30 @@
 
   = f.input :password, as: :string
 
-  a href="#" title="generate password"
-    i.icon.icon-refresh
+  #password-generator.password-generator.field
+
+    a#generate-password href="#" title="generate password"
+      i.icon.icon-refresh
+      | generate
+
+    span.fields
+      input#password-length.small type="number" value="12" min="0" step="1"
+
+      label
+        input#password-special type="checkbox" checked="checked"
+        | special chars
+
+      label
+        input#password-numbers type="checkbox" checked="checked"
+        | numbers
+
+      label
+        input#password-lowercase type="checkbox" checked="checked"
+        | lowercase
+
+      label
+        input#password-uppercase type="checkbox" checked="checked"
+        | uppercase
 
   = f.input :url, as: :string
 
@@ -41,3 +63,6 @@
     m: entry,
     cancel_path: entries_path,
     delete_path: entry.new_record? ? nil : confirm_destroy_entry_path(entry)
+
+- content_for :js do
+  = javascript_include_tag 'app/entry'
