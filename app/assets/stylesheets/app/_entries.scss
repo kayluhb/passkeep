@@ -11,6 +11,35 @@
     margin-top: -42px;
     padding-left: 130px;
   }
+
+  .clipboard {
+    margin-left: 8px;
+    outline: 0;
+
+    .icon {
+      opacity: 0;
+      visibility: hidden;
+      @include transition(all $transition-timing);
+    }
+
+    &.ready {
+      .icon-copy {
+        opacity: 1;
+        visibility: visible;
+      }
+    }
+
+    &.copied {
+      .icon-copy {
+        display: none;
+      }
+
+      .icon-check-square-o {
+        opacity: 1;
+        visibility: visible;
+      }
+    }
+  }
 }
 
 .password-generator {

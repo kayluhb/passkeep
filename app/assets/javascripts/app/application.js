@@ -22,11 +22,12 @@ var APP = (function($, undefined) {
     });
 
     $(document)
-      .on('page:change', initPage)
+      .on('page:change', pageChange)
+      .on('page:before-change', pageBeforeChange)
       .bind('keydown', 'shift+l', onSearchFocus);
   }
 
-  function initPage() {
+  function pageChange() {
     $('a[href=#]').attr('href', 'javascript:;');
 
     // Open links starting with "http(s)://" in a new window unless they're targeted at this host.
@@ -35,7 +36,7 @@ var APP = (function($, undefined) {
       .on('click', open);
 
     $('.chosen-select').chosen({
-      allow_single_deselect: true,
+      // allow_single_deselect: true,
       disable_search_threshold: 10,
       no_results_text: 'No results match',
       search_contains: true,
@@ -49,6 +50,31 @@ var APP = (function($, undefined) {
         window.location = suggestion.data;
       }
     });
+
+    $('.clipboard').each(function(idx, el){
+
+      var client = new ZeroClipboard(el);
+
+      client.on('ready', function(ready) {
+        // alert('ZeroClipboard SWF is ready!');
+        $(el).addClass('ready');
+
+        client.on('aftercopy', function(e) {
+          // `this` === `client`
+          // `e.target` === the element that was clicked
+          // e.target.style.display = 'none';
+
+          $(e.target).addClass('copied');
+          // alert('Copied text to clipboard: ' + e.data['text/plain']);
+        });
+      });
+
+    });
+
+  }
+
+  function pageBeforeChange(){
+    ZeroClipboard.destroy();
   }
 
   function onSearchFocus() {

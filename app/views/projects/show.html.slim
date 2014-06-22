@@ -9,8 +9,12 @@
         i.icon.icon-pencil
         | edit
 
+  - unless @project.new_record? || !current_user.can_edit?(@project)
+    p.add-link = link_to '<i class="icon icon-plus-square"></i> Add an entry'.html_safe, new_entry_path(project: @project.guid), class: 'button'
+
 - if @project.archived?
   p.message.info This is archived.
+
 
 nav.list
 
@@ -21,9 +25,6 @@ nav.list
 
   - else
     h4 You do not have permission to view these entries
-
-- unless @project.new_record? || !current_user.can_edit?(@project)
-  p = link_to '<i class="icon icon-plus-square"></i> Add an entry'.html_safe, new_entry_path(project: @project.guid), class: 'button'
 
 hr
 

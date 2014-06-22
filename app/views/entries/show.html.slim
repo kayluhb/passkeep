@@ -21,30 +21,45 @@
       strong.label title:
       | &nbsp;
       = @entry.title
+      a.clipboard href="#" data-clipboard-text="#{@entry.title}" title="Click to copy."
+        i.icon.icon-copy
+        i.icon.icon-check-square-o
 
   - unless @entry.username.blank?
     p
       strong.label username:
       | &nbsp;
       = @entry.username
+      a.clipboard href="#" data-clipboard-text="#{@entry.username}" title="Click to copy."
+        i.icon.icon-copy
+        i.icon.icon-check-square-o
 
   - unless @entry.email.blank?
     p
       strong.label email:
       | &nbsp;
       = auto_link @entry.email
+      a.clipboard href="#" data-clipboard-text="#{@entry.email}" title="Click to copy."
+        i.icon.icon-copy
+        i.icon.icon-check-square-o
 
   - unless @entry.password.blank?
     p
       strong.label password:
       | &nbsp;
       = @entry.password
+      a.clipboard href="#" data-clipboard-text="#{@entry.password}" title="Click to copy."
+        i.icon.icon-copy
+        i.icon.icon-check-square-o
 
   - unless @entry.url.blank?
     p
       strong.label url:
       | &nbsp;#{auto_link @entry.url}&nbsp;
       i.icon.icon-newtab
+      a.clipboard href="#" data-clipboard-text="#{@entry.url}" title="Click to copy."
+        i.icon.icon-copy
+        i.icon.icon-check-square-o
 
   - unless @entry.notes.blank?
     p

@@ -37,7 +37,11 @@ body {
 }
 
 .head-show {
-  .button {
-    margin:0 0 4px 10px;
+  h1 .button {
+    margin: 20px 0 4px 10px;
   }
+}
+
+.add-link {
+  text-align: right;
 }
