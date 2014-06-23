@@ -33,7 +33,6 @@ module Passkeep
 
       app/*.js
       libs/*.js
-      libs/*.swf
 
       application.css
     )
