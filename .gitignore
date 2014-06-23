@@ -35,3 +35,4 @@ spec/views
 Capfile
 config/deploy.rb
 config/deploy/
+config/environments/production.rb
