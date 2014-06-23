@@ -221,7 +221,8 @@ GEM
     uuidtools (2.1.4)
     warden (1.2.3)
       rack (>= 1.0)
-    yaml_db (0.2.3)
+    zeroclipboard-rails (0.0.13)
+      railties (>= 3.1)
 
 PLATFORMS
   ruby
@@ -260,4 +261,4 @@ DEPENDENCIES
   turbolinks
   uglifier
   uuidtools
-  yaml_db
+  zeroclipboard-rails

@@ -56,6 +56,7 @@ var APP = (function($, undefined) {
     $('.clipboard').each(function(idx, el){
 
       var client = new ZeroClipboard(el);
+      console.log(client);
 
       client.on('ready', function(ready) {
         // alert('ZeroClipboard SWF is ready!');
