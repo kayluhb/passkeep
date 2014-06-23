@@ -38,6 +38,10 @@ group :development do
   gem 'thin'
 end
 
-gem 'sdoc', '~> 0.4.0', group: :doc
+group :production, :stage do
+  gem 'dalli'
+  gem 'exception_notification'
+  gem 'therubyracer', platforms: :ruby
+end
 
-gem 'therubyracer', group: :production
+gem 'sdoc', '~> 0.4.0', group: :doc
