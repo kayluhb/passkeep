@@ -22,7 +22,6 @@ gem 'uglifier'
 gem 'uuidtools'
 gem 'yaml_db'
 
-
 group :development do
   gem 'annotate'
   gem 'bullet'
@@ -38,7 +37,7 @@ group :development do
   gem 'thin'
 end
 
-group :production, :stage do
+group :production do
   gem 'dalli'
   gem 'exception_notification'
   gem 'therubyracer', platforms: :ruby
