@@ -20,6 +20,7 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'uglifier'
 gem 'uuidtools'
+gem 'yaml_db'
 
 
 group :development do
@@ -35,7 +36,6 @@ group :development do
   gem 'quiet_assets'
   gem 'spring'
   gem 'thin'
-  gem 'yaml_db'
 end
 
 gem 'sdoc', '~> 0.4.0', group: :doc
