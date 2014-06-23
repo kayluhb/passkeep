@@ -24,6 +24,7 @@
 
 config/database.yml
 config/secrets.yml
+config/nginx
 
 public/assets
 public/system
