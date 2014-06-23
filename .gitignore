@@ -24,6 +24,7 @@
 
 config/database.yml
 config/secrets.yml
+config/nginx
 
 public/assets
 public/system
@@ -35,3 +36,4 @@ spec/views
 Capfile
 config/deploy.rb
 config/deploy/
+config/environments/production.rb
