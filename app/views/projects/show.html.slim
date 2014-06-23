@@ -41,11 +41,11 @@ p
       | , 
     = link_to t.name, team_path(t)
 
-- if @archived_entries.any?  && current_user.can_view?(@project)
+- if @archived_entries.any? && current_user.can_view?(@project)
 
   nav.list
     h5 Archived Entries
-    = render 'entries/list', entries: @entries
+    = render 'entries/list', entries: @archived_entries
 
 - if current_user.can_edit?(@project)
   #project-form.md-modal

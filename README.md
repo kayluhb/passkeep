@@ -2,6 +2,8 @@
 
 The keeper of passwords.
 
+Passkeep is a password management tool for teams.
+
 ### A work in progress
 
 Message me if you want more information or if you'd like to pitch-in

@@ -3,6 +3,7 @@
   background: #FFF;
   border: 1px solid $col-gray;
   cursor: default;
+  font-family: $font-sans-regular;
   font-size: 13px;
   overflow: auto;
   @include box-shadow(1px 4px 3px rgba(50, 50, 50, 0.64));
