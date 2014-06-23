@@ -20,7 +20,6 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'uglifier'
 gem 'uuidtools'
-gem 'zeroclipboard-rails'
 
 group :development do
   gem 'annotate'
