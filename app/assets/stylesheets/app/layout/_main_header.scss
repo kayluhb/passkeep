@@ -3,6 +3,11 @@
   position: fixed;
   width: 100%;
   z-index: 9999;
+  @include transition(all 0.4s linear);
+
+  &.on {
+    @include box-shadow(0 0 10px rgba(0,0,0,0.4));
+  }
 
   .logo {
     display: block;

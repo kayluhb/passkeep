@@ -25,6 +25,8 @@ var APP = (function($, undefined) {
       .on('page:change', pageChange)
       .on('page:before-change', pageBeforeChange)
       .bind('keydown', 'shift+l', onSearchFocus);
+
+    $(window).on('scroll', onScroll);
   }
 
   function pageChange() {
@@ -75,6 +77,10 @@ var APP = (function($, undefined) {
 
   function pageBeforeChange(){
     ZeroClipboard.destroy();
+  }
+
+  function onScroll() {
+    $('#main-header').toggleClass('on', $(window).scrollTop() > 0);
   }
 
   function onSearchFocus() {

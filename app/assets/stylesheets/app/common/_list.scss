@@ -17,7 +17,7 @@
 
   a {
     display: block;
-    padding: 4px 20px;
+    padding: 6px 20px;
     @include clearfix;
 
     &:hover {
@@ -31,6 +31,7 @@
   }
 
   .title {
+    color: $col-default;
     float: left;
     width: 70%;
     @include text-overflow;

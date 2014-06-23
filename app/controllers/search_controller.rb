@@ -4,7 +4,7 @@ class SearchController < ApplicationController
     query = params[:query]
 
     projects = current_user.projects.where("projects.name ILIKE ?", "%#{query}%").limit(30)
-    entries = current_user.entries.where("search_text ILIKE ?", "%#{query}%").limit(30)
+    entries = current_user.entries.includes(:project).where("search_text ILIKE ?", "%#{query}%").limit(30)
 
     respond_to do |format|
       format.html

@@ -3,5 +3,5 @@ ul
   - entries.each do |entry|
     li
       a href="#{entry_path(entry)}"
-        span.title #{entry.project_name}: #{entry.title}
+        span.title #{entry.project_name}: <strong>#{entry.title}</strong>
         span.meta updated on #{l entry.updated_at}

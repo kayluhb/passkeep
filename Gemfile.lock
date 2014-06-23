@@ -217,6 +217,7 @@ GEM
     uuidtools (2.1.4)
     warden (1.2.3)
       rack (>= 1.0)
+    yaml_db (0.2.3)
 
 PLATFORMS
   ruby
@@ -253,3 +254,4 @@ DEPENDENCIES
   turbolinks
   uglifier
   uuidtools
+  yaml_db
