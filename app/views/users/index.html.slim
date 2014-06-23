@@ -14,4 +14,4 @@
             span.title
               == gravatar_image_tag(user.email, gravatar: { size: 64 }, class: 'avatar')
               = user.full_name
-            span.meta updated on #{l user.updated_at}
+            span.meta #{user.last_sign_in_at.blank? ? 'never logged in' : "last login: #{l(user.last_sign_in_at)}"}

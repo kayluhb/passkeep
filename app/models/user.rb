@@ -75,7 +75,8 @@ class User < ActiveRecord::Base
     end
 
     def skinny
-      select(['id', 'guid', 'email', 'first_name', 'last_name', 'updated_at']\
+      select(['id', 'guid', 'email', 'first_name', 'last_name', 'updated_at',
+        'last_sign_in_at']\
         .collect {|s| "#{self.table_name}.#{s}"}.join(","))
     end
   end
