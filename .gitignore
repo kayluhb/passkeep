@@ -23,6 +23,7 @@
 .DS_Store
 
 config/database.yml
+config/secrets.yml
 
 public/assets
 public/system
@@ -30,4 +31,7 @@ public/system
 spec/helpers
 spec/views
 
-/mvim
+# Don't track capistrano since we don't want anyone uploading their Cap info.
+Capfile
+config/deploy.rb
+config/deploy/
