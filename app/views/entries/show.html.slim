@@ -2,6 +2,10 @@
 
 = link_to "<i class='icon icon-caret-left'></i> #{@entry.project_name}".html_safe, project_path(@entry.project)
 
+
+- if @entry.archived?
+  p.message.info This is archived.  It will appear at the bottom of the project detail.
+
 .head-show
   h1
     = @entry.title
@@ -12,9 +16,6 @@
         | edit
 
 .entry-details
-
-  - if @entry.archived?
-    p.message.info This is archived.
 
   - unless @entry.title.blank?
     p

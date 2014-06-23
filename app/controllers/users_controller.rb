@@ -2,6 +2,9 @@ class UsersController < ApplicationController
 
   include Adminable
 
+  before_filter :verify_permission, only: [
+    :edit, :update, :confirm_destroy, :destroy]
+
   def index
     @users = User.skinny.ordered
   end
@@ -38,7 +41,7 @@ class UsersController < ApplicationController
 
   private
     def verify_permission
-      unless current_user.can_edit? @user
+      unless @user == current_user || (can? :manage, @user)
         return redirect_to users_path
       end
     end
@@ -56,6 +59,10 @@ class UsersController < ApplicationController
         :last_name,
         :password,
         :password_confirmation,
+        :time_zone,
+        # TODO - only allow these if a user is admin/superadmin
+        :administrator,
+        :super_user,
         { team_ids: [] },
       )
     end

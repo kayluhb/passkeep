@@ -52,12 +52,6 @@ class User < ActiveRecord::Base
     "#{first_name} #{last_name}".strip
   end
 
-  def full_name=(name)
-    split = name.split(' ', 2)
-    self.first_name = split.first
-    self.last_name = split.last
-  end
-
   def can_edit?(project)
     return true if project.new_record?
     user_teams = self.teams.editors.pluck(:id)

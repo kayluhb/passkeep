@@ -45,3 +45,8 @@ body {
 .add-link {
   text-align: right;
 }
+
+.avatar {
+  margin-right: 10px;
+  @include border-radius(50%);
+}

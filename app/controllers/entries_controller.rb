@@ -10,7 +10,7 @@ class EntriesController < ApplicationController
   ]
 
   def index
-    @entries = current_user.entries.page(params[:page]).skinny.order(:search_text)
+    @entries = current_user.entries.includes(:project).page(params[:page]).skinny.order(:search_text)
 
     @status_id = params[:status_id] || 1
     @entries = @entries.where(status_id: @status_id)

@@ -11,5 +11,7 @@
       - @users.each do |user|
         li
           a href="#{edit_user_path(user)}"
-            span.title #{user.full_name}
+            span.title
+              == gravatar_image_tag(user.email, gravatar: { size: 64 }, class: 'avatar')
+              = user.full_name
             span.meta updated on #{l user.updated_at}

@@ -2,22 +2,48 @@
 
   = render 'shared/errors', m: user
 
+  - unless user.new_record?
+    p
+      = link_to gravatar_image_tag(user.email, alt: 'Click to change', gravatar: { size: 64 }, class: 'avatar').html_safe,
+        'http://gravatar.com', title: 'Click to change'
+
   = f.input :email, required: true
 
   = f.input :first_name
 
   = f.input :last_name
 
-  = f.input :password
+  = f.input :password, hint: 'at least 8 chars.'
 
   = f.input :password_confirmation
 
-  = f.association :teams,
-    collection: Team.ordered,
-    include_blank: true,
-    input_html: { class: 'chosen-select' }
+  .field
+    = f.label :time_zone
+    = time_zone_select(:user, :time_zone, ActiveSupport::TimeZone.us_zones, {  }, { class: 'chosen-select' })
 
-  = render 'shared/actions',
-    m: user,
-    cancel_path: users_path,
-    delete_path: user.new_record? ? nil : confirm_destroy_user_path(user)
+  - if can? :manage, user.teams
+
+    = f.association :teams,
+      collection: Team.ordered,
+      include_blank: true,
+      input_html: { class: 'chosen-select' }
+
+  - if current_user.admin?
+    = f.input :administrator
+
+  - if current_user.super_user
+    = f.input :super_user
+
+  h5 Projects this user has access to
+
+  - user.projects.skinny.ordered.each_with_index do |p, idx|
+    - unless idx == 0
+      | , 
+
+    = link_to p.name, project_path(p)
+
+  - if user == current_user || (can? :manage, user)
+    = render 'shared/actions',
+      m: user,
+      cancel_path: users_path,
+      delete_path: user.new_record? ? nil : confirm_destroy_user_path(user)
