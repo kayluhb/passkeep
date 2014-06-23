@@ -1,7 +1,7 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require chosen-jquery
-//= require zeroclipboard
+//= require zero_clipboard
 //= require ./libs/jquery.autocomplete
 //= require ./libs/jquery.hotkeys
 //= require ./app/application
