@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '4.1.1'
+gem 'rails', '4.1.2'
 
 gem 'acts-as-taggable-on'
 gem 'attr_encrypted'
