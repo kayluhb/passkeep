@@ -64,5 +64,5 @@
     cancel_path: entries_path,
     delete_path: entry.new_record? ? nil : confirm_destroy_entry_path(entry)
 
-- content_for :js do
+/- content_for :js do
   = javascript_include_tag 'app/entry'

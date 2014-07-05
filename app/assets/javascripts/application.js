@@ -5,4 +5,5 @@
 //= require ./libs/jquery.hotkeys
 //= require ./libs/ZeroClipboard.min
 //= require ./app/application
+//= require ./app/entry
 //= require ./app/modal
