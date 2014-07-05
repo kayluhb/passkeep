@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '4.1.2'
+gem 'rails', '4.1.4'
 
 gem 'acts-as-taggable-on'
 gem 'attr_encrypted'
@@ -28,6 +28,10 @@ group :development do
   gem 'capistrano'
   gem 'capistrano-bundler'
   gem 'capistrano-rails'
+
+  gem 'guard-annotate'
+  gem 'guard-bundler'
+  gem 'guard-rspec', require: false
 
   gem 'factory_girl_rails'
   gem 'rspec-rails'
